@@ -66,10 +66,12 @@
                         </a>
                     </li>
                     <li>
-                        <button class="btn-add-user" type="button" title="ADD USER" data-bs-toggle="modal" data-bs-target="#addModal">
-                                <i class="bi bi-plus-lg">&nbsp;</i>
-                                ADD
-                            </button>
+                        <a href="#" class="btn-sidenav" title="Financial Summary">
+                            <i class="bi bi-plus-lg"></i>
+                            <span>
+                                &nbsp; Add User
+                            </span>
+                        </a>
                     </li>
                     
                 </ul>
