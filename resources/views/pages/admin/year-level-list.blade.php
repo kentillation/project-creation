@@ -78,7 +78,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-floating">
-                                                <input type="text" id="year_level" name="year_level" class="form-control mt-2" placeholder="Year Level" required/>
+                                                <input type="text" id="year_level" name="year_level" class="form-control mt-2 mb-3" placeholder="Year Level" required/>
                                                 <label for="course">Year Level</label>
                                             </div>
                                         </div>

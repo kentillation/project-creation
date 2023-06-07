@@ -106,13 +106,13 @@ class AuthController extends Controller
             'username' => $request->input()['username']
         ];
         $update_admin = AdminModel::where('id', $id)->update($data);
-        return redirect(route('admin-list'));
+        return redirect(route('admin-list'))->with('success', 'Account has been updated successfully');
     }
 
     public function delete($id) {
         $admin = AdminModel::find($id);
         $admin->delete();
-        return redirect(route('admin-list'));
+        return redirect(route('admin-list'))->with('removal', 'Account has been remove successfully');
     }
 
     //READING ALL RECORDS OF DEPARTMENT STAFF
@@ -160,7 +160,7 @@ class AuthController extends Controller
     //READING ALL RECORDS OF YEAR LEVEL
     public function year_level_list () {
         $year_level = YearLevelModel::all();
-        return view('pages/admin/year_level-list',['tbl_year_level'=>$year_level]);
+        return view('pages/admin/year-level-list',['tbl_year_level'=>$year_level]);
     }
 
 

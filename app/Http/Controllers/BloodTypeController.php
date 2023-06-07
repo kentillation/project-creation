@@ -8,15 +8,9 @@ use Illuminate\Http\Request;
 class BloodTypeController extends Controller
 {
     //Create blood type function
-    public function create_blood_type() {
-        return view('info/blood-type/blood-type-list');
-    }
-
-    //Blood type list function
-    public function blood_type_list() {
-        $blood_type = BloodTypeModel::all();
-        return view('info/blood-type/blood-type-list', ['tbl_blood_type' => $blood_type]);
-    }
+    // public function create_blood_type() {
+    //     return view('info/blood-type/blood-type-list');
+    // }
 
     //Save blood type function
     public function save_blood_type(Request $request) {
@@ -31,10 +25,10 @@ class BloodTypeController extends Controller
     public function update_blood_type(Request $request, $id) {
         $blood_type = BloodTypeModel::find($id);
         $response = [
-            'tble_blood_type' => $blood_type
+            'tbl_blood_type' => $blood_type
         ];
 
-        return view('info/blood-type/update-blood-type', $response);
+        return view('pages/info/blood-type/update-blood-type', $response);
     }
 
     //Save update blood type function

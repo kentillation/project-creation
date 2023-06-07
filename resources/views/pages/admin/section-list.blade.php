@@ -78,7 +78,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-floating">
-                                                <input type="text" id="section" name="section" class="form-control mt-2" placeholder="Section" required/>
+                                                <input type="text" id="section" name="section" class="form-control mt-2 mb-3" placeholder="Section" required/>
                                                 <label for="course">Section</label>
                                             </div>
                                         </div>

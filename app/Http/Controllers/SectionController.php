@@ -25,10 +25,10 @@ class SectionController extends Controller
     public function update_section(Request $request, $id) {
         $section = SectionModel::find($id);
         $response = [
-            'tble_section' => $section
+            'tbl_section' => $section
         ];
 
-        return view('info/section/update-section', $response);
+        return view('pages/info/section/update-section', $response);
     }
 
     //Save update section function
@@ -39,7 +39,7 @@ class SectionController extends Controller
         ];
         $update_section->update($data);
 
-        return redirect(route('course-list'))->with('success', 'Section updated successfully!');
+        return redirect(route('section-list'))->with('success', 'Section updated successfully!');
     }
 
     //Delete section function
