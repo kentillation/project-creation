@@ -78,8 +78,8 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-floating">
-                                                <input type="text" id="blood-type" name="blood_type" class="form-control mt-2" placeholder="Blood Type" required/>
-                                                <label for="course">Course</label>
+                                                <input type="text" id="blood-type" name="blood_type" class="form-control mt-2 mb-3" placeholder="Blood Type" required/>
+                                                <label for="course">Blood Type</label>
                                             </div>
                                         </div>
                                     </div>

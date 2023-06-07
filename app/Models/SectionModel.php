@@ -10,9 +10,10 @@ class SectionModel extends Model
     use HasFactory;
 
     protected $table = "tbl_section";
-    protected $fillable = ['section'];
+    
+    protected $fillable = ['section', 'created_at', 'updated_at'];
 
-    public function students() {
-        return $this->hasMany(StudentModel::class, 'section_id');
-    }
+    // public function students() {
+    //     return $this->hasMany(StudentModel::class, 'section_id');
+    // }
 }

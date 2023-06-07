@@ -24,9 +24,9 @@ Route::get('/staff-list', 'AuthController@staff_list')->name('staff-list');
 Route::get('/clinician-list', 'AuthController@clinician_list')->name('clinician-list');
 Route::get('/student-list', 'AuthController@student_list')->name('student-list');
 Route::get('/course-list', 'AuthController@course_list')->name('course-list');
-Route::get('/blood-type-list', 'AuthController@blood_type__list')->name('blood-type-list');
-Route::get('/gender-list', 'AuthController@gender_list')->name('gender-list');
 Route::get('/section-list', 'AuthController@section_list')->name('section-list');
+Route::get('/blood-type-list', 'AuthController@blood_type_list')->name('blood-type-list');
+Route::get('/gender-list', 'AuthController@gender_list')->name('gender-list');
 Route::get('/year-level-list', 'AuthController@year_level_list')->name('year-level-list');
 
 //NURSE STAFF CONTROLLER
@@ -60,12 +60,16 @@ Route::post('/student/save-update/{id}', 'StudentController@saveUpdate_student')
 Route::get('/student/list/{id}', 'StudentController@delete_student')->name('delete-student'); //delete
 
 //Course Routes
-// Route::get('/course', 'CourseController@create_course')->name('create-course'); //create
-
 Route::post('/save-course', 'CourseController@save_course')->name('save-course'); //save
 Route::get('/course/update/{id}', 'CourseController@update_course')->name('update-course'); //edit
 Route::post('/course/save-update/{id}', 'CourseController@saveUpdate_course')->name('update-save-course'); //save update
 Route::get('/course/list/{id}', 'CourseController@delete_course')->name('delete-course'); //delete
+
+//Section Routes
+Route::post('/section/save-section', 'SectionController@save_section')->name('save-section'); //save
+Route::get('/section/update-section/{id}', 'SectionController@update_section')->name('update-section'); //edit
+Route::post('/section/saveUpdate-section/{id}', 'SectionController@saveUpdate_section')->name('saveUpdate-section'); //save update
+Route::get('/section/section-list/{id}', 'SectionController@delete_section')->name('delete-section'); //delete
 
 //Blood Type Routes
 Route::post('/blood-type/save-blood-type', 'BloodTypeController@save_blood_type')->name('save-blood-type'); //save
@@ -81,11 +85,6 @@ Route::get('/gender/update-gender/{id}', 'GenderController@update_gender')->name
 Route::post('/gender/saveUpdate-gender/{id}', 'GenderController@saveUpdate_gender')->name('saveUpdate-gender'); //save update
 Route::get('/gender/gender-list/{id}', 'GenderController@delete_gender')->name('delete-gender'); //delete
 
-//Section Routes
-Route::post('/section/save-section', 'SectionController@save_section')->name('save-section'); //save
-Route::get('/section/update-section/{id}', 'SectionController@update_section')->name('update-section'); //edit
-Route::post('/section/saveUpdate-section/{id}', 'SectionController@saveUpdate_section')->name('saveUpdate-section'); //save update
-Route::get('/section/section-list/{id}', 'SectionController@delete_section')->name('delete-section'); //delete
 
 //Year Level Routes
 Route::post('/year-level/save-year-level', 'YearLevelController@save_year_level')->name('save-year-level'); //save

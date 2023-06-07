@@ -25,10 +25,10 @@ class YearLevelController extends Controller
     public function update_year_level(Request $request, $id) {
         $year_level = YearLevelModel::find($id);
         $response = [
-            'tble_year_level' => $year_level
+            'tbl_year_level' => $year_level
         ];
 
-        return view('info/year-level/update-year-level', $response);
+        return view('pages/info/year-level/update-year-level', $response);
     }
 
     //Save update year level function

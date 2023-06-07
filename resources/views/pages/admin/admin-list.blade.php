@@ -31,7 +31,7 @@
                                 </button>
                             </a>
                             
-                            <button class="btn-download" title="DOWNLOAD AS SPREADSHEET" onclick="saveAsExcel('table', 'LIST OF USERS.xls')">
+                            <button class="btn-download" title="DOWNLOAD AS SPREADSHEET" onclick="saveAsExcel('table', 'LIST OF ADMIN.xls')">
                                 <i class="bi bi-box-arrow-down">&nbsp;</i>
                                 XLS
                             </button>

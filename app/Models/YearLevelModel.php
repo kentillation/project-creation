@@ -10,9 +10,10 @@ class YearLevelModel extends Model
     use HasFactory;
 
     protected $table = "tbl_year_level";
-    protected $fillable = ['year_level'];
+    
+    protected $fillable = ['year_level', 'created_at', 'updated_at'];
 
-    public function students() {
-        return $this->hasMany(StudentModel::class, 'course_id');
-    }
+    // public function students() {
+    //     return $this->hasMany(StudentModel::class, 'course_id');
+    // }
 }
