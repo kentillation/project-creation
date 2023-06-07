@@ -28,7 +28,7 @@
         <div class="sidenav" id="sidenav">
             <div class="sidenav-content">
                 <div class="logo">
-                    <img src="<?php echo asset('images/login-img.svg') ?>" width="80px" />
+                    <img src="<?php echo asset('images/ehr_logo_v1.png') ?>" width="80px" />
                 </div>
                 <hr>
                 <h5 class="mb-3">Users</h5>
