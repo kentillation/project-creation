@@ -35,7 +35,7 @@
                 <ul>
                     <li>
                         <a href="#" class="btn-sidenav" title="Cancelled">
-                            <i class="bi bi-"></i>
+                            <i class="bi bi-pencil-square"></i>
                             <span>
                                 &nbsp; List of Student Nurse
                             </span>
