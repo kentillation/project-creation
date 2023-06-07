@@ -18,18 +18,31 @@ Route::get('/', function () {
 });
 
 //NURSE EDUCATOR CONTROLLER
-Route::get('/educator-list', 'EducatorController@educator_list')->name('educator-list');
+Route::get('/educator-login', 'EducatorController@educator_login')->name('educ-login');
+Route::post('/educator-login', 'EducatorController@educator_loginPost')->name('educator-login');
+// Route::get('/nurse-educator/signup', 'EducatorController@signup')->name('nurse-educator-signup');
+Route::post('/save-nurse-educator', 'EducatorController@save_educator')->name('save-educator');
+// Route::delete('/nurse-educator/logout', 'EducatorController@logout')->name('nurse-educator-logout');
+Route::get('/nurse-educator/dashboard', 'EducatorController@dashboard')->name('nurse-educator-dashboard');
+Route::get('/nurse-educator/update/{id}', 'EducatorController@update_educator')->name('update-educator');
+Route::post('/nurse-educator/save-update/{id}', 'EducatorController@saveUpdate_educator')->name('update-save-educator');
+Route::get('/nurse-educator/list/{id}', 'EducatorController@delete_educator')->name('delete-educator');
 
 //AUTH CONTROLLER
-Route::get('/', 'AuthController@login')->name('index');
-Route::post('/index', 'AuthController@loginPost')->name('login');
+Route::get('/admin-login', 'AuthController@login')->name('admin-login');
+Route::post('/admin-login', 'AuthController@loginPost')->name('login');
 Route::get('/signup', 'AuthController@signup')->name('signup');
 Route::post('/save-admin', 'AuthController@save_admin')->name('save-admin');
 Route::delete('/logout', 'AuthController@logout')->name('logout');
 Route::get('/dashboard', 'AuthController@dashboard')->name('dashboard');
-Route::get('/admin-list', 'AuthController@admin_list')->name('admin-list');
+Route::get('/admin/update/{id}', 'AuthController@update')->name('update-admin');
+Route::post('/admin/save-update/{id}', 'AuthController@saveUpdate')->name('update-save-admin');
+Route::get('/admin/list/{id}', 'AuthController@delete')->name('delete-admin');
 
-Route::get('/info-list', 'AuthController@info_list')->name('info-list');
+Route::get('/admin-list', 'AuthController@admin_list')->name('admin-list');
+Route::get('/educator-list', 'AuthController@educator_list')->name('educator-list');
+
+// Route::get('/info-list', 'AuthController@info_list')->name('info-list');
 
 //Role
 Route::get('/role', 'RoleController@create')->name('create-role'); //create

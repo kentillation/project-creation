@@ -31,51 +31,6 @@
                     <img src="<?php echo asset('images/login-img.svg') ?>" width="80px" />
                 </div>
                 <hr>
-                <h5 class="mb-3">Users</h5>
-                <ul>
-                    <li>
-                        <a href="#" class="btn-sidenav" title="Cancelled">
-                            <i class="bi bi-"></i>
-                            <span>
-                                &nbsp; List of Student Nurse
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn-sidenav" title="Statistics">
-                            <i class="bi bi-"></i>
-                            <span>
-                                &nbsp; List of Clinicians
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn-sidenav" title="Financial Summary">
-                            <i class="bi bi-"></i>
-                            <span>
-                                &nbsp; List of Nurse Educator
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin-list') }}" class="btn-sidenav" title="List of Users">
-                            <i class="bi bi-"></i>
-                            <span>
-                                &nbsp; List of Admin
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn-sidenav" title="Financial Summary" title="Add User" data-bs-toggle="modal" data-bs-target="#addUserModal">
-                            <i class="bi bi-plus-lg"></i>
-                            <span>
-                                &nbsp; Add User
-                            </span>
-                        </a>
-                    </li>
-                    
-                </ul>
-                <hr>
                 <h5 class="mb-3">Settings</h5>
                 <ul>
                     <li>
@@ -104,7 +59,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('info-list') }}" class="btn-sidenav" title="About">
+                        <a href="#" class="btn-sidenav" title="About">
                             <i class="bi bi-info-circle"></i>
                             <span>
                                 &nbsp; Others

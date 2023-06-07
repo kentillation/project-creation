@@ -1,4 +1,4 @@
-@extends('includes/sidenav')
+@extends('includes/admin-sidenav')
 
 @section('page-content')
         <div id="loader"></div>
@@ -31,7 +31,7 @@
                                 </button>
                             </a>
                             
-                            <button class="btn-download" title="DOWNLOAD AS SPREADSHEET" onclick="saveAsExcel('table', 'LIST OF USERS.xls')">
+                            <button class="btn-download" title="DOWNLOAD AS SPREADSHEET" onclick="saveAsExcel('table', 'LIST OF Department Staff User.xls')">
                                 <i class="bi bi-box-arrow-down">&nbsp;</i>
                                 XLS
                             </button>
@@ -45,31 +45,29 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Username</th>
-                                        <th>Password</th>
                                         <th>ACTION</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
+                                    @foreach ($tbl_educator as $educator)
                                         <tr>
-                                            <td>name</td>
-                                            <td>email</td>
-                                            <td>username</td>
-                                            <td>password</td>
+                                            <td>{{ $educator->name }}</td>
+                                            <td>{{ $educator->email }}</td>
+                                            <td>{{ $educator->username }}</td>
                                             <td>
-                                                <a href="#">
+                                                <a href="{{ route('update-educator', ['id' => $educator->id] ) }}">
                                                     <button class="btn-view btn-sm" title="MODIFY">
                                                         <i class="bi bi-pencil-square"></i>
                                                     </button>
                                                 </a>
-                                                <a href="#">
+                                                <a href="{{ route('delete-educator', ['id' => $educator->id] ) }}">
                                                     <button class="btn-restricted btn-sm" title="DELETE">
                                                         <i class="bi bi-trash"></i>
                                                     </button>
                                                 </a>
                                             </td>
                                         </tr>
-                                    
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -89,7 +87,7 @@
 					<!-- Modal body -->
 					<div class="modal-body">
                         <div class="container">
-                            <form method="POST" action="#">
+                            <form method="POST" action="{{ route('save-educator') }}">
                                 @csrf
                                 <div class="form-ni">
                                     <div class="row">
