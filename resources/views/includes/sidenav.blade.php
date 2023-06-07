@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Keonibeng</title>
+    <title>Electronic Health Records</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="<?php echo asset('css/style.css') ?>" />
@@ -53,7 +53,7 @@
                         <a href="#" class="btn-sidenav" title="Financial Summary">
                             <i class="bi bi-"></i>
                             <span>
-                                &nbsp; List of Department Staff
+                                &nbsp; List of Nurse Educator
                             </span>
                         </a>
                     </li>
@@ -66,7 +66,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="btn-sidenav" title="Financial Summary">
+                        <a href="#" class="btn-sidenav" title="Financial Summary" title="Add User" data-bs-toggle="modal" data-bs-target="#addUserModal">
                             <i class="bi bi-plus-lg"></i>
                             <span>
                                 &nbsp; Add User
@@ -75,7 +75,7 @@
                     </li>
                     
                 </ul>
-                <!-- <hr>
+                <hr>
                 <h5 class="mb-3">Settings</h5>
                 <ul>
                     <li>
@@ -103,7 +103,15 @@
                             </span>
                         </a>
                     </li>
-                </ul> -->
+                    <li>
+                        <a href="{{ route('info-list') }}" class="btn-sidenav" title="About">
+                            <i class="bi bi-info-circle"></i>
+                            <span>
+                                &nbsp; Others
+                            </span>
+                        </a>
+                    </li>
+                </ul>
                 <hr>
                 <!-- <div class="row">
                     <div class="col-sm-2 col-xs-12">
@@ -139,7 +147,7 @@
             </button>
         </div> <!-- end of sidenav -->
 
-        <div class="modal fade" id="addModal">
+        <div class="modal fade" id="addUserModal">
 			<div class="modal-dialog modal-lg modal-dialog-centered">
 				<div class="modal-content">
 					<!-- Modal Header -->
@@ -175,8 +183,17 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating">
-                                                <input type="password" id="password" name="password" class="form-control mt-2 mb-3" placeholder="Password" required/>
+                                                <input type="password" id="password" name="password" class="form-control mt-2" placeholder="Password" required/>
                                                 <label for="password">Password</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating">
+                                                <select id="role" name="role_id" class="form-control mt-2 mb-3" placeholder="Role">
+                                                    <option selected>-select-</option>
+
+                                                </select>
+                                                <label for="role">Role</label>
                                             </div>
                                         </div>
                                     </div>

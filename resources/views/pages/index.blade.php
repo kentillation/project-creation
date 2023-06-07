@@ -14,43 +14,45 @@
 
 <body>
     <main>
-        <div class="container mt-5 mb-5">
-            <div class="row">
-                <div class="col-lg-6 col-md-12 col-sm-12">
-                    <div class="container logo-container">
-                        <img src="<?php echo asset('images/login-img.svg') ?>" alt="Health Image"/>
+        <div class="login">
+            <div class="container mt-5 mb-5">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="container logo-container">
+                            <img src="<?php echo asset('images/login-img.svg') ?>" alt="Health Image"/>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6 col-md-12 col-sm-12 mb-5">
-                    <div class="container login-container border rounded">
-                        <h2 class="text-center mt-4 mb-3">SIGN IN</h2>
-                        <form action="{{ route('login') }}" method="post">
-                            @csrf
-                            <div class="form-ni">
-                                @if(Session::has('error'))
-                                    <div class="alert alert-danger text-center" role="alert" id="alertbox">
-                                        {{ Session::get('error') }}
-                                        <button class="btn-close" onclick="closeFn()"></button>
+                    <div class="col-lg-6 col-md-12 col-sm-12 mb-5">
+                        <div class="container login-container border rounded">
+                            <h2 class="text-center mt-4 mb-3">SIGN IN</h2>
+                            <form action="{{ route('login') }}" method="post">
+                                @csrf
+                                <div class="form-ni">
+                                    @if(Session::has('error'))
+                                        <div class="alert alert-danger text-center" role="alert" id="alertbox">
+                                            {{ Session::get('error') }}
+                                            <button class="btn-close" onclick="closeFn()"></button>
+                                        </div>
+                                    @endif
+                                    <div class="form-floating">
+                                        <input type="username" name="username" id="username" class="form-control mt-3"
+                                            placeholder="Username" required />
+                                        <label for="username">Username</label>
                                     </div>
-                                @endif
-                                <div class="form-floating">
-                                    <input type="username" name="username" id="username" class="form-control mt-3"
-                                        placeholder="Username" required />
-                                    <label for="username">Username</label>
+                                    <div class="form-floating">
+                                        <input type="password" name="password" class="form-control mt-3 mb-3"
+                                            placeholder="Password" required />
+                                        <label for="password">Password</label>
+                                    </div>
+                                    <button class="btn-submit mb-2" type="submit">SUBMIT</button>
                                 </div>
-                                <div class="form-floating">
-                                    <input type="password" name="password" class="form-control mt-3 mb-3"
-                                        placeholder="Password" required />
-                                    <label for="password">Password</label>
-                                </div>
-                                <button class="btn-submit mb-2" type="submit">SUBMIT</button>
+                            </form>
+                            <p class="text-center mb-4">Don't have an account? <span><a href="{{ route('signup') }}">Sign-up
+                                        here</a></span>.</p>
+                            <div class="split mb-4">
+                                <a href="#" class="ms-5">Forgot password?</a>
+                                <a href="#" class="me-5">Help?</a>
                             </div>
-                        </form>
-                        <p class="text-center mb-4">Don't have an account? <span><a href="{{ route('signup') }}">Sign-up
-                                    here</a></span>.</p>
-                        <div class="split mb-4">
-                            <a href="#" class="ms-5">Forgot password?</a>
-                            <a href="#" class="me-5">Help?</a>
                         </div>
                     </div>
                 </div>

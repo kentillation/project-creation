@@ -16,24 +16,16 @@
                         <button class="btn-close" onclick="closeFn()"></button>
                     </div>
                 @endif
+                
+                <div class="container p-5 reports">
+                    <h1 class="heading1 text-center mb-5"><strong>LIST OF OTHER INFORMATION</strong></h1>
+                </div>
                 <div class="container border rounded p-5 reports">
-                    <h1 class="heading1 text-center mb-5"><strong>List of Admin</strong></h1>
                     <div class="tbl-top-btns mb-4">
                         <div class="btn-dl me-2">
-                            <button class="btn-add-user" type="button" title="ADD USER" data-bs-toggle="modal" data-bs-target="#addModal">
+                            <button class="btn-add-user" type="button" title="Add Gender" data-bs-toggle="modal" data-bs-target="#addGenderModal">
                                 <i class="bi bi-plus-lg">&nbsp;</i>
-                                ADD
-                            </button>
-                            <a href="#" title="DOWNLOAD AS PDF" target="_blank">
-                                <button class="btn-download">
-                                    <i class="bi bi-box-arrow-down">&nbsp;</i>
-                                    PDF
-                                </button>
-                            </a>
-                            
-                            <button class="btn-download" title="DOWNLOAD AS SPREADSHEET" onclick="saveAsExcel('table', 'LIST OF USERS.xls')">
-                                <i class="bi bi-box-arrow-down">&nbsp;</i>
-                                XLS
+                                Add Gender
                             </button>
                         </div>
                     </div>
@@ -42,18 +34,14 @@
                             <table class="table table-hover text-center" id="table">
                                 <thead class="text-bg-secondary">
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Username</th>
-                                        <th>ACTION</th>
+                                        <th>Gender</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($tbl_admin as $admin)
+                                    @foreach ($tbl_gender as $gender)
                                         <tr>
-                                            <td>{{ $admin->name }}</td>
-                                            <td>{{ $admin->email }}</td>
-                                            <td>{{ $admin->username }}</td>
+                                            <td>{{ $gender->name }}</td>
                                             <td>
                                                 <a href="#">
                                                     <button class="btn-view btn-sm" title="MODIFY">
@@ -75,44 +63,26 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="addModal">
+        <div class="modal fade" id="addGenderModal">
 			<div class="modal-dialog modal-lg modal-dialog-centered">
 				<div class="modal-content">
 					<!-- Modal Header -->
 					<div class="modal-header">
-						<h5 class="modal-title">New account for System Admin</h5>
+						<h5 class="modal-title">New Gender</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 					</div>
 
 					<!-- Modal body -->
 					<div class="modal-body">
                         <div class="container">
-                            <form method="POST" action="{{ route('save-admin') }}">
+                            <form method="POST" action="#">
                                 @csrf
                                 <div class="form-ni">
                                     <div class="row">
                                         <div class="col-12">
-                                            <div class="form-floating">
+                                            <div class="form-floating mb-4">
                                                 <input type="text" id="name" name="name" class="form-control mt-2" placeholder="Name" required/>
-                                                <label for="name">Name</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-floating">
-                                                <input type="email" id="email" name="email" class="form-control mt-2" placeholder="Email" required/>
-                                                <label for="email">Email</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-floating">
-                                                <input type="text" id="username" name="username" class="form-control mt-2" placeholder="Username" required/>
-                                                <label for="username">Username</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-floating">
-                                                <input type="password" id="password" name="password" class="form-control mt-2 mb-3" placeholder="Password" required/>
-                                                <label for="password">Password</label>
+                                                <label for="name">Preference </label>
                                             </div>
                                         </div>
                                     </div>

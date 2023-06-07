@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AdminModel;
+use App\Models\InfoModel;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -111,5 +112,10 @@ class AuthController extends Controller
 
         //return redirect(route('index'));
         return back()->with('success', 'New account has been saved successfully');
+    }
+
+    public function info_list () {
+        $gender = InfoModel::all();
+        return view('pages/admin/info-list',['tbl_gender'=>$gender]);
     }
 }
