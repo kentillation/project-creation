@@ -13,6 +13,6 @@ class SectionModel extends Model
     protected $fillable = ['section'];
 
     public function students() {
-        //return $this->hasMany(StudentModel::class, 'section_id');
+        return $this->hasMany(StudentModel::class, 'section_id');
     }
 }

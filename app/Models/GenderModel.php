@@ -13,6 +13,6 @@ class GenderModel extends Model
     protected $fillable = ['gender'];
 
     public function students() {
-        //return $this->hasMany(StudentModel::class, 'gender_id');
+        return $this->hasMany(StudentModel::class, 'gender_id');
     }
 }

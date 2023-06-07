@@ -13,6 +13,6 @@ class CourseModel extends Model
     protected $fillable = ['course'];
 
     public function students() {
-        //return $this->hasMany(StudentModel::class, 'course_id');
+        return $this->hasMany(StudentModel::class, 'course_id');
     }
 }
