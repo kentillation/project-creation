@@ -6,16 +6,16 @@
             <div class="container border rounded p-5 mt-5" id="table">
                 <div class="container">
                     <div class="mb-5">
-                        <a href="{{ route('blood-type-list') }}" class="back-arrow" title="BACK">
+                        <a href="{{ route('gender-list') }}" class="back-arrow" title="BACK">
                             <i class="bi bi-arrow-left"></i>
                         </a>
                     </div>
-                    <form method="post" action="{{ route('saveUpdate-blood-type', ['id' => $tbl_blood_type['id']]) }}">
+                    <form method="post" action="{{ route('saveUpdate-gender', ['id' => $tbl_gender['id']]) }}">
                         @csrf
                         <div class="row">
                             <div class="col-12">
-                                <label for="name">Blood Type</label>
-                                <input type='text' name='blood_type' value="{{ $tbl_blood_type['blood_type'] }}" id="name" class="form-control mb-3" required />
+                                <label for="name">Gender</label>
+                                <input type='text' name='gender' value="{{ $tbl_gender['gender'] }}" id="name" class="form-control mb-3" required />
                             </div>
                         </div>
                         <div class="container mt-2">
