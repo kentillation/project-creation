@@ -1,4 +1,4 @@
-@extends('includes/sidenav')
+@extends('includes/admin-sidenav')
 
 @section('page-content')
         <div id="loader"></div>
@@ -55,12 +55,12 @@
                                             <td>{{ $admin->email }}</td>
                                             <td>{{ $admin->username }}</td>
                                             <td>
-                                                <a href="#">
+                                                <a href="{{ route('update-admin', ['id' => $admin->id] ) }}">
                                                     <button class="btn-view btn-sm" title="MODIFY">
                                                         <i class="bi bi-pencil-square"></i>
                                                     </button>
                                                 </a>
-                                                <a href="#">
+                                                <a href="{{ route('delete-admin', ['id' => $admin->id] ) }}">
                                                     <button class="btn-restricted btn-sm" title="DELETE">
                                                         <i class="bi bi-trash"></i>
                                                     </button>

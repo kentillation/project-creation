@@ -161,6 +161,10 @@ p {
     margin: 20px auto;
 }
 
+.login-container .form-ni a {
+    font-size: 15px;
+}
+
 .login-container label, .login-container p, .login-container a {
     font-size: 13px;
 }
