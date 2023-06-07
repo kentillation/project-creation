@@ -96,6 +96,52 @@
                     </li>
                 </ul>
                 <hr>
+
+                <h5 class="mb-3">Others:</h5>
+                <ul>
+                    <li>
+                        <a href="{{ route('course-list') }}" class="btn-sidenav" title="Course">
+                            <i class="bi bi-exclamation-diamond"></i>
+                            <span>
+                                &nbsp; Course
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('section-list') }}" class="btn-sidenav" title="Section">
+                            <i class="bi bi-patch-check"></i>
+                            <span>
+                                &nbsp; Section
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('year-level-list') }}" class="btn-sidenav" title="Year Level">
+                            <i class="bi bi-x-octagon"></i>
+                            <span>
+                                &nbsp; Year Level
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('blood-type-list') }}" class="btn-sidenav" title="Blood Type">
+                            <i class="bi bi-x-octagon"></i>
+                            <span>
+                                &nbsp; Blood type
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('gender-list') }}" class="btn-sidenav" title="Gender">
+                            <i class="bi bi-x-octagon"></i>
+                            <span>
+                                &nbsp; Gender
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+
                 <h5 class="mb-3">Settings</h5>
                 <ul>
                     <li>

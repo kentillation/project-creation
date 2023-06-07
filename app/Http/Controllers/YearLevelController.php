@@ -7,16 +7,10 @@ use Illuminate\Http\Request;
 
 class YearLevelController extends Controller
 {
-    //Create year level function
-    public function create_year_level() {
-        return view('info/year-level/year-level-list');
-    }
-
-    //Year level list function
-    public function year_level_list() {
-        $year_level = YearLevelModel::all();
-        return view('info/year-level/year-level-list', ['tbl_year_level' => $year_level]);
-    }
+    // //Create year level function
+    // public function create_year_level() {
+    //     return view('info/year-level/year-level-list');
+    // }
 
     //Save year level function
     public function save_year_level(Request $request) {

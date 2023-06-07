@@ -10,6 +10,10 @@ use App\Models\StudentModel;
 use App\Models\CourseModel;
 use App\Models\InfoModel;
 use App\Http\Controllers\AuthController;
+use App\Models\BloodTypeModel;
+use App\Models\GenderModel;
+use App\Models\SectionModel;
+use App\Models\YearLevelModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
@@ -133,6 +137,30 @@ class AuthController extends Controller
     public function course_list () {
         $course = CourseModel::all();
         return view('pages/admin/course-list',['tbl_course'=>$course]);
+    }
+
+    //READING ALL RECORDS OF BLOOD TYPE
+    public function blood_type_list () {
+        $blood_type = BloodTypeModel::all();
+        return view('pages/admin/blood-type-list',['tbl_blood_type'=>$blood_type]);
+    }
+
+    //READING ALL RECORDS OF GENDER
+    public function gender_list () {
+        $gender = GenderModel::all();
+        return view('pages/admin/gender-list',['tbl_gender'=>$gender]);
+    }
+
+    //READING ALL RECORDS OF SECTION
+    public function section_list () {
+        $section = SectionModel::all();
+        return view('pages/admin/section-list',['tbl_section'=>$section]);
+    }
+
+    //READING ALL RECORDS OF YEAR LEVEL
+    public function year_level_list () {
+        $year_level = YearLevelModel::all();
+        return view('pages/admin/year_level-list',['tbl_year_level'=>$year_level]);
     }
 
 

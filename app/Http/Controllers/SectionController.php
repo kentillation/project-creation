@@ -7,16 +7,10 @@ use Illuminate\Http\Request;
 
 class SectionController extends Controller
 {
-    //Create course function
-    public function create_section() {
-        return view('info/section/section-list');
-    }
-
-    //Section list function
-    public function section_list() {
-        $section = SectionModel::all();
-        return view('info/section/section-list', ['tbl_section' => $section]);
-    }
+    // //Create course function
+    // public function create_section() {
+    //     return view('info/section/section-list');
+    // }
 
     //Save section function
     public function save_section(Request $request) {

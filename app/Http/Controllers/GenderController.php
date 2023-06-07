@@ -7,16 +7,10 @@ use Illuminate\Http\Request;
 
 class GenderController extends Controller
 {
-    //Create gender function
-    public function create_gender() {
-        return view('info/gender/gender-list');
-    }
-
-    //Gender list function
-    public function gender_list() {
-        $gender = GenderModel::all();
-        return view('info/gender/gender-list', ['tbl_gender' => $gender]);
-    }
+    // Create gender function
+    // public function create_gender() {
+    //     return view('info/gender/gender-list');
+    // }
 
     //Save gender function
     public function save_gender(Request $request) {

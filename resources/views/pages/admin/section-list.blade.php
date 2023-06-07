@@ -16,16 +16,13 @@
                         <button class="btn-close" onclick="closeFn()"></button>
                     </div>
                 @endif
-                
-                <div class="container p-5 reports">
-                    <h1 class="heading1 text-center mb-5"><strong>LIST OF GENDER</strong></h1>
-                </div>
                 <div class="container border rounded p-5 reports">
+                    <h1 class="heading1 text-center mb-5"><strong>List of Section</strong></h1>
                     <div class="tbl-top-btns mb-4">
                         <div class="btn-dl me-2">
-                            <button class="btn-add-user" type="button" title="Add Gender" data-bs-toggle="modal" data-bs-target="#addGenderModal">
+                            <button class="btn-add-user" type="button" title="ADD USER" data-bs-toggle="modal" data-bs-target="#addModal">
                                 <i class="bi bi-plus-lg">&nbsp;</i>
-                                Add Gender
+                                ADD
                             </button>
                         </div>
                     </div>
@@ -34,26 +31,21 @@
                             <table class="table table-hover text-center" id="table">
                                 <thead class="text-bg-secondary">
                                     <tr>
-                                        <th>#</th>
-                                        <th>Gender</th>
+                                        <th>Section</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php
-                                        $count = 0;
-                                    @endphp
-                                    @foreach ($tbl_gender as $gender)
+                                    @foreach ($tbl_section as $section )
                                         <tr>
-                                            <td>{{ $count++ }}</td>
-                                            <td>{{ $gender->gender }}</td>
+                                            <td>{{ $section ->section }}</td>
                                             <td>
-                                                <a href="{{ route('update-gender', ['id' $gender->id] ) }}">
+                                                <a href="{{ route('update-section', ['id' => $section ->id] ) }}">
                                                     <button class="btn-view btn-sm" title="MODIFY">
                                                         <i class="bi bi-pencil-square"></i>
                                                     </button>
                                                 </a>
-                                                <a href="{{ route('delete-gender', ['id' $gender->id] ) }}">
+                                                <a href="{{ route('delete-section', ['id' => $section ->id] ) }}">
                                                     <button class="btn-restricted btn-sm" title="DELETE">
                                                         <i class="bi bi-trash"></i>
                                                     </button>
@@ -68,26 +60,26 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="addGenderModal">
+        <div class="modal fade" id="addModal">
 			<div class="modal-dialog modal-lg modal-dialog-centered">
 				<div class="modal-content">
 					<!-- Modal Header -->
 					<div class="modal-header">
-						<h5 class="modal-title">New Gender</h5>
+						<h5 class="modal-title">New Section</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 					</div>
 
 					<!-- Modal body -->
 					<div class="modal-body">
                         <div class="container">
-                            <form method="POST" action="{{ route('save-gender') }}">
+                            <form method="POST" action="{{ route('save-section') }}">
                                 @csrf
                                 <div class="form-ni">
                                     <div class="row">
                                         <div class="col-12">
-                                            <div class="form-floating mb-4">
-                                                <input type="text" id="name" name="gender" class="form-control mt-2" placeholder="Name" required/>
-                                                <label for="name">Preference </label>
+                                            <div class="form-floating">
+                                                <input type="text" id="section" name="section" class="form-control mt-2" placeholder="Section" required/>
+                                                <label for="course">Section</label>
                                             </div>
                                         </div>
                                     </div>
