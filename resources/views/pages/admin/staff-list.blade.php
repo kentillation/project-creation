@@ -49,18 +49,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($tbl_educator as $educator)
+                                    @foreach ($tbl_staff as $staff )
                                         <tr>
-                                            <td>{{ $educator->name }}</td>
-                                            <td>{{ $educator->email }}</td>
-                                            <td>{{ $educator->username }}</td>
+                                            <td>{{ $staff ->name }}</td>
+                                            <td>{{ $staff ->email }}</td>
+                                            <td>{{ $staff ->username }}</td>
                                             <td>
-                                                <a href="{{ route('update-educator', ['id' => $educator->id] ) }}">
+                                                <a href="{{ route('update-staff', ['id' => $staff ->id] ) }}">
                                                     <button class="btn-view btn-sm" title="MODIFY">
                                                         <i class="bi bi-pencil-square"></i>
                                                     </button>
                                                 </a>
-                                                <a href="{{ route('delete-educator', ['id' => $educator->id] ) }}">
+                                                <a href="{{ route('delete-staff', ['id' => $staff ->id] ) }}">
                                                     <button class="btn-restricted btn-sm" title="DELETE">
                                                         <i class="bi bi-trash"></i>
                                                     </button>
@@ -87,7 +87,7 @@
 					<!-- Modal body -->
 					<div class="modal-body">
                         <div class="container">
-                            <form method="POST" action="{{ route('save-educator') }}">
+                            <form method="POST" action="{{ route('save-staff') }}">
                                 @csrf
                                 <div class="form-ni">
                                     <div class="row">

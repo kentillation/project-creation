@@ -1,4 +1,4 @@
-@extends('includes/educator-sidenav')
+@extends('includes/admin-sidenav')
 
 @section('page-content')
         <div id="loader"></div>
@@ -6,24 +6,24 @@
             <div class="container border rounded p-5 mt-5" id="table">
                 <div class="container">
                     <div class="mb-5">
-                        <a href="{{ route('educator-list') }}" class="back-arrow" title="BACK">
+                        <a href="{{ route('staff-list') }}" class="back-arrow" title="BACK">
                             <i class="bi bi-arrow-left"></i>
                         </a>
                     </div>
-                    <form method="post" action="{{ route('update-save-educator', ['id' => $tbl_educator['id']]) }}">
+                    <form method="post" action="{{ route('update-save-staff', ['id' => $tbl_staff['id']]) }}">
                         @csrf
                         <div class="row">
                             <div class="col-12">
                                 <label for="name">Name</label>
-                                <input type='text' name='name' value="{{ $tbl_educator['name'] }}" id="name" class="form-control mb-3" required />
+                                <input type='text' name='name' value="{{ $tbl_staff['name'] }}" id="name" class="form-control mb-3" required />
                             </div>
                             <div class="col-12">
                                 <label for="email">Email</label>
-                                <input type='email' name='email' value="{{ $tbl_educator['email'] }}" id="email" class="form-control mb-3" required />
+                                <input type='email' name='email' value="{{ $tbl_staff['email'] }}" id="email" class="form-control mb-3" required />
                             </div>
                             <div class="col-12">
                                 <label for="username">Username</label>
-                                <input type='text' name='username' value="{{ $tbl_educator['username'] }}" id="username" class="form-control mb-3" required />
+                                <input type='text' name='username' value="{{ $tbl_staff['username'] }}" id="username" class="form-control mb-3" required />
                             </div>
                         </div>
                         <div class="container mt-2">
