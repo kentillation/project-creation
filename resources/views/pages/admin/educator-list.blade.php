@@ -17,7 +17,7 @@
                     </div>
                 @endif
                 <div class="container border rounded p-5 reports">
-                    <h1 class="heading1 text-center mb-5"><strong>List of Admin</strong></h1>
+                    <h1 class="heading1 text-center mb-5"><strong>List of Nurse Educator</strong></h1>
                     <div class="tbl-top-btns mb-4">
                         <div class="btn-dl me-2">
                             <button class="btn-add-user" type="button" title="ADD USER" data-bs-toggle="modal" data-bs-target="#addModal">
@@ -45,15 +45,17 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Username</th>
+                                        <th>Password</th>
                                         <th>ACTION</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($tbl_admin as $admin)
+                                    
                                         <tr>
-                                            <td>{{ $admin->name }}</td>
-                                            <td>{{ $admin->email }}</td>
-                                            <td>{{ $admin->username }}</td>
+                                            <td>name</td>
+                                            <td>email</td>
+                                            <td>username</td>
+                                            <td>password</td>
                                             <td>
                                                 <a href="#">
                                                     <button class="btn-view btn-sm" title="MODIFY">
@@ -67,7 +69,7 @@
                                                 </a>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -80,14 +82,14 @@
 				<div class="modal-content">
 					<!-- Modal Header -->
 					<div class="modal-header">
-						<h5 class="modal-title">New account for System Admin</h5>
+						<h5 class="modal-title">New account for Nurse Educator</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 					</div>
 
 					<!-- Modal body -->
 					<div class="modal-body">
                         <div class="container">
-                            <form method="POST" action="{{ route('save-admin') }}">
+                            <form method="POST" action="#">
                                 @csrf
                                 <div class="form-ni">
                                     <div class="row">
