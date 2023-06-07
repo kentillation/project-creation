@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AdminModel;
-use App\Models\EducatorModel;
+use App\Models\StaffModel;
 use App\Models\ClinicianModel;
 use App\Models\StudentModel;
+use App\Models\CourseModel;
 use App\Models\InfoModel;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
@@ -46,7 +47,7 @@ class AuthController extends Controller
     
         if ($result_count > 0) {
 
-            //Schema::drop('tbl_stocks');
+            // Schema::drop('tbl_educator');
             /*Schema::table('tbl_stocks', function (Blueprint $table) {
                 $table->dropColumn(['created_at', 'updated_at']);
             });*/
@@ -111,9 +112,9 @@ class AuthController extends Controller
     }
 
     //READING ALL RECORDS OF DEPARTMENT STAFF
-    public function educator_list () {
-        $educator = EducatorModel::all();
-        return view('pages/admin/educator-list',['tbl_educator'=>$educator]);
+    public function staff_list () {
+        $staff = StaffModel::all();
+        return view('pages/admin/staff-list',['tbl_staff'=>$staff]);
     }
 
     //READING ALL RECORDS OF CLINICIAN
@@ -126,6 +127,12 @@ class AuthController extends Controller
     public function student_list () {
         $student = StudentModel::all();
         return view('pages/admin/student-list',['tbl_student'=>$student]);
+    }
+
+    //READING ALL RECORDS OF COURSE
+    public function course_list () {
+        $course = CourseModel::all();
+        return view('pages/admin/course-list',['tbl_course'=>$course]);
     }
 
 

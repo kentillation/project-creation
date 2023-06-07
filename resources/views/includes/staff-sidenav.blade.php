@@ -86,7 +86,7 @@
                     </div>
                 </div> -->
                 <div class=" mt-4">
-                    <form action="{{ route('educator-logout') }}" method="POST" >
+                    <form action="{{ route('staff-logout') }}" method="POST" >
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-signout" type="submit" title="SIGN OUT">

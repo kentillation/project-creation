@@ -24,8 +24,13 @@
                     </div>
                     <div class="col-lg-6 col-md-12 col-sm-12 mb-5">
                         <div class="container login-container border rounded">
-                            <h2 class="text-center mt-4 mb-3">SIGN IN</h2>
-                            <form action="{{ route('educator-login') }}" method="post">
+                            <div class="mb-5">
+                                <a href="{{ route('index') }}" class="back-arrow" title="BACK">
+                                    <i class="bi bi-arrow-left"></i>
+                                </a>
+                            </div>
+                            <h2 class="text-center mt-4 mb-3">Electronic Health Record</h2>
+                            <form action="{{ route('staff-login') }}" method="post">
                                 @csrf
                                 <div class="form-ni">
                                     @if(Session::has('error'))

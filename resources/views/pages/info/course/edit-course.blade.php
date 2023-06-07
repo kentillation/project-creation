@@ -10,12 +10,12 @@
                             <i class="bi bi-arrow-left"></i>
                         </a>
                     </div>
-                    <form method="post" action="{{ route('saveUpdate-course', ['id' => $tbl_course['id']]) }}">
+                    <form method="post" action="{{ route('update-save-course', ['id' => $tbl_course['id']]) }}">
                         @csrf
                         <div class="row">
                             <div class="col-12">
-                                <label for="name">Course</label>
-                                <input type='text' name='course' value="{{ $tbl_course['course'] }}" id="name" class="form-control mb-3" required />
+                                <label for="course">Course</label>
+                                <input type='text' name='course' value="{{ $tbl_course['course'] }}" id="course" class="form-control mb-3" required />
                             </div>
                         </div>
                         <div class="container mt-2">
