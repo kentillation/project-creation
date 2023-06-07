@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-12 col-sm-12">
                         <div class="container logo-container">
-                            <img src="<?php echo asset('images/login-img.svg') ?>" alt="Health Image"/>
+                            <img src="<?php echo asset('images/ehr_logo_v2.png') ?>" alt="Health Image"/>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12 col-sm-12 mb-5">
@@ -29,7 +29,7 @@
                                     <i class="bi bi-arrow-left"></i>
                                 </a>
                             </div>
-                            <h2 class="text-center mt-4 mb-3">Electronic Health Record</h2>
+                            <h2 class="text-center mt-4 mb-3">Christian School Electronic Health Record</h2>
                             <form action="{{ route('clinician-login') }}" method="post">
                                 @csrf
                                 <div class="form-ni">

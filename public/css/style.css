@@ -151,6 +151,10 @@ p {
     height: 50vh;
 }
 
+.login img {
+    border-radius: 50%;
+}
+
 .login-container {
     background-color: transparent;
     padding: 25px;
@@ -234,9 +238,15 @@ select {
     /* display: none; */
 }
 
-.sidenav img {
-    width: 100px;
+.sidenav .logo {
     display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidenav img {
+    width: 80px;
+    border-radius: 50%;
 }
 
 .sidenav-container {

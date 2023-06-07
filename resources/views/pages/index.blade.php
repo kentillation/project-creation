@@ -19,12 +19,12 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-12 col-sm-12">
                         <div class="container logo-container">
-                            <img src="<?php echo asset('images/login-img.svg') ?>" alt="Health Image"/>
+                            <img src="<?php echo asset('images/ehr_logo_v2.png') ?>" alt="Health Image"/>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12 col-sm-12 mb-5">
                         <div class="container login-container border rounded">
-                            <h2 class="text-center mt-4 mb-3">Electronic Health Record</h2>
+                            <h2 class="text-center mt-4 mb-3">Christian School Electronic Health Record</h2>
                             <div class="form-ni">
                                 <a href="{{ route('student-login') }}">
                                     <button class="btn-submit mb-2">Nursing Student</button>
