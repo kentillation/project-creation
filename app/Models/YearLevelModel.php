@@ -13,6 +13,6 @@ class YearLevelModel extends Model
     protected $fillable = ['year_level'];
 
     public function students() {
-        //return $this->hasMany(StudentModel::class, 'course_id');
+        return $this->hasMany(StudentModel::class, 'course_id');
     }
 }
