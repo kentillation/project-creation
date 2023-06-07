@@ -16,16 +16,13 @@
                         <button class="btn-close" onclick="closeFn()"></button>
                     </div>
                 @endif
-                
-                <div class="container p-5 reports">
-                    <h1 class="heading1 text-center mb-5"><strong>LIST OF COURSE</strong></h1>
-                </div>
                 <div class="container border rounded p-5 reports">
+                    <h1 class="heading1 text-center mb-5"><strong>List of Course</strong></h1>
                     <div class="tbl-top-btns mb-4">
                         <div class="btn-dl me-2">
-                            <button class="btn-add-user" type="button" title="Add Course" data-bs-toggle="modal" data-bs-target="#addCourseModal">
+                            <button class="btn-add-user" type="button" title="ADD USER" data-bs-toggle="modal" data-bs-target="#addModal">
                                 <i class="bi bi-plus-lg">&nbsp;</i>
-                                Add Course
+                                ADD
                             </button>
                         </div>
                     </div>
@@ -39,16 +36,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($tbl_course as $course)
+                                    @foreach ($tbl_course as $course )
                                         <tr>
-                                            <td>{{ $course->course }}</td>
+                                            <td>{{ $course ->course }}</td>
                                             <td>
-                                                <a href="{{ route('update-course', ['id', $course->id] ) }}">
+                                                <a href="{{ route('update-course', ['id' => $course ->id] ) }}">
                                                     <button class="btn-view btn-sm" title="MODIFY">
                                                         <i class="bi bi-pencil-square"></i>
                                                     </button>
                                                 </a>
-                                                <a href="{{ route('delete-course', ['id', $course->id] ) }}">
+                                                <a href="{{ route('delete-course', ['id' => $course ->id] ) }}">
                                                     <button class="btn-restricted btn-sm" title="DELETE">
                                                         <i class="bi bi-trash"></i>
                                                     </button>
@@ -63,7 +60,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="addCourseModal">
+        <div class="modal fade" id="addModal">
 			<div class="modal-dialog modal-lg modal-dialog-centered">
 				<div class="modal-content">
 					<!-- Modal Header -->
@@ -80,9 +77,9 @@
                                 <div class="form-ni">
                                     <div class="row">
                                         <div class="col-12">
-                                            <div class="form-floating mb-4">
-                                                <input type="text" id="name" name="course" class="form-control mt-2" placeholder="Course" required/>
-                                                <label for="name">Course </label>
+                                            <div class="form-floating">
+                                                <input type="text" id="course" name="course" class="form-control mt-2" placeholder="Course" required/>
+                                                <label for="course">Course</label>
                                             </div>
                                         </div>
                                     </div>
