@@ -34,7 +34,7 @@
                 <h5 class="mb-3">Users</h5>
                 <ul>
                     <li>
-                        <a href="#" class="btn-sidenav" title="Cancelled">
+                        <a href="{{ route('student-list') }}" class="btn-sidenav" title="Cancelled">
                             <i class="bi bi-mortarboard"></i>
                             <span>
                                 &nbsp; List of Student Nurse

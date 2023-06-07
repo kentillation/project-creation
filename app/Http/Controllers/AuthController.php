@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\AdminModel;
 use App\Models\EducatorModel;
 use App\Models\ClinicianModel;
+use App\Models\StudentModel;
 use App\Models\InfoModel;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,11 @@ use Illuminate\Support\Facades\Schema;
 
 class AuthController extends Controller
 {
+
+    public function index () {
+        return view('pages/index');
+    }
+
     public function dashboard () {
         return view('pages/admin/dashboard');
     }
@@ -114,6 +120,12 @@ class AuthController extends Controller
     public function clinician_list () {
         $clinician = ClinicianModel::all();
         return view('pages/admin/clinician-list',['tbl_clinician'=>$clinician]);
+    }
+
+    //READING ALL RECORDS OF STUDENT
+    public function student_list () {
+        $student = StudentModel::all();
+        return view('pages/admin/student-list',['tbl_student'=>$student]);
     }
 
 

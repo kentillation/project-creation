@@ -25,8 +25,9 @@
                     <div class="col-lg-6 col-md-12 col-sm-12 mb-5">
                         <div class="container login-container border rounded">
                             <div class="form-ni">
-                                <button class="btn-submit mb-2">Nursing Student</button>
-                                
+                                <a href="{{ route('student-login') }}">
+                                    <button class="btn-submit mb-2">Nursing Student</button>
+                                </a>
                                 <a href="{{ route('clinician-login') }}">
                                     <button class="btn-submit mb-2">Clinician</button>
                                 </a>
