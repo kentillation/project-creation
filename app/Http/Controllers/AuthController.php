@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\AdminModel;
 use App\Models\EducatorModel;
+use App\Models\ClinicianModel;
 use App\Models\InfoModel;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
@@ -103,10 +104,16 @@ class AuthController extends Controller
         return redirect(route('admin-list'));
     }
 
-    //READING ALL RECORDS OF ADMINS
+    //READING ALL RECORDS OF DEPARTMENT STAFF
     public function educator_list () {
         $educator = EducatorModel::all();
         return view('pages/admin/educator-list',['tbl_educator'=>$educator]);
+    }
+
+    //READING ALL RECORDS OF CLINICIAN
+    public function clinician_list () {
+        $clinician = ClinicianModel::all();
+        return view('pages/admin/clinician-list',['tbl_clinician'=>$clinician]);
     }
 
 

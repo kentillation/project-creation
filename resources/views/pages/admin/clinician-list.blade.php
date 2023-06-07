@@ -17,7 +17,7 @@
                     </div>
                 @endif
                 <div class="container border rounded p-5 reports">
-                    <h1 class="heading1 text-center mb-5"><strong>List of Department Staff</strong></h1>
+                    <h1 class="heading1 text-center mb-5"><strong>List of Clinician</strong></h1>
                     <div class="tbl-top-btns mb-4">
                         <div class="btn-dl me-2">
                             <button class="btn-add-user" type="button" title="ADD USER" data-bs-toggle="modal" data-bs-target="#addModal">
@@ -49,18 +49,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($tbl_educator as $educator)
+                                    @foreach ($tbl_clinician as $clinician)
                                         <tr>
-                                            <td>{{ $educator->name }}</td>
-                                            <td>{{ $educator->email }}</td>
-                                            <td>{{ $educator->username }}</td>
+                                            <td>{{ $clinician->name }}</td>
+                                            <td>{{ $clinician->email }}</td>
+                                            <td>{{ $clinician->username }}</td>
                                             <td>
-                                                <a href="{{ route('update-educator', ['id' => $educator->id] ) }}">
+                                                <a href="{{ route('update-clinician', ['id' => $clinician->id] ) }}">
                                                     <button class="btn-view btn-sm" title="MODIFY">
                                                         <i class="bi bi-pencil-square"></i>
                                                     </button>
                                                 </a>
-                                                <a href="{{ route('delete-educator', ['id' => $educator->id] ) }}">
+                                                <a href="{{ route('delete-clinician', ['id' => $clinician->id] ) }}">
                                                     <button class="btn-restricted btn-sm" title="DELETE">
                                                         <i class="bi bi-trash"></i>
                                                     </button>
@@ -80,14 +80,14 @@
 				<div class="modal-content">
 					<!-- Modal Header -->
 					<div class="modal-header">
-						<h5 class="modal-title">New account for Nurse Educator</h5>
+						<h5 class="modal-title">New account for Clinician</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 					</div>
 
 					<!-- Modal body -->
 					<div class="modal-body">
                         <div class="container">
-                            <form method="POST" action="{{ route('save-educator') }}">
+                            <form method="POST" action="{{ route('save-clinician') }}">
                                 @csrf
                                 <div class="form-ni">
                                     <div class="row">
