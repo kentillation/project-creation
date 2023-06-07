@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('/pages/index');
-});
+// Route::get('/', function () {
+//     return view('/pages/index');
+// });
+
+Route::get('/', 'AuthController@index')->name('index');
 
 //AUTH CONTROLLER
 Route::get('/admin-login', 'AuthController@login')->name('admin-login');
@@ -20,6 +22,7 @@ Route::get('/admin/list/{id}', 'AuthController@delete')->name('delete-admin');
 Route::get('/admin-list', 'AuthController@admin_list')->name('admin-list');
 Route::get('/educator-list', 'AuthController@educator_list')->name('educator-list');
 Route::get('/clinician-list', 'AuthController@clinician_list')->name('clinician-list');
+Route::get('/student-list', 'AuthController@student_list')->name('student-list');
 
 //NURSE EDUCATOR CONTROLLER
 Route::get('/educator-login', 'EducatorController@educator_login')->name('educ-login');
@@ -40,6 +43,16 @@ Route::get('/clinician/dashboard', 'ClinicianController@dashboard')->name('clini
 Route::get('/clinician/update/{id}', 'ClinicianController@update_clinician')->name('update-clinician');
 Route::post('/clinician/save-update/{id}', 'ClinicianController@saveUpdate_clinician')->name('update-save-clinician');
 Route::get('/clinician/list/{id}', 'ClinicianController@delete_clinician')->name('delete-clinician');
+
+//STUDENT CONTROLLER
+Route::get('/student-login', 'StudentController@student_login')->name('student-login');
+Route::post('/student-login', 'StudentController@student_loginPost')->name('login-student');
+Route::post('/save-student', 'StudentController@save_student')->name('save-student');
+Route::delete('/student/logout', 'StudentController@logout')->name('student-logout');
+Route::get('/student/dashboard', 'StudentController@dashboard')->name('student-dashboard');
+Route::get('/student/update/{id}', 'StudentController@update_student')->name('update-student');
+Route::post('/student/save-update/{id}', 'StudentController@saveUpdate_student')->name('update-save-student');
+Route::get('/student/list/{id}', 'StudentController@delete_student')->name('delete-student');
 
 // Route::get('/info-list', 'AuthController@info_list')->name('info-list');
 
