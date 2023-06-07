@@ -42,7 +42,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="btn-sidenav" title="Statistics">
+                        <a href="{{ route('clinician-list') }}" class="btn-sidenav" title="Statistics">
                             <i class="bi bi-thermometer-high"></i>
                             <span>
                                 &nbsp; List of Clinicians
@@ -53,7 +53,7 @@
                         <a href="{{ route('educator-list') }}" class="btn-sidenav" title="Financial Summary">
                             <i class="bi bi-pen"></i>
                             <span>
-                                &nbsp; List of Nurse Educator
+                                &nbsp; List of Department Staff
                             </span>
                         </a>
                     </li>
@@ -62,6 +62,35 @@
                             <i class="bi bi-people"></i>
                             <span>
                                 &nbsp; List of Admin
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+                
+                <h5 class="mb-3">Request</h5>
+                <ul>
+                    <li>
+                        <a href="#" class="btn-sidenav" title="Cancelled">
+                            <i class="bi bi-exclamation-diamond"></i>
+                            <span>
+                                &nbsp; Pending
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('clinician-list') }}" class="btn-sidenav" title="Statistics">
+                            <i class="bi bi-patch-check"></i>
+                            <span>
+                                &nbsp; Approved
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('educator-list') }}" class="btn-sidenav" title="Financial Summary">
+                            <i class="bi bi-x-octagon"></i>
+                            <span>
+                                &nbsp; Declined
                             </span>
                         </a>
                     </li>

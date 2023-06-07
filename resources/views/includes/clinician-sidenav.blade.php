@@ -68,7 +68,7 @@
                     </li>
                 </ul>
                 <hr>
-                <h5>Department Staff</h5>
+                <h5>Clinician</h5>
                 <!-- <div class="row">
                     <div class="col-sm-2 col-xs-12">
                         <h6>ID:</h6>

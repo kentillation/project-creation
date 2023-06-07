@@ -1,4 +1,4 @@
-@extends('includes/educator-sidenav')
+@extends('includes/clinician-sidenav')
 
 @section('page-content')
         <div id="loader"></div>

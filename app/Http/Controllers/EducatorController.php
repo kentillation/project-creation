@@ -11,9 +11,6 @@ use Illuminate\Support\Facades\Schema;
 
 class EducatorController extends Controller
 {
-    // public function nurse_educator_dashboard () {
-    //     return view('pages/educator/dashboard');
-    // }
 
     public function educator_login()
     {
@@ -31,27 +28,17 @@ class EducatorController extends Controller
     
         if ($result_count > 0) {
 
-            //Schema::drop('tbl_stocks');
-            /*Schema::table('tbl_stocks', function (Blueprint $table) {
-                $table->dropColumn(['created_at', 'updated_at']);
-            });*/
-
             return view('/pages/educator/dashboard');
         }
         return back()->with('error', 'Invalid username or password.');
     }
 
-    // public function logout()
-    // {
-    //     Auth::logout();
+    public function logout()
+    {
+        Auth::logout();
         
-    //     return redirect('/');
-    // }
-
-    // public function signup () 
-    // {
-    //     return view('pages/signup');
-    // }
+        return redirect('/');
+    }
     
     //CREATING RECORD OF USER
     public function save_educator(Request $request)
@@ -64,7 +51,6 @@ class EducatorController extends Controller
         $educator->password = $request->password;
         $educator->save();
 
-        //return redirect(route('index'));
         return back()->with('success', 'New account has been saved successfully');
     }
     

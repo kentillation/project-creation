@@ -24,19 +24,29 @@
                     </div>
                     <div class="col-lg-6 col-md-12 col-sm-12 mb-5">
                         <div class="container login-container border rounded">
-                            <div class="form-ni">
-                                <button class="btn-submit mb-2">Nursing Student</button>
-                                
-                                <a href="{{ route('clinician-login') }}">
-                                    <button class="btn-submit mb-2">Clinician</button>
-                                </a>
-                                <a href="{{ route('educator-login') }}">
-                                    <button class="btn-submit mb-2">Department Staff</button>
-                                </a>
-                                <a href="{{ route('admin-login') }}">
-                                    <button class="btn-submit mb-2">Admin</button>
-                                </a>
-                            </div>
+                            <h2 class="text-center mt-4 mb-3">SIGN IN</h2>
+                            <form action="{{ route('clinician-login') }}" method="post">
+                                @csrf
+                                <div class="form-ni">
+                                    @if(Session::has('error'))
+                                        <div class="alert alert-danger text-center" role="alert" id="alertbox">
+                                            {{ Session::get('error') }}
+                                            <button class="btn-close" onclick="closeFn()"></button>
+                                        </div>
+                                    @endif
+                                    <div class="form-floating">
+                                        <input type="username" name="username" id="username" class="form-control mt-3"
+                                            placeholder="Username" required />
+                                        <label for="username">Username</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="password" name="password" class="form-control mt-3 mb-3"
+                                            placeholder="Password" required />
+                                        <label for="password">Password</label>
+                                    </div>
+                                    <button class="btn-submit mb-2" type="submit">SUBMIT</button>
+                                </div>
+                            </form>
                             <p class="text-center mb-4">Don't have an account? <span><a href="#">Request
                                         here</a></span>.</p>
                             <div class="split mb-4">
