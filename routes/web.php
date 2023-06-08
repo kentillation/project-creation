@@ -60,6 +60,7 @@ Route::post('/student/save-update/{id}', 'StudentController@saveUpdate_student')
 Route::get('/student/list/{id}', 'StudentController@delete_student')->name('delete-student'); //delete
 
 Route::get('/add-medical-record', 'StudentController@add_medical_record')->name('add-medical-record');
+Route::post('/save-medical-record', 'StudentController@save_medical_record')->name('save-medical-record');
 
 //Course Routes
 Route::post('/save-course', 'CourseController@save_course')->name('save-course'); //save

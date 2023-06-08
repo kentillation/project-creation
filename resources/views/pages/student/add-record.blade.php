@@ -10,9 +10,13 @@
                             <i class="bi bi-arrow-left"></i>
                         </a>
                     </div>
-                    <form method="post" action="#">
+                    <form method="POST" action="{{ route('save-medical-record') }}">
                         @csrf
                         <div class="row">
+                            <div class="col-lg-4 col-md-6 col-sm-6" style="">
+                                <label for="student_id">Student ID</label>
+                                <input type='text' name='student_id' id="student_id" value="" class="form-control mb-3" required />
+                            </div>
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <label for="first_name">First Name</label>
                                 <input type='text' name='first_name' id="first_name" class="form-control mb-3" required />
@@ -70,12 +74,8 @@
                                 <input type='text' name='bmi' id="bmi" class="form-control mb-3 readonly" readonly />
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-6">
-                                <label for="course">Course</label>
-                                <input type='text' name='course' id="course" class="form-control mb-3" required />
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
                                 <label for="year_level">Year Level</label>
-                                <select id="year_level" name="year_level" class="form-control mt-2">
+                                <select id="year_level" name="year_level" class="form-control mb-3">
                                     <option selected>-select-</option>
                                     <option value="1">1st year</option>
                                     <option value="2">2nd year</option>
@@ -85,7 +85,7 @@
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <label for="section">Section</label>
-                                <select id="section" name="section" class="form-control mt-2">
+                                <select id="section" name="section" class="form-control mb-3">
                                     <option selected>-select-</option>
                                     <option value="1">A</option>
                                     <option value="2">B</option>
@@ -96,16 +96,16 @@
 
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <label for="gender">Gender</label>
-                                <select id="gender" name="gender" class="form-control mt-2">
+                                <select id="gender" name="gender" class="form-control mb-3">
                                     <option selected>-select-</option>
                                     <option value="1">Male</option>
                                     <option value="2">Female</option>
                                 </select>                                
                             </div>
 
-                            <div class="col-lg-4 col-md-6 col-sm-6 mt-3">
+                            <div class="col-lg-4 col-md-6 col-sm-6">
                                 <label for="blood_type">Blood Type</label>
-                                <select id="blood_type" name="blood_type" class="form-control mt-2">
+                                <select id="blood_type" name="blood_type" class="form-control mb-3">
                                     <option selected>-select-</option>
                                     <option value="1">A+</option>
                                     <option value="2">A-</option>

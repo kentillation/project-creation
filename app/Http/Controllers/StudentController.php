@@ -89,4 +89,34 @@ class StudentController extends Controller
     public function add_medical_record () {
         return view('pages/student/add-record');
     }
+
+    //CREATING RECORD OF USER
+    public function save_medical_record(Request $request)
+    {
+        $student = new StudentModel;
+
+        $student->first_name = $request->first_name;
+        $student->middle_name = $request->middle_name;
+        $student->last_name = $request->last_name;
+        $student->street_address = $request->street_address;
+        $student->barangay = $request->barangay;
+        $student->muni_city = $request->muni_city;
+        $student->date_of_birth = $request->date_of_birth;
+        $student->age = $request->age;
+        $student->phone = $request->phone;
+        $student->civil_status = $request->civil_status;
+        $student->last_name = $request->last_name;
+        $student->citizenship = $request->citizenship;
+        $student->height = $request->height;
+        $student->weight = $request->weight;
+        $student->bmi = $request->bmi;
+        $student->year_level = $request->year_level;
+        $student->section = $request->section;
+        $student->gender = $request->gender;
+        $student->blood_type = $request->blood_type;
+        $student->save();
+
+        //return redirect(route('index'));
+        return back()->with('success', 'New account has been saved successfully');
+    }
 }
