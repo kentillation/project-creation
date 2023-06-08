@@ -78,7 +78,7 @@ class AuthController extends Controller
         return view('pages/admin/admin-signup');
     }
     
-    //CREATING RECORD OF USER
+    //CREATING RECORD OF ADMIN
     public function save_admin(Request $request)
     {
         $users = new AdminModel;
