@@ -28,7 +28,7 @@
         <div class="sidenav" id="sidenav">
             <div class="sidenav-content">
                 <div class="logo">
-                    <img src="<?php echo asset('images/login-img.svg') ?>" width="80px" />
+                    <img src="<?php echo asset('images/ehr_logo_v1.png') ?>" width="80px" />
                 </div>
                 <hr>
                 <h5 class="mb-3">Settings</h5>
@@ -68,7 +68,8 @@
                     </li>
                 </ul>
                 <hr>
-                <h5>Clinician</h5>
+                <h5>Login as:</h5>
+                <h6>Clinician</h6>
                 <!-- <div class="row">
                     <div class="col-sm-2 col-xs-12">
                         <h6>ID:</h6>
@@ -86,7 +87,7 @@
                     </div>
                 </div> -->
                 <div class=" mt-4">
-                    <form action="{{ route('educator-logout') }}" method="POST" >
+                    <form action="{{ route('clinician-logout') }}" method="POST" >
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-signout" type="submit" title="SIGN OUT">

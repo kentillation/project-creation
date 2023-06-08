@@ -20,6 +20,7 @@ Route::post('/admin/save-update/{id}', 'AuthController@saveUpdate')->name('updat
 Route::get('/admin/list/{id}', 'AuthController@delete')->name('delete-admin');
 
 Route::get('/admin-list', 'AuthController@admin_list')->name('admin-list');
+Route::get('/print-admin_list', 'AuthController@print_admin_list')->name('print-admin_list');
 Route::get('/staff-list', 'AuthController@staff_list')->name('staff-list');
 Route::get('/clinician-list', 'AuthController@clinician_list')->name('clinician-list');
 Route::get('/student-list', 'AuthController@student_list')->name('student-list');
@@ -51,13 +52,14 @@ Route::get('/clinician/list/{id}', 'ClinicianController@delete_clinician')->name
 
 //STUDENT CONTROLLER
 Route::get('/student-login', 'StudentController@student_login')->name('student-login');
-Route::post('/student-login', 'StudentController@student_loginPost')->name('login-student');
-Route::delete('/student/logout', 'StudentController@logout')->name('student-logout');
+Route::post('/student-login', 'StudentController@student_loginPost');
 Route::get('/student/dashboard', 'StudentController@dashboard')->name('student-dashboard');
 Route::post('/save-student', 'StudentController@save_student')->name('save-student'); //save
 Route::get('/student/update/{id}', 'StudentController@update_student')->name('update-student'); //edit
 Route::post('/student/save-update/{id}', 'StudentController@saveUpdate_student')->name('update-save-student'); //save update
 Route::get('/student/list/{id}', 'StudentController@delete_student')->name('delete-student'); //delete
+
+Route::get('/add-medical-record', 'StudentController@add_medical_record')->name('add-medical-record');
 
 //Course Routes
 Route::post('/save-course', 'CourseController@save_course')->name('save-course'); //save

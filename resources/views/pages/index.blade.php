@@ -39,11 +39,9 @@
                                     <button class="btn-submit mb-2">Admin</button>
                                 </a>
                             </div>
-                            <p class="text-center mb-4">Don't have an account? <span><a href="#">Request
-                                        here</a></span>.</p>
                             <div class="split mb-4">
-                                <a href="#" class="ms-5">Forgot password?</a>
-                                <a href="#" class="me-5">Help?</a>
+                                <a href="#" class="ms-5"></a>
+                                <a href="#" class="me-5">Need help?</a>
                             </div>
                         </div>
                     </div>

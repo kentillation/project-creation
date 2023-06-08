@@ -35,6 +35,11 @@ class AuthController extends Controller
         return view('pages/admin/admin-list',['tbl_admin'=>$users]);
     }
 
+    public function print_admin_list () {
+        $users = AdminModel::all();
+        return view('pages/print/print-admin_list',['tbl_admin'=>$users]);
+    }
+
     public function login()
     {
         return view('pages/admin/admin-login');

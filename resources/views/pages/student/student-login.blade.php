@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="<?php echo asset('bootstrap/css/bootstrap.min.css') ?>" />
     <link rel="stylesheet" href="<?php echo asset('bootstrap-icons/bootstrap-icons.css') ?>" />
     <link rel="stylesheet" href="<?php echo asset('bootstrap/js/bootstrap.min.js') ?>" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <script src="<?php echo asset('main.js') ?>"></script>
 </head>
 
@@ -52,8 +55,13 @@
                                     <button class="btn-submit mb-2" type="submit">SUBMIT</button>
                                 </div>
                             </form>
-                            <p class="text-center mb-4">Don't have an account? <span><a href="#">Request
-                                        here</a></span>.</p>
+                            <p class="text-center mb-4">Don't have an account? 
+                                <span>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#requestModall">
+                                        Request here
+                                    </a>
+                                </span>.
+                            </p>
                             <div class="split mb-4">
                                 <a href="#" class="ms-5">Forgot password?</a>
                                 <a href="#" class="me-5">Help?</a>
@@ -63,6 +71,44 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="requestModal">
+			<div class="modal-dialog modal-lg modal-dialog-centered">
+				<div class="modal-content">
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<h5 class="modal-title">Request Account</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+					</div>
+
+					<!-- Modal body -->
+					<div class="modal-body">
+                        <div class="container">
+                            <form method="POST" action="#">
+                                @csrf
+                                <div class="form-ni">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-floating">
+                                                <input type="text" id="student_id" name="student_id" class="form-control mt-2" placeholder="Student ID" required/>
+                                                <label for="student_id">Student ID</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating">
+                                                <input type="text" id="name" name="name" class="form-control mt-2 mb-3" placeholder="Full Name" required/>
+                                                <label for="name">Full Name</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn-submit mb-2">SUBMIT</button>
+                                </div>
+                            </form>
+                        </div>
+					</div> <!-- End of modal body-->
+				</div> <!-- End of modal content-->
+			</div>
+		</div> <!-- End of Add Project Modal-->
+
     </main>
 </body>
 
