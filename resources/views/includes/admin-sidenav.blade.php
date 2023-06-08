@@ -20,7 +20,21 @@
 <body onload="loaderFunction()">
     <main>
         <header>
-
+            <nav class="topnav">
+                <div class="tab">
+                    <div class="logo">
+                        <a href="#">
+                            <img src="<?php echo asset('images/ehr_logo_v1.png') ?>" />
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#" class="nav-link" title="Account">
+                            &nbsp; <i class="bi bi-person-circle"></i>
+                        </a>
+                    </div>
+                </div>
+                
+            </nav>
         </header>
         <button class="sidenav-btn-toggle" title="SHOW MENU" onclick="sidenavBtn()">
             <i class="bi bi-list"></i>
@@ -28,8 +42,36 @@
         <div class="sidenav" id="sidenav">
             <div class="sidenav-content">
                 <div class="logo">
-                    <img src="<?php echo asset('images/ehr_logo_v1.png') ?>" width="80px" />
+                    <img src="<?php echo asset('images/profile.jpg') ?>" width="80px" />
                 </div>
+                <hr>
+                <h5 class="mb-3">Main</h5>
+                <ul>
+                    <li>
+                        <a href="{{ route('dashboard') }}" class="btn-sidenav" title="Cancelled">
+                            <i class="bi bi-speedometer"></i>
+                            <span>
+                                &nbsp; Dashboard
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn-sidenav" title="Statistics">
+                            <i class="bi bi-person"></i>
+                            <span>
+                                &nbsp; Profile
+                            </span>
+                        </a>
+                    </li>
+                    <!-- <li>
+                        <a href="{{ route('admin-list') }}" class="btn-sidenav" title="List of Users">
+                            <i class="bi bi-people"></i>
+                            <span>
+                                &nbsp; Admin
+                            </span>
+                        </a>
+                    </li> -->
+                </ul>
                 <hr>
                 <h5 class="mb-3">Users</h5>
                 <ul>
@@ -37,7 +79,7 @@
                         <a href="{{ route('student-list') }}" class="btn-sidenav" title="Cancelled">
                             <i class="bi bi-mortarboard"></i>
                             <span>
-                                &nbsp; List of Student Nurse
+                                &nbsp; Student Nurses
                             </span>
                         </a>
                     </li>
@@ -45,7 +87,7 @@
                         <a href="{{ route('clinician-list') }}" class="btn-sidenav" title="Statistics">
                             <i class="bi bi-thermometer-high"></i>
                             <span>
-                                &nbsp; List of Clinicians
+                                &nbsp; Clinicians
                             </span>
                         </a>
                     </li>
@@ -53,18 +95,18 @@
                         <a href="{{ route('staff-list') }}" class="btn-sidenav" title="Financial Summary">
                             <i class="bi bi-pen"></i>
                             <span>
-                                &nbsp; List of Department Staff
+                                &nbsp; Dept. Staffs
                             </span>
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="{{ route('admin-list') }}" class="btn-sidenav" title="List of Users">
                             <i class="bi bi-people"></i>
                             <span>
-                                &nbsp; List of Admin
+                                &nbsp; Admin
                             </span>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
                 <hr>
                 
@@ -97,7 +139,7 @@
                 </ul>
                 <hr> -->
 
-                <h5 class="mb-3">Other Preferences:</h5>
+                <!-- <h5 class="mb-3">Other Preferences:</h5>
                 <ul>
                     <li>
                         <a href="{{ route('course-list') }}" class="btn-sidenav" title="Course">
@@ -140,7 +182,7 @@
                         </a>
                     </li>
                 </ul>
-                <hr>
+                <hr> -->
 
                 <!-- <h5 class="mb-3">Settings</h5>
                 <ul>

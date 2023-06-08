@@ -405,6 +405,24 @@ form .readonly {
     margin-top: 100px;
 }
 
+/* STUDENT LIST */
+
+.student-list {
+    margin-top: 120px;
+}
+
+/* ADMIN */
+
+.admin-homepage {
+    margin-top: 120px;
+}
+
+/* DEPARTMENT STAFF */
+
+.staff-list {
+    margin-top: 120px;
+}
+
 /* REPORTS */
 
 .dataTables_filter, .dataTables_wrapper .dataTables_paginate, table.dataTable.no-footer {

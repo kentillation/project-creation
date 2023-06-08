@@ -20,7 +20,21 @@
 <body onload="loaderFunction()">
     <main>
         <header>
-
+            <nav class="topnav">
+                <div class="tab">
+                    <div class="logo">
+                        <a href="#">
+                            <img src="<?php echo asset('images/ehr_logo_v1.png') ?>" />
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#" class="nav-link" title="Account">
+                            &nbsp; <i class="bi bi-person-circle"></i>
+                        </a>
+                    </div>
+                </div>
+                
+            </nav>
         </header>
         <button class="sidenav-btn-toggle" title="SHOW MENU" onclick="sidenavBtn()">
             <i class="bi bi-list"></i>
@@ -28,7 +42,7 @@
         <div class="sidenav" id="sidenav">
             <div class="sidenav-content">
                 <div class="logo">
-                    <img src="<?php echo asset('images/ehr_logo_v1.png') ?>" width="80px" />
+                    <img src="<?php echo asset('images/profile.jpg') ?>" width="80px" />
                 </div>
                 <hr>
                 <h5 class="mb-3">Settings</h5>
