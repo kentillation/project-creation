@@ -3,7 +3,7 @@
 @section('page-content')
         <div id="loader"></div>
         <div id="forLoader" style="display:none;">
-        <div class="container mt-5 mb-5">
+        <div class="container admin-homepage">
                 @if(Session::has('success'))
                     <div class="alert alert-success text-center" role="alert" id="alertbox">
                         {{ Session::get('success') }}
