@@ -80,7 +80,7 @@
 				<div class="modal-content">
 					<!-- Modal Header -->
 					<div class="modal-header">
-						<h5 class="modal-title">New account for Nurse Educator</h5>
+						<h5 class="modal-title">New account for Department Staff</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 					</div>
 

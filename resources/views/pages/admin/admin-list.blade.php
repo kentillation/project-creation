@@ -24,7 +24,7 @@
                                 <i class="bi bi-plus-lg">&nbsp;</i>
                                 ADD
                             </button>
-                            <a href="#" title="DOWNLOAD AS PDF" target="_blank">
+                            <a href="{{ route('print-admin_list') }}" title="DOWNLOAD AS PDF" target="_blank">
                                 <button class="btn-download">
                                     <i class="bi bi-box-arrow-down">&nbsp;</i>
                                     PDF

@@ -46,7 +46,6 @@
                                         <th>Student ID</th>
                                         <th>Email</th>
                                         <th>Username</th>
-                                        <th>Password</th>
                                         <th>ACTION</th>
                                     </tr>
                                 </thead>
@@ -57,7 +56,6 @@
                                             <td>{{ $student->student_id }}</td>
                                             <td>{{ $student->email }}</td>
                                             <td>{{ $student->username }}</td>
-                                            <td>{{ $student->password }}</td>
                                             <td>
                                                 <a href="{{ route('update-student', ['id' => $student->id] ) }}">
                                                     <button class="btn-view btn-sm" title="MODIFY">

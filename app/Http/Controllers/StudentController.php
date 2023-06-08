@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Schema;
 
 class StudentController extends Controller
 {
+
+    public function dashboard()
+    {
+        return view('/pages/student/dashboard');
+    }
+
     public function student_login()
     {
         return view('pages/student/student-login');
@@ -78,5 +84,9 @@ class StudentController extends Controller
         $student = StudentModel::find($id);
         $student->delete();
         return redirect(route('student-list'));
+    }
+
+    public function add_medical_record () {
+        return view('pages/student/add-record');
     }
 }

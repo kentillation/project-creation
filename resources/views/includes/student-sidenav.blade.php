@@ -20,7 +20,21 @@
 <body onload="loaderFunction()">
     <main>
         <header>
-
+            <nav class="topnav">
+                <div class="tab">
+                    <div class="logo">
+                        <a href="#">
+                            <img src="<?php echo asset('images/ehr_logo_v1.png') ?>" />
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#" class="nav-link" title="Account">
+                            &nbsp; <i class="bi bi-person-circle"></i>
+                        </a>
+                    </div>
+                </div>
+                
+            </nav>
         </header>
         <button class="sidenav-btn-toggle" title="SHOW MENU" onclick="sidenavBtn()">
             <i class="bi bi-list"></i>
@@ -28,65 +42,22 @@
         <div class="sidenav" id="sidenav">
             <div class="sidenav-content">
                 <div class="logo">
-                    <img src="<?php echo asset('images/login-img.svg') ?>" width="80px" />
+                    <img src="<?php echo asset('images/profile.jpg') ?>" width="80px" />
                 </div>
                 <hr>
-                <h5 class="mb-3">Settings</h5>
                 <ul>
                     <li>
-                        <a href="#" class="btn-sidenav" title="Account">
-                            <i class="bi bi-person-circle"></i>
+                        <a href="{{ route('student-dashboard') }}" class="btn-sidenav" title="Account">
+                            <i class="bi bi-house"></i>
                             <span>
-                                &nbsp; Account
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn-sidenav" title="About">
-                            <i class="bi bi-info-circle"></i>
-                            <span>
-                                &nbsp; About
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn-sidenav" title="Backup Database" data-bs-toggle="modal"
-                            data-bs-target="#backupModal">
-                            <i class="bi bi-cloud-download"></i>
-                            <span>
-                                &nbsp; Backup Database
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn-sidenav" title="About">
-                            <i class="bi bi-info-circle"></i>
-                            <span>
-                                &nbsp; Others
+                                &nbsp; Home
                             </span>
                         </a>
                     </li>
                 </ul>
                 <hr>
-                <h5>Nursing Student</h5>
-                <!-- <div class="row">
-                    <div class="col-sm-2 col-xs-12">
-                        <h6>ID:</h6>
-                    </div>
-                    <div class="col-sm-10 col-xs-12">
-                        <h6>12345</h6>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-sm-3 col-xs-12">
-                        <h6>User:</h6>
-                    </div>
-                    <div class="col-sm-8 col-xs-12">
-                        <h6>Kent Anthony</h6>
-                    </div>
-                </div> -->
                 <div class=" mt-4">
-                    <form action="{{ route('educator-logout') }}" method="POST" >
+                    <form action="{{ route('staff-logout') }}" method="POST" >
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-signout" type="submit" title="SIGN OUT">

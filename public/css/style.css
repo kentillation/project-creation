@@ -24,16 +24,14 @@ FOOTER
 :root {
     --primary-color: #f1f7ff;
     --secondary-color: #005c81;
-    --tertiary-color: #386dff;
+    --tertiary-color: #004363;
     --light-color: #fff;
     --gray-color: #a09e9e;
     --light-gray-color: #b9b9b9;
     --danger-color: #770000;
     --success-color: #005414;
     --confirm-color: #00658d;
-    --income: #00658d8f;
-    --balance: #0054149f;
-    --expenses: #ff00007a;
+    
     
 }
 
@@ -88,44 +86,33 @@ p {
 
 /* NAVIGATION BAR */
 
-.navbar {
+.topnav {
+    position: fixed;
+    top: 0;
     background-color: var(--secondary-color);
+    height: 70px;
+    width: 100%;
+    padding: 10px;
 }
-.navbar .logo {
-    margin-left: 20px;
+
+.topnav .tab {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-.navbar button {
-    background-color: var(--light-color);
-    border: none;
-    margin-right: 12px;
+
+.topnav .tab img {
+    width: 50px;
+    border-radius: 50%;
 }
-.navbar i {
-    margin: 10px;
+
+.topnav .tab a {
     color: var(--light-color);
-    font-size: 18px;
-}
-.navbar i:hover {
-    color: var(--tertiary-color);
-    transition: 0.5s;
 }
 
-.navbar .navbar-toggler {
-    background-color: transparent;
-}
-
-.navbar .navbar-toggler .navbar-toggler-icon {
-    filter: invert(100%);
-}
-
-.rounded-pill {
-    margin-left: 10px;
-    border: 1px solid var(--light-color);
-}
-.nav-link span {
-    font-size: 10px;
-}
-.collapse {
-    justify-content: right;
+.topnav i {
+    color: var(--light-color);
+    font-size: 25px;
 }
 
 /* LOGIN AND SIGN UP */
@@ -219,22 +206,25 @@ select {
 /* SIDE NAVIGATION */
 
 .sidenav-btn-toggle {
-    top: 0;
+    top: 70px;
     left: 0;
     position: fixed;
-    background-color: var(--secondary-color);
+    display: block;
+    background-color: var(--tertiary-color);
     border: none;
     font-size: 25px;
     color: var(--light-color);
 }
 
 .sidenav {
-    top: 0;
+    top: 70px;
     left: 0;
     position: fixed;
-    background-color: var(--secondary-color);
+    background-color: var(--tertiary-color);
     height: 100%;
+    width: 200px;
     z-index: 2;
+    padding: 10px;
     /* display: none; */
 }
 
@@ -337,7 +327,7 @@ select {
 }
 
 .sidenav .btn-signout:hover {
-    background-color: var(--tertiary-color);
+    background-color: var(--secondary-color);
     color: var(--light-color);
     transition: 0.5s;
 }
@@ -352,6 +342,68 @@ select {
     margin-top: 30px;
 }
 
+form .readonly {
+    background-color: #e4e3e3;
+}
+
+/* HOMEPAGE */
+
+.homepage {
+    margin-top: 100px;
+}
+
+.homepage .hero {
+    background-color: var(--light-color);
+    padding: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 7px;
+}
+
+.homepage .hero img {
+    border-radius: 50%;
+    width: 150px;
+}
+
+.homepage .info {
+    bottom: 10px;
+}
+
+.homepage .records {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.homepage .container .record {
+    background-color: var(--light-color);
+    padding: 35px;
+    width: 45%;
+    text-align: center;
+    border: 2px dashed var(--secondary-color);
+    border-radius: 7px;
+}
+
+.homepage .records .record {
+    color: var(--secondary-color);
+}
+
+.homepage .records .record:hover {
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+    transition: 0.5s;
+}
+
+.homepage .records .record i {
+    font-size: 40px;
+}
+
+/* ADD MEDICAL RECORD */
+
+.add-med-rec {
+    margin-top: 100px;
+}
 
 /* REPORTS */
 
@@ -850,8 +902,62 @@ table a {
 }
 
 /* FOR PRINT */
-.print-logo-left {width: 8%; display:block; position:absolute; left: 200px;}
-.print-logo-right {width: 8%; display:block; position:absolute; right: 200px;}
+.print-logo-left {
+    width: 8%; 
+    display:block; 
+    position:absolute; 
+    left: 200px;
+    border-radius: 50%;
+}
+.print-logo-right {
+    width: 8%; 
+    display:block; 
+    position:absolute; 
+    right: 200px;
+    border-radius: 50%;
+}
+
+.prepared-by {
+    display:block; 
+    position: absolute;
+    float: left;  
+    left: 250px;
+}
+
+.approved-by {
+    float: right; 
+    display: block; 
+    position: absolute; 
+    right: 250px;
+}
+
+.name-footer {
+    display: block; 
+    position: absolute; 
+    float: left; 
+    left: 215px;
+}
+
+.head-name {
+    display:block; 
+    position:absolute; 
+    float: right; 
+    right: 200px;
+}
+
+.incharge {
+    display:block; 
+    position:absolute; 
+    float: left; 
+    left: 230px;
+}
+
+.head-office {
+    display:block; 
+    position:absolute; 
+    float: right; 
+    right: 230px;
+}
 
 /* FOOTER */
 
@@ -1136,6 +1242,16 @@ footer #toggleChatbox:focus ~ #chatBox {
 
     .marker {
         margin-top: 25px;
+    }
+
+    .records, .hero {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .records .record {
+        margin-bottom: 10px;
     }
 
 }
