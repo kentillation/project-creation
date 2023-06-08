@@ -19,7 +19,6 @@ class StudentModel extends Model
                             'first_name',
                             'middle_name',
                             'last_name',
-                            'street_number',
                             'street_address',
                             'barangay',
                             'muni_city',
@@ -30,6 +29,11 @@ class StudentModel extends Model
                             'height',
                             'weight',
                             'bmi',
+                            'gender',
+                            'year_level',
+                            'section',
+                            'blood_type',
+                            'phone',
                             'created_at',
                             'updated_at'
                         ];
