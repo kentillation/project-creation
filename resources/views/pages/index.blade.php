@@ -23,8 +23,8 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12 col-sm-12 mb-5">
-                        <div class="container login-container border rounded">
-                            <h2 class="text-center mt-4 mb-3">Christian School Electronic Health Record</h2>
+                        <div class="container login-container border rounded mt-5">
+                            <h2 class="text-center mt-5 mb-3">Christian School Electronic Health Record</h2>
                             <div class="form-ni">
                                 <a href="{{ route('student-login') }}">
                                     <button class="btn-submit mb-2">Nursing Student</button>
