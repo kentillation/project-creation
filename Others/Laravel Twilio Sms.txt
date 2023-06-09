@@ -1,0 +1,72 @@
+Send SMS using Twilio in Laravel.
+
+Step # 1 : Create a fresh laravel project.
+Command : composer create-project --prefer-dist laravel/laravel sms
+Note : 
+You can use existing laravel project as well ( For ex : The one in which you want to implement
+SMS service ) and in that case you should ignore step 1.
+
+
+Step # 2 : Create Twilio Account.
+Link : www.twilio.com
+Next add Twilio Phone Number.
+It will ask you to create a twilio phone number and will assign you a new number that you can use.
+Next you can get account SID, Token and Number & you need to add them in .env file like below.
+TWILIO_SID=XXXXXXXXXXXXXXXXX
+TWILIO_TOKEN=XXXXXXXXXXXXX
+TWILIO_FROM=+XXXXXXXXXXX
+
+Step # 3 : Step 3: Install twilio/sdk Package.
+Command : composer require twilio/sdk
+
+Step # 4: Create Route.
+We are going to call this route for testing.
+Route::get('sendSMS', [App\Http\Controllers\TwilioSMSController::class, 'index']);
+
+Step # 5: Create Controller.
+php artisan make:controller TwilioSMSController
+
+Step # 6 : Copy and paste the below code for testing.
+
+Code below : 
+
+<?php
+  
+namespace App\Http\Controllers;
+  
+use Illuminate\Http\Request;
+use Exception;
+use Twilio\Rest\Client;
+  
+class TwilioSMSController extends Controller
+{
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    public function index()
+    {
+        $receiverNumber = "RECEIVER_NUMBER";
+        $message = "All About Laravel";
+  
+        try {
+  
+            $account_sid = getenv("TWILIO_SID");
+            $auth_token = getenv("TWILIO_TOKEN");
+            $twilio_number = getenv("TWILIO_FROM");
+  
+            $client = new Client($account_sid, $auth_token);
+            $client->messages->create($receiverNumber, [
+                'from' => $twilio_number, 
+                'body' => $message]);
+  
+            dd('SMS Sent Successfully.');
+  
+        } catch (Exception $e) {
+            dd("Error: ". $e->getMessage());
+        }
+    }
+}
+
+Step # 7 : Run the route 

@@ -25,12 +25,13 @@ FOOTER
     --primary-color: #f1f7ff;
     --secondary-color: #005c81;
     --tertiary-color: #004363;
+    --dark-color: #012e42;
     --light-color: #fff;
     --gray-color: #a09e9e;
     --light-gray-color: #b9b9b9;
     --danger-color: #770000;
     --success-color: #005414;
-    --confirm-color: #00658d;
+    --title-page-color: #d0edfd;
     
     
 }
@@ -379,9 +380,8 @@ form .readonly {
 .homepage .container .record {
     background-color: var(--light-color);
     padding: 35px;
-    width: 45%;
+    width: 30%;
     text-align: center;
-    border: 2px dashed var(--secondary-color);
     border-radius: 7px;
 }
 
@@ -405,10 +405,53 @@ form .readonly {
     margin-top: 100px;
 }
 
+.add-med-rec .header {
+    background-color: var(--light-color);
+    padding: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 7px;
+}
+
+.add-med-rec .header i, .add-med-rec .header span {
+    font-size: 25px;
+    color: var(--secondary-color);
+}
+
+.add-med-rec .page-title {
+    font-size: 15px;
+}
+
 /* STUDENT LIST */
 
 .student-list {
     margin-top: 120px;
+}
+
+#addStudentModal .phone-example {
+    font-size: 12px;
+}
+
+.modal-split {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.modal-split .btn {
+    padding: 15px auto;
+    font-size: 20px;
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: 5px;
+    color: var(--light-color);
+    width: 100%;
+}
+
+.modal-split .btn:hover {
+    background-color: var(--tertiary-color);
+    color: var(--light-color);
 }
 
 /* ADMIN */

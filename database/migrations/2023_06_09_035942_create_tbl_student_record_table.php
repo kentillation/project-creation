@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('tbl_student', function (Blueprint $table) {
+        Schema::create('tbl_student_record', function (Blueprint $table) {
+            $table->id();
+            $table->string('student_id');
             $table->string('first_name')->nullable();
             $table->string('middle_name')->nullable();
             $table->string('last_name')->nullable();
-            $table->string('street_number')->nullable();
             $table->string('street_address')->nullable();
             $table->string('barangay')->nullable();
             $table->string('muni_city')->nullable();
@@ -23,9 +24,14 @@ return new class extends Migration
             $table->integer('age')->nullable();
             $table->string('civil_status')->nullable();
             $table->string('citizenship')->nullable();
-            // $table->string('height')->nullable();
-            // $table->string('weight')->nullable();
-            // $table->string('bmi')->nullable();
+            $table->string('height')->nullable();
+            $table->string('weight')->nullable();
+            $table->string('bmi')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('year_level')->nullable();
+            $table->string('section')->nullable();
+            $table->string('blood_type')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -34,6 +40,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('tbl_student_record');
     }
 };
