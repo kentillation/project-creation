@@ -75,7 +75,7 @@ class AuthController extends Controller
 
     public function signup () 
     {
-        return view('pages/admin/admin-signup');
+        return view('pages/signup');
     }
     
     //CREATING RECORD OF ADMIN

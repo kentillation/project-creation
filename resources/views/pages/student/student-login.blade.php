@@ -26,12 +26,12 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12 col-sm-12 mb-5">
-                        <div class="container login-container border rounded">
-                            <div class="mb-5">
+                        <div class="container login-container border rounded mt-5">
+
                                 <a href="{{ route('index') }}" class="back-arrow" title="BACK">
                                     <i class="bi bi-arrow-left"></i>
                                 </a>
-                            </div>
+
                             <h2 class="text-center mt-4 mb-3">Christian School Electronic Health Record</h2>
                             <form action="{{ route('student-login') }}" method="post">
                                 @csrf
