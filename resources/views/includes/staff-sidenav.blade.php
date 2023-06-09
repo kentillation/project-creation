@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="<?php echo asset('css/style.css') ?>" />
     <link rel="stylesheet" href="<?php echo asset('bootstrap-icons/bootstrap-icons.css') ?>" />
     <link rel="stylesheet" href="<?php echo asset('bootstrap/js/bootstrap.min.js') ?>" />
-    <link rel="icon" href="<?php echo asset('images/logo1.png') ?>" />
+    <link rel="icon" href="<?php echo asset('images/ehr_logo_v1.png') ?>" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>

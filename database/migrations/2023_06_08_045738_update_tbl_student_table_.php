@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('tbl_student', function (Blueprint $table) {
-            $table->integer('height')->nullable()->change();
-            $table->float('weight')->nullable()->change();
-            $table->float('bmi')->nullable()->change();
-        });
+        // Schema::table('tbl_student', function (Blueprint $table) {
+        //     $table->integer('height')->nullable()->change();
+        //     $table->float('weight')->nullable()->change();
+        //     $table->float('bmi')->nullable()->change();
+        // });
     }
 
     /**

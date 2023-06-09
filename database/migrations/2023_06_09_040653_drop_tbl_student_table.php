@@ -12,10 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         // Schema::table('tbl_student', function (Blueprint $table) {
-        //     $table->string('gender')->nullable();
-        //     $table->string('year_level')->nullable();
-        //     $table->string('section')->nullable();
-        //     $table->string('blood_type')->nullable();
+        //     $table->dropColumn(['name', 'street_address', 'barangay', 'muni_city', 'date_of_birth', 'age','civil_status', 'citizenship', 'height', 'weight', 'bmi', 'gender', 'year_level', 'section', 'blood_type']);
         // });
     }
 

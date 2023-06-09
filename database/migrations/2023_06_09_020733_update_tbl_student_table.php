@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Schema::table('tbl_student', function (Blueprint $table) {
-        //     $table->string('gender')->nullable();
-        //     $table->string('year_level')->nullable();
-        //     $table->string('section')->nullable();
-        //     $table->string('blood_type')->nullable();
-        // });
+        Schema::table('tbl_student', function (Blueprint $table) {
+            $table->string('phone')->change();
+        });
     }
 
     /**

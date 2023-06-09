@@ -20,7 +20,7 @@
                     <h1 class="heading1 text-center mb-5"><strong>List of Nursing Student</strong></h1>
                     <div class="tbl-top-btns mb-4">
                         <div class="btn-dl me-2">
-                            <button class="btn-add-user" type="button" title="ADD USER" data-bs-toggle="modal" data-bs-target="#addModal">
+                            <button class="btn-add-user" type="button" title="ADD USER" data-bs-toggle="modal" data-bs-target="#addStudentModal">
                                 <i class="bi bi-plus-lg">&nbsp;</i>
                                 ADD
                             </button>
@@ -42,8 +42,10 @@
                             <table class="table table-hover text-center" id="table">
                                 <thead class="text-bg-secondary">
                                     <tr>
-                                        <th>Name</th>
                                         <th>Student ID</th>
+                                        <th>First name</th>
+                                        <th>Middle name</th>
+                                        <th>Last name</th>
                                         <th>Email</th>
                                         <th>Username</th>
                                         <th>ACTION</th>
@@ -52,8 +54,10 @@
                                 <tbody>
                                     @foreach ($tbl_student as $student)
                                         <tr>
-                                            <td>{{ $student->name }}</td>
                                             <td>{{ $student->student_id }}</td>
+                                            <td>{{ $student->first_name }}</td>
+                                            <td>{{ $student->middle_name }}</td>
+                                            <td>{{ $student->last_name }}</td>
                                             <td>{{ $student->email }}</td>
                                             <td>{{ $student->username }}</td>
                                             <td>
@@ -77,7 +81,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="addModal">
+        <div class="modal fade" id="addStudentModal">
 			<div class="modal-dialog modal-lg modal-dialog-centered">
 				<div class="modal-content">
 					<!-- Modal Header -->
@@ -95,25 +99,44 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-floating">
-                                                <input type="text" id="name" name="name" class="form-control mt-2" placeholder="Name" required/>
-                                                <label for="name">Name</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-floating">
-                                                <input type="text" id="student_id" name="student_id" class="form-control mt-2" placeholder="Student ID" required/>
+                                                <input type="text" id="student_id" name="student_id" class="form-control mt-2 mb-3" placeholder="Student ID" required/>
                                                 <label for="student_id">Student ID</label>
                                             </div>
                                         </div>
-                                        <div class="col-12">
+                                        <div class="col-lg-4 col-sm-12">
                                             <div class="form-floating">
-                                                <input type="email" id="email" name="email" class="form-control mt-2" placeholder="Email" required/>
+                                                <input type="text" id="first_name" name="first_name" class="form-control mt-2 mb-3" placeholder="First name" required/>
+                                                <label for="first_name">First name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-12">
+                                            <div class="form-floating">
+                                                <input type="text" id="middle_name" name="middle_name" class="form-control mt-2 mb-3" placeholder="Middle name" required/>
+                                                <label for="middle_name">Middle name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-12">
+                                            <div class="form-floating">
+                                                <input type="text" id="last_name" name="last_name" class="form-control mt-2 mb-3" placeholder="Last name" required/>
+                                                <label for="last_name">Last name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-12">
+                                            <div class="form-floating">
+                                                <input type="text" id="phone" name="phone" class="form-control mt-2" placeholder="Phone" required/>
+                                                <label for="phone">Phone</label>
+                                                <i class="phone-example">example: +63 900 000 0000</i>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-12">
+                                            <div class="form-floating">
+                                                <input type="email" id="email" name="email" class="form-control mt-2 mb-3" placeholder="Email" required/>
                                                 <label for="email">Email</label>
                                             </div>
                                         </div>
-                                        <div class="col-12">
+                                        <div class="col-lg-4 col-sm-12">
                                             <div class="form-floating">
-                                                <input type="text" id="username" name="username" class="form-control mt-2" placeholder="Username" required/>
+                                                <input type="text" id="username" name="username" class="form-control mt-2 mb-3" placeholder="Username" required/>
                                                 <label for="username">Username</label>
                                             </div>
                                         </div>

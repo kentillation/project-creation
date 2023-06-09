@@ -18,8 +18,20 @@
                                 <input type='text' name='student_id' value="{{ $tbl_student['student_id'] }}" id="student_id" class="form-control mb-3 readonly" readonly />
                             </div>
                             <div class="col-12">
-                                <label for="name">Name</label>
-                                <input type='text' name='name' value="{{ $tbl_student['name'] }}" id="name" class="form-control mb-3" required />
+                                <label for="first_name">First name</label>
+                                <input type='text' name='first_name' value="{{ $tbl_student['first_name'] }}" id="first_name" class="form-control mb-3" required />
+                            </div>
+                            <div class="col-12">
+                                <label for="middle_name">Middle name</label>
+                                <input type='text' name='middle_name' value="{{ $tbl_student['middle_name'] }}" id="middle_name" class="form-control mb-3" required />
+                            </div>
+                            <div class="col-12">
+                                <label for="last_name">Last name</label>
+                                <input type='text' name='last_name' value="{{ $tbl_student['last_name'] }}" id="last_name" class="form-control mb-3" required />
+                            </div>
+                            <div class="col-12">
+                                <label for="phone">Phone</label>
+                                <input type='number' name='phone' value="{{ $tbl_student['phone'] }}" id="phone" class="form-control mb-3" required />
                             </div>
                             <div class="col-12">
                                 <label for="email">Email</label>
