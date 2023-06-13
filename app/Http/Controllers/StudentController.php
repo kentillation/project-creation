@@ -38,7 +38,10 @@ class StudentController extends Controller
     
         if ($result_count > 0) {
 
-            return view('/pages/student/dashboard');
+            $student =  StudentModel::where('student_id', '=', $request->student_id)->first();
+            // return view('/pages/student/dashboard', ['student' => $student]);
+            session('student_id', $student->student_id);
+            return redirect()->route('student-dashboard');
         }
         return back()->with('error', 'Invalid student id or password.');
     }
