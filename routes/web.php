@@ -53,7 +53,7 @@ Route::get('/clinician/list/{id}', 'ClinicianController@delete_clinician')->name
 //STUDENT CONTROLLER
 Route::get('/student-login', 'StudentController@student_login')->name('student-login');
 Route::post('/student-login', 'StudentController@student_loginPost');
-Route::get('/student/dashboard', 'StudentController@dashboard')->name('student-dashboard');
+Route::get('/student-dashboard', 'StudentController@dashboard')->name('student-dashboard');
 Route::post('/save-student', 'StudentController@save_student')->name('save-student'); //save
 Route::get('/student/update/{id}', 'StudentController@update_student')->name('update-student'); //edit
 Route::post('/student/save-update/{id}', 'StudentController@saveUpdate_student')->name('update-save-student'); //save update
