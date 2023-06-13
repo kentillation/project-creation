@@ -9,8 +9,8 @@
                                 <div class="info">
                                         <div>
                                                 <p>Christian School | A.Y 2023-2024</p>
-                                                <p>Student Name | Student ID | Status</p>
-                                                <p>Course | Year Level</p>
+                                                <p>{{ Session::get('last_name') }}, {{ Session::get('first_name') }} {{ Session::get('middle_name') }} | {{ Session::get('student_id' ) }}</p>
+                                                <p>College of Nursing | {{ Session::get('year_level') }}</p>
                                         </div>
                                         
                                 </div>

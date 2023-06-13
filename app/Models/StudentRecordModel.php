@@ -33,4 +33,9 @@ class StudentRecordModel extends Model
                             'created_at',
                             'updated_at'
                         ];
+    
+    public function student()
+    {
+        return $this->belongsTo(StudentModel::class);
+    }
 }

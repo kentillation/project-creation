@@ -22,14 +22,44 @@
                         <div class="header-content">
                             <i class="bi bi-search"></i> 
                             <span>
-                                &nbsp;  View Medical Record
+                                &nbsp;  View Medical Records
                             </span>
                         </div>
                     </div>
                     <div class="container border rounded p-5">
-                        
+                        <div class="tbl-top-btns mb-4">
+                            <div class="btn-dl me-2">
+                                <a href="#" title="DOWNLOAD AS PDF" target="_blank">
+                                    <button class="btn-download">
+                                        <i class="bi bi-box-arrow-down">&nbsp;</i>
+                                        PDF
+                                    </button>
+                                </a>
+                                
+                                <button class="btn-download" title="DOWNLOAD AS SPREADSHEET" onclick="saveAsExcel('table', 'List of Nursing Student User.xls')">
+                                    <i class="bi bi-box-arrow-down">&nbsp;</i>
+                                    XLS
+                                </button>
+                            </div>
+                        </div>
+                        <div class="container mb-4">
+                            <div class="table-responsive">
+                                <table class="table table-hover text-center" id="table">
+                                    <thead class="text-bg-secondary">
+                                        <tr>
+                                            <th>Student ID</th>
+                                            <th>Full name</th>
+                                            <th>Status</th>
+                                            <th>_____Action_____</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                    
                 </div>
             </div>
 

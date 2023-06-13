@@ -31,21 +31,17 @@
                         <form method="POST" action="{{ route('save-medical-record') }}">
                             @csrf
                             <div class="row">
-                                <div class="col-lg-4 col-md-6 col-sm-6" style="">
-                                    <label for="student_id">Student ID</label>
-                                    <input type='text' name='student_id' id="student_id" value="{{ session('student_id') }}" class="form-control mb-3 readonly" readonly />
-                                </div>
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <label for="first_name">First Name</label>
-                                    <input type='text' name='first_name' id="first_name" value="" class="form-control mb-3 readonly" readonly />
+                                    <input type='text' name='first_name' id="first_name" value="{{ $student[0]['first_name'] }}" class="form-control mb-3 readonly" required />
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <label for="middle_name">Middle Name</label>
-                                    <input type='text' name='middle_name' id="middle_name" value="" class="form-control mb-3 readonly" readonly />
+                                    <input type='text' name='middle_name' id="middle_name" value="{{ $student[0]['middle_name'] }}" class="form-control mb-3 readonly" required />
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <label for="last_name">Last Name</label>
-                                    <input type='text' name='last_name' id="last_name" value="" class="form-control mb-3 readonly" readonly />
+                                    <input type='text' name='last_name' id="last_name" value="{{ $student[0]['last_name'] }}" class="form-control mb-3 readonly" required />
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <label for="street_address">Street Address / Street Number</label>
@@ -69,7 +65,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <label for="phone">Phone</label>
-                                    <input type='number' name='phone' id="phone" value="" class="form-control mb-3 readonly" readonly />
+                                    <input type='number' name='phone' id="phone" value="{{ $student[0]['phone'] }}" class="form-control mb-3 readonly" readonly />
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <label for="civil_status">Civil Status</label>

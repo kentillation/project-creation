@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
 use App\Models\StudentModel;
 use App\Models\StudentRecordModel;
 use App\Models\AdminModel;
@@ -27,7 +28,7 @@ class StudentController extends Controller
         return view('pages/student/student-login');
     }
 
-    // CLINICIAN LOGIN
+    // STUDENT LOGIN
     public function student_loginPost(Request $request)
     {
         $credentials = [
@@ -38,22 +39,32 @@ class StudentController extends Controller
     
         if ($result_count > 0) {
 
+            $result_info = StudentModel::where($credentials)->get();
+            // dd($result_info[0]['first_name']);
+            // $_SESSION['first_name'] = $result_info[0]['first_name'];
+
+            session()->put('id', $result_info[0]['id']);
+            session()->put('student_id', $result_info[0]['student_id']);
+            session()->put('first_name', $result_info[0]['first_name']);
+            session()->put('middle_name', $result_info[0]['middle_name']);
+            session()->put('last_name', $result_info[0]['last_name']);
+            // session()->put('year_level', $result_info[0]['year_level']);
+
             $student =  StudentModel::where('student_id', '=', $request->student_id)->first();
-            // return view('/pages/student/dashboard', ['student' => $student]);
-            session('student_id', $student->student_id);
             return redirect()->route('student-dashboard');
+
         }
         return back()->with('error', 'Invalid student id or password.');
     }
 
-    // LOGOUT CLINICIAN
+    // LOGOUT STUDENT
     public function logout()
     {
         Auth::logout();
         return redirect('/');
     }
     
-    //CREATING RECORD OF CLINICIAN
+    //CREATING RECORD OF STUDENT
     public function save_student(Request $request)
     {
         $student = new StudentModel;
@@ -123,7 +134,7 @@ class StudentController extends Controller
 
     }
     
-    //EDITING NURSE CLINICIAN'S RECORD
+    //EDITING STUDENT'S RECORD
     public function update_student(Request $request, $id) {
         $student = StudentModel::find($id);
         $response = [
@@ -132,7 +143,7 @@ class StudentController extends Controller
         return view('pages/student/edit-student', $response);
     }
 
-    //UPDATING CLINICIAN'S RECORD
+    //UPDATING STUDENT'S RECORD
     public function saveUpdate_student(Request $request, $id) {
         $data = [
             'student_id' => $request->input()['student_id'],
@@ -144,22 +155,28 @@ class StudentController extends Controller
         return redirect(route('student-list'));
     }
 
-    //DELETE CLINICIAN
+    //DELETE STUDENT
     public function delete_student($id) {
         $student = StudentModel::find($id);
         $student->delete();
         return redirect(route('student-list'));
     }
 
+    //ADD STUDENT MEDICAL RECORD
     public function add_medical_record () {
-        return view('pages/student/add-record');
+
+        $id = Session::get('id');
+
+        $result_info = StudentModel::where('id',$id)->get();
+
+        return view('pages/student/add-record', ['student'=>$result_info]);
     }
 
     public function view_medical_record () {
         return view('pages/student/view-record');
     }
 
-    //CREATING RECORD OF USER
+    //CREATING RECORD OF STUDENT
     public function save_medical_record(Request $request)
     {
         $studentrecord = new StudentRecordModel;

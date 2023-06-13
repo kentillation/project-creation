@@ -37,4 +37,9 @@ class StudentModel extends Model
                             'created_at',
                             'updated_at'
                         ];
+
+    public function student_record()
+    {
+        return $this->hasMany(StudentRecordModel::class, 'student_id');
+    }
 }
