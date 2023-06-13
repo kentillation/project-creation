@@ -33,7 +33,7 @@
                             <div class="row">
                                 <div class="col-lg-4 col-md-6 col-sm-6" style="">
                                     <label for="student_id">Student ID</label>
-                                    <input type='text' name='student_id' id="student_id" value="" class="form-control mb-3" required />
+                                    <input type='text' name='student_id' id="student_id" value="" class="form-control mb-3 readonly" readonly />
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <label for="first_name">First Name</label>
@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <label for="age">Age</label>
-                                    <input type='number' name='age' id="age" value="" class="form-control mb-3 readonly" readonly />
+                                    <input type='number' name='age' id="age" value="" class="form-control mb-3" required />
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <label for="phone">Phone</label>
@@ -89,7 +89,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <label for="bmi">BMI</label>
-                                    <input type='text' name='bmi' id="bmi" value="" class="form-control mb-3 readonly" readonly />
+                                    <input type='text' name='bmi' id="bmi" value="" class="form-control mb-3" required />
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <label for="year_level">Year Level</label>

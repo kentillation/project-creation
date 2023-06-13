@@ -48,7 +48,7 @@
                                         <th>Last name</th>
                                         <th>Email</th>
                                         <th>Username</th>
-                                        <th>ACTION</th>
+                                        <th>_____Action_____</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -62,13 +62,18 @@
                                             <td>{{ $student->username }}</td>
                                             <td>
                                                 <a href="{{ route('update-student', ['id' => $student->id] ) }}">
-                                                    <button class="btn-view btn-sm" title="MODIFY">
+                                                    <button class="btn-success btn-sm" title="EDIT">
                                                         <i class="bi bi-pencil-square"></i>
                                                     </button>
                                                 </a>
                                                 <a href="{{ route('delete-student', ['id' => $student->id] ) }}">
                                                     <button class="btn-restricted btn-sm" title="DELETE">
                                                         <i class="bi bi-trash"></i>
+                                                    </button>
+                                                </a>
+                                                <a href="#">
+                                                    <button class="btn-view btn-sm" title="VIEW RECORD">
+                                                        <i class="bi bi-eye"></i>
                                                     </button>
                                                 </a>
                                             </td>
