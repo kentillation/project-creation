@@ -926,8 +926,8 @@ table a {
     transition: 0.5s;
 }
 
-.btn-view {
-    background-color: var(--secondary-color);
+.btn-success {
+    background-color: var(--success-color);
     color: var(--light-color);
     border: none;
     border-radius: 5px;
@@ -935,7 +935,7 @@ table a {
     padding: 8px;
 }
 
-.btn-view:hover {
+.btn-success:hover {
     cursor: pointer;
     background-color: var(--tertiary-color);
     color: var(--light-color);
@@ -952,6 +952,22 @@ table a {
 }
 
 .btn-restricted:hover {
+    cursor: pointer;
+    background-color: var(--tertiary-color);
+    color: var(--light-color);
+    transition: 0.5s;
+}
+
+.btn-view {
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    padding: 8px;
+}
+
+.btn-view:hover {
     cursor: pointer;
     background-color: var(--tertiary-color);
     color: var(--light-color);
@@ -1378,7 +1394,7 @@ footer #toggleChatbox:focus ~ #chatBox {
         font-size: 13px;
     }
 
-    .btn-view, .btn-suki, .btn-restricted {
+    .btn-view, .btn-suki, .btn-restricted, .btn-success {
         font-size: 12px;
     }
 
@@ -1471,7 +1487,7 @@ footer #toggleChatbox:focus ~ #chatBox {
         padding: 7px;
     }
 
-    .tbl-top-btns .btn-download, .btn-add-user, .btn-restricted, table th, table td, table .btn-view, .split .btn-nav, .split span, .split p, .next-btn, .paginate_button
+    .tbl-top-btns .btn-download, .btn-add-user, .btn-restricted, table th, table td, table .btn-view, .btn-success, .split .btn-nav, .split span, .split p, .next-btn, .paginate_button
     {
         font-size: 10px;
     }
