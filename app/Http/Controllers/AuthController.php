@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use Illuminate\Http\Request;
 use App\Models\AdminModel;
 use App\Models\StaffModel;
 use App\Models\ClinicianModel;
 use App\Models\StudentModel;
+use App\Models\StudentRecordModel;
 use App\Models\CourseModel;
 use App\Models\InfoModel;
 use App\Http\Controllers\AuthController;
@@ -61,7 +63,15 @@ class AuthController extends Controller
                 $table->dropColumn(['created_at', 'updated_at']);
             });*/
 
-            return redirect('/dashboard');
+            $result_info = AdminModel::where($credentials)->get();
+
+            session()->put('id', $result_info[0]['id']);
+            session()->put('name', $result_info[0]['name']);
+            session()->put('email', $result_info[0]['email']);
+
+            $clinician =  AdminModel::where('name', '=', $request->name)->first();
+
+            return redirect()->route('admin-dashboard');
         }
         return back()->with('error', 'Invalid username or password.');
     }
@@ -132,10 +142,18 @@ class AuthController extends Controller
         return view('pages/admin/clinician-list',['tbl_clinician'=>$clinician]);
     }
 
-    //READING ALL RECORDS OF STUDENT
+    //READING THE LIST OF STUDENT
     public function student_list () {
         $student = StudentModel::all();
         return view('pages/admin/student-list',['tbl_student'=>$student]);
+    }
+
+    //READING THE MEDICAL RECORDS OF STUDENT
+    public function view_student_med_record (Request $request ) {
+
+        //Filtering Records
+        $student_record = StudentRecordModel::where('student_id', $request->id)->get();
+        return view('pages/admin/view-student-med-record',['a_student_record'=>$student_record]);
     }
 
     //READING ALL RECORDS OF COURSE
