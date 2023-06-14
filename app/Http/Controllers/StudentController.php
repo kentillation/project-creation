@@ -196,10 +196,10 @@ class StudentController extends Controller
         $studentrecord->height = $request->height;
         $studentrecord->weight = $request->weight;
         $studentrecord->bmi = $request->bmi;
-        $studentrecord->gender = $request->gender;
-        $studentrecord->year_level = $request->year_level;
-        $studentrecord->section = $request->section;
-        $studentrecord->blood_type = $request->blood_type;
+        $studentrecord->gender_id = $request->gender;
+        $studentrecord->year_level_id = $request->year_level;
+        $studentrecord->section_id = $request->section;
+        $studentrecord->blood_type_id = $request->blood_type;
         $studentrecord->save();
 
         //return redirect(route('index'));
