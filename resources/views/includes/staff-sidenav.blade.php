@@ -25,13 +25,14 @@
                     <div class="logo">
                         <a href="#">
                             <img src="<?php echo asset('images/ehr_logo_v1.png') ?>" />
+                            <span style="font-size: 20px">&nbsp;Electronic Health Record System</span>
                         </a>
                     </div>
-                    <div>
+                    <!-- <div>
                         <a href="#" class="nav-link" title="Account">
                             &nbsp; <i class="bi bi-person-circle"></i>
                         </a>
-                    </div>
+                    </div> -->
                 </div>
                 
             </nav>
@@ -45,45 +46,59 @@
                     <img src="<?php echo asset('images/profile.jpg') ?>" width="80px" />
                 </div>
                 <hr>
+                <h5 class="mb-3">Main</h5>
+                <ul>
+                    <li>
+                        <a href="#" class="btn-sidenav" title="Dashboard">
+                            <i class="bi bi-speedometer"></i>
+                            <span>
+                                &nbsp;Dashboard
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+                <h5 class="mb-3">Request</h5>
+                <ul>
+                    <li>
+                        <a href="#" class="btn-sidenav" title="Pending">
+                            <i class="bi bi-clock-history"></i>
+                            <span>
+                                &nbsp;Pending
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn-sidenav" title="Approved">
+                            <i class="bi bi-check-circle"></i>
+                            <span>
+                                &nbsp;Approved
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn-sidenav" title="Declined">
+                            <i class="bi bi-exclamation-circle"></i>
+                            <span>
+                                &nbsp;Declined
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <hr>
                 <h5 class="mb-3">Settings</h5>
                 <ul>
                     <li>
                         <a href="#" class="btn-sidenav" title="Account">
                             <i class="bi bi-person-circle"></i>
                             <span>
-                                &nbsp; Account
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn-sidenav" title="About">
-                            <i class="bi bi-info-circle"></i>
-                            <span>
-                                &nbsp; About
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn-sidenav" title="Backup Database" data-bs-toggle="modal"
-                            data-bs-target="#backupModal">
-                            <i class="bi bi-cloud-download"></i>
-                            <span>
-                                &nbsp; Backup Database
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn-sidenav" title="About">
-                            <i class="bi bi-info-circle"></i>
-                            <span>
-                                &nbsp; Others
+                                &nbsp;Account
                             </span>
                         </a>
                     </li>
                 </ul>
                 <hr>
-                <h5>Login as:</h5>
-                <h6>Department Staff</h6>
+                <h6 class="login-as">Login as: Dept. Staff</h6>
                 <!-- <div class="row">
                     <div class="col-sm-2 col-xs-12">
                         <h6>ID:</h6>

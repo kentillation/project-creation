@@ -16,6 +16,12 @@
                         <button class="btn-close" onclick="closeFn()"></button>
                     </div>
                 @endif
+                <div class="mb-3">
+                    <a href="{{ route('student-dashboard') }}" title="Back" class="back">
+                        <i class="bi bi-arrow-left"></i>
+                            &nbsp;Back
+                    </a>
+                </div>
                 <div class="container border rounded p-5 reports">
                     <h1 class="heading1 text-center mb-5"><strong>List of Nursing Student</strong></h1>
                     <div class="tbl-top-btns mb-4">
@@ -62,17 +68,17 @@
                                             <td>{{ $student->username }}</td>
                                             <td>
                                                 <a href="{{ route('update-student', ['id' => $student->id] ) }}">
-                                                    <button class="btn-success btn-sm" title="EDIT">
+                                                    <button class="btn btn-outline-success btn-sm" title="Modify">
                                                         <i class="bi bi-pencil-square"></i>
                                                     </button>
                                                 </a>
                                                 <a href="{{ route('delete-student', ['id' => $student->id] ) }}">
-                                                    <button class="btn-restricted btn-sm" title="DELETE">
+                                                    <button class="btn btn-outline-danger btn-sm" title="Move to trash">
                                                         <i class="bi bi-trash"></i>
                                                     </button>
                                                 </a>
-                                                <a href="#">
-                                                    <button class="btn-view btn-sm" title="VIEW RECORD">
+                                                <a href="{{ route('view-stud-med-record', ['id' => $student->id] ) }}">
+                                                    <button class="btn btn-outline-primary btn-sm" title="View medical record">
                                                         <i class="bi bi-eye"></i>
                                                     </button>
                                                 </a>

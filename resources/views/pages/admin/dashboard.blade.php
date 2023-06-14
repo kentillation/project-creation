@@ -3,22 +3,49 @@
 @section('page-content')
         <div id="loader"></div>
         <div id="forLoader" style="display:none;">
-        <div class="container admin-homepage">
-                @if(Session::has('success'))
-                    <div class="alert alert-success text-center" role="alert" id="alertbox">
-                        {{ Session::get('success') }}
-                        <button class="btn-close" onclick="closeFn()"></button>
+            <div class="container mb-5 homepage">
+                    <div class="container">
+                            <p class="page-title">Dashboard</p>
                     </div>
-                @endif
-                @if(Session::has('removal'))
-                    <div class="alert alert-danger text-center" role="alert" id="alertbox">
-                        {{ Session::get('removal') }}
-                        <button class="btn-close" onclick="closeFn()"></button>
+                    <div class="container">
+                        <div class="hero shadow-sm">
+                            <div class="info">
+                                <div>
+                                    <p>Christian School | A.Y. 2023-2024</p>
+                                    <p>{{ Session::get('name') }} | Admin</p>
+                                </div>
+                                                
+                            </div>
+                            <div>
+                                <img src="<?php echo asset('images/ehr_logo_v2.png') ?>" />
+                            </div>
+                        </div>
                     </div>
-                @endif
-                <div class="container border rounded p-5 reports">
-                    <h1 class="heading1 text-center mb-5"><strong>Dashboard</strong></h1>
-                </div>
+                    <div class="container mt-4">
+                        <div class="records">
+                            <a href="#" class="btn btn-outline-warning record shadow-sm">
+                                <i class="bi bi-clock-history text-warning"></i>
+                                &nbsp;  Pending Medical Records
+                                <span>
+                                    <h1>100</h1>
+                                </span>
+                            </a>
+                            <a href="#" class="btn btn-outline-danger record shadow-sm">
+                                <i class="bi bi-exclamation-circle text-danger"></i>
+                                &nbsp; Declined Medical Records
+                                <span>
+                                    <h1>50</h1>
+                                </span>
+                            </a>
+                            <a href="#" class="btn btn-outline-success record shadow-sm">
+                                <i class="bi bi-check-circle text-success"></i>
+                                &nbsp; Approved Medical Records
+                                <span>
+                                    <h1>200</h1>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
             </div>
         </div>
 @endsection

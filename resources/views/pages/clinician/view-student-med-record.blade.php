@@ -1,4 +1,4 @@
-@extends('includes/student-sidenav')
+@extends('includes/clinician-sidenav')
 
 @section('page-content')
         <div id="loader"></div>
@@ -17,16 +17,16 @@
                     </div>
                 @endif
                 <div class="container">
-                    <p class="page-title">Main / View Medical Record</p>
+                    <p class="page-title">Main / Nursing Students Medical Records</p>
                     <div class="container header rounded shadow-sm mb-4">
                         <div class="header-content">
                             <span>
-                                &nbsp; Medical Records
+                                &nbsp; Nursing Students Medical Records
                             </span>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <a href="{{ route('student-dashboard') }}" title="Back" class="back">
+                        <a href="{{ route('clinician-dashboard') }}" title="Back" class="back">
                             <i class="bi bi-arrow-left"></i>
                                 &nbsp;Back
                         </a>
@@ -53,7 +53,12 @@
                                                 <td>{{ $student_record->status_record_id == 1 ? "Pending" : "Approved"}}</td>
                                                 <td>
                                                     <a href="#">
-                                                        <button class="btn-view btn-sm" title="VIEW RECORD">
+                                                        <button class="btn btn-outline-success btn-sm" title="Modify">
+                                                            <i class="bi bi-pencil-square"></i>
+                                                        </button>
+                                                    </a>
+                                                    <a href="#">
+                                                        <button class="btn btn-outline-primary btn-sm" title="View record">
                                                             <i class="bi bi-eye"></i>
                                                         </button>
                                                     </a>

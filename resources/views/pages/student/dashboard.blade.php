@@ -5,12 +5,15 @@
         <div id="forLoader" style="display:none;">
         <div class="container mb-5 homepage">
                 <div class="container">
+                        <p class="page-title">Dashboard</p>
+                </div>
+                <div class="container">
                         <div class="hero shadow-sm">
                                 <div class="info">
                                         <div>
-                                                <p>Christian School | A.Y 2023-2024</p>
+                                                <p>Christian School | A.Y. 2023-2024</p>
                                                 <p>{{ Session::get('last_name') }}, {{ Session::get('first_name') }} {{ Session::get('middle_name') }} | {{ Session::get('student_id' ) }}</p>
-                                                <p>College of Nursing | {{ Session::get('year_level') }}</p>
+                                                <p>College of Nursing</p>
                                         </div>
                                         
                                 </div>
@@ -28,7 +31,7 @@
                                         
                                 <a href="{{ route('view-medical-record') }}" class="record shadow-sm">
                                         <i class="bi bi-search"></i>
-                                        &nbsp; View Medical Record
+                                        &nbsp; View Medical Records
                                 </a>
 
                                 <a href="#" class="record shadow-sm">

@@ -25,13 +25,14 @@
                     <div class="logo">
                         <a href="#">
                             <img src="<?php echo asset('images/ehr_logo_v1.png') ?>" />
+                            <span style="font-size: 20px">&nbsp;Electronic Health Record System</span>
                         </a>
                     </div>
-                    <div>
+                    <!-- <div>
                         <a href="#" class="nav-link" title="Account">
                             &nbsp; <i class="bi bi-person-circle"></i>
                         </a>
-                    </div>
+                    </div> -->
                 </div>
                 
             </nav>
@@ -45,19 +46,61 @@
                     <img src="<?php echo asset('images/profile.jpg') ?>" width="80px" />
                 </div>
                 <hr>
+                <h5 class="mb-3">Main</h5>
                 <ul>
                     <li>
-                        <a href="{{ route('student-dashboard') }}" class="btn-sidenav" title="Account">
-                            <i class="bi bi-house"></i>
+                        <a href="{{ route('student-dashboard') }}" class="btn-sidenav" title="Dashboard">
+                            <i class="bi bi-speedometer"></i>
                             <span>
-                                &nbsp; Home
+                                &nbsp;Dashboard
                             </span>
                         </a>
                     </li>
                 </ul>
                 <hr>
+                <h5 class="mb-3">Medical</h5>
+                <ul>
+                    <li>
+                        <a href="{{ route('add-medical-record') }}" class="btn-sidenav" title="Dashboard">
+                            <i class="bi bi-plus-lg"></i>
+                            <span>
+                                &nbsp;Add Record
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('view-medical-record') }}" class="btn-sidenav" title="Dashboard">
+                            <i class="bi bi-eye"></i>
+                            <span>
+                                &nbsp;View Records
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn-sidenav" title="Dashboard">
+                            <i class="bi bi-search"></i>
+                            <span>
+                                &nbsp;View History
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+                <h5 class="mb-3">Settings</h5>
+                <ul>
+                    <li>
+                        <a href="#" class="btn-sidenav" title="Account">
+                            <i class="bi bi-person-circle"></i>
+                            <span>
+                                &nbsp;Account
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+                <h6 class="login-as">Login as: Student</h6>
                 <div class=" mt-4">
-                    <form action="{{ route('staff-logout') }}" method="POST" >
+                    <form action="{{ route('student-logout') }}" method="POST" >
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-signout" type="submit" title="SIGN OUT">

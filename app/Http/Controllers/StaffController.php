@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Schema;
 
 class StaffController extends Controller
 {
+    public function dashboard()
+    {
+        return view('/pages/staff/dashboard');
+    }
+
     public function staff_login()
     {
         return view('pages/staff/staff-login');
@@ -27,7 +32,16 @@ class StaffController extends Controller
     
         if ($result_count > 0) {
 
-            return view('/pages/staff/dashboard');
+            $result_info = StaffModel::where($credentials)->get();
+
+            session()->put('id', $result_info[0]['id']);
+            session()->put('name', $result_info[0]['name']);
+            session()->put('email', $result_info[0]['email']);
+
+            $clinician =  StaffModel::where('name', '=', $request->name)->first();
+
+            return redirect()->route('staff-dashboard');
+
         }
         return back()->with('error', 'Invalid username or password.');
     }

@@ -1,4 +1,4 @@
-@extends('includes/student-sidenav')
+@extends('includes/admin-sidenav')
 
 @section('page-content')
         <div id="loader"></div>
@@ -17,19 +17,13 @@
                     </div>
                 @endif
                 <div class="container">
-                    <p class="page-title">Main / View Medical Record</p>
+                    <p class="page-title">Dashboard / Nursing Students Medical Records</p>
                     <div class="container header rounded shadow-sm mb-4">
                         <div class="header-content">
                             <span>
-                                &nbsp; Medical Records
+                                &nbsp; Nursing Students Medical Records
                             </span>
                         </div>
-                    </div>
-                    <div class="mb-3">
-                        <a href="{{ route('student-dashboard') }}" title="Back" class="back">
-                            <i class="bi bi-arrow-left"></i>
-                                &nbsp;Back
-                        </a>
                     </div>
                     <div class="container border rounded p-5">
                         <div class="container mb-4">
@@ -45,7 +39,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($tbl_student_record as $student_record)
+                                        @foreach ($a_student_record as $student_record)
                                             <tr>
                                                 <td>{{ $student_record->first_name }}</td>
                                                 <td>{{ $student_record->middle_name }}</td>

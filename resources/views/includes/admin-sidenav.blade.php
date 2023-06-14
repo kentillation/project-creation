@@ -25,6 +25,7 @@
                     <div class="logo">
                         <a href="#">
                             <img src="<?php echo asset('images/ehr_logo_v1.png') ?>" />
+                            <span style="font-size: 20px">&nbsp;Electronic Health Record System</span>
                         </a>
                     </div>
                     <div>
@@ -48,18 +49,10 @@
                 <h5 class="mb-3">Main</h5>
                 <ul>
                     <li>
-                        <a href="{{ route('dashboard') }}" class="btn-sidenav" title="Cancelled">
+                        <a href="{{ route('admin-dashboard') }}" class="btn-sidenav" title="Dashboard">
                             <i class="bi bi-speedometer"></i>
                             <span>
-                                &nbsp; Dashboard
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn-sidenav" title="Statistics">
-                            <i class="bi bi-person"></i>
-                            <span>
-                                &nbsp; Profile
+                                &nbsp;Dashboard
                             </span>
                         </a>
                     </li>
@@ -76,26 +69,26 @@
                 <h5 class="mb-3">Users</h5>
                 <ul>
                     <li>
-                        <a href="{{ route('student-list') }}" class="btn-sidenav" title="Cancelled">
+                        <a href="{{ route('student-list') }}" class="btn-sidenav" title="Student Nurses">
                             <i class="bi bi-mortarboard"></i>
                             <span>
-                                &nbsp; Student Nurses
+                                &nbsp;Student Nurses
                             </span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('clinician-list') }}" class="btn-sidenav" title="Statistics">
+                        <a href="{{ route('clinician-list') }}" class="btn-sidenav" title="Clinicians">
                             <i class="bi bi-thermometer-high"></i>
                             <span>
-                                &nbsp; Clinicians
+                                &nbsp;Clinicians
                             </span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('staff-list') }}" class="btn-sidenav" title="Financial Summary">
+                        <a href="{{ route('staff-list') }}" class="btn-sidenav" title="Dept. Staffs">
                             <i class="bi bi-pen"></i>
                             <span>
-                                &nbsp; Dept. Staffs
+                                &nbsp;Dept. Staffs
                             </span>
                         </a>
                     </li>
@@ -109,154 +102,20 @@
                     </li> -->
                 </ul>
                 <hr>
-                
-                <!-- <h5 class="mb-3">Request</h5>
-                <ul>
-                    <li>
-                        <a href="#" class="btn-sidenav" title="Cancelled">
-                            <i class="bi bi-exclamation-diamond"></i>
-                            <span>
-                                &nbsp; Pending
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn-sidenav" title="Statistics">
-                            <i class="bi bi-patch-check"></i>
-                            <span>
-                                &nbsp; Approved
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn-sidenav" title="Financial Summary">
-                            <i class="bi bi-x-octagon"></i>
-                            <span>
-                                &nbsp; Declined
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-                <hr> -->
-
-                <!-- <h5 class="mb-3">Other Preferences:</h5>
-                <ul>
-                    <li>
-                        <a href="{{ route('course-list') }}" class="btn-sidenav" title="Course">
-                            <i class="bi bi-mortarboard"></i>
-                            <span>
-                                &nbsp; Course
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('section-list') }}" class="btn-sidenav" title="Section">
-                            <i class="bi bi-layout-three-columns"></i>
-                            <span>
-                                &nbsp; Section
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('year-level-list') }}" class="btn-sidenav" title="Year Level">
-                            <i class="bi bi-bar-chart-steps"></i>
-                            <span>
-                                &nbsp; Year Level
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('blood-type-list') }}" class="btn-sidenav" title="Blood Type">
-                            <i class="bi bi-droplet-half"></i>
-                            <span>
-                                &nbsp; Blood type
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('gender-list') }}" class="btn-sidenav" title="Gender">
-                            <i class="bi bi-gender-ambiguous"></i>
-                            <span>
-                                &nbsp; Gender
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-                <hr> -->
-
-                <!-- <h5 class="mb-3">Settings</h5>
+                <h5 class="mb-3">Settings</h5>
                 <ul>
                     <li>
                         <a href="#" class="btn-sidenav" title="Account">
                             <i class="bi bi-person-circle"></i>
                             <span>
-                                &nbsp; Account
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn-sidenav" title="About">
-                            <i class="bi bi-info-circle"></i>
-                            <span>
-                                &nbsp; About
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn-sidenav" title="Help" data-bs-toggle="modal"
-                            data-bs-target="#backupModal">
-                            <i class="bi bi-question-circle"></i>
-                            <span>
-                                &nbsp; Help
+                                &nbsp;Account
                             </span>
                         </a>
                     </li>
                 </ul>
-                <hr> -->
-                <!-- <h5 class="mb-3">Others:</h5>
-                <ul>
-                    <li>
-                        <a href="{{ route('course-list') }}" class="btn-sidenav" title="Course">
-                            <i class="bi bi-mortarboard"></i>
-                            <span>
-                                &nbsp; Course
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('section-list') }}" class="btn-sidenav" title="Section">
-                            <i class="bi bi-layout-three-columns"></i>
-                            <span>
-                                &nbsp; Section
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('year-level-list') }}" class="btn-sidenav" title="Year Level">
-                            <i class="bi bi-bar-chart-steps"></i>
-                            <span>
-                                &nbsp; Year Level
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('blood-type-list') }}" class="btn-sidenav" title="Blood Type">
-                            <i class="bi bi-droplet-half"></i>
-                            <span>
-                                &nbsp; Blood type
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('gender-list') }}" class="btn-sidenav" title="Gender">
-                            <i class="bi bi-gender-ambiguous"></i>
-                            <span>
-                                &nbsp; Gender
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-                <hr> -->
+                <hr>
+                <h6>Login as: Admin</h6>
+
                 <!-- <div class="row">
                     <div class="col-sm-2 col-xs-12">
                         <h6>ID:</h6>
