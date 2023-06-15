@@ -28,7 +28,15 @@ class AuthController extends Controller
     }
 
     public function dashboard () {
-        return view('pages/admin/dashboard');
+        $count_pending = $this->countPendingWithFilter();
+        return view('pages/admin/dashboard', ['pending' => $count_pending]);
+    }
+
+    public function countPendingWithFilter()
+    {
+        $filter = 1;
+        $count = StudentRecordModel::where('status_record_id', $filter)->count();
+        return $count;
     }
 
     //READING ALL RECORDS OF ADMINS
