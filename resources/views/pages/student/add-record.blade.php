@@ -169,7 +169,7 @@
                                                 </div>
                                                 <div class="modal-split">
                                                     <div class="">
-                                                        <a href="{{ route('add-medical-history') }}" class="btn mb-2">
+                                                        <a href="@" class="btn mb-2">
                                                             Yes
                                                         </a>
                                                     </div>

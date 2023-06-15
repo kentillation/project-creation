@@ -339,7 +339,6 @@
                                 <div>
                                     <a href="#!" class="btn-profile" data-bs-toggle="modal" data-bs-target="#doyouModal">
                                         Next
-
                                         &nbsp;<i class="bi bi-arrow-right"></i>
                                     </a>
                                 </div>
@@ -351,7 +350,7 @@
                                         <!-- Modal Header -->
                                         <div class="modal-header">
                                             <h5 class="modal-title">Confirmation</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                            <button class="btn-close" data-bs-dismiss="modal"></button>
                                         </div>
 
                                         <!-- Modal body -->
@@ -362,12 +361,12 @@
                                                 </div>
                                                 <div class="modal-split">
                                                     <div class="">
-                                                        <a href="{{ route('save-medical-history') }}" class="btn mb-2">
-                                                            Yes
-                                                        </a>
+                                                        <button type="submit" class="btn mb-2">Yes</button>
                                                     </div>
                                                     <div class="">
-                                                        <button type="submit" class="btn mb-2">No</button>
+                                                        <a href="{{ route('student-dashboard') }}">
+                                                            <button class="btn mb-2">No</button>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>

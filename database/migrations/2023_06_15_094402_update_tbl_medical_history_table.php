@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('tbl_medical_history', function (Blueprint $table) {
-            $table->unsignedBigInteger('gender_id');
-            $table->unsignedBigInteger('year_level_id');
-            $table->foreign('gender_id')->references('id')->on('tbl_gender');
-            $table->foreign('year_level_id')->references('id')->on('tbl_year_level');
-        });
+        // Schema::table('tbl_medical_history', function (Blueprint $table) {
+        //     $table->dropColumn(['gender_id', 'year_level_id']);
+        // });
     }
 
     /**
