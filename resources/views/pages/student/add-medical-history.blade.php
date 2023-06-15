@@ -17,7 +17,7 @@
                     </div>
                 @endif
                 <div class="container">
-                    <p class="page-title">Home / Add Medical History Record</p>
+                    <p class="page-title">Main / Add Medical History Record</p>
                     <div class="container header rounded shadow-sm mb-4">
                         <div class="header-content">
                             <i class="bi bi-pencil-square"></i> 
@@ -28,7 +28,7 @@
                     </div>
                     <div class="container"></div>
                     <div class="container border rounded p-5">
-                        <form method="POST" action="{{ route('save-medical-history-record') }}">
+                        <form method="POST" action="{{ route('save-medical-history') }}">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-4 col-md-6 col-sm-6" style="display: none;">
@@ -201,8 +201,8 @@
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <input type='checkbox' name='conditions[]' id="other1" value="other" />
                                         <label for="other1">Others: Please specify</label>
-                                        <input type="text" name="other_condition_option">
-                                    </div>s
+                                        <input type="text" class="form-control" name="other_condition_option">
+                                    </div>
                                 </fieldset>
                                 <!--Select conditions checkbox end-->
 
@@ -264,7 +264,7 @@
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <input type='checkbox' name='symptoms[]' id="other2" value="other" />
                                         <label for="other2">Others: Please specify</label>
-                                        <input type="text" name="other_symptoms_option">
+                                        <input type="text" class="form-control" name="other_symptoms_option">
                                         
                                     </div>
                                     <!--Select symtoms checkbox end-->
@@ -337,12 +337,6 @@
                             </div>
                             <div class="split mt-4">
                                 <div>
-                                    <a href="{{ route('student-dashboard') }}" class="btn-profile" title="BACK">
-                                        <i class="bi bi-arrow-left"></i>
-                                        &nbsp; Back
-                                    </a>
-                                </div>
-                                <div>
                                     <a href="#!" class="btn-profile" data-bs-toggle="modal" data-bs-target="#doyouModal">
                                         Next
 
@@ -364,11 +358,11 @@
                                         <div class="modal-body">
                                             <div class="container mt-3 mb-3">
                                                 <div class="text-center">
-                                                    <p class="mb-3">Do you have any medical history?</p>
+                                                    <p class="mb-3">Do you want to proceed?</p>
                                                 </div>
                                                 <div class="modal-split">
                                                     <div class="">
-                                                        <a href="#!" class="btn mb-2">
+                                                        <a href="{{ route('save-medical-history') }}" class="btn mb-2">
                                                             Yes
                                                         </a>
                                                     </div>

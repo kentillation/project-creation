@@ -34,7 +34,7 @@
                                         &nbsp; View Medical Records
                                 </a>
 
-                                <a href="#" class="record shadow-sm">
+                                <a href="{{ route('view-medical-history') }}" class="record shadow-sm">
                                         <i class="bi bi-eye"></i>
                                         &nbsp; View Medical History
                                 </a>

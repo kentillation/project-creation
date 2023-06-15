@@ -61,3 +61,7 @@ Route::get('/student/delete/{id}', 'StudentController@delete_student')->name('de
 Route::get('/student/add-medical-record', 'StudentController@add_medical_record')->name('add-medical-record');
 Route::post('/student/save-medical-record', 'StudentController@save_medical_record')->name('save-medical-record');
 Route::get('/student/view-medical-record', 'StudentController@view_medical_record')->name('view-medical-record');
+
+Route::get('/student/add-medical-history', 'StudentController@add_medical_history')->name('add-medical-history');
+Route::post('/student/save-medical-history', 'StudentController@save_medical_history')->name('save-medical-history');
+Route::get('/student/view-medical-history', 'StudentController@view_medical_history')->name('view-medical-history');
