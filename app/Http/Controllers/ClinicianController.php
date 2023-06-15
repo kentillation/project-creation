@@ -19,6 +19,7 @@ class ClinicianController extends Controller
         $declined = StudentRecordModel::where('status_record_id', '2')->count();
         $approved = StudentRecordModel::where('status_record_id', '3')->count();
         return view('pages/clinician/dashboard', compact('pending', 'declined', 'approved'));
+        
     }
 
     public function clinician_login()
@@ -137,11 +138,23 @@ class ClinicianController extends Controller
 
     public function pending_medical_records () {
 
-        $pending_records = StudentRecordModel::where('status_record_id', '1')->get();
-        return view('pages/clinician/pending-medical-records', compact('pending_records'));
-        
-        // $pending_records = StudentRecordModel::all();
-        // return view('pages/clinician/pending-medical-records',['pending_records'=>$pending_records]);
+        $c_pending_records = StudentRecordModel::where('status_record_id', '1')->get();
+        return view('pages/clinician/c-pending-medical-records', compact('c_pending_records'));
+
+    }
+
+    public function declined_medical_records () {
+
+        $c_declined_records = StudentRecordModel::where('status_record_id', '2')->get();
+        return view('pages/clinician/c-declined-medical-records', compact('c_declined_records'));
+
+    }
+
+    public function approved_medical_records () {
+
+        $c_approved_records = StudentRecordModel::where('status_record_id', '3')->get();
+        return view('pages/clinician/c-approved-medical-records', compact('c_approved_records'));
+
     }
 
     //EDITING STUDENT PENDING RECORD

@@ -23,21 +23,21 @@
                     </div>
                     <div class="container mt-4">
                         <div class="records">
-                            <a href="#" class="btn btn-outline-warning record shadow-sm">
+                            <a href="{{ route('a-pending-medical-records') }}" class="btn btn-outline-warning record shadow-sm">
                                 <i class="bi bi-clock-history text-warning"></i>
                                 &nbsp;  Pending Medical Records
                                 <span>
                                     <h1>{{ $pending }}</h1>
                                 </span>
                             </a>
-                            <a href="#" class="btn btn-outline-danger record shadow-sm">
+                            <a href="{{ route('a-declined-medical-records') }}" class="btn btn-outline-danger record shadow-sm">
                                 <i class="bi bi-exclamation-circle text-danger"></i>
                                 &nbsp; Declined Medical Records
                                 <span>
                                     <h1>{{ $declined }}</h1>
                                 </span>
                             </a>
-                            <a href="#" class="btn btn-outline-success record shadow-sm">
+                            <a href="{{ route('a-approved-medical-records') }}" class="btn btn-outline-success record shadow-sm">
                                 <i class="bi bi-check-circle text-success"></i>
                                 &nbsp; Approved Medical Records
                                 <span>

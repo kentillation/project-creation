@@ -1,4 +1,4 @@
-@extends('includes/clinician-sidenav')
+@extends('includes/admin-sidenav')
 
 @section('page-content')
         <div id="loader"></div>
@@ -17,7 +17,7 @@
                     </div>
                 @endif
                 <div class="container">
-                    <p class="page-title">Request / Pending Medical Records</p>
+                    <p class="page-title">Request Records / Pending Medical Records</p>
                     <div class="container header rounded shadow-sm mb-4">
                         <div class="header-content">
                             <i class="bi bi-clock-history"></i> 
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <a href="{{ route('clinician-dashboard') }}" title="Back" class="back">
+                        <a href="{{ route('admin-dashboard') }}" title="Back" class="back">
                             <i class="bi bi-arrow-left"></i>
                                 &nbsp;Back
                         </a>
@@ -45,13 +45,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($pending_records as $student_record)
+                                        @foreach ($a_pending_records as $student_record)
                                             <tr>
                                                 <td>{{ $student_record->first_name }} {{ $student_record->middle_name }} {{ $student_record->last_name }}</td>
                                                 <td>{{ $student_record->phone }}</td>
                                                 <td>{{ $student_record->muni_city }}</td>
                                                 <td>
-                                                    <a href="{{ route('update-pending-record', ['id' => $student_record->id] ) }}">
+                                                    <a href="#">
                                                         <button class="btn btn-outline-success btn-sm" title="Modify">
                                                             <i class="bi bi-pencil-square"></i>
                                                         </button>

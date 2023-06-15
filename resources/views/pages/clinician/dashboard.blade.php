@@ -23,7 +23,7 @@
                         </div>
                         <div class="container mt-4">
                                 <div class="records">
-                                        <a href="{{ route('pending-medical-records') }}" class="btn btn-outline-warning record shadow-sm">
+                                        <a href="{{ route('c-pending-medical-records') }}" class="btn btn-outline-warning record shadow-sm">
                                                 <i class="bi bi-clock-history text-warning"></i>
                                                         &nbsp;  Pending Medical Records
                                                 <span>
@@ -31,7 +31,7 @@
                                                 </span>
                                         </a>
 
-                                        <a href="#" class="btn btn-outline-danger record shadow-sm">
+                                        <a href="{{ route('c-declined-medical-records') }}" class="btn btn-outline-danger record shadow-sm">
                                                 <i class="bi bi-exclamation-circle text-danger"></i>
                                                 &nbsp; Declined Medical Records
                                                 <span>
@@ -39,7 +39,7 @@
                                                 </span>
                                         </a>
                                                 
-                                        <a href="#" class="btn btn-outline-success record shadow-sm">
+                                        <a href="{{ route('c-approved-medical-records') }}" class="btn btn-outline-success record shadow-sm">
                                                 <i class="bi bi-check-circle text-success"></i>
                                                 &nbsp; Approved Medical Records
                                                 <span>

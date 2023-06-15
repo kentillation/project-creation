@@ -69,18 +69,18 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="btn-sidenav" title="Approved">
-                            <i class="bi bi-check-circle"></i>
-                            <span>
-                                &nbsp;Approved
-                            </span>
-                        </a>
-                    </li>
-                    <li>
                         <a href="#" class="btn-sidenav" title="Declined">
                             <i class="bi bi-exclamation-circle"></i>
                             <span>
                                 &nbsp;Declined
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn-sidenav" title="Approved">
+                            <i class="bi bi-check-circle"></i>
+                            <span>
+                                &nbsp;Approved
                             </span>
                         </a>
                     </li>

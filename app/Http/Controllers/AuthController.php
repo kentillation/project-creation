@@ -169,6 +169,27 @@ class AuthController extends Controller
         return view('pages/admin/view-student-med-record',['a_student_record'=>$student_record]);
     }
 
+    public function pending_medical_records () {
+
+        $a_pending_records = StudentRecordModel::where('status_record_id', '1')->get();
+        return view('pages/admin/a-pending-medical-records', compact('a_pending_records'));
+
+    }
+
+    public function declined_medical_records () {
+
+        $a_declined_records = StudentRecordModel::where('status_record_id', '2')->get();
+        return view('pages/admin/a-declined-medical-records', compact('a_declined_records'));
+
+    }
+
+    public function approved_medical_records () {
+
+        $a_approved_records = StudentRecordModel::where('status_record_id', '3')->get();
+        return view('pages/admin/a-approved-medical-records', compact('a_approved_records'));
+
+    }
+
     //READING ALL RECORDS OF COURSE
     public function course_list () {
         $course = CourseModel::all();
