@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\StaffModel;
+use App\Models\StudentRecordModel;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -13,7 +14,10 @@ class StaffController extends Controller
 {
     public function dashboard()
     {
-        return view('/pages/staff/dashboard');
+        $pending = StudentRecordModel::where('status_record_id', '1')->count();
+        $declined = StudentRecordModel::where('status_record_id', '2')->count();
+        $approved = StudentRecordModel::where('status_record_id', '3')->count();
+        return view('pages/staff/dashboard', compact('pending', 'declined', 'approved'));
     }
 
     public function staff_login()

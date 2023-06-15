@@ -61,7 +61,7 @@
                 <h5 class="mb-3">Request Records</h5>
                 <ul>
                     <li>
-                        <a href="#" class="btn-sidenav" title="Pending">
+                        <a href="{{ route('a-pending-medical-records') }}" class="btn-sidenav" title="Pending">
                             <i class="bi bi-clock-history"></i>
                             <span>
                                 &nbsp;Pending
@@ -69,7 +69,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="btn-sidenav" title="Declined">
+                        <a href="{{ route('a-declined-medical-records') }}" class="btn-sidenav" title="Declined">
                             <i class="bi bi-exclamation-circle"></i>
                             <span>
                                 &nbsp;Declined
@@ -77,7 +77,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="btn-sidenav" title="Approved">
+                        <a href="{{ route('a-approved-medical-records') }}" class="btn-sidenav" title="Approved">
                             <i class="bi bi-check-circle"></i>
                             <span>
                                 &nbsp;Approved

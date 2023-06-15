@@ -61,7 +61,7 @@
                 <h5 class="mb-3">Request</h5>
                 <ul>
                     <li>
-                        <a href="{{ route('pending-medical-records') }}" class="btn-sidenav" title="Pending">
+                        <a href="{{ route('c-pending-medical-records') }}" class="btn-sidenav" title="Pending">
                             <i class="bi bi-clock-history"></i>
                             <span>
                                 &nbsp;Pending
@@ -69,18 +69,18 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="btn-sidenav" title="Approved">
-                            <i class="bi bi-check-circle"></i>
+                        <a href="{{ route('c-declined-medical-records') }}" class="btn-sidenav" title="Declined">
+                            <i class="bi bi-exclamation-circle"></i>
                             <span>
-                                &nbsp;Approved
+                                &nbsp;Declined
                             </span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="btn-sidenav" title="Declined">
-                            <i class="bi bi-exclamation-circle"></i>
+                        <a href="{{ route('c-approved-medical-records') }}" class="btn-sidenav" title="Approved">
+                            <i class="bi bi-check-circle"></i>
                             <span>
-                                &nbsp;Declined
+                                &nbsp;Approved
                             </span>
                         </a>
                     </li>

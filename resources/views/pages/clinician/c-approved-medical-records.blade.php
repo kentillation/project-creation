@@ -1,0 +1,84 @@
+@extends('includes/clinician-sidenav')
+
+@section('page-content')
+        <div id="loader"></div>
+        <div id="forLoader" style="display:none;">
+            <div class="container mb-5 add-med-rec">
+                @if(Session::has('success'))
+                    <div class="alert alert-success text-center" role="alert" id="alertbox">
+                        {{ Session::get('success') }}
+                        <button class="btn-close" onclick="closeFn()"></button>
+                    </div>
+                @endif
+                @if(Session::has('removal'))
+                    <div class="alert alert-danger text-center" role="alert" id="alertbox">
+                        {{ Session::get('removal') }}
+                        <button class="btn-close" onclick="closeFn()"></button>
+                    </div>
+                @endif
+                <div class="container">
+                    <p class="page-title">Request Records / Approved Medical Records</p>
+                    <div class="container header rounded shadow-sm mb-4">
+                        <div class="header-content">
+                            <i class="bi bi-clock-history"></i> 
+                            <span>
+                                &nbsp; Approved Medical Records
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <a href="{{ route('clinician-dashboard') }}" title="Back" class="back">
+                            <i class="bi bi-arrow-left"></i>
+                                &nbsp;Back
+                        </a>
+                    </div>
+                    <div class="container border rounded p-5">
+                        <div class="container mb-4">
+                            <div class="table-responsive">
+                                <table class="table table-hover text-center" id="table">
+                                    <thead class="text-bg-secondary">
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Phone</th>
+                                            <th>Municipality / City</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($c_approved_records as $student_record)
+                                            <tr>
+                                                <td>{{ $student_record->first_name }} {{ $student_record->middle_name }} {{ $student_record->last_name }}</td>
+                                                <td>{{ $student_record->phone }}</td>
+                                                <td>{{ $student_record->muni_city }}</td>
+                                                <td>
+                                                    <a href="#">
+                                                        <button class="btn btn-outline-success btn-sm" title="Modify">
+                                                            <i class="bi bi-pencil-square"></i>
+                                                        </button>
+                                                    </a>
+                                                    <a href="#">
+                                                        <button class="btn btn-outline-primary btn-sm" title="View record">
+                                                            <i class="bi bi-eye"></i>
+                                                        </button>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- for Data Tables -->
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+        <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+        <script>
+            $(document).ready (function() {
+                $('table').DataTable();
+            });
+        </script>
+@endsection
