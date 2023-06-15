@@ -12,7 +12,7 @@
                             <div class="info">
                                 <div>
                                     <p>Christian School | A.Y. 2023-2024</p>
-                                    <p>{{ Session::get('name') }} | Admin</p>
+                                    <p>{{ Session::get('name') }}</p>
                                 </div>
                                                 
                             </div>
@@ -34,14 +34,14 @@
                                 <i class="bi bi-exclamation-circle text-danger"></i>
                                 &nbsp; Declined Medical Records
                                 <span>
-                                    <h1></h1>
+                                    <h1>{{ $declined }}</h1>
                                 </span>
                             </a>
                             <a href="#" class="btn btn-outline-success record shadow-sm">
                                 <i class="bi bi-check-circle text-success"></i>
                                 &nbsp; Approved Medical Records
                                 <span>
-                                    <h1></h1>
+                                    <h1>{{ $approved }}</h1>
                                 </span>
                             </a>
                         </div>

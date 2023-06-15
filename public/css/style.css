@@ -223,7 +223,7 @@ select {
     position: fixed;
     background-color: var(--tertiary-color);
     height: 100%;
-    width: 200px;
+    width: 220px;
     z-index: 2;
     padding: 10px;
     /* display: none; */
@@ -320,7 +320,6 @@ select {
 }
 
 
-
 .sidenav .btn-signout {
     background-color: var(--light-color);
     border: none;
@@ -351,6 +350,31 @@ form .readonly {
     background-color: #e4e3e3;
 }
 
+/* CONTAINER */
+
+.container .page-title {
+    font-size: 16px;
+    color: var(--gray-color);
+}
+
+.container .header {
+    background-color: var(--light-color);
+    padding: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 7px;
+}
+
+.container .header i, .container .header span {
+    font-size: 25px;
+    color: var(--secondary-color);
+}
+
+.container .back {
+    color: var(--dark-color);
+}
+
 /* HOMEPAGE */
 
 .homepage {
@@ -369,11 +393,6 @@ form .readonly {
 .homepage .hero img {
     border-radius: 50%;
     width: 150px;
-}
-
-.homepage .page-title {
-    font-size: 18px;
-    color: var(--secondary-color)
 }
 
 .homepage .info {
@@ -408,39 +427,19 @@ form .readonly {
     font-size: 40px;
 }
 
-/* ADD MEDICAL RECORD */
 
-.add-med-rec {
-    margin-top: 100px;
-}
-
-.add-med-rec .header {
-    background-color: var(--light-color);
-    padding: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    border-radius: 7px;
-}
-
-.add-med-rec .header i, .add-med-rec .header span {
-    font-size: 25px;
-    color: var(--secondary-color);
-}
-
-.add-med-rec .page-title {
-    font-size: 15px;
-
-}
-
-.add-med-rec .back {
-    color: var(--dark-color);
-}
-
-/* STUDENT LIST */
+/* STUDENT */
 
 .student-list {
     margin-top: 120px;
+}
+
+.student-list .back {
+    color: var(--dark-color);
+}
+
+.student-list .back:hover {
+    color: var(--secondary-color);
 }
 
 #addStudentModal .phone-example {
@@ -468,16 +467,47 @@ form .readonly {
     color: var(--light-color);
 }
 
+.add-med-rec {
+    margin-top: 100px;
+}
+
 /* ADMIN */
 
 .admin-homepage {
     margin-top: 120px;
 }
 
+/* CLINICIAN */
+
+.clinician-list {
+    margin-top: 120px;
+}
+
+.clinician-list .back {
+    color: var(--dark-color);
+}
+
+.clinician-list .back:hover {
+    color: var(--secondary-color);
+}
+
+.edit-clinician {
+    margin-top: 100px;
+}
+
+
 /* DEPARTMENT STAFF */
 
 .staff-list {
     margin-top: 120px;
+}
+
+.staff-list .back {
+    color: var(--dark-color);
+}
+
+.staff-list .back:hover {
+    color: var(--secondary-color);
 }
 
 /* REPORTS */

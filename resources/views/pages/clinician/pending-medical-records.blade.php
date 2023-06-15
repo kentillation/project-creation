@@ -17,11 +17,12 @@
                     </div>
                 @endif
                 <div class="container">
-                    <p class="page-title">Main / Nursing Students Medical Records</p>
+                    <p class="page-title">Request / Pending Medical Records</p>
                     <div class="container header rounded shadow-sm mb-4">
                         <div class="header-content">
+                            <i class="bi bi-clock-history"></i> 
                             <span>
-                                &nbsp; Nursing Students Medical Records
+                                &nbsp; Pending Medical Records
                             </span>
                         </div>
                     </div>
@@ -37,22 +38,20 @@
                                 <table class="table table-hover text-center" id="table">
                                     <thead class="text-bg-secondary">
                                         <tr>
-                                            <th>First name</th>
-                                            <th>Middle name</th>
-                                            <th>Last name</th>
-                                            <th>Status</th>
+                                            <th>Name</th>
+                                            <th>Phone</th>
+                                            <th>Municipality / City</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($tbl_student_record as $student_record)
+                                        @foreach ($pending_records as $student_record)
                                             <tr>
-                                                <td>{{ $student_record->first_name }}</td>
-                                                <td>{{ $student_record->middle_name }}</td>
-                                                <td>{{ $student_record->last_name }}</td>
-                                                <td>{{ $student_record->status_record_id == 1 ? "Pending" : "Approved"}}</td>
+                                                <td>{{ $student_record->first_name }} {{ $student_record->middle_name }} {{ $student_record->last_name }}</td>
+                                                <td>{{ $student_record->phone }}</td>
+                                                <td>{{ $student_record->muni_city }}</td>
                                                 <td>
-                                                    <a href="#">
+                                                    <a href="{{ route('update-pending-record', ['id' => $student_record->id] ) }}">
                                                         <button class="btn btn-outline-success btn-sm" title="Modify">
                                                             <i class="bi bi-pencil-square"></i>
                                                         </button>

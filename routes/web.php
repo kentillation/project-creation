@@ -43,7 +43,11 @@ Route::post('/clinician/save-update/{id}', 'ClinicianController@saveUpdate_clini
 Route::get('/clinician/list/{id}', 'ClinicianController@delete_clinician')->name('delete-clinician');
 Route::get('/clinician/add-student-medical-record', 'ClinicianController@add_student_med_record')->name('add-student-med-record');
 Route::post('/clinician/save-student-medical-record', 'ClinicianController@save_student_med_record')->name('save-student-med-record');
-Route::get('/clinician/view-student-medical-record', 'ClinicianController@view_student_med_record')->name('view-student-med-record');
+
+Route::get('/clinician/pending-medical-records', 'ClinicianController@pending_medical_records')->name('pending-medical-records');
+Route::get('/clinician/update-pending-record/{id}', 'ClinicianController@update_pending_record')->name('update-pending-record');
+Route::post('/clinician/save-update-pending-record/{id}', 'ClinicianController@saveUpdate_pending_record')->name('save-update-pending-record');
+
 
 //STUDENT CONTROLLER
 Route::get('/student-login', 'StudentController@student_login')->name('student-login');

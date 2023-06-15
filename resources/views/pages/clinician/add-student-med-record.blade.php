@@ -31,7 +31,6 @@
                         <form method="POST" action="{{ route('save-student-med-record') }}">
                             @csrf
                             <div class="row">
-                                
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <label for="student_id">Student ID</label>
                                     <input type='text' name='student_id' id="student_id" class="form-control mb-3"/>
