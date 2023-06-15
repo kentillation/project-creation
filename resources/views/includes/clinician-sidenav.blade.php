@@ -61,7 +61,7 @@
                 <h5 class="mb-3">Request</h5>
                 <ul>
                     <li>
-                        <a href="#" class="btn-sidenav" title="Pending">
+                        <a href="{{ route('pending-medical-records') }}" class="btn-sidenav" title="Pending">
                             <i class="bi bi-clock-history"></i>
                             <span>
                                 &nbsp;Pending

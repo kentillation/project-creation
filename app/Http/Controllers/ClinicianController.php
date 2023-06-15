@@ -15,7 +15,10 @@ class ClinicianController extends Controller
 {
     public function dashboard()
     {
-        return view('/pages/clinician/dashboard');
+        $pending = StudentRecordModel::where('status_record_id', '1')->count();
+        $declined = StudentRecordModel::where('status_record_id', '2')->count();
+        $approved = StudentRecordModel::where('status_record_id', '3')->count();
+        return view('pages/clinician/dashboard', compact('pending', 'declined', 'approved'));
     }
 
     public function clinician_login()
@@ -132,9 +135,48 @@ class ClinicianController extends Controller
         return back()->with('success', 'New student medical record has been saved successfully');
     }
 
-    public function view_student_med_record () {
-        $student_record = StudentRecordModel::all();
-        return view('pages/clinician/view-student-med-record',['tbl_student_record'=>$student_record]);
+    public function pending_medical_records () {
+
+        $pending_records = StudentRecordModel::where('status_record_id', '1')->get();
+        return view('pages/clinician/pending-medical-records', compact('pending_records'));
+        
+        // $pending_records = StudentRecordModel::all();
+        // return view('pages/clinician/pending-medical-records',['pending_records'=>$pending_records]);
     }
+
+    //EDITING STUDENT PENDING RECORD
+    public function update_pending_record(Request $request, $id) {
+        $pending_record = StudentRecordModel::find($id);
+        return view('pages/clinician/edit-pending-record', ['update_pending'=> $pending_record]);
+    }
+
+    //UPDATING STUDENT PENDING RECORD
+    public function saveUpdate_pending_record(Request $request, $id) {
+        $data = [
+            'first_name' => $request->input()['first_name'],
+            'middle_name' => $request->input()['middle_name'],
+            'last_name' => $request->input()['last_name'],
+            'street_address' => $request->input()['street_address'],
+            'barangay' => $request->input()['barangay'],
+            'muni_city' => $request->input()['muni_city'],
+            'date_of_birth' => $request->input()['date_of_birth'],
+            'age' => $request->input()['age'],
+            'phone' => $request->input()['phone'],
+            'civil_status' => $request->input()['civil_status'],
+            'citizenship' => $request->input()['citizenship'],
+            'height' => $request->input()['height'],
+            'weight' => $request->input()['weight'],
+            'bmi' => $request->input()['bmi'],
+            'year_level_id' => $request->input()['year_level'],
+            'section_id' => $request->input()['section'],
+            'blood_type_id' => $request->input()['blood_type'],
+            'gender_id' => $request->input()['gender'],
+            'status_record_id' =>$request->input()['status_record']
+        ];
+
+        $update_pending_record = StudentRecordModel::where('id', $id)->update($data);
+        return redirect(route('clinician-dashboard'));
+    }
+
 
 }

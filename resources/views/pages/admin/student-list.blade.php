@@ -16,77 +16,76 @@
                         <button class="btn-close" onclick="closeFn()"></button>
                     </div>
                 @endif
-                <div class="mb-3">
-                    <a href="{{ route('student-dashboard') }}" title="Back" class="back">
-                        <i class="bi bi-arrow-left"></i>
-                            &nbsp;Back
-                    </a>
-                </div>
-                <div class="container border rounded p-5 reports">
-                    <h1 class="heading1 text-center mb-5"><strong>List of Nursing Student</strong></h1>
-                    <div class="tbl-top-btns mb-4">
-                        <div class="btn-dl me-2">
-                            <button class="btn-add-user" type="button" title="ADD USER" data-bs-toggle="modal" data-bs-target="#addStudentModal">
-                                <i class="bi bi-plus-lg">&nbsp;</i>
-                                ADD
-                            </button>
-                            <a href="#" title="DOWNLOAD AS PDF" target="_blank">
-                                <button class="btn-download">
-                                    <i class="bi bi-box-arrow-down">&nbsp;</i>
-                                    PDF
-                                </button>
-                            </a>
-                            
-                            <button class="btn-download" title="DOWNLOAD AS SPREADSHEET" onclick="saveAsExcel('table', 'List of Nursing Student User.xls')">
-                                <i class="bi bi-box-arrow-down">&nbsp;</i>
-                                XLS
-                            </button>
+                <div class="container">
+                    <p class="page-title">Users / List of Student Nurses</p>
+                    <div class="container header rounded shadow-sm mb-4">
+                        <div class="header-content">
+                            <i class="bi bi-list-check"></i> 
+                            <span>
+                                &nbsp;  List of Student Nurses
+                            </span>
                         </div>
                     </div>
-                    <div class="container mb-4">
-                        <div class="table-responsive">
-                            <table class="table table-hover text-center" id="table">
-                                <thead class="text-bg-secondary">
-                                    <tr>
-                                        <th>Student ID</th>
-                                        <th>First name</th>
-                                        <th>Middle name</th>
-                                        <th>Last name</th>
-                                        <th>Email</th>
-                                        <th>Username</th>
-                                        <th>_____Action_____</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($tbl_student as $student)
+                    <div class="mb-3">
+                        <a href="{{ route('admin-dashboard') }}" title="Back" class="back">
+                            <i class="bi bi-arrow-left"></i>
+                                &nbsp;Back
+                        </a>
+                    </div>
+                    <div class="container border rounded p-5 reports">
+                        <div class="tbl-top-btns mb-4">
+                            <div class="btn-dl me-2">
+                                <button class="btn-add-user" type="button" title="ADD USER" data-bs-toggle="modal" data-bs-target="#addStudentModal">
+                                    <i class="bi bi-plus-lg">&nbsp;</i>
+                                    Add User
+                                </button>
+                            </div>
+                        </div>
+                        <div class="container mb-4">
+                            <div class="table-responsive">
+                                <table class="table table-hover text-center" id="table">
+                                    <thead class="text-bg-secondary">
                                         <tr>
-                                            <td>{{ $student->student_id }}</td>
-                                            <td>{{ $student->first_name }}</td>
-                                            <td>{{ $student->middle_name }}</td>
-                                            <td>{{ $student->last_name }}</td>
-                                            <td>{{ $student->email }}</td>
-                                            <td>{{ $student->username }}</td>
-                                            <td>
-                                                <a href="{{ route('update-student', ['id' => $student->id] ) }}">
-                                                    <button class="btn btn-outline-success btn-sm" title="Modify">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                                                </a>
-                                                <a href="{{ route('delete-student', ['id' => $student->id] ) }}">
-                                                    <button class="btn btn-outline-danger btn-sm" title="Move to trash">
-                                                        <i class="bi bi-trash"></i>
-                                                    </button>
-                                                </a>
-                                                <a href="{{ route('view-stud-med-record', ['id' => $student->id] ) }}">
-                                                    <button class="btn btn-outline-primary btn-sm" title="View medical record">
-                                                        <i class="bi bi-eye"></i>
-                                                    </button>
-                                                </a>
-                                            </td>
+                                            <th>Student ID</th>
+                                            <th>First name</th>
+                                            <th>Middle name</th>
+                                            <th>Last name</th>
+                                            <th>Email</th>
+                                            <th>Username</th>
+                                            <th>_____Action_____</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($tbl_student as $student)
+                                            <tr>
+                                                <td>{{ $student->student_id }}</td>
+                                                <td>{{ $student->first_name }}</td>
+                                                <td>{{ $student->middle_name }}</td>
+                                                <td>{{ $student->last_name }}</td>
+                                                <td>{{ $student->email }}</td>
+                                                <td>{{ $student->username }}</td>
+                                                <td>
+                                                    <a href="{{ route('update-student', ['id' => $student->id] ) }}">
+                                                        <button class="btn btn-outline-success btn-sm" title="Modify">
+                                                            <i class="bi bi-pencil-square"></i>
+                                                        </button>
+                                                    </a>
+                                                    <a href="{{ route('delete-student', ['id' => $student->id] ) }}">
+                                                        <button class="btn btn-outline-danger btn-sm" title="Move to trash">
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </a>
+                                                    <a href="{{ route('view-stud-med-record', ['id' => $student->id] ) }}">
+                                                        <button class="btn btn-outline-primary btn-sm" title="View medical record">
+                                                            <i class="bi bi-eye"></i>
+                                                        </button>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -25,14 +25,14 @@
                     <div class="logo">
                         <a href="#">
                             <img src="<?php echo asset('images/ehr_logo_v1.png') ?>" />
-                            <span style="font-size: 20px">&nbsp;Electronic Health Record System</span>
+                            <span style="font-size: 20px">&nbsp;Christian School Electronic Health Record System</span>
                         </a>
                     </div>
-                    <div>
+                    <!-- <div>
                         <a href="#" class="nav-link" title="Account">
                             &nbsp; <i class="bi bi-person-circle"></i>
                         </a>
-                    </div>
+                    </div> -->
                 </div>
                 
             </nav>
@@ -56,14 +56,34 @@
                             </span>
                         </a>
                     </li>
-                    <!-- <li>
-                        <a href="{{ route('admin-list') }}" class="btn-sidenav" title="List of Users">
-                            <i class="bi bi-people"></i>
+                </ul>
+                <hr>
+                <h5 class="mb-3">Request Records</h5>
+                <ul>
+                    <li>
+                        <a href="#" class="btn-sidenav" title="Pending">
+                            <i class="bi bi-clock-history"></i>
                             <span>
-                                &nbsp; Admin
+                                &nbsp;Pending
                             </span>
                         </a>
-                    </li> -->
+                    </li>
+                    <li>
+                        <a href="#" class="btn-sidenav" title="Declined">
+                            <i class="bi bi-exclamation-circle"></i>
+                            <span>
+                                &nbsp;Declined
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn-sidenav" title="Approved">
+                            <i class="bi bi-check-circle"></i>
+                            <span>
+                                &nbsp;Approved
+                            </span>
+                        </a>
+                    </li>
                 </ul>
                 <hr>
                 <h5 class="mb-3">Users</h5>

@@ -3,7 +3,7 @@
 @section('page-content')
         <div id="loader"></div>
         <div id="forLoader" style="display:none;">
-            <div class="container staff-list">
+            <div class="container staff-list mb-5">
                 @if(Session::has('success'))
                     <div class="alert alert-success text-center" role="alert" id="alertbox">
                         {{ Session::get('success') }}
@@ -16,60 +16,66 @@
                         <button class="btn-close" onclick="closeFn()"></button>
                     </div>
                 @endif
-                <div class="container border rounded p-5 reports">
-                    <h1 class="heading1 text-center mb-5"><strong>List of Department Staff</strong></h1>
-                    <div class="tbl-top-btns mb-4">
-                        <div class="btn-dl me-2">
-                            <button class="btn-add-user" type="button" title="ADD USER" data-bs-toggle="modal" data-bs-target="#addModal">
-                                <i class="bi bi-plus-lg">&nbsp;</i>
-                                ADD
-                            </button>
-                            <a href="#" title="DOWNLOAD AS PDF" target="_blank">
-                                <button class="btn-download">
-                                    <i class="bi bi-box-arrow-down">&nbsp;</i>
-                                    PDF
-                                </button>
-                            </a>
-                            
-                            <button class="btn-download" title="DOWNLOAD AS SPREADSHEET" onclick="saveAsExcel('table', 'List of Department Staff User.xls')">
-                                <i class="bi bi-box-arrow-down">&nbsp;</i>
-                                XLS
-                            </button>
+                <div class="container">
+                    <p class="page-title">Users / List of Department Staff</p>
+                    <div class="container header rounded shadow-sm mb-4">
+                        <div class="header-content">
+                            <i class="bi bi-list-check"></i> 
+                            <span>
+                                &nbsp;  List of Department Staff
+                            </span>
                         </div>
                     </div>
-                    <div class="container mb-4">
-                        <div class="table-responsive">
-                            <table class="table table-hover text-center" id="table">
-                                <thead class="text-bg-secondary">
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Username</th>
-                                        <th>ACTION</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($tbl_staff as $staff )
+                    <div class="mb-3">
+                        <a href="{{ route('admin-dashboard') }}" title="Back" class="back">
+                            <i class="bi bi-arrow-left"></i>
+                                &nbsp;Back
+                        </a>
+                    </div>
+                    <div class="container border rounded p-5 reports">
+                        <h1 class="heading1 text-center mb-5"><strong>List of Department Staff</strong></h1>
+                        <div class="tbl-top-btns mb-4">
+                            <div class="btn-dl me-2">
+                                <button class="btn-add-user" type="button" title="ADD USER" data-bs-toggle="modal" data-bs-target="#addModal">
+                                    <i class="bi bi-plus-lg">&nbsp;</i>
+                                    Add User
+                                </button>
+                            </div>
+                        </div>
+                        <div class="container mb-4">
+                            <div class="table-responsive">
+                                <table class="table table-hover text-center" id="table">
+                                    <thead class="text-bg-secondary">
                                         <tr>
-                                            <td>{{ $staff ->name }}</td>
-                                            <td>{{ $staff ->email }}</td>
-                                            <td>{{ $staff ->username }}</td>
-                                            <td>
-                                                <a href="{{ route('update-staff', ['id' => $staff ->id] ) }}">
-                                                    <button class="btn btn-outline-success btn-sm" title="Modify">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                                                </a>
-                                                <a href="{{ route('delete-staff', ['id' => $staff ->id] ) }}">
-                                                    <button class="btn btn-outline-danger btn-sm" title="Move to trash">
-                                                        <i class="bi bi-trash"></i>
-                                                    </button>
-                                                </a>
-                                            </td>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Username</th>
+                                            <th>ACTION</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($tbl_staff as $staff )
+                                            <tr>
+                                                <td>{{ $staff ->name }}</td>
+                                                <td>{{ $staff ->email }}</td>
+                                                <td>{{ $staff ->username }}</td>
+                                                <td>
+                                                    <a href="{{ route('update-staff', ['id' => $staff ->id] ) }}">
+                                                        <button class="btn btn-outline-success btn-sm" title="Modify">
+                                                            <i class="bi bi-pencil-square"></i>
+                                                        </button>
+                                                    </a>
+                                                    <a href="{{ route('delete-staff', ['id' => $staff ->id] ) }}">
+                                                        <button class="btn btn-outline-danger btn-sm" title="Move to trash">
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

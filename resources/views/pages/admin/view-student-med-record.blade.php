@@ -17,13 +17,19 @@
                     </div>
                 @endif
                 <div class="container">
-                    <p class="page-title">Dashboard / Nursing Students Medical Records</p>
+                    <p class="page-title">Users / List of Student Nurses / Student Medical Records</p>
                     <div class="container header rounded shadow-sm mb-4">
                         <div class="header-content">
                             <span>
                                 &nbsp; Nursing Students Medical Records
                             </span>
                         </div>
+                    </div>
+                    <div class="mb-3">
+                        <a href="{{ route('student-list') }}" title="Back" class="back">
+                            <i class="bi bi-arrow-left"></i>
+                                &nbsp;Back
+                        </a>
                     </div>
                     <div class="container border rounded p-5">
                         <div class="container mb-4">
