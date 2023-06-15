@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::table('tbl_student_record', function (Blueprint $table) {
             // $table->unsignedBigInteger('gender_id');
          
-            $table->foreign('gender_id')->references('id')->on('tbl_gender');
+            // $table->foreign('gender_id')->references('id')->on('tbl_gender');
         });
     }
 

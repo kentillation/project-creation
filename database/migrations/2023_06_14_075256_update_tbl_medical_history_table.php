@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Schema::table('tbl_student_record', function (Blueprint $table) {
-        //     $table->foreign('year_level_id')->references('id')->on('tbl_year_level');
-        //     $table->foreign('section_id')->references('id')->on('tbl_section');
-        //     $table->foreign('blood_type_id')->references('id')->on('tbl_blood_type');
-        // });
+        Schema::table('tbl_medical_history', function (Blueprint $table) {
+            $table->unsignedBigInteger('student_id');
+         
+            $table->foreign('student_id')->references('id')->on('tbl_student');
+        });
     }
 
     /**
