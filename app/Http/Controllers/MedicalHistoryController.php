@@ -15,9 +15,7 @@ class MedicalHistoryController extends Controller
         $validatedData = $request->validate([
             'conditions' => 'nullable|array',
             'symptoms' => 'nullable|array',
-            'consume_alcohol' => 'nu
-            
-            llable|array',
+            'consume_alcohol' => 'nullable|array',
             'other_condition_option' => 'nullable|required_if:conditions.*,other',
             'other_symptoms_option' => 'nullable|required_if:symptoms.*,other',
             'medication' => 'required|in:yes,no',
