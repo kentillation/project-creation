@@ -56,12 +56,12 @@
                                             <td>{{ $staff ->username }}</td>
                                             <td>
                                                 <a href="{{ route('update-staff', ['id' => $staff ->id] ) }}">
-                                                    <button class="btn-view btn-sm" title="MODIFY">
+                                                    <button class="btn btn-outline-success btn-sm" title="Modify">
                                                         <i class="bi bi-pencil-square"></i>
                                                     </button>
                                                 </a>
                                                 <a href="{{ route('delete-staff', ['id' => $staff ->id] ) }}">
-                                                    <button class="btn-restricted btn-sm" title="DELETE">
+                                                    <button class="btn btn-outline-danger btn-sm" title="Move to trash">
                                                         <i class="bi bi-trash"></i>
                                                     </button>
                                                 </a>

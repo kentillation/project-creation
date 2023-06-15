@@ -256,6 +256,11 @@ select {
     color: var(--light-color);
 }
 
+.sidenav h6 {
+    color: var(--light-gray-color) !important;
+    font-size: 15px;
+}
+
 .sidenav ul {
     list-style-type: none;
     display: contents;
@@ -298,10 +303,6 @@ select {
     text-decoration: none;
 }
 
-.sidenav h6 {
-    color: var(--light-color) !important;
-}
-
 .sidenav .btn-add {
     background-color: var(--tertiary-color);
     border: none;
@@ -317,6 +318,8 @@ select {
     color: var(--light-color);
     transition: 0.5s;
 }
+
+
 
 .sidenav .btn-signout {
     background-color: var(--light-color);
@@ -338,9 +341,10 @@ select {
 }
 
 .sidenav .btn-sidenav-hide {
-    float: right;
     color: var(--light-color);
-    margin-top: 30px;
+    position: absolute;
+    bottom: 90px;
+    right: 7px;
 }
 
 form .readonly {
@@ -365,6 +369,11 @@ form .readonly {
 .homepage .hero img {
     border-radius: 50%;
     width: 150px;
+}
+
+.homepage .page-title {
+    font-size: 18px;
+    color: var(--secondary-color)
 }
 
 .homepage .info {
@@ -421,6 +430,11 @@ form .readonly {
 
 .add-med-rec .page-title {
     font-size: 15px;
+
+}
+
+.add-med-rec .back {
+    color: var(--dark-color);
 }
 
 /* STUDENT LIST */

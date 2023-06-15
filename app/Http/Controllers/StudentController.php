@@ -40,15 +40,12 @@ class StudentController extends Controller
         if ($result_count > 0) {
 
             $result_info = StudentModel::where($credentials)->get();
-            // dd($result_info[0]['first_name']);
-            // $_SESSION['first_name'] = $result_info[0]['first_name'];
 
             session()->put('id', $result_info[0]['id']);
             session()->put('student_id', $result_info[0]['student_id']);
             session()->put('first_name', $result_info[0]['first_name']);
             session()->put('middle_name', $result_info[0]['middle_name']);
             session()->put('last_name', $result_info[0]['last_name']);
-            // session()->put('year_level', $result_info[0]['year_level']);
 
             $student =  StudentModel::where('student_id', '=', $request->student_id)->first();
             return redirect()->route('student-dashboard');
@@ -147,7 +144,10 @@ class StudentController extends Controller
     public function saveUpdate_student(Request $request, $id) {
         $data = [
             'student_id' => $request->input()['student_id'],
-            'name' => $request->input()['name'],
+            'first_name' => $request->input()['first_name'],
+            'middle_name' => $request->input()['middle_name'],
+            'last_name' => $request->input()['last_name'],
+            'phone' => $request->input()['phone'],
             'email' => $request->input()['email'],
             'username' => $request->input()['username']
         ];
@@ -163,24 +163,25 @@ class StudentController extends Controller
     }
 
     //ADD STUDENT MEDICAL RECORD
-    public function add_medical_record () {
-
+    public function add_medical_record () 
+    {
         $id = Session::get('id');
-
         $result_info = StudentModel::where('id',$id)->get();
-
         return view('pages/student/add-record', ['student'=>$result_info]);
     }
 
     public function view_medical_record () {
-        return view('pages/student/view-record');
+
+        //Filtering Records with Session
+        $id = Session::get('id');
+        $student_record = StudentRecordModel::where('student_id', $id)->get();
+        return view('pages/student/view-record',['tbl_student_record'=>$student_record]);
     }
 
     //CREATING RECORD OF STUDENT
     public function save_medical_record(Request $request)
     {
         $studentrecord = new StudentRecordModel;
-
         $studentrecord->student_id = $request->student_id;
         $studentrecord->first_name = $request->first_name;
         $studentrecord->middle_name = $request->middle_name;
@@ -200,9 +201,8 @@ class StudentController extends Controller
         $studentrecord->year_level_id = $request->year_level;
         $studentrecord->section_id = $request->section;
         $studentrecord->blood_type_id = $request->blood_type;
+        $studentrecord->status_record_id = 1;
         $studentrecord->save();
-
-        //return redirect(route('index'));
         return back()->with('success', 'New request for medical record has been sent successfully');
     }
 }
