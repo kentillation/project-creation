@@ -86,123 +86,123 @@
                                 <fieldset>
                                     <p>Select the conditions that apply to you or any of your close family members:</p>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="anemia" value="Anemia" />
+                                        <input type='checkbox' name='conditions[]' id="anemia" value="Anemia" />
                                         <label for="anemia">Anemia</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="asthma" value="Asthma" />
+                                        <input type='checkbox' name='conditions[]' id="asthma" value="Asthma" />
                                         <label for="asthma">Asthma</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="arthritis" value="Arthritis" />
+                                        <input type='checkbox' name='conditions[]' id="arthritis" value="Arthritis" />
                                         <label for="arthritis">Arthritis</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="cancer" value="Cancer" />
+                                        <input type='checkbox' name='conditions[]' id="cancer" value="Cancer" />
                                         <label for="cancer">Cancer</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="gout" value="Gout" />
+                                        <input type='checkbox' name='conditions[]' id="gout" value="Gout" />
                                         <label for="gout">Gout</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="diabetes" value="Diabetes" />
+                                        <input type='checkbox' name='conditions[]' id="diabetes" value="Diabetes" />
                                         <label for="diabetes">Diabetes</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="emotional_disorder" value="Emotional Disorder" />
+                                        <input type='checkbox' name='conditions[]' id="emotional_disorder" value="Emotional Disorder" />
                                         <label for="emotional_disorder">Emotional Disorder</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="epilepsy_seizures" value="Epilepsy Seizures" />
+                                        <input type='checkbox' name='conditions[]' id="epilepsy_seizures" value="Epilepsy Seizures" />
                                         <label for="epilepsy_seizures">Epilepsy Seizures</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="fainting_spells" value="Fainting Spells" />
+                                        <input type='checkbox' name='conditions[]' id="fainting_spells" value="Fainting Spells" />
                                         <label for="fainting_spells">Fainting Spells</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="gallstones" value="Gallstones" />
+                                        <input type='checkbox' name='conditions[]' id="gallstones" value="Gallstones" />
                                         <label for="gallstones">Gallstones</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="heart_disease" value="Heart Disease" />
+                                        <input type='checkbox' name='conditionss[]' id="heart_disease" value="Heart Disease" />
                                         <label for="heart_disease">Heart Disease</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="heart_attack" value="Heart Attack" />
+                                        <input type='checkbox' name='conditions[]' id="heart_attack" value="Heart Attack" />
                                         <label for="heart_attack">Heart Attack</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="rheumatic_fever" value="Rheumatic Fever" />
+                                        <input type='checkbox' name='conditions[]' id="rheumatic_fever" value="Rheumatic Fever" />
                                         <label for="rheumatic_fever">Rheumatic Fever</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="high_blood_pressure" value="High Blood Pressure" />
+                                        <input type='checkbox' name='conditionss[]' id="high_blood_pressure" value="High Blood Pressure" />
                                         <label for="high_blood_pressure">High Blood Pressure</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="digestive_problems" value="Digestive Problems" />
+                                        <input type='checkbox' name='conditions[]' id="digestive_problems" value="Digestive Problems" />
                                         <label for="digestive_problems">Digestive Problems</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="ulcerative_colitis" value="Ulcerative Colitis" />
+                                        <input type='checkbox' name='conditions[]' id="ulcerative_colitis" value="Ulcerative Colitis" />
                                         <label for="ulcerative_colitis">Ulcerative Colitis</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="ulcer_disease" value="Ulcer Disease" />
+                                        <input type='checkbox' name='conditions[]' id="ulcer_disease" value="Ulcer Disease" />
                                         <label for="ulcer_disease">Ulcer Disease</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="hepatitis" value="Hepatitis" />
+                                        <input type='checkbox' name='conditions[]' id="hepatitis" value="Hepatitis" />
                                         <label for="hepatitis">Hepatitis</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="kidney_disease" value="Kidney Disease" />
+                                        <input type='checkbox' name='conditions[]' id="kidney_disease" value="Kidney Disease" />
                                         <label for="kidney_disease">Kidney Disease</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="liver_disease" value="Liver Disease" />
+                                        <input type='checkbox' name='conditions[]' id="liver_disease" value="Liver Disease" />
                                         <label for="liver_disease">Liver Disease</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="sleep_apnea" value="Sleep Apnea" />
+                                        <input type='checkbox' name='conditions[]' id="sleep_apnea" value="Sleep Apnea" />
                                         <label for="sleep_apnea">Sleep Apnea</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="use_machine" value="Use a C-PAP Machine" />
+                                        <input type='checkbox' name='conditions[]' id="use_machine" value="Use a C-PAP Machine" />
                                         <label for="use_machine">Use a C-PAP Machine</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="thyroid_problems" value="Thyroid Problems" />
+                                        <input type='checkbox' name='conditions[]' id="thyroid_problems" value="Thyroid Problems" />
                                         <label for="thyroid_problems">Thyroid Problems</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="tuberculosis" value="Tuberculosis" />
+                                        <input type='checkbox' name='conditions[]' id="tuberculosis" value="Tuberculosis" />
                                         <label for="tuberculosis">Tuberculosis</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="venereal_disease" value="Venereal Disease" />
+                                        <input type='checkbox' name='conditions[]' id="venereal_disease" value="Venereal Disease" />
                                         <label for="venereal_disease">Venereal Disease</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="neurological_disorders" value="Neurological Disorders" />
+                                        <input type='checkbox' name='conditions[]' id="neurological_disorders" value="Neurological Disorders" />
                                         <label for="neurological_disorders">Neurological Disorders</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="lung_disease" value="Lung Disease" />
+                                        <input type='checkbox' name='conditions[]' id="lung_disease" value="Lung Disease" />
                                         <label for="lung_disease">Lung Disease</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="emphysema" value="Emphysema" />
+                                        <input type='checkbox' name='conditions[]' id="emphysema" value="Emphysema" />
                                         <label for="emphysema">Emphysema</label>
 
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='condition_option[]' id="other1" value="Others: Please specify" />
+                                        <input type='checkbox' name='conditions[]' id="other1" value="other" />
                                         <label for="other1">Others: Please specify</label>
                                         <input type="text" name="other_condition_option">
-                                    </div>
+                                    </div>s
                                 </fieldset>
                                 <!--Select conditions checkbox end-->
 
@@ -210,59 +210,59 @@
                                 <fieldset>
                                     <p>Select the symptoms that you're currently experiencing:</p>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='symptoms_option[]' id="chest_pain" value="Chest pain" />
+                                        <input type='checkbox' name='symptoms[]' id="chest_pain" value="Chest pain" />
                                         <label for="chest_pain">Chest pain</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='symptoms_option[]' id="respiratory" value="Respiratory" />
+                                        <input type='checkbox' name='symptoms[]' id="respiratory" value="Respiratory" />
                                         <label for="respiratory">Respiratory</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='symptoms_option[]' id="cardiac_disease" value="Cardiac disease" />
+                                        <input type='checkbox' name='symptoms[]' id="cardiac_disease" value="Cardiac disease" />
                                         <label for="cardiac_disease">Cardiac disease</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='symptoms_option[]' id="cardiovascular" value="Cardiovascular" />
+                                        <input type='checkbox' name='symptoms[]' id="cardiovascular" value="Cardiovascular" />
                                         <label for="cardiovascular">Cardiovascular</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='symptoms_option[]' id="hematological" value="Hematological" />
+                                        <input type='checkbox' name='symptoms[]' id="hematological" value="Hematological" />
                                         <label for="hematological">Hematological</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='symptoms_option[]' id="lymphatic" value="Lymphatic" />
+                                        <input type='checkbox' name='symptoms[]' id="lymphatic" value="Lymphatic" />
                                         <label for="lymphatic">Lymphatic</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='symptoms_option[]' id="neurological" value="Neurological" />
+                                        <input type='checkbox' name='symptoms[]' id="neurological" value="Neurological" />
                                         <label for="neurological">Neurological</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='symptoms_option[]' id="psychiatric" value="Psychiatric" />
+                                        <input type='checkbox' name='symptoms[]' id="psychiatric" value="Psychiatric" />
                                         <label for="psychiatric">Psychiatric</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='symptoms_option[]' id="gastrointestinal" value="Gastrointestinal" />
+                                        <input type='checkbox' name='symptoms[]' id="gastrointestinal" value="Gastrointestinal" />
                                         <label for="gastrointestinal">Gastrointestinal</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='symptoms_option[]' id="genitourinary" value="Genitourinary" />
+                                        <input type='checkbox' name='symptoms[]' id="genitourinary" value="Genitourinary" />
                                         <label for="genitourinary">Genitourinary</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='symptoms_option[]' id="weight_gain" value="Weight gain" />
+                                        <input type='checkbox' name='symptoms[]' id="weight_gain" value="Weight gain" />
                                         <label for="weight_gain">Weight gain</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='symptoms_option[]' id="weight_loss" value="Weight loss" />
+                                        <input type='checkbox' name='symptoms[]' id="weight_loss" value="Weight loss" />
                                         <label for="weight_loss">Weight loss</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='symptoms_option[]' id="musculoskeletal" value="Musculoskeletal" />
+                                        <input type='checkbox' name='symptoms[]' id="musculoskeletal" value="Musculoskeletal" />
                                         <label for="musculoskeletal">Musculoskeletal</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='symptoms_option[]' id="other2" value="Others: Please specify" />
+                                        <input type='checkbox' name='symptoms[]' id="other2" value="other" />
                                         <label for="other2">Others: Please specify</label>
                                         <input type="text" name="other_symptoms_option">
                                         
@@ -271,40 +271,40 @@
 
                                     <!--Medication radio button start-->
                                     <p>Currently taking any medication?</p>
-                                    <input type="radio" id="yes" name="medication" value="Yes">
+                                    <input type="radio" id="yes" name="medication" value="yes">
                                     <label for="yes">Yes</label><br>
 
-                                    <input type="radio" id="no" name="medication" value="No">
+                                    <input type="radio" id="no" name="medication" value="no">
                                     <label for="no">No</label><br>
                                     <!--Medication radio button end-->
 
                                     <!--Allergies radio button start-->
                                     <p>Do you have any medication allergies?</p>
-                                    <input type="radio" id="yes" name="allergies" value="Yes">
+                                    <input type="radio" id="yes" name="allergies" value="yes">
                                     <label for="yes">Yes</label><br>
 
-                                    <input type="radio" id="no" name="allergies" value="No">
+                                    <input type="radio" id="no" name="allergies" value="no">
                                     <label for="no">No</label><br>
 
-                                    <input type="radio" id="unsure" name="allergies" value="Unsure">
+                                    <input type="radio" id="unsure" name="allergies" value="unsure">
                                     <label for="unsure">Unsure</label><br>
                                     <!--Allergies radio button end-->
 
                                     <!--Using tobacco radio button start-->
                                     <p>Do you use or do you have history of using tobacco?</p>
-                                    <input type="radio" id="yes" name="using_tobacco" value="Yes">
+                                    <input type="radio" id="yes" name="using_tobacco" value="yes">
                                     <label for="yes">Yes</label><br>
 
-                                    <input type="radio" id="no" name="using_tobacco" value="No">
+                                    <input type="radio" id="no" name="using_tobacco" value="no">
                                     <label for="no">No</label><br>
                                     <!--Using tobacco radio button end-->
 
                                     <!--Using illegal drugs radio button start-->
                                     <p>Do you use or do you have history of using illegal drugs?</p>
-                                    <input type="radio" id="yes" name="using_illegal_drug" value="Yes">
+                                    <input type="radio" id="yes" name="using_illegal_drug" value="yes">
                                     <label for="yes">Yes</label><br>
 
-                                    <input type="radio" id="no" name="using_illegal_drug" value="No">
+                                    <input type="radio" id="no" name="using_illegal_drug" value="no">
                                     <label for="no">No</label><br>
                                     <!--Medication radio button end-->
 

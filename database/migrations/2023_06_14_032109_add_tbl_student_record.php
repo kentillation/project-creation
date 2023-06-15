@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('tbl_student_record', function (Blueprint $table) {
-            // $table->unsignedBigInteger('status_record_id');
+        // Schema::table('tbl_student_record', function (Blueprint $table) {
+        //     // $table->unsignedBigInteger('status_record_id');
 
-            $table->foreign('status_record_id')->references('id')->on('tbl_status_record');
-        });
+        //     $table->foreign('status_record_id')->references('id')->on('tbl_status_record');
+        // });
     }
 
     /**
