@@ -3,7 +3,7 @@
 @section('page-content')
         <div id="loader"></div>
         <div id="forLoader" style="display:none;">
-            <div class="container mb-5 add-med-rec">
+            <div class="container mb-5 page view-record">
                 @if(Session::has('success'))
                     <div class="alert alert-success text-center" role="alert" id="alertbox">
                         {{ Session::get('success') }}
@@ -17,11 +17,11 @@
                     </div>
                 @endif
                 <div class="container">
-                    <p class="page-title">Main / View Medical Record</p>
+                    <p class="page-title">Main / View Medical Records / Record</p>
                     <div class="container header rounded shadow-sm mb-4">
                         <div class="header-content">
                             <span>
-                                &nbsp; Medical Records
+                                &nbsp; Medical Record
                             </span>
                         </div>
                     </div>
@@ -33,35 +33,205 @@
                     </div>
                     <div class="container border rounded p-5">
                         <div class="container mb-4">
-                            <div class="table-responsive">
-                                <table class="table table-hover text-center" id="table">
-                                    <thead class="text-bg-secondary">
-                                        <tr>
-                                            <th>First name</th>
-                                            <th>Middle name</th>
-                                            <th>Last name</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($tbl_student_record as $student_record)
-                                            <tr>
-                                                <td>{{ $student_record->first_name }}</td>
-                                                <td>{{ $student_record->middle_name }}</td>
-                                                <td>{{ $student_record->last_name }}</td>
-                                                <td>{{ $student_record->status_record_id == 1 ? "Pending" : "Approved"}}</td>
-                                                <td>
-                                                    <a href="#">
-                                                        <button class="btn-view btn-sm" title="VIEW RECORD">
-                                                            <i class="bi bi-eye"></i>
-                                                        </button>
-                                                    </a>
-                                                </td>
-                                            </tr>
+                            <div class="row">
+                                <!-- <div class="col-4">
+                                    <div class="container profile-list">
+                                        <ul>
+                                            <li>
+                                                <img src="<?php /* echo asset('images/profile.jpg') */ ?>" width="100px" alt="Profile Picture" />
+                                            </li>
+                                            <li><h4>This is my name</h4></li>
+                                            <li>Bachelor of Science in Nursing</li>
+                                            <li>Year Level | Section</li>
+                                            <li>
+                                                <button class="btn-profile">Link 1</button>
+                                                <button class="btn-profile-outline">Link 2</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div> -->
+                                <div class="col-6">
+                                    <p>Medical Record</p>
+                                    <div class="medical-record">
+                                        <ul>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <h6>Full name</h6>
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <h6>{{ $student_record[0]['first_name'] }} {{ $student_record[0]['middle_name'] }} {{ $student_record[0]['last_name'] }}</h6>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <hr />
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <h6>Age:</h6>
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <h6>{{ $student_record[0]['age'] }}</h6>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <hr />
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <h6>Date of birth:</h6>
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <h6>{{ $student_record[0]['date_of_birth'] }}</h6>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <hr />
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <h6>Phone:</h6>
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <h6>{{ $student_record[0]['phone'] }}</h6>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <hr />
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <h6>Address:</h6>
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <h6>{{ $student_record[0]['street_address'] }}, {{ $student_record[0]['muni_city'] }} City, Barangay {{ $student_record[0]['barangay'] }}</h6>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <hr />
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <h6>Civil Status:</h6>
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <h6>{{ $student_record[0]['civil_status'] }}</h6>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <hr />
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <h6>Citizenship:</h6>
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <h6>{{ $student_record[0]['citizenship'] }}</h6>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <hr />
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <h6>Height:</h6>
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <h6>{{ $student_record[0]['height'] }}</h6>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <hr />
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <h6>Weight:</h6>
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <h6>{{ $student_record[0]['weight'] }}</h6>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <hr />
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <h6>BMI:</h6>
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <h6>{{ $student_record[0]['bmi'] }}</h6>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <hr />
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <h6>Gender:</h6>
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <h6>{{ $student_record[0]['gender_id'] }}</h6>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <hr />
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <h6>Blood type:</h6>
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <h6>{{ $student_record[0]['blood_type_id'] }}</h6>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <hr />
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <p>Medical History</p>
+                                    <div class="medical-record">
+                                        @foreach ($medical_history as $med_history)
+                                        <ul>
+                                            <li>
+                                                <h6><strong>Checked conditions that apply to you or any of your close family members:</strong></h6>
+                                                <h6>{{ $med_history->condition_option }}, {{ $med_history->other_condition_option }}</h6>
+                                            </li>
+                                            <hr />
+                                            <li>
+                                                <h6><strong>Checked symptoms that you're currently experiencing:</strong></h6>
+                                                <h6>sample text</h6>
+                                            </li>
+                                            <hr />
+                                            <li>
+                                                <h6><strong>Currently taking any medication?</strong></h6>
+                                                <h6>sample text</h6>
+                                            </li>
+                                            <hr />
+                                            <li>
+                                                <h6><strong>Do you have any medication allergies?</strong></h6>
+                                                <h6>sample text</h6>
+                                            </li>
+                                            <hr />
+                                            <li>
+                                                <h6><strong>Do you use or do you have history of using tobacco?</strong></h6>
+                                                <h6>sample text</h6>
+                                            </li>
+                                            <hr />
+                                            <li>
+                                                <h6><strong>Do you use or do you have history of using illegal drugs?</strong></h6>
+                                                <h6>sample text</h6>
+                                            </li>
+                                            <hr />
+                                            <li>
+                                                <h6><strong>How often do you consume alcohol?</strong></h6>
+                                                <h6>sample text</h6>
+                                            </li>
+                                        </ul>
                                         @endforeach
-                                    </tbody>
-                                </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -29,12 +29,12 @@
                                         &nbsp;  Add Medical Record
                                 </a>
                                         
-                                <a href="{{ route('view-medical-record') }}" class="record shadow-sm">
+                                <a href="{{ route('view-medical-records') }}" class="record shadow-sm">
                                         <i class="bi bi-search"></i>
                                         &nbsp; View Medical Records
                                 </a>
 
-                                <a href="{{ route('view-medical-history') }}" class="record shadow-sm">
+                                <a href="{{ route('view-medical-histories') }}" class="record shadow-sm">
                                         <i class="bi bi-eye"></i>
                                         &nbsp; View Medical History
                                 </a>

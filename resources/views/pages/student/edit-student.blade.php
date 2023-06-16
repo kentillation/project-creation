@@ -5,9 +5,10 @@
         <div id="forLoader" style="display:none;">
             <div class="container border rounded p-5 mt-5">
                 <div class="container">
-                    <div class="mb-5">
-                        <a href="{{ route('student-list') }}" class="back-arrow" title="BACK">
+                    <div class="mb-3">
+                        <a href="{{ route('student-list') }}" title="Back" class="back">
                             <i class="bi bi-arrow-left"></i>
+                                &nbsp;Back
                         </a>
                     </div>
                     <form method="post" action="{{ route('update-save-student', ['id' => $tbl_student['id']]) }}">

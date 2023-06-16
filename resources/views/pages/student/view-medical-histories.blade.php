@@ -1,4 +1,4 @@
-@extends('includes/clinician-sidenav')
+@extends('includes/student-sidenav')
 
 @section('page-content')
         <div id="loader"></div>
@@ -17,17 +17,16 @@
                     </div>
                 @endif
                 <div class="container">
-                    <p class="page-title">Request / Pending Medical Records</p>
+                    <p class="page-title">Main / View Medical History</p>
                     <div class="container header rounded shadow-sm mb-4">
                         <div class="header-content">
-                            <i class="bi bi-clock-history"></i> 
                             <span>
-                                &nbsp; Pending Medical Records
+                                &nbsp; Medical History
                             </span>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <a href="{{ route('clinician-dashboard') }}" title="Back" class="back">
+                        <a href="{{ route('student-dashboard') }}" title="Back" class="back">
                             <i class="bi bi-arrow-left"></i>
                                 &nbsp;Back
                         </a>
@@ -38,28 +37,15 @@
                                 <table class="table table-hover text-center" id="table">
                                     <thead class="text-bg-secondary">
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Phone</th>
-                                            <th>Municipality / City</th>
+                                            <th>First name</th>
+                                            <th>Middle name</th>
+                                            <th>Last name</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($c_pending_records as $student_record)
-                                            <tr>
-                                                <td>{{ $student_record->first_name }} {{ $student_record->middle_name }} {{ $student_record->last_name }}</td>
-                                                <td>{{ $student_record->phone }}</td>
-                                                <td>{{ $student_record->muni_city }}</td>
-                                                <td>
-                                                    <a href="{{ route('update-pending-record', ['id' => $student_record->id] ) }}">
-                                                        <button class="btn-view" title="View record">
-                                                            <i class="bi bi-eye"></i>
-                                                            &nbsp; View record
-                                                        </button>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                        
                                     </tbody>
                                 </table>
                             </div>

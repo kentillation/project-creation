@@ -3,7 +3,7 @@
 @section('page-content')
         <div id="loader"></div>
         <div id="forLoader" style="display:none;">
-            <div class="container clinician-list mb-5">
+            <div class="container page mb-5">
                 @if(Session::has('success'))
                     <div class="alert alert-success text-center" role="alert" id="alertbox">
                         {{ Session::get('success') }}
@@ -17,131 +17,127 @@
                     </div>
                 @endif
                 <div class="container">
-                    <p class="page-title">Request / Pending Medical Records / Edit Medical Record</p>
+                    <p class="page-title">Request / Pending Medical Records / Medical Record</p>
                     <div class="container header rounded shadow-sm mb-4">
                         <div class="header-content">
                             <i class="bi bi-clock-history"></i> 
                             <span>
-                                &nbsp; Pending Medical Record
+                                &nbsp; Medical Record
                             </span>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <a href="{{ route('pending-medical-records') }}" title="Back" class="back">
+                        <a href="{{ route('c-pending-medical-records') }}" title="Back" class="back">
                             <i class="bi bi-arrow-left"></i>
                                 &nbsp;Back
                         </a>
                     </div>
                     <div class="container border rounded p-5">
                         <div class="container mb-4">
-                            <form method="POST" action="{{ route('save-update-pending-record', ['id' => $update_pending['id']]) }}">
+                            <form method="POST" action="{{ route('save-update-pending-record', ['id' => $c_update_pending['id']]) }}">
                                 @csrf
                                 <div class="row">
                                     <div class="col-lg-4 col-md-6 col-sm-6" style="display: none;">
                                         <label for="student_id">Student ID</label>
-                                        <input type='text' name='student_id' id="student_id" value="{{ $update_pending->id }}" class="form-control mb-3"/>
+                                        <input type='text' name='student_id' id="student_id" value="{{ $c_update_pending->id }}" class="form-control mb-3"/>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <label for="first_name">First Name</label>
-                                        <input type='text' name='first_name' id="first_name" value="{{ $update_pending->first_name }}" class="form-control mb-3" />
+                                        <input type='text' name='first_name' id="first_name" value="{{ $c_update_pending->first_name }}" class="form-control mb-3" />
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <label for="middle_name">Middle Name</label>
-                                        <input type='text' name='middle_name' id="middle_name" value="{{ $update_pending->middle_name }}" class="form-control mb-3" />
+                                        <input type='text' name='middle_name' id="middle_name" value="{{ $c_update_pending->middle_name }}" class="form-control mb-3" />
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <label for="last_name">Last Name</label>
-                                        <input type='text' name='last_name' id="last_name" value="{{ $update_pending->last_name }}" class="form-control mb-3" />
+                                        <input type='text' name='last_name' id="last_name" value="{{ $c_update_pending->last_name }}" class="form-control mb-3" />
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <label for="street_address">Street Address / Street Number</label>
-                                        <input type='text' name='street_address' id="street_address" value="{{ $update_pending->street_address }}" class="form-control mb-3" required />
+                                        <input type='text' name='street_address' id="street_address" value="{{ $c_update_pending->street_address }}" class="form-control mb-3" required />
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <label for="barangay">Barangay</label>
-                                        <input type='text' name='barangay' id="barangay" value="{{ $update_pending->barangay }}" class="form-control mb-3" required />
+                                        <input type='text' name='barangay' id="barangay" value="{{ $c_update_pending->barangay }}" class="form-control mb-3" required />
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <label for="muni_city">Municipality / City</label>
-                                        <input type='text' name='muni_city' id="muni_city" value="{{ $update_pending->muni_city }}" class="form-control mb-3" required />
+                                        <input type='text' name='muni_city' id="muni_city" value="{{ $c_update_pending->muni_city }}" class="form-control mb-3" required />
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <label for="date_of_birth">Date of Birth</label>
-                                        <input type='date' name='date_of_birth' id="date_of_birth" value="{{ $update_pending->date_of_birth }}" class="form-control mb-3" required />
+                                        <input type='date' name='date_of_birth' id="date_of_birth" value="{{ $c_update_pending->date_of_birth }}" class="form-control mb-3" required />
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <label for="age">Age</label>
-                                        <input type='number' name='age' id="age" value="{{ $update_pending->age }}" class="form-control mb-3" required />
+                                        <input type='number' name='age' id="age" value="{{ $c_update_pending->age }}" class="form-control mb-3" required />
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <label for="phone">Phone</label>
-                                        <input type='number' name='phone' id="phone" value="{{ $update_pending->phone }}" class="form-control mb-3" />
+                                        <input type='number' name='phone' id="phone" value="{{ $c_update_pending->phone }}" class="form-control mb-3" />
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <label for="civil_status">Civil Status</label>
-                                        <input type='text' name='civil_status' id="civil_status" value="{{ $update_pending->civil_status }}" class="form-control mb-3" required />
+                                        <input type='text' name='civil_status' id="civil_status" value="{{ $c_update_pending->civil_status }}" class="form-control mb-3" required />
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <label for="citizenship">Citizenship</label>
-                                        <input type='text' name='citizenship' id="citizenship" value="{{ $update_pending->citizenship }}" class="form-control mb-3" required />
+                                        <input type='text' name='citizenship' id="citizenship" value="{{ $c_update_pending->citizenship }}" class="form-control mb-3" required />
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <label for="height">Height (cm)</label>
-                                        <input type='text' name='height' id="height" value="{{ $update_pending->height }}" class="form-control mb-3" required />
+                                        <input type='text' name='height' id="height" value="{{ $c_update_pending->height }}" class="form-control mb-3" required />
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <label for="weight">Weight (lbs)</label>
-                                        <input type='text' name='weight' id="weight" value="{{ $update_pending->weight }}" class="form-control mb-3" required />
+                                        <input type='text' name='weight' id="weight" value="{{ $c_update_pending->weight }}" class="form-control mb-3" required />
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <label for="bmi">BMI</label>
-                                        <input type='text' name='bmi' id="bmi" value="{{ $update_pending->bmi }}" class="form-control mb-3" required />
+                                        <input type='text' name='bmi' id="bmi" value="{{ $c_update_pending->bmi }}" class="form-control mb-3" required />
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <label for="year_level">Year Level</label>
                                         <select id="year_level" name="year_level" class="form-control mb-3">
-                                            <option value="{{ $update_pending->year_level_id }}">{{ $update_pending->year_level_id }}</option>
-                                            <option value="1">1st year</option>
-                                            <option value="2">2nd year</option>
-                                            <option value="3">3rd year</option>
-                                            <option value="4">4th year</option>
+                                            <option {{ $c_update_pending->year_level_id == 1 ? 'selected' : '' }} value="1">1st year</option>
+                                            <option {{ $c_update_pending->year_level_id == 2 ? 'selected' : '' }} value="2">2nd year</option>
+                                            <option {{ $c_update_pending->year_level_id == 3 ? 'selected' : '' }} value="3">3rd year</option>
+                                            <option {{ $c_update_pending->year_level_id == 4 ? 'selected' : '' }} value="4">4th year</option>
                                         </select>                                
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <label for="section">Section</label>
                                         <select id="section" name="section" class="form-control mb-3">
-                                            <option value="{{ $update_pending->section_id }}">{{ $update_pending->section_id }}</option>
-                                            <option value="1">A</option>
-                                            <option value="2">B</option>
-                                            <option value="3">C</option>
-                                            <option value="4">D</option>
+                                            <option {{ $c_update_pending->section_id == 1 ? 'selected' : '' }} value="1">A</option>
+                                            <option {{ $c_update_pending->section_id == 2 ? 'selected' : '' }} value="2">B</option>
+                                            <option {{ $c_update_pending->section_id == 3 ? 'selected' : '' }} value="3">C</option>
+                                            <option {{ $c_update_pending->section_id == 4 ? 'selected' : '' }} value="4">D</option>
                                         </select>                                
                                     </div>
-
+                                 
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <label for="gender">Gender</label>
                                         <select id="gender" name="gender" class="form-control mb-3">
-                                            <option value="{{ $update_pending->gender_id }}">{{ $update_pending->gender_id }}</option>
-                                            <option value="1">Male</option>
-                                            <option value="2">Female</option>
+                                            <option {{ $c_update_pending->gender_id == 1 ? 'selected' : '' }} value="1">Male</option>
+                                            <option {{ $c_update_pending->gender_id == 2 ? 'selected' : '' }} value="2">Female</option>
                                         </select>                                
                                     </div>
 
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <label for="blood_type">Blood Type</label>
                                         <select id="blood_type" name="blood_type" class="form-control mb-3">
-                                            <option value="{{ $update_pending->blood_type_id }}">{{ $update_pending->blood_type_id }}</option>
-                                            <option value="1">A+</option>
-                                            <option value="2">A-</option>
-                                            <option value="3">B+</option>
-                                            <option value="4">B-</option>
-                                            <option value="5">AB+</option>
-                                            <option value="6">AB-</option>
-                                            <option value="7">O+</option>
-                                            <option value="8">O-</option>
+                                            <option {{ $c_update_pending->blood_type_id == 1 ? 'selected' : '' }} value="1">A+</option>
+                                            <option {{ $c_update_pending->blood_type_id == 2 ? 'selected' : '' }}  value="2">A-</option>
+                                            <option {{ $c_update_pending->blood_type_id == 3 ? 'selected' : '' }}  value="3">B+</option>
+                                            <option {{ $c_update_pending->blood_type_id == 4 ? 'selected' : '' }}  value="4">B-</option>
+                                            <option {{ $c_update_pending->blood_type_id == 5 ? 'selected' : '' }}  value="5">AB+</option>
+                                            <option {{ $c_update_pending->blood_type_id == 6 ? 'selected' : '' }}  value="6">AB-</option>
+                                            <option {{ $c_update_pending->blood_type_id == 7 ? 'selected' : '' }}  value="7">O+</option>
+                                            <option {{ $c_update_pending->blood_type_id == 8 ? 'selected' : '' }}  value="8">O-</option>
                                         </select>                                
                                     </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="col-lg-4 col-md-6 col-sm-6" style="display:none;">
                                         <label for="status_record">Status Record</label>
                                         <input type='text' name='status_record' id="status_record" value="3" class="form-control mb-3" required />
                                     </div>
@@ -155,7 +151,7 @@
                                         </a>
                                     </div>
                                     <div>
-                                        <a href="#!" class="btn-profile" data-bs-toggle="modal" data-bs-target="#doyouModal">
+                                        <a href="#!" class="btn-next" data-bs-toggle="modal" data-bs-target="#doyouModal">
                                             Next
                                             &nbsp;<i class="bi bi-arrow-right"></i>
                                         </a>
