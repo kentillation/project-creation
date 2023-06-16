@@ -3,7 +3,7 @@
 @section('page-content')
         <div id="loader"></div>
         <div id="forLoader" style="display:none;">
-            <div class="container mb-5 add-med-rec">
+            <div class="container page mb-5">
                 @if(Session::has('success'))
                     <div class="alert alert-success text-center" role="alert" id="alertbox">
                         {{ Session::get('success') }}
@@ -17,11 +17,11 @@
                     </div>
                 @endif
                 <div class="container">
-                    <p class="page-title">Main / View Medical History</p>
+                    <p class="page-title">Main / View Medical Records</p>
                     <div class="container header rounded shadow-sm mb-4">
                         <div class="header-content">
                             <span>
-                                &nbsp; Medical History
+                                &nbsp; Medical Records
                             </span>
                         </div>
                     </div>
@@ -37,15 +37,26 @@
                                 <table class="table table-hover text-center" id="table">
                                     <thead class="text-bg-secondary">
                                         <tr>
-                                            <th>First name</th>
-                                            <th>Middle name</th>
-                                            <th>Last name</th>
-                                            <th>Status</th>
+                                            <th>Student Name</th>
+                                            <th>Request Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                        @foreach ($student_records as $student_record)
+                                            <tr>
+                                                <td>{{ $student_record->last_name }}, {{ $student_record->first_name }} {{ $student_record->middle_name }}</td>
+                                                <td>{{ $student_record->status_record_id == 1 ? "Pending" : "Approved"}}</td>
+                                                <td>
+                                                    <a href="{{ route('view-record') }}">
+                                                        <button class="btn-view btn-sm" title="View Record">
+                                                            <i class="bi bi-eye"></i>
+                                                            &nbsp; View Record
+                                                        </button>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

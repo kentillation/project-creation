@@ -3,7 +3,7 @@
 @section('page-content')
         <div id="loader"></div>
         <div id="forLoader" style="display:none;">
-            <div class="container mb-5 add-med-rec">
+            <div class="container page mb-5">
                 @if(Session::has('success'))
                     <div class="alert alert-success text-center" role="alert" id="alertbox">
                         {{ Session::get('success') }}
@@ -26,7 +26,12 @@
                             </span>
                         </div>
                     </div>
-                    <div class="container"></div>
+                    <div class="mb-3">
+                        <a href="{{ route('add-medical-record') }}" title="Back" class="back">
+                            <i class="bi bi-arrow-left"></i>
+                                &nbsp;Back
+                        </a>
+                    </div>
                     <div class="container border rounded p-5">
                         <form method="POST" action="{{ route('save-medical-history') }}">
                             @csrf
@@ -37,7 +42,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <label for="created_at">Date:</label>
-                                    <input type='date' name='created_at' id="created_at" value="" class="form-control mb-3 readonly" required />
+                                    <input type='date' name='created_at' id="created_at" value="" class="form-control mb-3" required />
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <label for="first_name">First Name</label>
@@ -84,123 +89,124 @@
 
                                 <!--Select conditions checkbox start-->
                                 <fieldset>
-                                    <p>Select the conditions that apply to you or any of your close family members:</p>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="anemia" value="Anemia" />
-                                        <label for="anemia">Anemia</label>
+                                    <p class="mt-5">Select the conditions that apply to you or any of your close family members:</p>
+                                    <div class="row">
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="anemia" value="Anemia" />
+                                            <label for="anemia">Anemia</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="asthma" value="Asthma" />
+                                            <label for="asthma">Asthma</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="arthritis" value="Arthritis" />
+                                            <label for="arthritis">Arthritis</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="cancer" value="Cancer" />
+                                            <label for="cancer">Cancer</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="gout" value="Gout" />
+                                            <label for="gout">Gout</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="diabetes" value="Diabetes" />
+                                            <label for="diabetes">Diabetes</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="emotional_disorder" value="Emotional Disorder" />
+                                            <label for="emotional_disorder">Emotional Disorder</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="epilepsy_seizures" value="Epilepsy Seizures" />
+                                            <label for="epilepsy_seizures">Epilepsy Seizures</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="fainting_spells" value="Fainting Spells" />
+                                            <label for="fainting_spells">Fainting Spells</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="gallstones" value="Gallstones" />
+                                            <label for="gallstones">Gallstones</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditionss[]' id="heart_disease" value="Heart Disease" />
+                                            <label for="heart_disease">Heart Disease</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="heart_attack" value="Heart Attack" />
+                                            <label for="heart_attack">Heart Attack</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="rheumatic_fever" value="Rheumatic Fever" />
+                                            <label for="rheumatic_fever">Rheumatic Fever</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditionss[]' id="high_blood_pressure" value="High Blood Pressure" />
+                                            <label for="high_blood_pressure">High Blood Pressure</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="digestive_problems" value="Digestive Problems" />
+                                            <label for="digestive_problems">Digestive Problems</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="ulcerative_colitis" value="Ulcerative Colitis" />
+                                            <label for="ulcerative_colitis">Ulcerative Colitis</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="ulcer_disease" value="Ulcer Disease" />
+                                            <label for="ulcer_disease">Ulcer Disease</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="hepatitis" value="Hepatitis" />
+                                            <label for="hepatitis">Hepatitis</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="kidney_disease" value="Kidney Disease" />
+                                            <label for="kidney_disease">Kidney Disease</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="liver_disease" value="Liver Disease" />
+                                            <label for="liver_disease">Liver Disease</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="sleep_apnea" value="Sleep Apnea" />
+                                            <label for="sleep_apnea">Sleep Apnea</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="use_machine" value="Use a C-PAP Machine" />
+                                            <label for="use_machine">Use a C-PAP Machine</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="thyroid_problems" value="Thyroid Problems" />
+                                            <label for="thyroid_problems">Thyroid Problems</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="tuberculosis" value="Tuberculosis" />
+                                            <label for="tuberculosis">Tuberculosis</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="venereal_disease" value="Venereal Disease" />
+                                            <label for="venereal_disease">Venereal Disease</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="neurological_disorders" value="Neurological Disorders" />
+                                            <label for="neurological_disorders">Neurological Disorders</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="lung_disease" value="Lung Disease" />
+                                            <label for="lung_disease">Lung Disease</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <input type='checkbox' name='conditions[]' id="emphysema" value="Emphysema" />
+                                            <label for="emphysema">Emphysema</label>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="asthma" value="Asthma" />
-                                        <label for="asthma">Asthma</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="arthritis" value="Arthritis" />
-                                        <label for="arthritis">Arthritis</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="cancer" value="Cancer" />
-                                        <label for="cancer">Cancer</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="gout" value="Gout" />
-                                        <label for="gout">Gout</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="diabetes" value="Diabetes" />
-                                        <label for="diabetes">Diabetes</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="emotional_disorder" value="Emotional Disorder" />
-                                        <label for="emotional_disorder">Emotional Disorder</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="epilepsy_seizures" value="Epilepsy Seizures" />
-                                        <label for="epilepsy_seizures">Epilepsy Seizures</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="fainting_spells" value="Fainting Spells" />
-                                        <label for="fainting_spells">Fainting Spells</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="gallstones" value="Gallstones" />
-                                        <label for="gallstones">Gallstones</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditionss[]' id="heart_disease" value="Heart Disease" />
-                                        <label for="heart_disease">Heart Disease</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="heart_attack" value="Heart Attack" />
-                                        <label for="heart_attack">Heart Attack</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="rheumatic_fever" value="Rheumatic Fever" />
-                                        <label for="rheumatic_fever">Rheumatic Fever</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditionss[]' id="high_blood_pressure" value="High Blood Pressure" />
-                                        <label for="high_blood_pressure">High Blood Pressure</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="digestive_problems" value="Digestive Problems" />
-                                        <label for="digestive_problems">Digestive Problems</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="ulcerative_colitis" value="Ulcerative Colitis" />
-                                        <label for="ulcerative_colitis">Ulcerative Colitis</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="ulcer_disease" value="Ulcer Disease" />
-                                        <label for="ulcer_disease">Ulcer Disease</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="hepatitis" value="Hepatitis" />
-                                        <label for="hepatitis">Hepatitis</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="kidney_disease" value="Kidney Disease" />
-                                        <label for="kidney_disease">Kidney Disease</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="liver_disease" value="Liver Disease" />
-                                        <label for="liver_disease">Liver Disease</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="sleep_apnea" value="Sleep Apnea" />
-                                        <label for="sleep_apnea">Sleep Apnea</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="use_machine" value="Use a C-PAP Machine" />
-                                        <label for="use_machine">Use a C-PAP Machine</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="thyroid_problems" value="Thyroid Problems" />
-                                        <label for="thyroid_problems">Thyroid Problems</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="tuberculosis" value="Tuberculosis" />
-                                        <label for="tuberculosis">Tuberculosis</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="venereal_disease" value="Venereal Disease" />
-                                        <label for="venereal_disease">Venereal Disease</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="neurological_disorders" value="Neurological Disorders" />
-                                        <label for="neurological_disorders">Neurological Disorders</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="lung_disease" value="Lung Disease" />
-                                        <label for="lung_disease">Lung Disease</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='conditions[]' id="emphysema" value="Emphysema" />
-                                        <label for="emphysema">Emphysema</label>
-
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="col-sm-6 col-md-6 col-lg-4">
                                         <input type='checkbox' name='conditions[]' id="other1" value="other" />
-                                        <label for="other1">Others: Please specify</label>
+                                        <label for="other1">Others: <i>Please specify</i></label>
                                         <input type="text" class="form-control" name="other_condition_option">
                                     </div>
                                 </fieldset>
@@ -208,7 +214,7 @@
 
                                 <!--Select symtoms checkbox start-->
                                 <fieldset>
-                                    <p>Select the symptoms that you're currently experiencing:</p>
+                                    <p class="mt-5">Select the symptoms that you're currently experiencing:</p>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <input type='checkbox' name='symptoms[]' id="chest_pain" value="Chest pain" />
                                         <label for="chest_pain">Chest pain</label>
@@ -263,71 +269,71 @@
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <input type='checkbox' name='symptoms[]' id="other2" value="other" />
-                                        <label for="other2">Others: Please specify</label>
+                                        <label for="other2">Others: <i>Please specify</i></label>
                                         <input type="text" class="form-control" name="other_symptoms_option">
                                         
                                     </div>
                                     <!--Select symtoms checkbox end-->
 
                                     <!--Medication radio button start-->
-                                    <p>Currently taking any medication?</p>
-                                    <input type="radio" id="yes" name="medication" value="yes">
-                                    <label for="yes">Yes</label><br>
+                                    <p class="mt-5">Currently taking any medication?</p>
+                                    <input type="radio" id="medication_yes" name="medication" value="yes">
+                                    <label for="medication_yes">Yes</label><br>
 
-                                    <input type="radio" id="no" name="medication" value="no">
-                                    <label for="no">No</label><br>
+                                    <input type="radio" id="medication_no" name="medication" value="no">
+                                    <label for="medication_no">No</label><br>
                                     <!--Medication radio button end-->
 
                                     <!--Allergies radio button start-->
-                                    <p>Do you have any medication allergies?</p>
-                                    <input type="radio" id="yes" name="allergies" value="yes">
-                                    <label for="yes">Yes</label><br>
+                                    <p class="mt-5">Do you have any medication allergies?</p>
+                                    <input type="radio" id="allergies_yes" name="allergies" value="yes">
+                                    <label for="allergies_yes">Yes</label><br>
 
-                                    <input type="radio" id="no" name="allergies" value="no">
-                                    <label for="no">No</label><br>
+                                    <input type="radio" id="allergies_no" name="allergies" value="no">
+                                    <label for="allergies_no">No</label><br>
 
-                                    <input type="radio" id="unsure" name="allergies" value="unsure">
-                                    <label for="unsure">Unsure</label><br>
+                                    <input type="radio" id="allergies_unsure" name="allergies" value="unsure">
+                                    <label for="allergies_unsure">Unsure</label><br>
                                     <!--Allergies radio button end-->
 
                                     <!--Using tobacco radio button start-->
-                                    <p>Do you use or do you have history of using tobacco?</p>
-                                    <input type="radio" id="yes" name="using_tobacco" value="yes">
-                                    <label for="yes">Yes</label><br>
+                                    <p class="mt-5">Do you use or do you have history of using tobacco?</p>
+                                    <input type="radio" id="using_tobacco_yes" name="using_tobacco" value="yes">
+                                    <label for="using_tobacco_yes">Yes</label><br>
 
-                                    <input type="radio" id="no" name="using_tobacco" value="no">
-                                    <label for="no">No</label><br>
+                                    <input type="radio" id="using_tobacco_no" name="using_tobacco" value="no">
+                                    <label for="using_tobacco_no">No</label><br>
                                     <!--Using tobacco radio button end-->
 
                                     <!--Using illegal drugs radio button start-->
-                                    <p>Do you use or do you have history of using illegal drugs?</p>
-                                    <input type="radio" id="yes" name="using_illegal_drug" value="yes">
-                                    <label for="yes">Yes</label><br>
+                                    <p class="mt-5">Do you use or do you have history of using illegal drugs?</p>
+                                    <input type="radio" id="using_illegal_drug_yes" name="using_illegal_drug" value="yes">
+                                    <label for="using_illegal_drug_yes">Yes</label><br>
 
-                                    <input type="radio" id="no" name="using_illegal_drug" value="no">
-                                    <label for="no">No</label><br>
+                                    <input type="radio" id="using_illegal_drug_no" name="using_illegal_drug" value="no">
+                                    <label for="using_illegal_drug_no">No</label><br>
                                     <!--Medication radio button end-->
 
                                     <!--Consume alcohol checkbox start-->
-                                    <p>How often do you consume alcohol?</p>
+                                    <p class="mt-5">How often do you consume alcohol?</p>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='consume_alcohol[]' id="daily" value="Daily" />
+                                        <input type='radio' name='consume_alcohol' id="daily" value="Daily" />
                                         <label for="daily">Daily</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='consume_alcohol[]' id="weekly" value="Weekly" />
+                                        <input type='radio' name='consume_alcohol' id="weekly" value="Weekly" />
                                         <label for="weekly">Weekly</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='consume_alcohol[]' id="monthly" value="Monthly" />
+                                        <input type='radio' name='consume_alcohol' id="monthly" value="Monthly" />
                                         <label for="monthly">Monthly</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='consume_alcohol[]' id="occasionally" value="Occasionally" />
+                                        <input type='radio' name='consume_alcohol' id="occasionally" value="Occasionally" />
                                         <label for="occasionally">Occasionally</label>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input type='checkbox' name='consume_alcohol[]' id="never" value="Never" />
+                                        <input type='radio' name='consume_alcohol' id="never" value="Never" />
                                         <label for="never">Never</label>
                                     </div>
                                     <!--Consume alcohol checkbox end-->
@@ -336,44 +342,14 @@
 
                             </div>
                             <div class="split mt-4">
+                                <div></div>
                                 <div>
-                                    <a href="#!" class="btn-profile" data-bs-toggle="modal" data-bs-target="#doyouModal">
+                                    <button type="submit" class="btn-next">
                                         Next
                                         &nbsp;<i class="bi bi-arrow-right"></i>
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
-                            <!-- Modal-->
-                            <div class="modal fade" id="doyouModal">
-                                <div class="modal-dialog modal-md">
-                                    <div class="modal-content">
-                                        <!-- Modal Header -->
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Confirmation</h5>
-                                            <button class="btn-close" data-bs-dismiss="modal"></button>
-                                        </div>
-
-                                        <!-- Modal body -->
-                                        <div class="modal-body">
-                                            <div class="container mt-3 mb-3">
-                                                <div class="text-center">
-                                                    <p class="mb-3">Do you want to proceed?</p>
-                                                </div>
-                                                <div class="modal-split">
-                                                    <div class="">
-                                                        <button type="submit" class="btn mb-2">Yes</button>
-                                                    </div>
-                                                    <div class="">
-                                                        <a href="{{ route('student-dashboard') }}">
-                                                            <button class="btn mb-2">No</button>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> <!-- End of modal body-->
-                                    </div> <!-- End of modal content-->
-                                </div>
-                            </div> <!-- End of Modal-->
                         </form>
                     </div>
                     

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<?php echo asset('bootstrap/css/bootstrap.min.css') ?>" />
     <link rel="stylesheet" href="<?php echo asset('bootstrap-icons/bootstrap-icons.css') ?>" />
     <link rel="stylesheet" href="<?php echo asset('bootstrap/js/bootstrap.min.js') ?>" />
+    <link rel="icon" href="<?php echo asset('images/ehr_logo_v2.png') ?>" />
     <script src="<?php echo asset('main.js') ?>"></script>
 </head>
 

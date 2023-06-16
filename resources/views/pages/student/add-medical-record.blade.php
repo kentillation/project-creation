@@ -3,7 +3,7 @@
 @section('page-content')
         <div id="loader"></div>
         <div id="forLoader" style="display:none;">
-            <div class="container add-med-rec mb-5">
+            <div class="container page add-med-record mb-5">
                 @if(Session::has('success'))
                     <div class="alert alert-success text-center" role="alert" id="alertbox">
                         {{ Session::get('success') }}
@@ -145,7 +145,7 @@
                             <div class="split mt-4">
                                 <div></div>
                                 <div>
-                                    <a href="#!" class="btn-profile" data-bs-toggle="modal" data-bs-target="#doyouModal">
+                                    <a href="#!" class="btn-next" data-bs-toggle="modal" data-bs-target="#doyouModal" id="nextBtn">
                                         Next
                                         &nbsp;<i class="bi bi-arrow-right"></i>
                                     </a>
@@ -169,12 +169,12 @@
                                                 </div>
                                                 <div class="modal-split">
                                                     <div class="">
-                                                        <a href="@" class="btn mb-2">
+                                                        <a href="{{ route('add-medical-history') }}" class="btn mb-2">
                                                             Yes
                                                         </a>
                                                     </div>
                                                     <div class="">
-                                                        <button type="submit" class="btn mb-2">No</button>
+                                                        <button type="submit" class="btn mb-2">No, send my request</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -184,11 +184,7 @@
                             </div> <!-- End of Modal-->
                         </form>
                     </div>
-                    
                 </div>
-
-
-            
-
+            </div>
         </div>
 @endsection

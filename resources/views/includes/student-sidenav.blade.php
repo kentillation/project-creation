@@ -69,7 +69,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('view-medical-record') }}" class="btn-sidenav" title="Dashboard">
+                        <a href="{{ route('view-medical-records') }}" class="btn-sidenav" title="Dashboard">
                             <i class="bi bi-eye"></i>
                             <span>
                                 &nbsp;View Records
@@ -99,6 +99,7 @@
                 </ul>
                 <hr>
                 <h6 class="login-as">Login as: Student</h6>
+                <h6 class="login-as">Student ID: {{ Session::get('student_id') }}</h6>
                 <div class=" mt-4">
                     <form action="{{ route('student-logout') }}" method="POST" >
                         @csrf

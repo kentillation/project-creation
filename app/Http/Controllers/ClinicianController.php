@@ -160,7 +160,7 @@ class ClinicianController extends Controller
     //EDITING STUDENT PENDING RECORD
     public function update_pending_record(Request $request, $id) {
         $pending_record = StudentRecordModel::find($id);
-        return view('pages/clinician/edit-pending-record', ['update_pending'=> $pending_record]);
+        return view('pages/clinician/edit-pending-record', ['c_update_pending'=> $pending_record]);
     }
 
     //UPDATING STUDENT PENDING RECORD

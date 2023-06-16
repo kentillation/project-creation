@@ -168,7 +168,7 @@ class StudentController extends Controller
     {
         $id = Session::get('id');
         $result_info = StudentModel::where('id',$id)->get();
-        return view('pages/student/add-record', ['student'=>$result_info]);
+        return view('pages/student/add-medical-record', ['student'=>$result_info]);
     }
 
     public function add_medical_history () 
@@ -178,21 +178,36 @@ class StudentController extends Controller
         return view('pages/student/add-medical-history', ['student'=>$result_info]);
     }
 
-    public function view_medical_record () {
+    public function view_medical_records () {
+        //Filtering Records with Session
+        $id = Session::get('id');
+        $student_records = StudentRecordModel::where('student_id', $id)->get();
+        return view('pages/student/view-medical-records',['student_records'=>$student_records]);
+    }
 
+    public function view_record () {
+        //Filtering Records with Session
+        $id = Session::get('id');
+
+        $student_record = StudentRecordModel::where('student_id', $id)->get();
+        $medical_history = MedicalHistoryModel::all();
+
+        return view('pages/student/view-record',['student_record'=>$student_record], compact('medical_history'));
+        // return view('pages/student/view-record',['student_record'=>$student_record]);
+    }
+
+    public function view_medical_histories () {
         //Filtering Records with Session
         $id = Session::get('id');
         $student_record = StudentRecordModel::where('student_id', $id)->get();
-        return view('pages/student/view-record',['tbl_student_record'=>$student_record]);
+        return view('pages/student/view-medical-histories',['tbl_student_record'=>$student_record]);
     }
 
-    public function view_medical_history () {
+    // public function view_history () {
 
-        //Filtering Records with Session
-        $id = Session::get('id');
-        $student_record = StudentRecordModel::where('student_id', $id)->get();
-        return view('pages/student/view-record',['tbl_student_record'=>$student_record]);
-    }
+    //     $medical_history = MedicalHistoryModel::all();
+    //     return view('pages/student/view-record', compact('medical_history'));
+    // }
 
     //CREATING RECORD OF STUDENT
     public function save_medical_record(Request $request)
@@ -243,6 +258,19 @@ class StudentController extends Controller
         $medical_history->other_condition_option = $request->other_condition_option;
         $medical_history->other_symptoms_option = $request->other_symptoms_option;
         $medical_history->created_at = $request->created_at;
+
+        // if($request->has('conditions')) 
+        // {
+        //     $conditions = $request->input('conditions');
+        //     $new_conditions = array_diff($conditions, ['other']);
+        //     if ($request->filled('other_condition_option')) 
+        //     {
+        //         $conditionOther = $request->input('other_condition_option');
+        //         $new_conditions[] = $conditionOther;
+        //     }
+        //     $medical_history->condition_option=$new_conditions;
+        // }
+
         $medical_history->save();
 
         return redirect()->back()->with('success', 'Medical history saved successfully.');

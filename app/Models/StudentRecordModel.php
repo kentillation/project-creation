@@ -26,10 +26,11 @@ class StudentRecordModel extends Model
                             'height',
                             'weight',
                             'bmi',
-                            'gender',
-                            'year_level',
-                            'section',
-                            'blood_type',
+                            'gender_id',
+                            'year_level_id',
+                            'section_id',
+                            'blood_type_id',
+                            'status_record_id',
                             'created_at',
                             'updated_at'
                         ];

@@ -359,7 +359,7 @@ form .readonly {
 
 .container .header {
     background-color: var(--light-color);
-    padding: 35px;
+    padding: 20px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -373,6 +373,12 @@ form .readonly {
 
 .container .back {
     color: var(--dark-color);
+}
+
+/* PAGE */
+
+.page {
+    margin-top: 100px;
 }
 
 /* HOMEPAGE */
@@ -467,9 +473,88 @@ form .readonly {
     color: var(--light-color);
 }
 
-.add-med-rec {
-    margin-top: 100px;
+.btn-next {
+    margin-top: 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
 }
+
+fieldset input[type="checkbox"] {
+    margin: 5px;
+}
+
+.view-record .profile-list {
+    background-color: var(--light-color);
+    border-radius: 7px;
+    padding: 8px;
+}
+
+.view-record .profile-list ul {
+    margin-top: 10px;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.view-record .profile-list ul li {
+    padding: 5px;
+}
+
+.view-record .btn-profile {
+    margin-top: 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.view-record .btn-profile:hover {
+    background-color: var(--tertiary-color);
+    color: var(--light-color);
+    transition: 0.5s;
+}
+
+.view-record .btn-profile-outline {
+    margin-top: 10px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    color: var(--secondary-color);
+    background-color: transparent;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.view-record .medical-record {
+    background-color: var(--light-color);
+    border-radius: 7px;
+    padding: 25px;
+}
+
+.view-record .medical-record ul {
+    margin-top: 10px;
+    list-style-type: none;
+    padding: 0;
+}
+
+.view-record .medical-record ul li {
+    padding: 0;
+}
+
+.view-record .medical-record ul h6 {
+    font-size: 14px;
+}
+
 
 /* ADMIN */
 
@@ -489,10 +574,6 @@ form .readonly {
 
 .clinician-list .back:hover {
     color: var(--secondary-color);
-}
-
-.edit-clinician {
-    margin-top: 100px;
 }
 
 
@@ -759,22 +840,6 @@ table a {
     display: none;
 }
 
-.btn-profile {
-    border: none;
-    border-radius: 5px;
-    background-color: var(--secondary-color);
-    color: var(--light-color);
-    padding: 10px;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-.btn-profile:hover {
-    background-color: var(--tertiary-color);
-    color: var(--light-color);
-    transition: 0.5s;
-}
-
 .btn-deactivate {
     border: none;
     border-radius: 5px;
@@ -1003,11 +1068,11 @@ table a {
 }
 
 .btn-view {
-    background-color: var(--secondary-color);
-    color: var(--light-color);
-    border: none;
+    background-color: transparent;
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
     border-radius: 5px;
-    font-size: 15px;
+    font-size: 13px;
     padding: 8px;
 }
 

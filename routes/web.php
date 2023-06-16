@@ -69,10 +69,12 @@ Route::post('/save-student', 'StudentController@save_student')->name('save-stude
 Route::get('/student/update/{id}', 'StudentController@update_student')->name('update-student');
 Route::post('/student/save-update/{id}', 'StudentController@saveUpdate_student')->name('update-save-student');
 Route::get('/student/delete/{id}', 'StudentController@delete_student')->name('delete-student');
+//Medical Record
 Route::get('/student/add-medical-record', 'StudentController@add_medical_record')->name('add-medical-record');
 Route::post('/student/save-medical-record', 'StudentController@save_medical_record')->name('save-medical-record');
-Route::get('/student/view-medical-record', 'StudentController@view_medical_record')->name('view-medical-record');
-
+Route::get('/student/view-medical-records', 'StudentController@view_medical_records')->name('view-medical-records');
+Route::get('/student/view-record', 'StudentController@view_record')->name('view-record');
+//Medical History
 Route::get('/student/add-medical-history', 'StudentController@add_medical_history')->name('add-medical-history');
 Route::post('/student/save-medical-history', 'StudentController@save_medical_history')->name('save-medical-history');
-Route::get('/student/view-medical-history', 'StudentController@view_medical_history')->name('view-medical-history');
+Route::get('/student/view-medical-histories', 'StudentController@view_medical_histories')->name('view-medical-histories');
