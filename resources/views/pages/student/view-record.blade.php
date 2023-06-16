@@ -196,7 +196,11 @@
                                         <ul>
                                             <li>
                                                 <h6><strong>Checked conditions that apply to you or any of your close family members:</strong></h6>
-                                                <h6>{{ $med_history->condition_option }}, {{ $med_history->other_condition_option }}</h6>
+                                                <h6><?php foreach(json_decode($med_history->condition_option) as $value) {
+                                                    if($value != 'other'){
+                                                        echo "$value, ";
+                                                    }
+                                                }?>{{ $med_history->other_condition_option }}</h6>
                                             </li>
                                             <hr />
                                             <li>
