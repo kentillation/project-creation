@@ -1,136 +1,72 @@
 @extends('includes/admin-sidenav')
 
 @section('page-content')
-        <div id="loader"></div>
-        <div id="forLoader" style="display:none;">
-            <div class="container mt-5 mb-5">
-                @if(Session::has('success'))
-                    <div class="alert alert-success text-center" role="alert" id="alertbox">
-                        {{ Session::get('success') }}
-                        <button class="btn-close" onclick="closeFn()"></button>
-                    </div>
-                @endif
-                @if(Session::has('removal'))
-                    <div class="alert alert-danger text-center" role="alert" id="alertbox">
-                        {{ Session::get('removal') }}
-                        <button class="btn-close" onclick="closeFn()"></button>
-                    </div>
-                @endif
-                <div class="container border rounded p-5 reports">
-                    <h1 class="heading1 text-center mb-5"><strong>List of Admin</strong></h1>
-                    <div class="tbl-top-btns mb-4">
-                        <div class="btn-dl me-2">
-                            <button class="btn-add-user" type="button" title="ADD USER" data-bs-toggle="modal" data-bs-target="#addModal">
-                                <i class="bi bi-plus-lg">&nbsp;</i>
-                                ADD
-                            </button>
-                            <a href="{{ route('print-admin_list') }}" title="DOWNLOAD AS PDF" target="_blank">
-                                <button class="btn-download">
-                                    <i class="bi bi-box-arrow-down">&nbsp;</i>
-                                    PDF
-                                </button>
-                            </a>
-                            
-                            <button class="btn-download" title="DOWNLOAD AS SPREADSHEET" onclick="saveAsExcel('table', 'LIST OF ADMIN.xls')">
-                                <i class="bi bi-box-arrow-down">&nbsp;</i>
-                                XLS
-                            </button>
-                        </div>
-                    </div>
-                    <div class="container mb-4">
-                        <div class="table-responsive">
-                            <table class="table table-hover text-center" id="table">
-                                <thead class="text-bg-secondary">
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Username</th>
-                                        <th>ACTION</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($tbl_admin as $admin)
+    <main id="main" class="main">
+        <div class="pagetitle">
+            <h1>List of system admins</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Users</li>
+                    <li class="breadcrumb-item">System Admins</li>
+                    <li class="breadcrumb-item active">List of system admins</li>
+                </ol>
+            </nav>
+        </div>
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Head Title</h5>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
                                         <tr>
-                                            <td>{{ $admin->name }}</td>
-                                            <td>{{ $admin->email }}</td>
-                                            <td>{{ $admin->username }}</td>
-                                            <td>
-                                                <a href="{{ route('update-admin', ['id' => $admin->id] ) }}">
-                                                    <button class="btn-view btn-sm" title="MODIFY">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                                                </a>
-                                                <a href="{{ route('delete-admin', ['id' => $admin->id] ) }}">
-                                                    <button class="btn-restricted btn-sm" title="DELETE">
-                                                        <i class="bi bi-trash"></i>
-                                                    </button>
-                                                </a>
-                                            </td>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Position</th>
+                                            <th scope="col">Age</th>
+                                            <th scope="col">Start Date</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($tbl_admin as $admin)
+                                            <tr>
+                                                <td>{{ $admin->name }}</td>
+                                                <td>{{ $admin->email }}</td>
+                                                <td>{{ $admin->username }}</td>
+                                                <td>
+                                                    <a href="{{ route('update-admin', ['id' => $admin->id] ) }}">
+                                                        <button class="btn btn-outline-success btn-sm" title="Modify">
+                                                            <i class="bi bi-pencil-square"></i>
+                                                        </button>
+                                                    </a>
+                                                    <a href="{{ route('delete-admin', ['id' => $admin->id] ) }}">
+                                                        <button class="btn btn-outline-danger btn-sm" title="Delete">
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
-        </div>
-        <div class="modal fade" id="addModal">
-			<div class="modal-dialog modal-lg modal-dialog-centered">
-				<div class="modal-content">
-					<!-- Modal Header -->
-					<div class="modal-header">
-						<h5 class="modal-title">New account for System Admin</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-					</div>
-
-					<!-- Modal body -->
-					<div class="modal-body">
-                        <div class="container">
-                            <form method="POST" action="{{ route('save-admin') }}">
-                                @csrf
-                                <div class="form-ni">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-floating">
-                                                <input type="text" id="name" name="name" class="form-control mt-2" placeholder="Name" required/>
-                                                <label for="name">Name</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-floating">
-                                                <input type="email" id="email" name="email" class="form-control mt-2" placeholder="Email" required/>
-                                                <label for="email">Email</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-floating">
-                                                <input type="text" id="username" name="username" class="form-control mt-2" placeholder="Username" required/>
-                                                <label for="username">Username</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-floating">
-                                                <input type="password" id="password" name="password" class="form-control mt-2 mb-3" placeholder="Password" required/>
-                                                <label for="password">Password</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn-submit mb-2">SUBMIT</button>
-                                </div>
-                            </form>
-                        </div>
-					</div> <!-- End of modal body-->
-				</div> <!-- End of modal content-->
-			</div>
-		</div> <!-- End of Add Project Modal-->
+        </section>
 
         <!-- for Data Tables -->
-        <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+            integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
         <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
         <script>
-            $(document).ready (function() {
+            $(document).ready(function () {
                 $('table').DataTable();
             });
         </script>
-@endsection
+    </main>
+
+    @endsection

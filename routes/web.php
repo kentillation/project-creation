@@ -21,13 +21,13 @@ Route::get('/admin/clinician-list', 'AuthController@clinician_list')->name('clin
 Route::get('/admin/student-list', 'AuthController@student_list')->name('student-list');
 Route::get('/admin/view-student-medical-record', 'AuthController@view_student_med_record')->name('view-stud-med-record');
 
-Route::get('/admin/pending-medical-records', 'AuthController@pending_medical_records')->name('a-pending-medical-records');
-Route::get('/admin/update-pending-record/{id}', 'AuthController@update_pending_record')->name('a-update-pending-record');
-Route::post('/admin/save-update-pending-record/{id}', 'AuthController@saveUpdate_pending_record')->name('a-save-update-pending-record');
+Route::get('/admin/pending-medical-record-requests', 'AuthController@pending_medical_records')->name('a-pending-medical-records');
+Route::get('/admin/update-pending-record-request/{id}', 'AuthController@update_pending_record')->name('a-update-pending-record');
+Route::post('/admin/save-update-pending-record-request/{id}', 'AuthController@saveUpdate_pending_record')->name('a-save-update-pending-record');
 
-Route::get('/admin/declined-medical-records', 'AuthController@declined_medical_records')->name('a-declined-medical-records');
+Route::get('/admin/declined-medical-record-requests', 'AuthController@declined_medical_records')->name('a-declined-medical-records');
 
-Route::get('/admin/approved-medical-records', 'AuthController@approved_medical_records')->name('a-approved-medical-records');
+Route::get('/admin/approved-medical-record-requests', 'AuthController@approved_medical_records')->name('a-approved-medical-records');
 
 //DEPARTMENT STAFF CONTROLLER
 Route::get('/staff-login', 'StaffController@staff_login')->name('staff-login');

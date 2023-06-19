@@ -1,141 +1,73 @@
 @extends('includes/admin-sidenav')
 
 @section('page-content')
-        <div id="loader"></div>
-        <div id="forLoader" style="display:none;">
-            <div class="container clinician-list mb-5">
-                @if(Session::has('success'))
-                    <div class="alert alert-success text-center" role="alert" id="alertbox">
-                        {{ Session::get('success') }}
-                        <button class="btn-close" onclick="closeFn()"></button>
-                    </div>
-                @endif
-                @if(Session::has('removal'))
-                    <div class="alert alert-danger text-center" role="alert" id="alertbox">
-                        {{ Session::get('removal') }}
-                        <button class="btn-close" onclick="closeFn()"></button>
-                    </div>
-                @endif
-                <div class="container">
-                    <p class="page-title">Users / List of Clinicians</p>
-                    <div class="container header rounded shadow-sm mb-4">
-                        <div class="header-content">
-                            <i class="bi bi-list-check"></i> 
-                            <span>
-                                &nbsp;  List of Clinicians
-                            </span>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <a href="{{ route('admin-dashboard') }}" title="Back" class="back">
-                            <i class="bi bi-arrow-left"></i>
-                                &nbsp;Back
-                        </a>
-                    </div>
-                    <div class="container border rounded p-5 reports">
-                        <div class="tbl-top-btns mb-4">
-                            <div class="btn-dl me-2">
-                                <button class="btn-add-user" type="button" title="ADD USER" data-bs-toggle="modal" data-bs-target="#addModal">
-                                    <i class="bi bi-plus-lg">&nbsp;</i>
-                                    Add User
-                                </button>
-                            </div>
-                        </div>
-                        <div class="container mb-4">
-                            <div class="table-responsive">
-                                <table class="table table-hover text-center" id="table">
-                                    <thead class="text-bg-secondary">
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>List of clinicians</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Users</li>
+                <li class="breadcrumb-item">Clinicians</li>
+                <li class="breadcrumb-item active">List of clinicians</li>
+            </ol>
+        </nav>
+    </div>
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Head Title</h5>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Username</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($tbl_clinician as $clinician)
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Username</th>
-                                            <th>ACTION</th>
+                                            <td>{{ $clinician->name }}</td>
+                                            <td>{{ $clinician->email }}</td>
+                                            <td>{{ $clinician->username }}</td>
+                                            <td>
+                                                <a href="{{ route('update-clinician', ['id' => $clinician->id] ) }}">
+                                                    <button class="btn btn-outline-success btn-sm" title="Modify">
+                                                        <i class="bi bi-pencil-square"></i>
+                                                    </button>
+                                                </a>
+                                                <a href="{{ route('delete-clinician', ['id' => $clinician->id] ) }}">
+                                                    <button class="btn btn-outline-danger btn-sm" title="Move to trash">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                </a>
+                                            </td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($tbl_clinician as $clinician)
-                                            <tr>
-                                                <td>{{ $clinician->name }}</td>
-                                                <td>{{ $clinician->email }}</td>
-                                                <td>{{ $clinician->username }}</td>
-                                                <td>
-                                                    <a href="{{ route('update-clinician', ['id' => $clinician->id] ) }}">
-                                                        <button class="btn btn-outline-success btn-sm" title="Modify">
-                                                            <i class="bi bi-pencil-square"></i>
-                                                        </button>
-                                                    </a>
-                                                    <a href="{{ route('delete-clinician', ['id' => $clinician->id] ) }}">
-                                                        <button class="btn btn-outline-danger btn-sm" title="Move to trash">
-                                                            <i class="bi bi-trash"></i>
-                                                        </button>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="addModal">
-			<div class="modal-dialog modal-lg modal-dialog-centered">
-				<div class="modal-content">
-					<!-- Modal Header -->
-					<div class="modal-header">
-						<h5 class="modal-title">New account for Clinician</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-					</div>
+    </section>
 
-					<!-- Modal body -->
-					<div class="modal-body">
-                        <div class="container">
-                            <form method="POST" action="{{ route('save-clinician') }}">
-                                @csrf
-                                <div class="form-ni">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-floating">
-                                                <input type="text" id="name" name="name" class="form-control mt-2" placeholder="Name" required/>
-                                                <label for="name">Name</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-floating">
-                                                <input type="email" id="email" name="email" class="form-control mt-2" placeholder="Email" required/>
-                                                <label for="email">Email</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-floating">
-                                                <input type="text" id="username" name="username" class="form-control mt-2" placeholder="Username" required/>
-                                                <label for="username">Username</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-floating">
-                                                <input type="password" id="password" name="password" class="form-control mt-2 mb-3" placeholder="Password" required/>
-                                                <label for="password">Password</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn-submit mb-2">SUBMIT</button>
-                                </div>
-                            </form>
-                        </div>
-					</div> <!-- End of modal body-->
-				</div> <!-- End of modal content-->
-			</div>
-		</div> <!-- End of Add Project Modal-->
+    <!-- for Data Tables -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('table').DataTable();
+        });
+    </script>
+</main>
 
-        <!-- for Data Tables -->
-        <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-        <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
-        <script>
-            $(document).ready (function() {
-                $('table').DataTable();
-            });
-        </script>
 @endsection
