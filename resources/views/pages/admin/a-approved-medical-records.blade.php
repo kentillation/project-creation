@@ -1,47 +1,32 @@
 @extends('includes/admin-sidenav')
 
 @section('page-content')
-        <div id="loader"></div>
-        <div id="forLoader" style="display:none;">
-            <div class="container mb-5 add-med-rec">
-                @if(Session::has('success'))
-                    <div class="alert alert-success text-center" role="alert" id="alertbox">
-                        {{ Session::get('success') }}
-                        <button class="btn-close" onclick="closeFn()"></button>
-                    </div>
-                @endif
-                @if(Session::has('removal'))
-                    <div class="alert alert-danger text-center" role="alert" id="alertbox">
-                        {{ Session::get('removal') }}
-                        <button class="btn-close" onclick="closeFn()"></button>
-                    </div>
-                @endif
-                <div class="container">
-                    <p class="page-title">Request Records / Approved Medical Records</p>
-                    <div class="container header rounded shadow-sm mb-4">
-                        <div class="header-content">
-                            <i class="bi bi-clock-history"></i> 
-                            <span>
-                                &nbsp; Approved Medical Records
-                            </span>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <a href="{{ route('admin-dashboard') }}" title="Back" class="back">
-                            <i class="bi bi-arrow-left"></i>
-                                &nbsp;Back
-                        </a>
-                    </div>
-                    <div class="container border rounded p-5">
-                        <div class="container mb-4">
+    <main id="main" class="main">
+        <div class="pagetitle">
+            <h1>Approved Medical Record Requests</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Students Area</li>
+                    <li class="breadcrumb-item">Medical Record Requests</li>
+                    <li class="breadcrumb-item active">Approved Requests</li>
+                </ol>
+            </nav>
+        </div>
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Head Title</h5>
                             <div class="table-responsive">
-                                <table class="table table-hover text-center" id="table">
-                                    <thead class="text-bg-secondary">
+                                <table class="table">
+                                    <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Phone</th>
-                                            <th>Municipality / City</th>
-                                            <th>Action</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Phone</th>
+                                            <th scope="col">Municipality / City</th>
+                                            <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -66,19 +51,25 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                <!-- End Table with stripped rows -->
+
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- for Data Tables -->
-        <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
         <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
         <script>
-            $(document).ready (function() {
+            $(document).ready(function () {
                 $('table').DataTable();
             });
         </script>
+    </main><!-- End #main -->
+
 @endsection

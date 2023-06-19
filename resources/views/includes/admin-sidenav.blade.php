@@ -1,237 +1,398 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>Electronic Health Records</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="<?php echo asset('css/style.css') ?>" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo asset('bootstrap-icons/bootstrap-icons.css') ?>" />
-    <link rel="stylesheet" href="<?php echo asset('bootstrap/js/bootstrap.min.js') ?>" />
-    <link rel="icon" href="<?php echo asset('images/ehr_logo_v1.png') ?>" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-    <script src="<?php echo asset('main.js') ?>"></script>
-    <script src="<?php echo asset('saveAsExcel.js') ?>"></script>
-
-    <!-- for Data Tables -->
-    <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Christian School Electronic Health Records System</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <!-- Favicons -->
+  <link href="<?php echo asset ('assets/img/ehr_logo_v2.png') ?>" rel="icon">
+  <!-- <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="<?php echo asset ('assets/vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
+  <link href="<?php echo asset ('assets/vendor/bootstrap-icons/bootstrap-icons.css') ?>" rel="stylesheet">
+  <link href="<?php echo asset ('assets/vendor/boxicons/css/boxicons.min.css') ?>" rel="stylesheet">
+  <link href="<?php echo asset ('assets/vendor/quill/quill.snow.css') ?>" rel="stylesheet">
+  <link href="<?php echo asset ('assets/vendor/quill/quill.bubble.css') ?>" rel="stylesheet">
+  <link href="<?php echo asset ('assets/vendor/remixicon/remixicon.css') ?>" rel="stylesheet">
+  <link href="<?php echo asset ('assets/vendor/simple-datatables/style.css') ?>" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="<?php echo asset ('assets/css/style.css') ?>" rel="stylesheet">
+  <script src="<?php echo asset('saveAsExcel.js') ?>"></script>
+  <!-- for Data Tables -->
+  <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
 </head>
+
 <body onload="loaderFunction()">
-    <main>
-        <header>
-            <nav class="topnav">
-                <div class="tab">
-                    <div class="logo">
-                        <a href="#">
-                            <img src="<?php echo asset('images/ehr_logo_v1.png') ?>" />
-                            <span style="font-size: 20px">&nbsp;Christian School Electronic Health Record System</span>
-                        </a>
-                    </div>
-                    <!-- <div>
-                        <a href="#" class="nav-link" title="Account">
-                            &nbsp; <i class="bi bi-person-circle"></i>
-                        </a>
-                    </div> -->
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="d-flex align-items-center justify-content-between">
+      <i class="bi bi-list toggle-sidebar-btn" title="Menu"></i>&nbsp;
+      <a href="#" class="logo d-flex align-items-center">
+        <img src="#" alt="">
+        <span class="d-none d-lg-block">Christain School EHR</span>
+      </a>
+    </div><!-- End Logo -->
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-bell"></i>
+            <span class="badge bg-primary badge-number">4</span>
+          </a><!-- End Notification Icon -->
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+            <li class="dropdown-header">
+              You have notifications
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="notification-item">
+              <i class="bi bi-exclamation-circle text-warning"></i>
+              <div>
+                <h4>Pending</h4>
+                <p>You have a pending request</p>
+                <p>30 min. ago</p>
+              </div>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="notification-item">
+              <i class="bi bi-bar-chart-steps text-primary"></i>
+              <div>
+                <h4>On-progress</h4>
+                <p>You have on-progress request</p>
+                <p>4 hrs. ago</p>
+              </div>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="notification-item">
+              <i class="bi bi-check-circle text-success"></i>
+              <div>
+                <h4>Approved</h4>
+                <p>You approved a request</p>
+                <p>2 hrs. ago</p>
+              </div>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="notification-item">
+              <i class="bi bi-x-circle text-danger"></i>
+              <div>
+                <h4>Declined</h4>
+                <p>You declined a request</p>
+                <p>1 hr. ago</p>
+              </div>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="dropdown-footer">
+              <a href="#">Show all notifications</a>
+            </li>
+          </ul><!-- End Notification Dropdown Items -->
+        </li><!-- End Notification Nav -->
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-chat-left-text"></i>
+            <span class="badge bg-success badge-number">3</span>
+          </a><!-- End Messages Icon -->
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+            <li class="dropdown-header">
+              You have messages
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/message.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>Toto</h4>
+                  <p>T waay gid tada?</p>
+                  <p>4 hrs. ago</p>
                 </div>
-                
-            </nav>
-        </header>
-        <button class="sidenav-btn-toggle" title="SHOW MENU" onclick="sidenavBtn()">
-            <i class="bi bi-list"></i>
-        </button>
-        <div class="sidenav" id="sidenav">
-            <div class="sidenav-content">
-                <div class="logo">
-                    <img src="<?php echo asset('images/profile.jpg') ?>" width="80px" />
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/message.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>Antonio</h4>
+                  <p>Ge meg ah</p>
+                  <p>6 hrs. ago</p>
                 </div>
-                <hr>
-                <h5 class="mb-3">Main</h5>
-                <ul>
-                    <li>
-                        <a href="{{ route('admin-dashboard') }}" class="btn-sidenav" title="Dashboard">
-                            <i class="bi bi-speedometer"></i>
-                            <span>
-                                &nbsp;Dashboard
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-                <hr>
-                <h5 class="mb-3">Request Records</h5>
-                <ul>
-                    <li>
-                        <a href="{{ route('a-pending-medical-records') }}" class="btn-sidenav" title="Pending">
-                            <i class="bi bi-clock-history"></i>
-                            <span>
-                                &nbsp;Pending
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('a-declined-medical-records') }}" class="btn-sidenav" title="Declined">
-                            <i class="bi bi-exclamation-circle"></i>
-                            <span>
-                                &nbsp;Declined
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('a-approved-medical-records') }}" class="btn-sidenav" title="Approved">
-                            <i class="bi bi-check-circle"></i>
-                            <span>
-                                &nbsp;Approved
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-                <hr>
-                <h5 class="mb-3">Users</h5>
-                <ul>
-                    <li>
-                        <a href="{{ route('student-list') }}" class="btn-sidenav" title="Student Nurses">
-                            <i class="bi bi-mortarboard"></i>
-                            <span>
-                                &nbsp;Student Nurses
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('clinician-list') }}" class="btn-sidenav" title="Clinicians">
-                            <i class="bi bi-thermometer-high"></i>
-                            <span>
-                                &nbsp;Clinicians
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('staff-list') }}" class="btn-sidenav" title="Dept. Staffs">
-                            <i class="bi bi-pen"></i>
-                            <span>
-                                &nbsp;Dept. Staffs
-                            </span>
-                        </a>
-                    </li>
-                    <!-- <li>
-                        <a href="{{ route('admin-list') }}" class="btn-sidenav" title="List of Users">
-                            <i class="bi bi-people"></i>
-                            <span>
-                                &nbsp; Admin
-                            </span>
-                        </a>
-                    </li> -->
-                </ul>
-                <hr>
-                <h5 class="mb-3">Settings</h5>
-                <ul>
-                    <li>
-                        <a href="#" class="btn-sidenav" title="Account">
-                            <i class="bi bi-person-circle"></i>
-                            <span>
-                                &nbsp;Account
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-                <hr>
-                <h6>Login as: Admin</h6>
-
-                <!-- <div class="row">
-                    <div class="col-sm-2 col-xs-12">
-                        <h6>ID:</h6>
-                    </div>
-                    <div class="col-sm-10 col-xs-12">
-                        <h6>12345</h6>
-                    </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/message.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>Tonyo</h4>
+                  <p>Baskog part ah!</p>
+                  <p>8 hrs. ago</p>
                 </div>
-                <div class="row mt-2">
-                    <div class="col-sm-3 col-xs-12">
-                        <h6>User:</h6>
-                    </div>
-                    <div class="col-sm-8 col-xs-12">
-                        <h6>Kent Anthony</h6>
-                    </div>
-                </div> -->
-                <div class=" mt-4">
-                    <form action="{{ route('logout') }}" method="POST" >
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-signout" type="submit" title="SIGN OUT">
-                            <i class="bi bi-box-arrow-left"></i>
-                            <span>
-                                &nbsp; SIGN OUT
-                            </span>
-                        </button>
-                    </form>
-                </div>
-            </div>
-            <button class="btn-sidenav-hide" onclick="sidenavHide()" title="HIDE">
-                <i class="bi bi-chevron-double-left"></i>
-            </button>
-        </div> <!-- end of sidenav -->
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="dropdown-footer">
+              <a href="#">Show all messages</a>
+            </li>
+          </ul><!-- End Messages Dropdown Items -->
+        </li><!-- End Messages Nav -->
+        <li class="nav-item dropdown pe-3">
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="<?php echo asset('assets/img/account-bg.png') ?>" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">My account</span>
+          </a><!-- End Profile Iamge Icon -->
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>Kent Anthony C Engbino</h6>
+              <span>Administrator</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-gear"></i>
+                <span>Account Settings</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-question-circle"></i>
+                <span>Need Help?</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <form action="{{ route('logout') }}" method="POST">
+              @csrf
+              @method('DELETE')
+                <button class="dropdown-item d-flex align-items-center btn btn-sm" type="submit">
+                  <i class="bi bi-box-arrow-left"></i>
+                  <span>Sign out</span>
+                </button>
+            </form>
+            </li>
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+      </ul>
+    </nav><!-- End Icons Navigation -->
+  </header><!-- End Header -->
 
-        <div class="modal fade" id="addUserModal">
-			<div class="modal-dialog modal-lg modal-dialog-centered">
-				<div class="modal-content">
-					<!-- Modal Header -->
-					<div class="modal-header">
-						<h5 class="modal-title">New User</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-					</div>
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('admin-dashboard') }}">
+          <i class="bi bi-speedometer"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
 
-					<!-- Modal body -->
-					<div class="modal-body">
-                        <div class="container">
-                            <form method="POST" action="{{ route('save-admin') }}">
-                                @csrf
-                                <div class="form-ni">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-floating">
-                                                <input type="text" id="name" name="name" class="form-control mt-2" placeholder="Name" required/>
-                                                <label for="name">Name</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-floating">
-                                                <input type="email" id="email" name="email" class="form-control mt-2" placeholder="Email" required/>
-                                                <label for="email">Email</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-floating">
-                                                <input type="text" id="username" name="username" class="form-control mt-2" placeholder="Username" required/>
-                                                <label for="username">Username</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-floating">
-                                                <input type="password" id="password" name="password" class="form-control mt-2" placeholder="Password" required/>
-                                                <label for="password">Password</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-floating">
-                                                <select id="role" name="role_id" class="form-control mt-2 mb-3" placeholder="Role">
-                                                    <option selected>-select-</option>
+      <li class="nav-heading">Students Area</li>
 
-                                                </select>
-                                                <label for="role">Role</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn-submit mb-2">SUBMIT</button>
-                                </div>
-                            </form>
-                        </div>
-					</div> <!-- End of modal body-->
-				</div> <!-- End of modal content-->
-			</div>
-		</div> <!-- End of Add Project Modal-->
+      <!-- Medical Records Request Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#med-records-request-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-"></i><span>Medical Record Requests</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="med-records-request-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{ route('a-pending-medical-records') }}">
+              <i class="bi bi-clock-history fs-6"></i><span>Pending Requests</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ route('a-declined-medical-records') }}">
+              <i class="bi bi-exclamation-circle fs-6"></i><span>Declined Requests</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ route('a-approved-medical-records') }}">
+              <i class="bi bi-check-circle fs-6"></i><span>Approved Requests</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Medical Records Request Nav -->
 
+      <!-- Viewing Request Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#viewing-request-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-"></i><span>Viewing Record Requests</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="viewing-request-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="#">
+              <i class="bi bi-eye fs-6"></i><span>View All Requests</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Viewing Request Nav -->
 
-        @yield('page-content')
-    </main>
+      <li class="nav-heading">Users</li>
+
+      <!-- Students Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#students-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-"></i><span>Nursing Students</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="students-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{ route('student-list') }}">
+              <i class="bi bi-people fs-6"></i><span>List of nursing students</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-plus-lg fs-6"></i><span>Add student user</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Students Nav -->
+
+      <!-- Clinicians Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#clinicians-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-"></i><span>Clinicians</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="clinicians-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{ route('clinician-list') }}">
+              <i class="bi bi-people fs-6"></i><span>List of clinicians</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-plus-lg fs-6"></i><span>Add clinician user</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Clinicians Nav -->
+
+      <!-- Department Staff Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#staff-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-"></i><span>Department Staffs</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="staff-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{ route('staff-list') }}">
+              <i class="bi bi-people fs-6"></i><span>List of department staff</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-plus-lg fs-6"></i><span>Add dept. staff user</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Department Staff Nav -->
+
+      <!-- Admin Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#admin-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-"></i><span>System Admins</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="admin-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{ route('admin-list') }}">
+              <i class="bi bi-people fs-6"></i><span>List of system admins</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-plus-lg fs-6"></i><span>Add system admin user</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Admin Nav -->
+
+      <li class="nav-heading">Settings</li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('admin-profile') }}">
+          <i class="bi bi-person"></i>
+          <span>Profile</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#">
+          <i class="bi bi-gear"></i>
+          <span>Account</span>
+        </a>
+      </li><!-- End Account Nav -->
+
+      <li class="nav-item">
+        <form action="{{ route('logout') }}" method="POST">
+          @csrf
+          @method('DELETE')
+          <button class="btn nav-link collapsed" type="submit">
+            <i class="bi bi-box-arrow-left"></i>
+            <span>Sign out</span>
+          </button>
+        </form>
+      </li><!-- End Login Page Nav -->
+    </ul>
+  </aside><!-- End Sidebar-->
+
+  @yield('page-content')
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+    </a>
+
+  <!-- Vendor JS Files -->
+  <script src="<?php echo asset ('assets/vendor/apexcharts/apexcharts.min.js') ?>"></script>
+  <script src="<?php echo asset ('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+  <script src="<?php echo asset ('assets/vendor/chart.js/chart.umd.js') ?>"></script>
+  <script src="<?php echo asset ('assets/vendor/echarts/echarts.min.js') ?>"></script>
+  <script src="<?php echo asset ('assets/vendor/quill/quill.min.js') ?>"></script>
+  <script src="<?php echo asset ('assets/vendor/simple-datatables/simple-datatables.js') ?>"></script>
+  <script src="<?php echo asset ('assets/vendor/tinymce/tinymce.min.js') ?>"></script>
+  <script src="<?php echo asset ('assets/vendor/php-email-form/validate.js') ?>"></script>
+  <!-- Template Main JS File -->
+  <script src="<?php echo asset ('assets/js/main.js') ?>"></script>
+
 </body>
 
 </html>

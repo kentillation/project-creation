@@ -1,0 +1,74 @@
+<div class="modal fade" id="addStudentModal">
+			<div class="modal-dialog modal-lg modal-dialog-centered">
+				<div class="modal-content">
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<h5 class="modal-title">New account for Nursing Student</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+					</div>
+
+					<!-- Modal body -->
+					<div class="modal-body">
+                        <div class="container">
+                            <form method="POST" action="{{ route('save-student') }}">
+                                @csrf
+                                <div class="form-ni">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-floating">
+                                                <input type="text" id="student_id" name="student_id" class="form-control mt-2 mb-3" placeholder="Student ID" required/>
+                                                <label for="student_id">Student ID</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-12">
+                                            <div class="form-floating">
+                                                <input type="text" id="first_name" name="first_name" class="form-control mt-2 mb-3" placeholder="First name" required/>
+                                                <label for="first_name">First name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-12">
+                                            <div class="form-floating">
+                                                <input type="text" id="middle_name" name="middle_name" class="form-control mt-2 mb-3" placeholder="Middle name" required/>
+                                                <label for="middle_name">Middle name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-12">
+                                            <div class="form-floating">
+                                                <input type="text" id="last_name" name="last_name" class="form-control mt-2 mb-3" placeholder="Last name" required/>
+                                                <label for="last_name">Last name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-12">
+                                            <div class="form-floating">
+                                                <input type="text" id="phone" name="phone" class="form-control mt-2" placeholder="Phone" required/>
+                                                <label for="phone">Phone</label>
+                                                <i class="phone-example">example: +63 900 000 0000</i>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-12">
+                                            <div class="form-floating">
+                                                <input type="email" id="email" name="email" class="form-control mt-2 mb-3" placeholder="Email" required/>
+                                                <label for="email">Email</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-12">
+                                            <div class="form-floating">
+                                                <input type="text" id="username" name="username" class="form-control mt-2 mb-3" placeholder="Username" required/>
+                                                <label for="username">Username</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating">
+                                                <input type="password" id="password" name="password" class="form-control mt-2 mb-3" placeholder="Password" required/>
+                                                <label for="password">Password</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn-submit mb-2">SUBMIT</button>
+                                </div>
+                            </form>
+                        </div>
+					</div> <!-- End of modal body-->
+				</div> <!-- End of modal content-->
+			</div>
+		</div> <!-- End of Add Project Modal-->
