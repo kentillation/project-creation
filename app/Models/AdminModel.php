@@ -11,5 +11,6 @@ class AdminModel extends Model
 
     protected $table = "tbl_admin";
     
-    protected $fillable = ['name', 'email', 'username', 'password', 'created_at', 'updated_at'];
+    protected $fillable = ['first_name', 'middle_name', 'last_name', 'street_number', 'street_address', 'barangay', 'muni_city', 'phone', 'email', 'username', 'password', 'created_at', 'updated_at'];
+
 }

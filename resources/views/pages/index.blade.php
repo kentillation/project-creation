@@ -7,8 +7,8 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
   <!-- Favicons -->
-  <link href="<?php echo asset ('assets/img/ehr_logo_v2.png') ?>" rel="icon">
-  <!-- <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
+  <link href="<?php echo asset ('assets/img/ehr_logo_v1.png') ?>" rel="icon">
+  <link href="<?php echo asset ('assets/img/ehr_logo_v1.png') ?>" rel="apple-touch-icon">
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -35,10 +35,10 @@
             <div class="col-lg-5 col-md-6 d-flex flex-row align-items-center justify-content-center">
               <div class="card p-3">
                 <div class="card-body">
-                  <div class="d-flex justify-content-center mb-3 p-3">
-                    <img src="<?php echo asset('images/ehr_logo_v2.png') ?>" width="80" alt="Logo"/>
+                  <div class="d-flex justify-content-center mb-2 p-3">
+                    <img src="<?php echo asset('assets/img/ehr_logo_v2.png') ?>" width="70" alt="Logo"/>
                   </div>
-                  <h6 class="text-secondary">Login as:</h6>
+                  <h6 class="text-secondary mb-3">Login as:</h6>
                   <a href="{{ route('student-login') }}">
                     <button class="btn-custom mb-2">Nursing Student</button>
                   </a>

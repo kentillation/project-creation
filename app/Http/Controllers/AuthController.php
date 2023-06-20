@@ -27,46 +27,39 @@ class AuthController extends Controller
         return view('pages/index');
     }
 
-    public function dashboard () {
-        // $count_pending = $this->countPendingWithFilter();
-        // return view('pages/admin/dashboard', ['pending' => $count_pending]);
-
-        $pending = StudentRecordModel::where('status_record_id', '1')->count();
-        $declined = StudentRecordModel::where('status_record_id', '2')->count();
-        $approved = StudentRecordModel::where('status_record_id', '3')->count();
-        return view('pages/admin/dashboard', compact('pending', 'declined', 'approved'));
+    //CREATING RECORD OF ADMIN
+    public function signup () 
+    {
+        return view('pages/signup');
     }
 
-    // public function countPendingWithFilter()
-    // {
-    //     $filter = 1;
-    //     $count = StudentRecordModel::where('status_record_id', $filter)->count();
-    //     return $count;
-    // }
+    //SAVING RECORD OF ADMIN
+    public function save_admin(Request $request)
+    {
+        $users = new AdminModel;
+        $request->password = md5($request->password);
+        $users->email = $request->email;
+        $users->username = $request->username;
+        $users->password = $request->password;
+        $users->save();
 
-    //READING ALL RECORDS OF ADMINS
-    public function admin_list () {
-        $users = AdminModel::all();
-        return view('pages/admin/admin-list',['tbl_admin'=>$users]);
+        //return redirect(route('index'));
+        return back()->with('success', 'Account has been saved successfully');
     }
 
-    public function print_admin_list () {
-        $users = AdminModel::all();
-        return view('pages/print/print-admin_list',['tbl_admin'=>$users]);
-    }
-
+    //ADMIN LOGIN
     public function login()
     {
         return view('pages/admin/admin-login');
     }
 
+    //ADMIN LOGIN POST
     public function loginPost(Request $request)
     {
         $credentials = [
             'username' => $request->username,
             'password' => md5($request->password)
         ];
-
         $result_count = AdminModel::where($credentials)->get()->count();
     
         if ($result_count > 0) {
@@ -79,16 +72,24 @@ class AuthController extends Controller
             $result_info = AdminModel::where($credentials)->get();
 
             session()->put('id', $result_info[0]['id']);
-            session()->put('name', $result_info[0]['name']);
             session()->put('email', $result_info[0]['email']);
+            session()->put('username', $result_info[0]['username']);
+            session()->put('first_name', $result_info[0]['first_name']);
+            session()->put('middle_name', $result_info[0]['middle_name']);
+            session()->put('last_name', $result_info[0]['last_name']);
+            session()->put('street_number', $result_info[0]['street_number']);
+            session()->put('street_address', $result_info[0]['street_address']);
+            session()->put('barangay', $result_info[0]['barangay']);
+            session()->put('muni_city', $result_info[0]['muni_city']);
+            session()->put('phone', $result_info[0]['phone']);
 
-            $clinician =  AdminModel::where('name', '=', $request->name)->first();
-
+            $admin =  AdminModel::where('username', '=', $request->username)->first();
             return redirect()->route('admin-dashboard');
         }
         return back()->with('error', 'Invalid username or password.');
     }
 
+    //ADMIN LOGOUT
     public function logout()
     {
         Auth::logout();
@@ -96,26 +97,28 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-    public function signup () 
-    {
-        return view('pages/signup');
+    //ADMIN DASHBOARD
+    public function dashboard () {
+        // $count_pending = $this->countPendingWithFilter();
+        // return view('pages/admin/dashboard', ['pending' => $count_pending]);
+
+        $pending = StudentRecordModel::where('status_record_id', '1')->count();
+        $declined = StudentRecordModel::where('status_record_id', '2')->count();
+        $approved = StudentRecordModel::where('status_record_id', '3')->count();
+        return view('pages/admin/dashboard', compact('pending', 'declined', 'approved'));
+    }
+
+    //READING ALL RECORDS OF ADMINS
+    public function admin_list () {
+        $users = AdminModel::all();
+        return view('pages/admin/admin-list',['tbl_admin'=>$users]);
+    }
+
+    public function print_admin_list () {
+        $users = AdminModel::all();
+        return view('pages/print/print-admin_list',['tbl_admin'=>$users]);
     }
     
-    //CREATING RECORD OF ADMIN
-    public function save_admin(Request $request)
-    {
-        $users = new AdminModel;
-        $request->password = md5($request->password);
-        
-        $users->name = $request->name;
-        $users->email = $request->email;
-        $users->username = $request->username;
-        $users->password = $request->password;
-        $users->save();
-
-        //return redirect(route('index'));
-        return back()->with('success', 'New account has been saved successfully');
-    }
     
     //EDITING ADMIN'S RECORD
     public function update(Request $request, $id) {
@@ -129,7 +132,6 @@ class AuthController extends Controller
     //UPDATING ADMIN'S RECORD
     public function saveUpdate(Request $request, $id) {
         $data = [
-            'name' => $request->input()['name'],
             'email' => $request->input()['email'],
             'username' => $request->input()['username']
         ];
@@ -137,11 +139,44 @@ class AuthController extends Controller
         return redirect(route('admin-list'))->with('success', 'Account has been updated successfully');
     }
 
+    //UPDATING ADMIN'S RECORD
+    public function saveUpdate_profile(Request $request) {
+        $id = Session::get('id');
+        $data = [
+            'first_name' => $request->input()['first_name'],
+            'middle_name' => $request->input()['middle_name'],
+            'last_name' => $request->input()['last_name'],
+            'street_number' => $request->input()['street_number'],
+            'street_address' => $request->input()['street_address'],
+            'barangay' => $request->input()['barangay'],
+            'muni_city' => $request->input()['muni_city'],
+            'phone' => $request->input()['phone'],
+            'email' => $request->input()['email']
+        ];
+        $update_admin_account = AdminModel::where('id', $id)->update($data);
+        return redirect(route('admin-profile'))->with('success', 'Account has been updated successfully');
+    }
+
     public function delete($id) {
         $admin = AdminModel::find($id);
         $admin->delete();
         return redirect(route('admin-list'))->with('removal', 'Account has been remove successfully');
     }
+
+    public function admin_profile() {
+
+        $id = Session::get('id');
+        $admin = AdminModel::find($id);
+
+        return view('pages/admin/admin-profile', ['admin_profile'=>$admin]);
+    }
+
+    public function admin_account_settings() {
+        $id = Session::get('id');
+        $admin = AdminModel::find($id);
+        return view('pages/admin/admin-account-settings', ['admin_acount'=>$admin]);
+    }
+
 
     //READING ALL RECORDS OF DEPARTMENT STAFF
     public function staff_list () {

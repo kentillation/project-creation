@@ -42,10 +42,10 @@
               <div class="card mb-2 p-3">
                 <div class="card-body">
                     <a href="{{ route('index') }}" class="back-arrow" title="Back">
-                        <i class="bi bi-arrow-left fs-4"></i>
+                        <i class="bi bi-arrow-left fs-5"></i>
                     </a>
-                    <div class="d-flex justify-content-center mb-3 p-2">
-                        <img src="<?php echo asset('images/ehr_logo_v2.png') ?>" width="80" alt="Logo"/>
+                    <div class="d-flex justify-content-center mb-2 p-2">
+                        <img src="<?php echo asset('images/ehr_logo_v2.png') ?>" width="70" alt="Logo"/>
                     </div>
                     <div class="container text-center">
                       <h4>Department Staff</h4>
