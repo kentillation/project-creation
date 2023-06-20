@@ -7,7 +7,7 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
   <!-- Favicons -->
-  <link href="<?php echo asset ('assets/img/ehr_logo_v2.png') ?>" rel="icon">
+  <link href="<?php echo asset ('assets/img/ehr_logo_v1.png') ?>" rel="icon">
   <link href="<?php echo asset ('assets/img/ehr_logo_v2.png') ?>" rel="apple-touch-icon">
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -35,10 +35,10 @@
               <div class="card mb-2 p-3">
                 <div class="card-body">
                     <a href="{{ route('index') }}" class="back-arrow" title="Back">
-                        <i class="bi bi-arrow-left fs-4"></i>
+                        <i class="bi bi-arrow-left fs-5"></i>
                     </a>
-                    <div class="d-flex justify-content-center mb-3 p-2">
-                        <img src="<?php echo asset('images/ehr_logo_v2.png') ?>" width="80" alt="Logo"/>
+                    <div class="d-flex justify-content-center mb-2 p-2">
+                        <img src="<?php echo asset('images/ehr_logo_v2.png') ?>" width="70" alt="Logo"/>
                     </div>
                     <div class="container text-center">
                       <h4>Admin</h4>
@@ -75,6 +75,11 @@
                         </div>
                         <div class="col-12">
                             <button class="btn-custom w-100 mt-2" type="submit">Login</button>
+                        </div>
+                        <div class="col-12">
+                          <p>Don't have an account?
+                            <a href="{{ route('signup') }}">Create one.</a>
+                          </p>
                         </div>
                     </form>
                 </div>

@@ -1099,7 +1099,7 @@ h3 {
 # Profie Page
 --------------------------------------------------------------*/
 .profile .profile-card img {
-  max-width: 120px;
+  max-width: 350px;
 }
 
 .profile .profile-card h2 {
@@ -1317,6 +1317,45 @@ h3 {
 
 .btn-custom {
 
+}
+
+/*--------------------------------------------------------------
+# Table
+--------------------------------------------------------------*/
+
+#table .btn-view {
+  background-color: transparent;
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  font-size: 13px;
+  padding: 8px;
+}
+
+#table .btn-view:hover {
+  cursor: pointer;
+  background-color: var(--tertiary-color);
+  color: var(--light-color);
+  transition: 0.5s;
+}
+
+#table th {
+  text-align: center !important;
+}
+
+.dataTables_filter, .dataTables_wrapper .dataTables_paginate, table.dataTable.no-footer {
+  margin-bottom: 20px !important;
+}
+
+@media screen and (max-width: 600px) {
+
+  #table .btn-view {
+    font-size: 12px;
+  }
+
+  #table span {
+    display: none;
+  }
 }
 
 /*--------------------------------------------------------------

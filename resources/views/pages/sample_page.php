@@ -32,38 +32,12 @@
               <div class="card recent-sales overflow-auto">
                 <div class="card-body m-2">
                   <h5 class="card-title">Head Title</h5>
-                    <div class="table-responsive">
-                      <table class="table table-hover text-center" id="table">
-                        <thead>
-                          <tr>
-                            <th>Student Name</th>
-                            <th>Request Status</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          @foreach ($student_records as $student_record)
-                          <tr>
-                            <td>{{ $student_record->last_name }}, {{ $student_record->first_name }} {{ $student_record->middle_name }}</td>
-                            <td>{{ $student_record->status_record_id == 1 ? "Pending" : "Approved"}}</td>
-                            <td>
-                              <a href="{{ route('view-record') }}">
-                                <button class="btn-view" title="View Record">
-                                  <i class="bi bi-eye"></i>
-                                  <span>&nbsp; View Record</span>
-                                </button>
-                              </a>
-                            </td>
-                          </tr>
-                          @endforeach
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
+                  
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
           <div class="col-lg-4">
 

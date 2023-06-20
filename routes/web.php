@@ -26,8 +26,38 @@ Route::get('/admin/update-pending-record-request/{id}', 'AuthController@update_p
 Route::post('/admin/save-update-pending-record-request/{id}', 'AuthController@saveUpdate_pending_record')->name('a-save-update-pending-record');
 
 Route::get('/admin/declined-medical-record-requests', 'AuthController@declined_medical_records')->name('a-declined-medical-records');
-
 Route::get('/admin/approved-medical-record-requests', 'AuthController@approved_medical_records')->name('a-approved-medical-records');
+
+//ADMIN PROFILE
+Route::get('/admin/profile', 'AuthController@admin_profile')->name('admin-profile');
+Route::get('/admin/update-profile/{id}', 'AuthController@profile')->name('update-admin-profile');
+Route::post('/admin/save-update-profile/{id}', 'AuthController@saveUpdate_profile')->name('update-save-admin-profile');
+
+Route::get('/admin/account-settings', 'AuthController@admin_account_settings')->name('admin-account-settings');
+
+//STUDENT CONTROLLER
+Route::get('/student-login', 'StudentController@student_login')->name('student-login');
+Route::post('/student-login', 'StudentController@student_loginPost');
+Route::get('/student-dashboard', 'StudentController@dashboard')->name('student-dashboard');
+Route::delete('/student/logout', 'StudentController@logout')->name('student-logout');
+Route::post('/save-student', 'StudentController@save_student')->name('save-student');
+Route::get('/student/update/{id}', 'StudentController@update_student')->name('update-student');
+Route::post('/student/save-update/{id}', 'StudentController@saveUpdate_student')->name('update-save-student');
+Route::get('/student/delete/{id}', 'StudentController@delete_student')->name('delete-student');
+//Medical Record
+Route::get('/student/add-medical-record', 'StudentController@add_medical_record')->name('add-medical-record');
+Route::post('/student/save-medical-record', 'StudentController@save_medical_record')->name('save-medical-record');
+Route::get('/student/view-medical-records', 'StudentController@view_medical_records')->name('view-medical-records');
+Route::get('/student/view-record', 'StudentController@view_record')->name('view-record');
+//Medical History
+Route::get('/student/add-medical-history', 'StudentController@add_medical_history')->name('add-medical-history');
+Route::post('/student/save-medical-history', 'StudentController@save_medical_history')->name('save-medical-history');
+Route::get('/student/view-medical-histories', 'StudentController@view_medical_histories')->name('view-medical-histories');
+//Student Profile
+Route::get('/student/profile', 'StudentController@student_profile')->name('student-profile');
+Route::post('/student/save-update-profile/{id}', 'StudentController@saveUpdate_profile')->name('update-save-student-profile');
+
+Route::get('/student/account-settings', 'StudentController@student_account_settings')->name('student-account-settings');
 
 //DEPARTMENT STAFF CONTROLLER
 Route::get('/staff-login', 'StaffController@staff_login')->name('staff-login');
@@ -56,25 +86,4 @@ Route::get('/clinician/update-pending-record/{id}', 'ClinicianController@update_
 Route::post('/clinician/save-update-pending-record/{id}', 'ClinicianController@saveUpdate_pending_record')->name('save-update-pending-record');
 
 Route::get('/clinician/declined-medical-records', 'ClinicianController@declined_medical_records')->name('c-declined-medical-records');
-
 Route::get('/clinician/approved-medical-records', 'ClinicianController@approved_medical_records')->name('c-approved-medical-records');
-
-
-//STUDENT CONTROLLER
-Route::get('/student-login', 'StudentController@student_login')->name('student-login');
-Route::post('/student-login', 'StudentController@student_loginPost');
-Route::get('/student-dashboard', 'StudentController@dashboard')->name('student-dashboard');
-Route::delete('/student/logout', 'StudentController@logout')->name('student-logout');
-Route::post('/save-student', 'StudentController@save_student')->name('save-student');
-Route::get('/student/update/{id}', 'StudentController@update_student')->name('update-student');
-Route::post('/student/save-update/{id}', 'StudentController@saveUpdate_student')->name('update-save-student');
-Route::get('/student/delete/{id}', 'StudentController@delete_student')->name('delete-student');
-//Medical Record
-Route::get('/student/add-medical-record', 'StudentController@add_medical_record')->name('add-medical-record');
-Route::post('/student/save-medical-record', 'StudentController@save_medical_record')->name('save-medical-record');
-Route::get('/student/view-medical-records', 'StudentController@view_medical_records')->name('view-medical-records');
-Route::get('/student/view-record', 'StudentController@view_record')->name('view-record');
-//Medical History
-Route::get('/student/add-medical-history', 'StudentController@add_medical_history')->name('add-medical-history');
-Route::post('/student/save-medical-history', 'StudentController@save_medical_history')->name('save-medical-history');
-Route::get('/student/view-medical-histories', 'StudentController@view_medical_histories')->name('view-medical-histories');

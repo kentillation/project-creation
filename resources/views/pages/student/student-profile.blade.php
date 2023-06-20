@@ -1,9 +1,7 @@
-@extends('includes/admin-sidenav')
+@extends('includes/student-sidenav')
 
 @section('page-content')
-
   <main id="main" class="main">
-
     <div class="pagetitle">
       <h1>Profile</h1>
       <nav>
@@ -13,7 +11,6 @@
         </ol>
       </nav>
     </div><!-- End Page Title -->
-
     <section class="section profile">
       @if(Session::has('success'))
         <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
@@ -28,7 +25,7 @@
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
               <img src="<?php echo asset('assets/img/profile-img.png') ?>" alt="Profile" class="rounded-circle">
               <h2 class="m-3">{{ Session::get('first_name') }} {{ Session::get('middle_name') }} {{ Session::get('last_name') }}</h2>
-              <h3 class="m-2">System Administrator</h3>
+              <h3 class="m-2">Nursing Student</h3>
               <div class="social-links mt-3">
                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -38,37 +35,28 @@
             </div>
           </div>
         </div>
-
         <div class="col-xl-8">
           <div class="card">
             <div class="card-body pt-3">
               <!-- Bordered Tabs -->
               <ul class="nav nav-tabs">
-
                 <li class="nav-item">
                   <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
                 </li>
-
                 <li class="nav-item">
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
                 </li>
-
               </ul>
-
               <div class="tab-content pt-2">
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
                   <h5 class="card-title">Profile Details</h5>
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label ">Admin ID</div>
-                    <div class="col-lg-9 col-md-8">Admin-{{ Session::get('id') }}</div>
+                    <div class="col-lg-3 col-md-4 label ">Student ID</div>
+                    <div class="col-lg-9 col-md-8">{{ Session::get('student_id') }}</div>
                   </div>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Name</div>
                     <div class="col-lg-9 col-md-8">{{ Session::get('first_name') }} {{ Session::get('middle_name') }} {{ Session::get('last_name') }}</div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label ">Address</div>
-                    <div class="col-lg-9 col-md-8">{{ Session::get('street_number') }}, {{ Session::get('street_address') }}, {{ Session::get('barangay') }}, {{ Session::get('muni_city') }}</div>
                   </div>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Phone number</div>
@@ -78,68 +66,39 @@
                     <div class="col-lg-3 col-md-4 label">Email</div>
                     <div class="col-lg-9 col-md-8">{{ Session::get('email') }}</div>
                   </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Username</div>
-                    <div class="col-lg-9 col-md-8">{{ Session::get('username') }}</div>
-                  </div>
                 </div>
-
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
                   <!-- Profile Edit Form -->
-                  <form action="{{ route('update-save-admin-profile', ['id' => $admin_profile['id']]) }}" method="post">
+                  <form action="{{ route('update-save-student-profile', ['id' => $student_profile['id']]) }}" method="post">
                     @csrf
                     <div class="row mb-3">
                       <label for="first_name" class="col-md-4 col-lg-3 col-form-label">First Name</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="first_name" type="text" class="form-control" id="first_name" value="{{ $admin_profile->first_name }}">
+                        <input name="first_name" type="text" class="form-control" id="first_name" value="{{ $student_profile->first_name }}">
                       </div>
                     </div>
                     <div class="row mb-3">
                       <label for="middle_name" class="col-md-4 col-lg-3 col-form-label">Middle Name</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="middle_name" type="text" class="form-control" id="middle_name" value="{{ $admin_profile->middle_name }}">
+                        <input name="middle_name" type="text" class="form-control" id="middle_name" value="{{ $student_profile->middle_name }}">
                       </div>
                     </div>
                     <div class="row mb-3">
                       <label for="last_name" class="col-md-4 col-lg-3 col-form-label">Last Name</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="last_name" type="text" class="form-control" id="last_name" value="{{ $admin_profile->last_name }}">
+                        <input name="last_name" type="text" class="form-control" id="last_name" value="{{ $student_profile->last_name }}">
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label for="street_number" class="col-md-4 col-lg-3 col-form-label">Street Number</label>
+                      <label for="phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="street_number" type="text" class="form-control" id="street_number" value="{{ $admin_profile->street_number }}">
+                        <input name="phone" type="text" class="form-control" id="phone" value="{{ $student_profile->phone }}">
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label for="street_address" class="col-md-4 col-lg-3 col-form-label">Street Address</label>
+                      <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="street_address" type="text" class="form-control" id="street_address" value="{{ $admin_profile->street_address }}">
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <label for="barangay" class="col-md-4 col-lg-3 col-form-label">Barangay</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="barangay" type="text" class="form-control" id="barangay" value="{{ $admin_profile->barangay }}">
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <label for="muni_city" class="col-md-4 col-lg-3 col-form-label">Municipality / City</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="muni_city" type="text" class="form-control" id="muni_city" value="{{ $admin_profile->muni_city }}">
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="phone" type="text" class="form-control" id="Phone" value="{{ $admin_profile->phone }}">
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="email" type="email" class="form-control" id="Email" value="{{ $admin_profile->email }}">
+                        <input name="email" type="email" class="form-control" id="email" value="{{ $student_profile->email }}">
                       </div>
                     </div>
                     <div class="text-center">
@@ -147,15 +106,12 @@
                     </div>
                   </form><!-- End Profile Edit Form -->
                 </div>
-
               </div><!-- End Bordered Tabs -->
-
             </div>
           </div>
         </div>
       </div>
     </section>
-
   </main><!-- End #main -->
 
   @endsection

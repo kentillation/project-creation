@@ -43,10 +43,16 @@ class StudentController extends Controller
             $result_info = StudentModel::where($credentials)->get();
 
             session()->put('id', $result_info[0]['id']);
-            session()->put('student_id', $result_info[0]['student_id']);
+            session()->put('email', $result_info[0]['email']);
+            session()->put('username', $result_info[0]['username']);
             session()->put('first_name', $result_info[0]['first_name']);
             session()->put('middle_name', $result_info[0]['middle_name']);
             session()->put('last_name', $result_info[0]['last_name']);
+            session()->put('street_number', $result_info[0]['street_number']);
+            session()->put('street_address', $result_info[0]['street_address']);
+            session()->put('barangay', $result_info[0]['barangay']);
+            session()->put('muni_city', $result_info[0]['muni_city']);
+            session()->put('phone', $result_info[0]['phone']);
 
             $student =  StudentModel::where('student_id', '=', $request->student_id)->first();
             return redirect()->route('student-dashboard');
@@ -156,11 +162,39 @@ class StudentController extends Controller
         return redirect(route('student-list'));
     }
 
+    //UPDATING ADMIN'S RECORD
+    public function saveUpdate_profile(Request $request) {
+        $id = Session::get('id');
+        $data = [
+            'first_name' => $request->input()['first_name'],
+            'middle_name' => $request->input()['middle_name'],
+            'last_name' => $request->input()['last_name'],
+            'phone' => $request->input()['phone'],
+            'email' => $request->input()['email']
+        ];
+        $update_student_account = StudentModel::where('id', $id)->update($data);
+        return redirect(route('student-profile'))->with('success', 'Account has been updated successfully');
+    }
+
     //DELETE STUDENT
     public function delete_student($id) {
         $student = StudentModel::find($id);
         $student->delete();
         return redirect(route('student-list'));
+    }
+
+    public function student_profile() {
+
+        $id = Session::get('id');
+        $student = StudentModel::find($id);
+
+        return view('pages/student/student-profile', ['student_profile'=>$student]);
+    }
+
+    public function student_account_settings() {
+        $id = Session::get('id');
+        $admin = StudentModel::find($id);
+        return view('pages/student/student-account-settings', ['student_acount'=>$admin]);
     }
 
     //ADD STUDENT MEDICAL RECORD
