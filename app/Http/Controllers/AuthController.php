@@ -38,6 +38,9 @@ class AuthController extends Controller
     {
         $users = new AdminModel;
         $request->password = md5($request->password);
+        $users->first_name = $request->first_name;
+        $users->middle_name = $request->middle_name;
+        $users->last_name = $request->last_name;
         $users->email = $request->email;
         $users->username = $request->username;
         $users->password = $request->password;
@@ -192,8 +195,23 @@ class AuthController extends Controller
 
     //READING THE LIST OF STUDENT
     public function student_list () {
+
+        $id = Session::get('id');
+        $admin = AdminModel::find($id);
+        // return view('pages/admin/admin-profile', ['admin_profile'=>$admin]);
+
         $student = StudentModel::all();
-        return view('pages/admin/student-list',['tbl_student'=>$student]);
+        return view('pages/admin/student-list',['tbl_student'=>$student], ['admin_profile'=>$admin]);
+    }
+
+    //ADD STUDENT USER
+    public function add_student_user () {
+
+        $id = Session::get('id');
+        $admin = AdminModel::find($id);
+
+        $student = StudentModel::all();
+        return view('pages/admin/add-student-user', ['admin_profile'=>$admin]);
     }
 
     //READING THE MEDICAL RECORDS OF STUDENT

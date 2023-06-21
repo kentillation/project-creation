@@ -62,7 +62,9 @@ class StaffController extends Controller
     {
         $staff = new StaffModel;
         $request->password = md5($request->password);
-        $staff->name = $request->name;
+        $staff->first_name = $request->first_name;
+        $staff->middle_name = $request->middle_name;
+        $staff->last_name = $request->last_name;
         $staff->email = $request->email;
         $staff->username = $request->username;
         $staff->password = $request->password;

@@ -11,6 +11,9 @@ use App\Models\AdminModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Student_Acc_Creation_Email;
+use App\Mail\Student_Acc_Creation_Receipt_Email;
 
 //for SMS Notification
 use Exception;
@@ -45,7 +48,6 @@ class StudentController extends Controller
             session()->put('id', $result_info[0]['id']);
             session()->put('student_id', $result_info[0]['student_id']);
             session()->put('email', $result_info[0]['email']);
-            session()->put('username', $result_info[0]['username']);
             session()->put('first_name', $result_info[0]['first_name']);
             session()->put('middle_name', $result_info[0]['middle_name']);
             session()->put('last_name', $result_info[0]['last_name']);
@@ -74,18 +76,28 @@ class StudentController extends Controller
     {
         $student = new StudentModel;
         // $admin = new AdminModel;
-        
-        try 
-        {
-
+       
             $student->student_id = $request->student_id;
             $student->first_name = $request->first_name;
             $student->middle_name = $request->middle_name;
             $student->last_name = $request->last_name;
             $student->phone = $request->phone;
             $student->email = $request->email;
-            $student->username = $request->username;
             $student->password = $request->password;
+            $student->admin_email = $request->admin_email;
+            // $student->created_at = date('F j, Y | h : m : s a');
+
+            //For Email
+            // $studentaccount = StudentModel::create($request->all());
+            // $studentaccount_receipt = StudentModel::create($request->all());
+
+            Mail::to($student->email)->send(new Student_Acc_Creation_Email($student));
+            Mail::to($student->admin_email)->send(new Student_Acc_Creation_Receipt_Email($student));
+
+            $student->password = md5($request->password);
+            $student->save();
+        
+            return back()->with('success', 'New account has been saved successfully.');
 
             // $admin_name = $request->name;
             // $phone_number = $student->phone;
@@ -94,7 +106,6 @@ class StudentController extends Controller
             // $last_name = $student->last_name;
             // $student_id = $student->student_id;
             // $password = $student->password;
-
             // $receiverNumber = "+63 945 314 5499";
             // $message = "Date: ";
             // $message .= date("F j, Y | l");
@@ -127,15 +138,6 @@ class StudentController extends Controller
             // $client->messages->create($receiverNumber, [
             //     'from' => $twilio_number, 
             //     'body' => $message]);
-            $student->password = md5($request->password);
-            $student->save();
-
-            return back()->with('success', 'New account has been saved successfully and SMS Notification has been sent to the nursing student.');
-        } 
-        catch (Exception $e) 
-        {
-            dd("Error: ". $e->getMessage());
-        }
 
     }
     
@@ -156,8 +158,7 @@ class StudentController extends Controller
             'middle_name' => $request->input()['middle_name'],
             'last_name' => $request->input()['last_name'],
             'phone' => $request->input()['phone'],
-            'email' => $request->input()['email'],
-            'username' => $request->input()['username']
+            'email' => $request->input()['email']
         ];
         $update_student = StudentModel::where('id', $id)->update($data);
         return redirect(route('student-list'));
@@ -194,8 +195,8 @@ class StudentController extends Controller
 
     public function student_account_settings() {
         $id = Session::get('id');
-        $admin = StudentModel::find($id);
-        return view('pages/student/student-account-settings', ['student_acount'=>$admin]);
+        $student = StudentModel::find($id);
+        return view('pages/student/student-account-settings', ['student_acount'=>$student]);
     }
 
     //ADD STUDENT MEDICAL RECORD
