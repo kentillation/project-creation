@@ -31,6 +31,12 @@ class StudentRecordModel extends Model
                             'section_id',
                             'blood_type_id',
                             'status_record_id',
+                            'cbc_file',
+                            'urinalysis_file',
+                            'fecalysis_file',
+                            'x_ray_file',
+                            'hba_file',
+                            'hbv_file',
                             'created_at',
                             'updated_at'
                         ];
