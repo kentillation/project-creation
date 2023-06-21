@@ -17,27 +17,27 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Head Title</h5>
+                            <h5 class="card-title"></h5>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
                                         <tr>
                                             <th scope="col">Name</th>
-                                            <th scope="col">Position</th>
-                                            <th scope="col">Age</th>
-                                            <th scope="col">Start Date</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Username</th>
+                                            <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($tbl_admin as $admin)
                                             <tr>
-                                                <td>{{ $admin->name }}</td>
+                                                <td>{{ $admin->first_name }} {{ $admin->middle_name }} {{ $admin->last_name }}</td>
                                                 <td>{{ $admin->email }}</td>
                                                 <td>{{ $admin->username }}</td>
                                                 <td>
                                                     <a href="{{ route('update-admin', ['id' => $admin->id] ) }}">
-                                                        <button class="btn btn-outline-success btn-sm" title="Modify">
-                                                            <i class="bi bi-pencil-square"></i>
+                                                        <button class="btn btn-outline-primary btn-sm" title="View">
+                                                            <i class="bi bi-eye"></i>
                                                         </button>
                                                     </a>
                                                     <a href="{{ route('delete-admin', ['id' => $admin->id] ) }}">

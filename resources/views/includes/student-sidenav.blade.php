@@ -38,7 +38,7 @@
       <i class="bi bi-list toggle-sidebar-btn" title="Menu"></i>&nbsp;
       <a href="#" class="logo d-flex align-items-center">
         <img src="#" alt="">
-        <span class="d-none d-lg-block">Christain School EHR</span>
+        <span class="d-none d-lg-block">Christian School EHR</span>
       </a>
     </div><!-- End Logo -->
     <nav class="header-nav ms-auto">
@@ -170,7 +170,7 @@
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
               <h6>{{ Session::get('first_name') }} {{ Session::get('middle_name') }} {{ Session::get('last_name') }}</h6>
-              <span>Student Nurse</span>
+              <span>Nursing Student</span>
             </li>
             <li>
               <hr class="dropdown-divider">

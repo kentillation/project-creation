@@ -38,7 +38,7 @@
       <i class="bi bi-list toggle-sidebar-btn" title="Menu"></i>&nbsp;
       <a href="#" class="logo d-flex align-items-center">
         <img src="#" alt="">
-        <span class="d-none d-lg-block">Christain School EHR</span>
+        <span class="d-none d-lg-block">Christian School EHR</span>
       </a>
     </div><!-- End Logo -->
     <nav class="header-nav ms-auto">

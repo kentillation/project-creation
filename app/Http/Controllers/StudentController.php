@@ -43,6 +43,7 @@ class StudentController extends Controller
             $result_info = StudentModel::where($credentials)->get();
 
             session()->put('id', $result_info[0]['id']);
+            session()->put('student_id', $result_info[0]['student_id']);
             session()->put('email', $result_info[0]['email']);
             session()->put('username', $result_info[0]['username']);
             session()->put('first_name', $result_info[0]['first_name']);
@@ -200,8 +201,8 @@ class StudentController extends Controller
     //ADD STUDENT MEDICAL RECORD
     public function add_medical_record () 
     {
-        $id = Session::get('id');
-        $result_info = StudentModel::where('id',$id)->get();
+        $student_id = Session::get('student_id');
+        $result_info = StudentModel::where('student_id',$student_id)->get();
         return view('pages/student/add-medical-record', ['student'=>$result_info]);
     }
 

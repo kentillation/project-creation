@@ -18,7 +18,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Head Title</h5>
+                            <h5 class="card-title"></h5>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -36,12 +36,7 @@
                                                 <td>{{ $student_record->phone }}</td>
                                                 <td>{{ $student_record->muni_city }}</td>
                                                 <td>
-                                                    <a href="#">
-                                                        <button class="btn btn-outline-success btn-sm" title="Modify">
-                                                            <i class="bi bi-pencil-square"></i>
-                                                        </button>
-                                                    </a>
-                                                    <a href="#">
+                                                    <a href="{{ route('a-pending-medical-records') }}">
                                                         <button class="btn btn-outline-primary btn-sm" title="View record">
                                                             <i class="bi bi-eye"></i>
                                                         </button>

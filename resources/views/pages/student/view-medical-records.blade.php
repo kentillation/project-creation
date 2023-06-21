@@ -31,7 +31,7 @@
             <div class="col-12">
               <div class="card recent-sales overflow-auto">
                 <div class="card-body m-2">
-                  <h5 class="card-title">Head Title</h5>
+                  <h5 class="card-title"></h5>
                     <div class="table-responsive">
                       <table class="table table-hover text-center" id="table">
                         <thead>
