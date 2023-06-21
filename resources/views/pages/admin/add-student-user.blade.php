@@ -2,88 +2,45 @@
 
 @section('page-content')
 <main id="main" class="main">
-  <div class="pagetitle">
-    <h1>List of nursing students</h1>
-    <nav>
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">Users</li>
-        <li class="breadcrumb-item">Nursing Students</li>
-        <li class="breadcrumb-item active">List of nursing students</li>
-      </ol>
-    </nav>
-  </div>
-  @if(Session::has('success'))
-    <!-- <div class="alert alert-danger text-center" role="alert" id="alertbox"> -->
-    <div class="alert alert-success text-center alert-dismissible fade show m-4" role="alert">
-      <i class="bi bi-check-circle"></i>&nbsp;
+    <div class="pagetitle">
+      <h1>Create New Account</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">Users</li>
+          <li class="breadcrumb-item">Nursing Students</li>
+          <li class="breadcrumb-item">List of Nursing Students</li>
+          <li class="breadcrumb-item">Create New Account</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="mb-3">
+        <a href="{{ route('student-list') }}" title="Back">
+            <i class="bi bi-arrow-left"></i>
+            &nbsp;Back
+        </a>
+    </div>
+    @if(Session::has('success'))
+      <div class="alert alert-success text-center alert-dismissible fade show" role="alert" id="alertbox">
         {{ Session::get('success') }}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" title="Close"></button>
-    </div>
-  @endif
-  <section class="section">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title"></h5>
-            <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#createUserModal">
-              <i class="bi bi-plus"></i>
-                Add User
-            </button>
-            <div class="table-responsive">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Student ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach ($tbl_student as $student)
-                  <tr>
-                    <td>{{ $student->student_id }}</td>
-                    <td>{{ $student->first_name }} {{ $student->middle_name }} {{ $student->last_name }}</td>
-                    <td>{{ $student->email }}</td>
-                    <td>
-                      <a href="{{ route('update-student', ['id' => $student->id] ) }}">
-                        <button class="btn btn-outline-success btn-sm" title="Modify">
-                          <i class="bi bi-pencil-square"></i>
-                        </button>
-                      </a>
-                      <a href="{{ route('delete-student', ['id' => $student->id] ) }}">
-                        <button class="btn btn-outline-danger btn-sm" title="Move to trash">
-                          <i class="bi bi-trash"></i>
-                        </button>
-                      </a>
-                      <a href="{{ route('view-stud-med-record', ['id' => $student->id] ) }}">
-                        <button class="btn btn-outline-primary btn-sm" title="View medical record">
-                          <i class="bi bi-droplet-half"></i>
-                        </button>
-                      </a>
-                    </td>
-                  </tr>
-                  @endforeach
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
-    </div>
-  </section>
+    @endif
+    @if(Session::has('removal'))
+      <div class="alert alert-danger text-center alert-dismissible fade show" role="alert" id="alertbox">
+        {{ Session::get('removal') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    @endif
+    <section class="section dashboard">
+      <div class="row">
 
-  <!-- Modal -->
-  <div class="modal fade" id="createUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">New Student User</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <form action="{{ route('save-student') }}" method="post" class="row g-3 needs-validation" novalidate>
+        <div class="col-lg-8">
+          <div class="row">
+            <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+                <div class="card-body m-2">
+                  <h5 class="card-title"></h5>
+                  <form action="{{ route('save-student') }}" method="post" class="row g-3 needs-validation" novalidate>
                         @csrf
 
                         <div class="col-12" style="display: none;">
@@ -179,22 +136,67 @@
                         </div>
                     </form>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
 
-  
+          <div class="col-lg-4">
+
+            <div class="card">
+              <div class="card-body pb-4">
+                <h5 class="card-title">Activity Logs</h5>
+                <div class="news">
+                  <div class="post-item clearfix">
+                    <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
+                    <h4><a href="#">Title</a></h4>
+                    <p>This is just a sample paragraph</p>
+                  </div>
+
+                  <div class="post-item clearfix">
+                    <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
+                    <h4><a href="#">Title</a></h4>
+                    <p>This is just a sample paragraph</p>
+                  </div>
+
+                  <div class="post-item clearfix">
+                    <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
+                    <h4><a href="#">Title</a></h4>
+                    <p>This is just a sample paragraph</p>
+                  </div>
+
+                  <div class="post-item clearfix">
+                    <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
+                    <h4><a href="#">Title</a></h4>
+                    <p>This is just a sample paragraph</p>
+                  </div>
+
+                  <div class="post-item clearfix">
+                    <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
+                    <h4><a href="#">Title</a></h4>
+                    <p>This is just a sample paragraph</p>
+                  </div>
+
+                  <div class="post-item clearfix">
+                    <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
+                    <h4><a href="#">Title</a></h4>
+                    <p>This is just a sample paragraph</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </section>
+
     <!-- for Data Tables -->
-  
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
-    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-  <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
-  <script>
-    $(document).ready(function () {
-      $('table').DataTable();
-    });
-  </script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script>
+      $(document).ready (function() {
+        $('table').DataTable();
+      });
+    </script>
 
-</main><!-- End #main -->
-
+  </main><!-- End #main -->
 @endsection

@@ -1,4 +1,4 @@
-@extends('includes/student-sidenav')
+@extends('includes/admin-sidenav')
 
 @section('page-content')
 <main id="main" class="main">
@@ -66,10 +66,6 @@
                             <div class="col-12">
                                 <label for="email">Email</label>
                                 <input type='email' name='email' value="{{ $tbl_student['email'] }}" id="email" class="form-control mb-3" required />
-                            </div>
-                            <div class="col-12">
-                                <label for="username">Username</label>
-                                <input type='text' name='username' value="{{ $tbl_student['username'] }}" id="username" class="form-control mb-3" required />
                             </div>
                         </div>
                         <button class="btn btn-success mt-3" type="submit">

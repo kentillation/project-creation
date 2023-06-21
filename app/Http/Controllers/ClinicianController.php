@@ -41,10 +41,10 @@ class ClinicianController extends Controller
             $result_info = ClinicianModel::where($credentials)->get();
 
             session()->put('id', $result_info[0]['id']);
-            session()->put('name', $result_info[0]['name']);
             session()->put('email', $result_info[0]['email']);
+            session()->put('username', $result_info[0]['username']);
 
-            $clinician =  ClinicianModel::where('name', '=', $request->name)->first();
+            $clinician =  ClinicianModel::where('username', '=', $request->username)->first();
 
             return redirect()->route('clinician-dashboard');
 
@@ -64,7 +64,6 @@ class ClinicianController extends Controller
     {
         $clinician = new ClinicianModel;
         $request->password = md5($request->password);
-        $clinician->name = $request->name;
         $clinician->email = $request->email;
         $clinician->username = $request->username;
         $clinician->password = $request->password;
@@ -97,6 +96,22 @@ class ClinicianController extends Controller
         $clinician = ClinicianModel::find($id);
         $clinician->delete();
         return redirect(route('clinician-list'));
+    }
+
+    //CLINICIAN PROFILE
+    public function clinician_profile() {
+
+        $id = Session::get('id');
+        $clinician = ClinicianModel::find($id);
+
+        return view('pages/clinician/clinician-profile', ['clinician_profile'=>$clinician]);
+    }
+
+    //CLINICIAN ACCOUNT SETTINGS
+    public function clinician_account_settings() {
+        $id = Session::get('id');
+        $clinician = ClinicianModel::find($id);
+        return view('pages/clinician/clinician-account-settings', ['clinician_acount'=>$clinician]);
     }
 
     //ADD STUDENT MEDICAL RECORD

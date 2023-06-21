@@ -33,6 +33,7 @@ Route::get('/admin/profile', 'AuthController@admin_profile')->name('admin-profil
 Route::get('/admin/update-profile/{id}', 'AuthController@profile')->name('update-admin-profile');
 Route::post('/admin/save-update-profile/{id}', 'AuthController@saveUpdate_profile')->name('update-save-admin-profile');
 
+//ADMIN ACCOUNT SETTINGS
 Route::get('/admin/account-settings', 'AuthController@admin_account_settings')->name('admin-account-settings');
 
 //STUDENT CONTROLLER
