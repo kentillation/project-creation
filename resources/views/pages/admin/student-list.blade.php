@@ -18,7 +18,7 @@
       <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Head Title</h5>
+            <h5 class="card-title"></h5>
             <div class="table-responsive">
               <table class="table">
                 <thead>
@@ -54,7 +54,7 @@
                       </a>
                       <a href="{{ route('view-stud-med-record', ['id' => $student->id] ) }}">
                         <button class="btn btn-outline-primary btn-sm" title="View medical record">
-                          <i class="bi bi-eye"></i>
+                          <i class="bi bi-droplet-half"></i>
                         </button>
                       </a>
                     </td>

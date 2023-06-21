@@ -18,7 +18,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Head Title</h5>
+                            <h5 class="card-title"></h5>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
