@@ -39,10 +39,13 @@ class StaffController extends Controller
             $result_info = StaffModel::where($credentials)->get();
 
             session()->put('id', $result_info[0]['id']);
-            session()->put('name', $result_info[0]['name']);
+            session()->put('first_name', $result_info[0]['first_name']);
+            session()->put('middle_name', $result_info[0]['middle_name']);
+            session()->put('last_name', $result_info[0]['last_name']);
+            session()->put('username', $result_info[0]['username']);
             session()->put('email', $result_info[0]['email']);
 
-            $clinician =  StaffModel::where('name', '=', $request->name)->first();
+            $clinician =  StaffModel::where('username', '=', $request->username)->first();
 
             return redirect()->route('staff-dashboard');
 
@@ -62,9 +65,6 @@ class StaffController extends Controller
     {
         $staff = new StaffModel;
         $request->password = md5($request->password);
-        $staff->first_name = $request->first_name;
-        $staff->middle_name = $request->middle_name;
-        $staff->last_name = $request->last_name;
         $staff->email = $request->email;
         $staff->username = $request->username;
         $staff->password = $request->password;
@@ -85,7 +85,9 @@ class StaffController extends Controller
     //UPDATING NURSE STAFF'S RECORD
     public function saveUpdate_staff(Request $request, $id) {
         $data = [
-            'name' => $request->input()['name'],
+            'first_name' => $request->input()['first_name'],
+            'middle_name' => $request->input()['middle_name'],
+            'last_name' => $request->input()['last_name'],
             'email' => $request->input()['email'],
             'username' => $request->input()['username']
         ];
@@ -98,4 +100,25 @@ class StaffController extends Controller
         $staff->delete();
         return redirect(route('staff-list'));
     }
+
+    public function pending_medical_records () {
+
+        $s_pending_records = StudentRecordModel::where('status_record_id', '1')->get();
+        return view('pages/staff/s-pending-medical-records', compact('s_pending_records'));
+
+    }
+
+     //EDITING STUDENT PENDING RECORD
+     public function view_pending_record(Request $request, $id) {
+        $pending_record = StudentRecordModel::find($id);
+        return view('pages/staff/s-view-pending-record', ['s_view_pending'=> $pending_record]);
+    }
+
+    public function approved_medical_records () {
+
+        $s_approved_records = StudentRecordModel::where('status_record_id', '3')->get();
+        return view('pages/staff/s-approved-medical-records', compact('s_approved_records'));
+
+    }
+
 }

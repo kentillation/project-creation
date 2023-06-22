@@ -4,18 +4,18 @@
 
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>List of clinicians</h1>
+        <h1>List of School Nurse</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">Users</li>
-                <li class="breadcrumb-item">Clinicians</li>
-                <li class="breadcrumb-item active">List of clinicians</li>
+                <li class="breadcrumb-item">School Nurse</li>
+                <li class="breadcrumb-item active">List of School Nurse</li>
             </ol>
         </nav>
     </div>
     @if(Session::has('success'))
         <!-- <div class="alert alert-danger text-center" role="alert" id="alertbox"> -->
-        <div class="alert alert-success text-center alert-dismissible fade show m-4" role="alert">
+        <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
             <i class="bi bi-check-circle"></i>&nbsp;
             {{ Session::get('success') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" title="Close"></button>

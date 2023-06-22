@@ -39,10 +39,6 @@
                         <p>Good day! <br /><br />
                         You just created a new account for student nurse.<br /><br />
                         Student ID: {{ $student_id }}<br />
-                        First Name: {{ $first_name }}<br />
-                        Middle Name: {{ $middle_name }}<br />
-                        Last Name: {{ $last_name }}<br />
-                        Phone Number: {{ $phone }}<br />
                         Email: {{ $email }}<br />
                         Password: {{ $password }}<br />
                         <br />
@@ -54,7 +50,7 @@
                             </button>
                             </a>
                         </span><br /><br />
-                        <i>Note:</i>Please make sure that you will consider this account as confidential and private. Thank you!
+                        <i>Note:</i>Please make sure that you will consider this as confidential and private. Thank you!
                         </p>
                   </div>
                 </div>

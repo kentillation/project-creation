@@ -78,10 +78,10 @@ class StudentController extends Controller
         // $admin = new AdminModel;
        
             $student->student_id = $request->student_id;
-            $student->first_name = $request->first_name;
-            $student->middle_name = $request->middle_name;
-            $student->last_name = $request->last_name;
-            $student->phone = $request->phone;
+            // $student->first_name = $request->first_name;
+            // $student->middle_name = $request->middle_name;
+            // $student->last_name = $request->last_name;
+            // $student->phone = $request->phone;
             $student->email = $request->email;
             $student->password = $request->password;
             $student->admin_email = $request->admin_email;
@@ -175,7 +175,7 @@ class StudentController extends Controller
             'email' => $request->input()['email']
         ];
         $update_student_account = StudentModel::where('id', $id)->update($data);
-        return redirect(route('student-profile'))->with('success', 'Account has been updated successfully');
+        return redirect(route('student-login'))->with('success', 'Account has been updated successfully');
     }
 
     //DELETE STUDENT
@@ -253,6 +253,7 @@ class StudentController extends Controller
         $studentrecord->first_name = $request->first_name;
         $studentrecord->middle_name = $request->middle_name;
         $studentrecord->last_name = $request->last_name;
+        $studentrecord->street_number = $request->street_number;
         $studentrecord->street_address = $request->street_address;
         $studentrecord->barangay = $request->barangay;
         $studentrecord->muni_city = $request->muni_city;

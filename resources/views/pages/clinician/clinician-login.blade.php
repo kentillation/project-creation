@@ -48,7 +48,7 @@
                         <img src="<?php echo asset('images/ehr_logo_v2.png') ?>" width="70" alt="Logo"/>
                     </div>
                     <div class="container text-center">
-                      <h4>Clinician</h4>
+                      <h4>School Nurse</h4>
                     </div>
                     @if(Session::has('error'))
                         <!-- <div class="alert alert-danger text-center" role="alert" id="alertbox"> -->

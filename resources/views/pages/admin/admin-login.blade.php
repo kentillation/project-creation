@@ -76,11 +76,11 @@
                         <div class="col-12">
                             <button class="btn-custom w-100 mt-2" type="submit">Login</button>
                         </div>
-                        <div class="col-12">
+                        <!-- <div class="col-12">
                           <p>Don't have an account?
                             <a href="{{ route('signup') }}">Create one.</a>
                           </p>
-                        </div>
+                        </div> -->
                     </form>
                 </div>
               </div>

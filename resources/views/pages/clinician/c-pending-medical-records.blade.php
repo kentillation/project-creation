@@ -50,7 +50,7 @@
                               <td>{{ $student_record->phone }}</td>
                               <td>{{ $student_record->muni_city }}</td>
                               <td>
-                                <a href="{{ route('update-pending-record', ['id' => $student_record->id] ) }}">
+                                <a href="{{ route('c-update-pending-record', ['id' => $student_record->id] ) }}">
                                   <button class="btn btn-outline-primary btn-sm" title="View record">
                                     <i class="bi bi-eye"></i>
                                     &nbsp; View record

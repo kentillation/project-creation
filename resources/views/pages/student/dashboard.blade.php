@@ -10,36 +10,65 @@
         <div class="col-lg-8">
           <div class="row">
             
+          
             <div class="col-xxl-4 col-md-6">
-              <div class="card info-card pending-card">
+              <div class="card info-card add-medical-card">
                 <div class="card-body">
-                  <h5 class="card-title text-warning">Pending <span>| Appointments</span></h5>
+                  <h5 class="card-title text-warning"></h5>
                   <div class="d-flex align-items-center justify-content-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-clock-history"></i>
+                      <i class="bi bi-plus-lg"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>0</h6>
+                      <a href="{{ route('add-medical-record') }}">
+                        <h5>Add Record</h5>
+                      </a>
                     </div>
-                  </div>
-                  <div class="d-flex align-items-center justify-content-end">
-                    <a href="#">
-                      <button class="btn btn-outline-warning btn-sm mt-4" title="View pending appointments">
-                        <span>
-                          <i class="bi bi-eye"></i>&nbsp;
-                          View
-                        </span>
-                      </button>
-                    </a>
                   </div>
                 </div>
               </div>
             </div>
 
             <div class="col-xxl-4 col-md-6">
+              <div class="card info-card view-medical-card">
+                <div class="card-body">
+                  <h5 class="card-title text-warning"></h5>
+                  <div class="d-flex align-items-center justify-content-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-search"></i>
+                    </div>
+                    <div class="ps-3">
+                      <a href="{{ route('view-medical-records') }}">
+                        <h5>View Medical Records</h5>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card assignments-card">
+                <div class="card-body">
+                  <h5 class="card-title text-warning"></h5>
+                  <div class="d-flex align-items-center justify-content-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-pencil-square"></i>
+                    </div>
+                    <div class="ps-3">
+                      <a href="#">
+                        <h5>My Assignments</h5>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="col-xxl-4 col-md-6">
               <div class="card info-card declined-card">
                 <div class="card-body">
-                  <h5 class="card-title text-danger">Postponed <span>| Appointments</span></h5>
+                  <h5 class="card-title text-danger">Assignments <span>| Health</span></h5>
                   <div class="d-flex align-items-center justify-content-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-exclamation-circle"></i>
@@ -60,33 +89,7 @@
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div class="col-xxl-4 col-xl-12">
-              <div class="card info-card approved-card">
-                <div class="card-body">
-                  <h5 class="card-title text-primary">Approved <span>| Appointments</span></h5>
-                  <div class="d-flex align-items-center justify-content-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-check-circle"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>0</h6>
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center justify-content-end">
-                    <a href="#">
-                      <button class="btn btn-outline-primary btn-sm mt-4" title="View approved appointments">
-                        <span>
-                          <i class="bi bi-eye"></i>&nbsp;
-                          View
-                        </span>
-                      </button>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </div> -->
 
             <!-- Recent Medical Request -->
             <div class="col-12">
@@ -155,17 +158,6 @@
         <div class="col-lg-4">
           <!-- News & Updates -->
           <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
             <div class="card-body pb-0">
               <h5 class="card-title">Activity Logs</h5>
               <div class="news">

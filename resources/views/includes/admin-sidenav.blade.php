@@ -8,23 +8,21 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
   <!-- Favicons -->
-  <link href="<?php echo asset ('assets/img/ehr_logo_v1.png') ?>" rel="icon">
-  <link href="<?php echo asset ('assets/img/ehr_logo_v1.png') ?>" rel="apple-touch-icon">
+  <link href="<?php echo asset('assets/img/ehr_logo_v1.png') ?>" rel="icon">
+  <link href="<?php echo asset('assets/img/ehr_logo_v1.png') ?>" rel="apple-touch-icon">
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
   <!-- Vendor CSS Files -->
-  <link href="<?php echo asset ('assets/vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
-  <link href="<?php echo asset ('assets/vendor/bootstrap-icons/bootstrap-icons.css') ?>" rel="stylesheet">
-  <link href="<?php echo asset ('assets/vendor/boxicons/css/boxicons.min.css') ?>" rel="stylesheet">
-  <link href="<?php echo asset ('assets/vendor/quill/quill.snow.css') ?>" rel="stylesheet">
-  <link href="<?php echo asset ('assets/vendor/quill/quill.bubble.css') ?>" rel="stylesheet">
-  <link href="<?php echo asset ('assets/vendor/remixicon/remixicon.css') ?>" rel="stylesheet">
-  <link href="<?php echo asset ('assets/vendor/simple-datatables/style.css') ?>" rel="stylesheet">
+  <link href="<?php echo asset('assets/vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
+  <link href="<?php echo asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') ?>" rel="stylesheet">
+  <link href="<?php echo asset('assets/vendor/boxicons/css/boxicons.min.css') ?>" rel="stylesheet">
+  <link href="<?php echo asset('assets/vendor/quill/quill.snow.css') ?>" rel="stylesheet">
+  <link href="<?php echo asset('assets/vendor/quill/quill.bubble.css') ?>" rel="stylesheet">
+  <link href="<?php echo asset('assets/vendor/remixicon/remixicon.css') ?>" rel="stylesheet">
+  <link href="<?php echo asset('assets/vendor/simple-datatables/style.css') ?>" rel="stylesheet">
   <!-- Template Main CSS File -->
-  <link href="<?php echo asset ('assets/css/style.css') ?>" rel="stylesheet">
+  <link href="<?php echo asset('assets/css/style.css') ?>" rel="stylesheet">
   <script src="<?php echo asset('saveAsExcel.js') ?>"></script>
   <!-- for Data Tables -->
   <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
@@ -204,13 +202,13 @@
             </li>
             <li>
               <form action="{{ route('logout') }}" method="POST">
-              @csrf
-              @method('DELETE')
+                @csrf
+                @method('DELETE')
                 <button class="dropdown-item d-flex align-items-center btn btn-sm" type="submit">
                   <i class="bi bi-box-arrow-left"></i>
                   <span>Sign out</span>
                 </button>
-            </form>
+              </form>
             </li>
           </ul><!-- End Profile Dropdown Items -->
         </li><!-- End Profile Nav -->
@@ -245,31 +243,45 @@
             </a>
           </li>
           <li>
-            <a href="{{ route('a-declined-medical-records') }}">
-              <i class="bi bi-exclamation-circle fs-6"></i><span>Declined Requests</span>
+            <a href="{{ route('a-approved-medical-records') }}">
+              <i class="bi bi-check-circle fs-6"></i><span>Approved Requests</span>
             </a>
           </li>
           <li>
-            <a href="{{ route('a-approved-medical-records') }}">
-              <i class="bi bi-check-circle fs-6"></i><span>Approved Requests</span>
+            <a href="#">
+              <i class="bi bi-card-list fs-6"></i><span>All Medical Requests</span>
             </a>
           </li>
         </ul>
       </li><!-- End Medical Records Request Nav -->
 
-      <!-- Viewing Request Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#viewing-request-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-"></i><span>Viewing Record Requests</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link collapsed" data-bs-target="#appointment" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-"></i><span>Appointments</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="viewing-request-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="appointment" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="#">
-              <i class="bi bi-eye fs-6"></i><span>View All Requests</span>
+              <i class="bi bi-calendar-minus fs-6"></i><span>Pending Appointment</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-calendar-x fs-6"></i><span>Postponed Appointment</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-calendar2-check fs-6"></i><span>Approved Appointment</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-calendar-plus fs-6"></i><span>Book an Appointment</span>
             </a>
           </li>
         </ul>
-      </li><!-- End Viewing Request Nav -->
+      </li>
 
       <li class="nav-heading">Users</li>
 
@@ -285,7 +297,7 @@
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="add-student-user" data-bs-toggle="modal" data-bs-target="#addStudentUserModal">
               <i class="bi bi-plus-lg fs-6"></i><span>Add student user</span>
             </a>
           </li>
@@ -295,17 +307,17 @@
       <!-- Clinicians Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#clinicians-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-"></i><span>Clinicians</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-"></i><span>School Nurse</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="clinicians-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="{{ route('clinician-list') }}">
-              <i class="bi bi-people fs-6"></i><span>List of clinicians</span>
+              <i class="bi bi-people fs-6"></i><span>List of school nurse</span>
             </a>
           </li>
           <li>
-            <a href="#">
-              <i class="bi bi-plus-lg fs-6"></i><span>Add clinician user</span>
+            <a href="add-clinic-nurse-user" data-bs-toggle="modal" data-bs-target="#addClinicianUserModal">
+              <i class="bi bi-plus-lg fs-6"></i><span>Add school nurse user</span>
             </a>
           </li>
         </ul>
@@ -323,7 +335,7 @@
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="add-dept-staff-user" data-bs-toggle="modal" data-bs-target="#addStaffUserModal">
               <i class="bi bi-plus-lg fs-6"></i><span>Add dept. staff user</span>
             </a>
           </li>
@@ -342,7 +354,7 @@
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="add-system-admin-user" data-bs-toggle="modal" data-bs-target="#addAdminUserModal">
               <i class="bi bi-plus-lg fs-6"></i><span>Add system admin user</span>
             </a>
           </li>
@@ -378,23 +390,313 @@
     </ul>
   </aside><!-- End Sidebar-->
 
+  <!-- Add Student User Modal -->
+  <div class="modal fade" id="addStudentUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">New Student User</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form action="{{ route('save-student') }}" method="post" class="row g-3 needs-validation" novalidate>
+            @csrf
+
+            <div class="col-12" style="display: none;">
+              <label for="admin_email" class="form-label mt-2">System Email</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">
+                  <i class="bi bi-lock"></i>
+                </span>
+                <input type="email" name="admin_email" id="admin_email" class="form-control" value="christianschool.main@gmail.com" required>
+                <div class="invalid-feedback">Enter your admin email.</div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="student_id" class="form-label mt-2">Student ID</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">
+                  <i class="bi bi-file-person"></i>
+                </span>
+                <input type="text" name="student_id" id="student_id" class="form-control" required>
+                <div class="invalid-feedback">Empty student id.</div>
+              </div>
+            </div>
+
+            <!-- <div class="col-6">
+              <label for="first_name" class="form-label mt-2">First Name</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">
+                  <i class="bi bi-file-person"></i>
+                </span>
+                <input type="text" name="first_name" id="first_name" class="form-control" required>
+                <div class="invalid-feedback">Empty first name.</div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <label for="middle_name" class="form-label mt-2">Middle Name</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">
+                  <i class="bi bi-file-person"></i>
+                </span>
+                <input type="text" name="middle_name" id="middle_name" class="form-control" required>
+                <div class="invalid-feedback">Empty middle name.</div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <label for="last_name" class="form-label mt-2">Last Name</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">
+                  <i class="bi bi-file-person"></i>
+                </span>
+                <input type="text" name="last_name" id="last_name" class="form-control" required>
+                <div class="invalid-feedback">Empty last name.</div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <label for="phone" class="form-label mt-2">Phone number</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">
+                  <i class="bi bi-telephone"></i>
+                </span>
+                <input type="text" name="phone" id="phone" class="form-control" required>
+                <div class="invalid-feedback">Empty phone number.</div>
+              </div>
+            </div> -->
+
+            <div class="col-12">
+              <label for="yourEmail" class="form-label mt-2">Email</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">
+                  <i class="bi bi-at"></i>
+                </span>
+                <input type="email" name="email" class="form-control" required>
+                <div class="invalid-feedback">Empty email.</div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="yourPassword" class="form-label mt-2">Password</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">
+                  <i class="bi bi-lock"></i>
+                </span>
+                <input type="password" name="password" class="form-control" required>
+                <div class="invalid-feedback">Empty password.</div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <button class="btn btn-outline-success w-100 mt-2" type="submit">Create account</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Clinician User Modal -->
+  <div class="modal fade" id="addClinicianUserModal" tabindex="-1" aria-labelledby="createUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="createUserModalLabel">New School Nurse User</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form action="{{ route('save-clinician') }}" method="post" class="row g-3 needs-validation" novalidate>
+            @csrf
+            <div class="col-12" style="display: none;">
+              <label for="admin_email" class="form-label mt-2">System Email</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">
+                  <i class="bi bi-lock"></i>
+                </span>
+                <input type="email" name="admin_email" id="admin_email" class="form-control" value="christianschool.main@gmail.com" required>
+                <div class="invalid-feedback">Enter your admin email.</div>
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="yourEmail" class="form-label mt-2">Email</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend1">
+                  <i class="bi bi-at"></i>
+                </span>
+                <input type="email" name="email" class="form-control" id="yourEmail" required>
+                <div class="invalid-feedback">Enter your email.</div>
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="yourUsername" class="form-label mt-2">Username</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend2">
+                  <i class="bi bi-file-person"></i>
+                </span>
+                <input type="text" name="username" class="form-control" id="yourUsername" required>
+                <div class="invalid-feedback">Enter your username.</div>
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="yourPassword" class="form-label">Password</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend3">
+                  <i class="bi bi-lock"></i>
+                </span>
+                <input type="password" name="password" class="form-control" id="yourPassword" required>
+                <div class="invalid-feedback">Enter your password.</div>
+              </div>
+            </div>
+            <div class="col-12">
+              <button class="btn btn-outline-success w-100 mt-2" type="submit">Create account</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Dept. Staff User Modal -->
+  <div class="modal fade" id="addStaffUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">New Department Staff User</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form action="{{ route('save-staff') }}" method="post" class="row g-3 needs-validation" novalidate>
+            @csrf
+            <div class="col-12" style="display: none;">
+              <label for="admin_email" class="form-label mt-2">System Email</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">
+                  <i class="bi bi-lock"></i>
+                </span>
+                <input type="email" name="admin_email" id="admin_email" class="form-control" value="christianschool.main@gmail.com" required>
+                <div class="invalid-feedback">Enter your admin email.</div>
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="yourEmail" class="form-label mt-2">Email</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">
+                  <i class="bi bi-at"></i>
+                </span>
+                <input type="email" name="email" class="form-control" required>
+                <div class="invalid-feedback">Enter your email.</div>
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="username" class="form-label mt-2">Username</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">
+                  <i class="bi bi-file-person"></i>
+                </span>
+                <input type="text" name="username" id="username" class="form-control" required>
+                <div class="invalid-feedback">Enter your user.</div>
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="yourPassword" class="form-label mt-2">Password</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">
+                  <i class="bi bi-lock"></i>
+                </span>
+                <input type="password" name="password" class="form-control" required>
+                <div class="invalid-feedback">Enter your password.</div>
+              </div>
+            </div>
+            <div class="col-12">
+              <button class="btn btn-outline-success w-100 mt-2" type="submit">Create account</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add System Admin Modal -->
+  <div class="modal fade" id="addAdminUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">New System Admin User</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form action="{{ route('save-admin') }}" method="post" class="row g-3 needs-validation" novalidate>
+            @csrf
+            <div class="col-12" style="display: none;">
+              <label for="admin_email" class="form-label mt-2">System Email</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">
+                  <i class="bi bi-lock"></i>
+                </span>
+                <input type="email" name="admin_email" id="admin_email" class="form-control" value="christianschool.main@gmail.com" required>
+                <div class="invalid-feedback">Enter your admin email.</div>
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="yourEmail" class="form-label mt-2">Email</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">
+                  <i class="bi bi-at"></i>
+                </span>
+                <input type="email" name="email" class="form-control" required>
+                <div class="invalid-feedback">Enter your email.</div>
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="username" class="form-label mt-2">Username</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">
+                  <i class="bi bi-file-person"></i>
+                </span>
+                <input type="text" name="username" id="username" class="form-control" required>
+                <div class="invalid-feedback">Enter your user.</div>
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="yourPassword" class="form-label mt-2">Password</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">
+                  <i class="bi bi-lock"></i>
+                </span>
+                <input type="password" name="password" class="form-control" required>
+                <div class="invalid-feedback">Enter your password.</div>
+              </div>
+            </div>
+            <div class="col-12">
+              <button class="btn btn-outline-success w-100 mt-2" type="submit">Create account</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   @yield('page-content')
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
     <i class="bi bi-arrow-up-short"></i>
-    </a>
+  </a>
 
   <!-- Vendor JS Files -->
-  <script src="<?php echo asset ('assets/vendor/apexcharts/apexcharts.min.js') ?>"></script>
-  <script src="<?php echo asset ('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
-  <script src="<?php echo asset ('assets/vendor/chart.js/chart.umd.js') ?>"></script>
-  <script src="<?php echo asset ('assets/vendor/echarts/echarts.min.js') ?>"></script>
-  <script src="<?php echo asset ('assets/vendor/quill/quill.min.js') ?>"></script>
-  <script src="<?php echo asset ('assets/vendor/simple-datatables/simple-datatables.js') ?>"></script>
-  <script src="<?php echo asset ('assets/vendor/tinymce/tinymce.min.js') ?>"></script>
-  <script src="<?php echo asset ('assets/vendor/php-email-form/validate.js') ?>"></script>
+  <script src="<?php echo asset('assets/vendor/apexcharts/apexcharts.min.js') ?>"></script>
+  <script src="<?php echo asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+  <script src="<?php echo asset('assets/vendor/chart.js/chart.umd.js') ?>"></script>
+  <script src="<?php echo asset('assets/vendor/echarts/echarts.min.js') ?>"></script>
+  <script src="<?php echo asset('assets/vendor/quill/quill.min.js') ?>"></script>
+  <script src="<?php echo asset('assets/vendor/simple-datatables/simple-datatables.js') ?>"></script>
+  <script src="<?php echo asset('assets/vendor/tinymce/tinymce.min.js') ?>"></script>
+  <script src="<?php echo asset('assets/vendor/php-email-form/validate.js') ?>"></script>
   <!-- Template Main JS File -->
-  <script src="<?php echo asset ('assets/js/main.js') ?>"></script>
+  <script src="<?php echo asset('assets/js/main.js') ?>"></script>
 
 </body>
 

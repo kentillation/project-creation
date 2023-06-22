@@ -238,17 +238,12 @@
             <ul id="medical-record" class="nav-content collapse " data-bs-parent="#sidebar-nav">
             <li>
                 <a href="{{ route('add-medical-record') }}">
-                <i class="bi bi-plus-lg fs-6"></i><span>Add Medical Record</span>
+                <i class="bi bi-plus-lg fs-6"></i><span>Add Record</span>
                 </a>
             </li>
             <li>
                 <a href="{{ route('view-medical-records') }}">
-                <i class="bi bi-eye fs-6"></i><span>View Medical Records</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                <i class="bi bi-search fs-6"></i><span>View Medical Histories</span>
+                <i class="bi bi-search fs-6"></i><span>View Medical Records</span>
                 </a>
             </li>
             </ul>
