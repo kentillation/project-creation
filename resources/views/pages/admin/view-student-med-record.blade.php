@@ -43,9 +43,7 @@
                         <table class="table table-hover text-center" id="table">
                             <thead class="text-bg-secondary">
                                 <tr>
-                                    <th>First name</th>
-                                    <th>Middle name</th>
-                                    <th>Last name</th>
+                                    <th>Name</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -53,9 +51,7 @@
                             <tbody>
                                 @foreach ($a_student_record as $student_record)
                                     <tr>
-                                        <td>{{ $student_record->first_name }}</td>
-                                        <td>{{ $student_record->middle_name }}</td>
-                                        <td>{{ $student_record->last_name }}</td>
+                                        <td>{{ $student_record->first_name }} {{ $student_record->middle_name }} {{ $student_record->last_name }}</td>
                                         <td>{{ $student_record->status_record_id == 1 ? "Pending" : "Approved"}}</td>
                                         <td>
                                             <a href="#">

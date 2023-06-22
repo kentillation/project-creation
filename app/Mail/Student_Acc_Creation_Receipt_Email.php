@@ -25,10 +25,10 @@ class Student_Acc_Creation_Receipt_Email extends Mailable
         return $this->view('emails.student_account_creation_receipt_email')
             ->with([
                 'student_id' => $this->studentaccount_receipt->student_id,
-                'first_name' => $this->studentaccount_receipt->first_name,
-                'middle_name' => $this->studentaccount_receipt->middle_name,
-                'last_name' => $this->studentaccount_receipt->last_name,
-                'phone' => $this->studentaccount_receipt->phone,
+                // 'first_name' => $this->studentaccount_receipt->first_name,
+                // 'middle_name' => $this->studentaccount_receipt->middle_name,
+                // 'last_name' => $this->studentaccount_receipt->last_name,
+                // 'phone' => $this->studentaccount_receipt->phone,
                 'email' => $this->studentaccount_receipt->email,
                 'password' => $this->studentaccount_receipt->password
                 //Add more variables if needed

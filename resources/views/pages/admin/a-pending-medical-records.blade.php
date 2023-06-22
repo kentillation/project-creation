@@ -36,9 +36,10 @@
                                                 <td>{{ $student_record->phone }}</td>
                                                 <td>{{ $student_record->muni_city }}</td>
                                                 <td>
-                                                    <a href="{{ route('a-pending-medical-records') }}">
-                                                        <button class="btn btn-outline-primary btn-sm" title="View record">
+                                                    <a href="{{ route('a-view-pending-record', ['id' => $student_record->id]) }}">
+                                                        <button class="btn btn-outline-primary btn-sm" title="View medical record">
                                                             <i class="bi bi-eye"></i>
+                                                            View record
                                                         </button>
                                                     </a>
                                                 </td>

@@ -43,7 +43,7 @@
                     <button class="btn-custom mb-2">Nursing Student</button>
                   </a>
                   <a href="{{ route('clinician-login') }}">
-                      <button class="btn-custom mb-2">Clinician</button>
+                      <button class="btn-custom mb-2">School Nurse</button>
                   </a>
                   <a href="{{ route('staff-login') }}">
                       <button class="btn-custom mb-2">Department Staff</button>

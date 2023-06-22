@@ -27,23 +27,22 @@
     <section class="section dashboard">
         <div class="row">
 
-            <div class="col-lg-8">
+            <div class="col-lg-6">
                 <div class="row">
                     <div class="col-12">
                         <div class="card recent-sales overflow-auto">
                             <div class="card-body m-2">
-                                <h5 class="card-title"></h5>
+                                <h5 class="card-title">Medical Record</h5>
                                 <div class="row">
-
-                                    <div class="col-6">
-                                        <div class="medical-record">
+                                    <div class="col-12">
+                                        <div class="view-medical-record">
                                             <ul>
                                                 <li>
                                                     <div class="row">
-                                                        <div class="col-4">
+                                                        <div class="col-6">
                                                             <h6>Full name</h6>
                                                         </div>
-                                                        <div class="col-8">
+                                                        <div class="col-6">
                                                             <h6>{{ $student_record[0]['first_name'] }} {{
                                                                 $student_record[0]['middle_name'] }} {{
                                                                 $student_record[0]['last_name'] }}</h6>
@@ -53,10 +52,10 @@
                                                 <hr />
                                                 <li>
                                                     <div class="row">
-                                                        <div class="col-4">
+                                                        <div class="col-6">
                                                             <h6>Age:</h6>
                                                         </div>
-                                                        <div class="col-8">
+                                                        <div class="col-6">
                                                             <h6>{{ $student_record[0]['age'] }}</h6>
                                                         </div>
                                                     </div>
@@ -64,10 +63,10 @@
                                                 <hr />
                                                 <li>
                                                     <div class="row">
-                                                        <div class="col-4">
+                                                        <div class="col-6">
                                                             <h6>Date of birth:</h6>
                                                         </div>
-                                                        <div class="col-8">
+                                                        <div class="col-6">
                                                             <h6>{{ $student_record[0]['date_of_birth'] }}</h6>
                                                         </div>
                                                     </div>
@@ -75,10 +74,10 @@
                                                 <hr />
                                                 <li>
                                                     <div class="row">
-                                                        <div class="col-4">
+                                                        <div class="col-6">
                                                             <h6>Phone:</h6>
                                                         </div>
-                                                        <div class="col-8">
+                                                        <div class="col-6">
                                                             <h6>{{ $student_record[0]['phone'] }}</h6>
                                                         </div>
                                                     </div>
@@ -86,10 +85,10 @@
                                                 <hr />
                                                 <li>
                                                     <div class="row">
-                                                        <div class="col-4">
+                                                        <div class="col-6">
                                                             <h6>Address:</h6>
                                                         </div>
-                                                        <div class="col-8">
+                                                        <div class="col-6">
                                                             <h6>{{ $student_record[0]['street_address'] }} {{
                                                                 $student_record[0]['barangay'] }}, {{
                                                                 $student_record[0]['muni_city'] }}</h6>
@@ -99,10 +98,10 @@
                                                 <hr />
                                                 <li>
                                                     <div class="row">
-                                                        <div class="col-4">
+                                                        <div class="col-6">
                                                             <h6>Civil Status:</h6>
                                                         </div>
-                                                        <div class="col-8">
+                                                        <div class="col-6">
                                                             <h6>{{ $student_record[0]['civil_status'] }}</h6>
                                                         </div>
                                                     </div>
@@ -110,10 +109,10 @@
                                                 <hr />
                                                 <li>
                                                     <div class="row">
-                                                        <div class="col-4">
+                                                        <div class="col-6">
                                                             <h6>Citizenship:</h6>
                                                         </div>
-                                                        <div class="col-8">
+                                                        <div class="col-6">
                                                             <h6>{{ $student_record[0]['citizenship'] }}</h6>
                                                         </div>
                                                     </div>
@@ -121,10 +120,10 @@
                                                 <hr />
                                                 <li>
                                                     <div class="row">
-                                                        <div class="col-4">
+                                                        <div class="col-6">
                                                             <h6>Height:</h6>
                                                         </div>
-                                                        <div class="col-8">
+                                                        <div class="col-6">
                                                             <h6>{{ $student_record[0]['height'] }}</h6>
                                                         </div>
                                                     </div>
@@ -132,10 +131,10 @@
                                                 <hr />
                                                 <li>
                                                     <div class="row">
-                                                        <div class="col-4">
+                                                        <div class="col-6">
                                                             <h6>Weight:</h6>
                                                         </div>
-                                                        <div class="col-8">
+                                                        <div class="col-6">
                                                             <h6>{{ $student_record[0]['weight'] }}</h6>
                                                         </div>
                                                     </div>
@@ -143,10 +142,10 @@
                                                 <hr />
                                                 <li>
                                                     <div class="row">
-                                                        <div class="col-4">
+                                                        <div class="col-6">
                                                             <h6>BMI:</h6>
                                                         </div>
-                                                        <div class="col-8">
+                                                        <div class="col-6">
                                                             <h6>{{ $student_record[0]['bmi'] }}</h6>
                                                         </div>
                                                     </div>
@@ -154,80 +153,39 @@
                                                 <hr />
                                                 <li>
                                                     <div class="row">
-                                                        <div class="col-4">
+                                                        <div class="col-6">
                                                             <h6>Gender:</h6>
                                                         </div>
-                                                        <div class="col-8">
-                                                            <h6>{{ $student_record[0]['gender_id'] }}</h6>
+                                                        <div class="col-6">
+                                                            <p>
+                                                                {{ $student_record[0]['gender_id'] == 1 ? 'Male' : '' }}
+                                                                {{ $student_record[0]['gender_id'] == 2 ? 'Female' : '' }}
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </li>
                                                 <hr />
                                                 <li>
                                                     <div class="row">
-                                                        <div class="col-4">
+                                                        <div class="col-6">
                                                             <h6>Blood type:</h6>
                                                         </div>
-                                                        <div class="col-8">
-                                                            <h6>{{ $student_record[0]['blood_type_id'] }}</h6>
+                                                        <div class="col-6">
+                                                            <p>
+                                                                {{ $student_record[0]['blood_type_id'] == 1 ? 'A+' : '' }}
+                                                                {{ $student_record[0]['blood_type_id'] == 2 ? 'A-' : '' }}
+                                                                {{ $student_record[0]['blood_type_id'] == 3 ? 'B+' : '' }}
+                                                                {{ $student_record[0]['blood_type_id'] == 4 ? 'B-' : '' }}
+                                                                {{ $student_record[0]['blood_type_id'] == 5 ? 'AB+' : '' }}
+                                                                {{ $student_record[0]['blood_type_id'] == 6 ? 'AB-' : '' }}
+                                                                {{ $student_record[0]['blood_type_id'] == 7 ? 'O+' : '' }}
+                                                                {{ $student_record[0]['blood_type_id'] == 8 ? 'O-' : '' }}
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </li>
                                                 <hr />
                                             </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <p>Medical History</p>
-                                        <div class="medical-record">
-                                            @foreach ($medical_history as $med_history)
-                                            <ul>
-                                                <li>
-                                                    <h6><strong>Checked conditions that apply to you or any of your
-                                                            close family members:</strong></h6>
-                                                    <h6>
-                                                        <?php foreach(json_decode($med_history->condition_option) as $value) {
-                                                    if($value != 'other'){
-                                                        echo "$value, ";
-                                                    }
-                                                }?>{{ $med_history->other_condition_option }}
-                                                    </h6>
-                                                </li>
-                                                <hr />
-                                                <li>
-                                                    <h6><strong>Checked symptoms that you're currently
-                                                            experiencing:</strong></h6>
-                                                    <h6>sample text</h6>
-                                                </li>
-                                                <hr />
-                                                <li>
-                                                    <h6><strong>Currently taking any medication?</strong></h6>
-                                                    <h6>sample text</h6>
-                                                </li>
-                                                <hr />
-                                                <li>
-                                                    <h6><strong>Do you have any medication allergies?</strong></h6>
-                                                    <h6>sample text</h6>
-                                                </li>
-                                                <hr />
-                                                <li>
-                                                    <h6><strong>Do you use or do you have history of using
-                                                            tobacco?</strong></h6>
-                                                    <h6>sample text</h6>
-                                                </li>
-                                                <hr />
-                                                <li>
-                                                    <h6><strong>Do you use or do you have history of using illegal
-                                                            drugs?</strong></h6>
-                                                    <h6>sample text</h6>
-                                                </li>
-                                                <hr />
-                                                <li>
-                                                    <h6><strong>How often do you consume alcohol?</strong></h6>
-                                                    <h6>sample text</h6>
-                                                </li>
-                                            </ul>
-                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -237,47 +195,59 @@
                 </div>
             </div>
 
-            <div class="col-lg-4">
-
+            <div class="col-lg-6">
                 <div class="card">
-                    <div class="card-body pb-4">
-                        <h5 class="card-title">Activity Logs</h5>
+                    <div class="card-body m-2">
+                        <h5 class="card-title">Medical History</h5>
                         <div class="news">
+                            @foreach ($medical_history as $med_history)
                             <div class="post-item clearfix">
-                                <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
-                                <h4><a href="#">Title</a></h4>
-                                <p>This is just a sample paragraph</p>
+                                <h6><strong>Checked conditions that apply to you or any of your close family members:</strong></h6>
+                                <h6>
+                                    <?php foreach(json_decode($med_history->condition_option) as $value) {
+                                        if($value != 'other') {
+                                            echo "$value, ";
+                                        }
+                                    }?>{{ $med_history->other_condition_option }}
+                                 </h6>
                             </div>
 
                             <div class="post-item clearfix">
-                                <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
-                                <h4><a href="#">Title</a></h4>
-                                <p>This is just a sample paragraph</p>
+                                <h6><strong>Checked symptoms that you're currently experiencing:</strong></h6>
+                                <h6>
+                                    <?php foreach(json_decode($med_history->symptoms_option) as $value) {
+                                        if($value != 'other') {
+                                            echo "$value, ";
+                                        }
+                                    }?>{{ $med_history->other_symptoms_option }}
+                                 </h6>
                             </div>
 
                             <div class="post-item clearfix">
-                                <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
-                                <h4><a href="#">Title</a></h4>
-                                <p>This is just a sample paragraph</p>
+                                <h6><strong>Currently taking any medication?</strong></h6>
+                                <h6>{{ $med_history->medication }}</h6>
                             </div>
 
                             <div class="post-item clearfix">
-                                <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
-                                <h4><a href="#">Title</a></h4>
-                                <p>This is just a sample paragraph</p>
+                                <h6><strong>Do you have any medication allergies?</strong></h6>
+                                <h6>{{ $med_history->allergies }}</h6>
                             </div>
 
                             <div class="post-item clearfix">
-                                <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
-                                <h4><a href="#">Title</a></h4>
-                                <p>This is just a sample paragraph</p>
+                                <h6><strong>Do you use or do you have history of using tobacco?</strong></h6>
+                                <h6>{{ $med_history->using_tobacco }}</h6>
                             </div>
 
                             <div class="post-item clearfix">
-                                <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
-                                <h4><a href="#">Title</a></h4>
-                                <p>This is just a sample paragraph</p>
+                                <h6><strong>Do you use or do you have history of using illegal drugs?</strong></h6>
+                                <h6>{{ $med_history->using_illegal_drug }}</h6>
                             </div>
+
+                            <div class="post-item clearfix">
+                                <h6><strong>How often do you consume alcohol?</strong></h6>
+                                <h6>{{ $med_history->consume_alcohol }}</h6>
+                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

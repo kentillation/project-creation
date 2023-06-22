@@ -65,6 +65,7 @@ class ClinicianController extends Controller
         $clinician = new ClinicianModel;
         $request->password = md5($request->password);
         $clinician->email = $request->email;
+        $clinician->admin_email = $request->admin_email;
         $clinician->username = $request->username;
         $clinician->password = $request->password;
         $clinician->save();
@@ -83,8 +84,11 @@ class ClinicianController extends Controller
     //UPDATING CLINICIAN'S RECORD
     public function saveUpdate_clinician(Request $request, $id) {
         $data = [
-            'name' => $request->input()['name'],
             'email' => $request->input()['email'],
+            'admin_email' => $request->input()['admin_email'],
+            'first_name' => $request->input()['first_name'],
+            'middle_name' => $request->input()['middle_name'],
+            'last_name' => $request->input()['last_name'],
             'username' => $request->input()['username']
         ];
         $update_clinician = ClinicianModel::where('id', $id)->update($data);
@@ -184,22 +188,29 @@ class ClinicianController extends Controller
             'first_name' => $request->input()['first_name'],
             'middle_name' => $request->input()['middle_name'],
             'last_name' => $request->input()['last_name'],
+            'age' => $request->input()['age'],
+            'phone' => $request->input()['phone'],
+            'street_number' => $request->input()['street_number'],
             'street_address' => $request->input()['street_address'],
             'barangay' => $request->input()['barangay'],
             'muni_city' => $request->input()['muni_city'],
             'date_of_birth' => $request->input()['date_of_birth'],
-            'age' => $request->input()['age'],
-            'phone' => $request->input()['phone'],
             'civil_status' => $request->input()['civil_status'],
             'citizenship' => $request->input()['citizenship'],
             'height' => $request->input()['height'],
             'weight' => $request->input()['weight'],
             'bmi' => $request->input()['bmi'],
+            'gender_id' => $request->input()['gender'],
             'year_level_id' => $request->input()['year_level'],
             'section_id' => $request->input()['section'],
             'blood_type_id' => $request->input()['blood_type'],
-            'gender_id' => $request->input()['gender'],
-            'status_record_id' =>$request->input()['status_record']
+            'status_record_id' =>$request->input()['status_record'],
+            'cbc_file' => $request->input()['cbc_file'],
+            'urinalysis_file' => $request->input()['urinalysis_file'],
+            'fecalysis_file' => $request->input()['fecalysis_file'],
+            'x_ray_file' => $request->input()['x_ray_file'],
+            'hba_file' => $request->input()['hba_file'],
+            'hbv_file' => $request->input()['hbv_file'],
         ];
 
         $update_pending_record = StudentRecordModel::where('id', $id)->update($data);

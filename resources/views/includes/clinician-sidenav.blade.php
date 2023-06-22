@@ -245,40 +245,17 @@
               </a>
             </li>
             <li>
-              <a href="{{ route('c-declined-medical-records') }}">
-                <i class="bi bi-exclamation-circle fs-6"></i><span>Declined Requests</span>
-              </a>
-            </li>
-            <li>
               <a href="{{ route('c-approved-medical-records') }}">
                 <i class="bi bi-check-circle fs-6"></i><span>Approved Requests</span>
               </a>
             </li>
+            <li>
+            <a href="#">
+              <i class="bi bi-card-list fs-6"></i><span>All Medical Requests</span>
+            </a>
+          </li>
           </ul>
         </li><!-- End Medical Records Request Nav -->
-
-        <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#medical-record" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-filter-square"></i><span>Medical Record</span><i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul id="medical-record" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            <li>
-                <a href="#">
-                <i class="bi bi-plus-lg fs-6"></i><span>Add Medical Record</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                <i class="bi bi-eye fs-6"></i><span>View Medical Records</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                <i class="bi bi-search fs-6"></i><span>View Medical Histories</span>
-                </a>
-            </li>
-            </ul>
-        </li>
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#appointment" data-bs-toggle="collapse" href="#">
@@ -298,11 +275,6 @@
             <li>
                 <a href="#">
                     <i class="bi bi-calendar2-check fs-6"></i><span>Approved Appointment</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="bi bi-calendar-plus fs-6"></i><span>Book an Appointment</span>
                 </a>
             </li>
             </ul>

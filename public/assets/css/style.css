@@ -921,6 +921,48 @@ h3 {
   flex-grow: 0;
 }
 
+.dashboard .add-medical-card a {
+  color: var(--success-color);
+}
+
+.dashboard .add-medical-card a:hover {
+  color: var(--gray-color);
+  transition: 0.5s;
+}
+
+.dashboard .add-medical-card .card-icon {
+  color: var(--success-color);
+  background: #d7ffdc;
+}
+
+.dashboard .view-medical-card a {
+  color: var(--approved-color);
+}
+
+.dashboard .view-medical-card a:hover {
+  color: var(--gray-color);
+  transition: 0.5s;
+}
+
+.dashboard .view-medical-card .card-icon {
+  color: var(--approved-color);
+  background: #d4f1ff;
+}
+
+.dashboard .assignments-card a {
+  color: var(--pending-color);
+}
+
+.dashboard .assignments-card a:hover {
+  color: var(--gray-color);
+  transition: 0.5s;
+}
+
+.dashboard .assignments-card .card-icon {
+  color: var(--pending-color);
+  background: #fff4d4;
+}
+
 .dashboard .pending-card .card-icon {
   color: var(--pending-color);
   background: #fff1d7;
@@ -1057,6 +1099,15 @@ h3 {
 .dashboard .top-selling img {
   border-radius: 5px;
   max-width: 60px;
+}
+
+/*--------------------------------------------------------------
+# View Medical Record
+--------------------------------------------------------------*/
+
+.dashboard .view-medical-record ul {
+  list-style-type: none;
+  padding: 0;
 }
 
 /*--------------------------------------------------------------
@@ -1317,6 +1368,14 @@ h3 {
 
 .btn-custom {
 
+}
+
+/*--------------------------------------------------------------
+# Modal
+--------------------------------------------------------------*/
+
+.modal p {
+  font-size: 18px;
 }
 
 /*--------------------------------------------------------------

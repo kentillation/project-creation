@@ -38,16 +38,13 @@ class AuthController extends Controller
     {
         $users = new AdminModel;
         $request->password = md5($request->password);
-        $users->first_name = $request->first_name;
-        $users->middle_name = $request->middle_name;
-        $users->last_name = $request->last_name;
         $users->email = $request->email;
         $users->username = $request->username;
         $users->password = $request->password;
         $users->save();
 
         //return redirect(route('index'));
-        return back()->with('success', 'Account has been saved successfully');
+        return back()->with('success', 'New account has been saved successfully');
     }
 
     //ADMIN LOGIN
@@ -229,12 +226,51 @@ class AuthController extends Controller
 
     }
 
-    public function declined_medical_records () {
-
-        $a_declined_records = StudentRecordModel::where('status_record_id', '2')->get();
-        return view('pages/admin/a-declined-medical-records', compact('a_declined_records'));
-
+    public function view_pending_record(Request $request, $id) {
+        $pending_record = StudentRecordModel::find($id);
+        return view('pages/admin/a-view-pending-record', ['a_update_pending'=> $pending_record]);
     }
+
+    public function saveUpdate_pending_record(Request $request, $id) {
+        $data = [
+            'first_name' => $request->input()['first_name'],
+            'middle_name' => $request->input()['middle_name'],
+            'last_name' => $request->input()['last_name'],
+            'age' => $request->input()['age'],
+            'phone' => $request->input()['phone'],
+            'street_number' => $request->input()['street_number'],
+            'street_address' => $request->input()['street_address'],
+            'barangay' => $request->input()['barangay'],
+            'muni_city' => $request->input()['muni_city'],
+            'date_of_birth' => $request->input()['date_of_birth'],
+            'civil_status' => $request->input()['civil_status'],
+            'citizenship' => $request->input()['citizenship'],
+            'height' => $request->input()['height'],
+            'weight' => $request->input()['weight'],
+            'bmi' => $request->input()['bmi'],
+            'gender_id' => $request->input()['gender'],
+            'year_level_id' => $request->input()['year_level'],
+            'section_id' => $request->input()['section'],
+            'blood_type_id' => $request->input()['blood_type'],
+            'status_record_id' =>$request->input()['status_record'],
+            'cbc_file' => $request->input()['cbc_file'],
+            'urinalysis_file' => $request->input()['urinalysis_file'],
+            'fecalysis_file' => $request->input()['fecalysis_file'],
+            'x_ray_file' => $request->input()['x_ray_file'],
+            'hba_file' => $request->input()['hba_file'],
+            'hbv_file' => $request->input()['hbv_file'],
+        ];
+
+        $update_pending_record = StudentRecordModel::where('id', $id)->update($data);
+        return redirect(route('admin-dashboard'))->with('success', 'Medical record request has been approved successfully.');
+    }
+
+    // public function declined_medical_records () {
+
+    //     $a_declined_records = StudentRecordModel::where('status_record_id', '2')->get();
+    //     return view('pages/admin/a-declined-medical-records', compact('a_declined_records'));
+
+    // }
 
     public function approved_medical_records () {
 
