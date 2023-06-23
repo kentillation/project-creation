@@ -5,11 +5,11 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Profile</h1>
+      <h1>Account Settings</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item">Settings</li>
-          <li class="breadcrumb-item active">Profile</li>
+          <li class="breadcrumb-item active">Account Settings</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->

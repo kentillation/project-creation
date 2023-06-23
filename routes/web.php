@@ -60,6 +60,8 @@ Route::post('/student/save-update-profile/{id}', 'StudentController@saveUpdate_p
 
 Route::get('/student/account-settings', 'StudentController@student_account_settings')->name('student-account-settings');
 
+Route::get('/student/pending-appointments', 'StudentController@pending_appointments')->name('pending-appointments');
+
 //DEPARTMENT STAFF CONTROLLER
 Route::get('/staff-login', 'StaffController@staff_login')->name('staff-login');
 Route::post('/staff-login', 'StaffController@staff_loginPost')->name('login-staff');
@@ -92,3 +94,5 @@ Route::post('/clinician/save-update-pending-record/{id}', 'ClinicianController@s
 
 Route::get('/clinician/declined-medical-records', 'ClinicianController@declined_medical_records')->name('c-declined-medical-records');
 Route::get('/clinician/approved-medical-records', 'ClinicianController@approved_medical_records')->name('c-approved-medical-records');
+
+Route::post('/save-clinician-appointment', 'ClinicianController@save_clinician_appointment')->name('save-clinician-appointment');

@@ -26,7 +26,7 @@
   <section class="section dashboard">
     <div class="row">
 
-      <div class="col-8">
+      <div class="col-12">
         <div class="card">
           <div class="card-body pt-3">
 

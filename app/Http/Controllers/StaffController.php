@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\StaffModel;
 use App\Models\StudentRecordModel;
-use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Staff_Acc_Creation_Email;
+use App\Mail\Staff_Acc_Creation_Receipt_Email;
 
 class StaffController extends Controller
 {
@@ -64,13 +66,22 @@ class StaffController extends Controller
     public function save_staff(Request $request)
     {
         $staff = new StaffModel;
-        $request->password = md5($request->password);
+        $staff->first_name = "no-firstname";
+        $staff->middle_name = "no-middlename";
+        $staff->last_name = "no-lastname";
         $staff->email = $request->email;
+        $staff->admin_email = $request->admin_email;
         $staff->username = $request->username;
         $staff->password = $request->password;
+
+        //For Email
+        Mail::to($staff->email)->send(new Staff_Acc_Creation_Email($staff));
+        Mail::to($staff->admin_email)->send(new Staff_Acc_Creation_Receipt_Email($staff));
+
+        $staff->password = md5($request->password);
         $staff->save();
 
-        return back()->with('success', 'New account has been saved successfully');
+        return redirect(route('admin-dashboard'))->with('success', 'New Department Staff user has been saved successfully');
     }
     
     //EDITING NURSE STAFF'S RECORD
@@ -109,7 +120,7 @@ class StaffController extends Controller
     }
 
      //EDITING STUDENT PENDING RECORD
-     public function view_pending_record(Request $request, $id) {
+    public function view_pending_record($id) {
         $pending_record = StudentRecordModel::find($id);
         return view('pages/staff/s-view-pending-record', ['s_view_pending'=> $pending_record]);
     }

@@ -254,8 +254,8 @@
             <i class="bi bi-calendar-event"></i><span>Appointment</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="appointment" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            <li>
-                <a href="#">
+            <li> 
+                <a href="{{ route('pending-appointments') }}">
                     <i class="bi bi-calendar-minus fs-6"></i><span>Pending Appointment</span>
                 </a>
             </li>

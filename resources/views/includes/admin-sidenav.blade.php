@@ -167,7 +167,7 @@
           </a><!-- End Profile Iamge Icon -->
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Kent Anthony C Engbino</h6>
+              <h6>Name of Admin</h6>
               <span>Administrator</span>
             </li>
             <li>

@@ -10,8 +10,6 @@ use App\Models\ClinicianModel;
 use App\Models\StudentModel;
 use App\Models\StudentRecordModel;
 use App\Models\CourseModel;
-use App\Models\InfoModel;
-use App\Http\Controllers\AuthController;
 use App\Models\BloodTypeModel;
 use App\Models\GenderModel;
 use App\Models\SectionModel;
@@ -19,6 +17,9 @@ use App\Models\YearLevelModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Admin_Acc_Creation_Email;
+use App\Mail\Admin_Acc_Creation_Receipt_Email;
 
 class AuthController extends Controller
 {
@@ -36,15 +37,23 @@ class AuthController extends Controller
     //SAVING RECORD OF ADMIN
     public function save_admin(Request $request)
     {
-        $users = new AdminModel;
-        $request->password = md5($request->password);
-        $users->email = $request->email;
-        $users->username = $request->username;
-        $users->password = $request->password;
-        $users->save();
+        $admin = new AdminModel;
+        $admin->first_name = "no-firstname";
+        $admin->middle_name = "no-middlename";
+        $admin->last_name = "no-lastname";
+        $admin->email = $request->email;
+        $admin->admin_email = $request->admin_email;
+        $admin->username = $request->username;
+        $admin->password = $request->password;
 
-        //return redirect(route('index'));
-        return back()->with('success', 'New account has been saved successfully');
+        //For Email
+        Mail::to($admin->email)->send(new Admin_Acc_Creation_Email($admin));
+        Mail::to($admin->admin_email)->send(new Admin_Acc_Creation_Receipt_Email($admin));
+        
+        $admin->password = md5($request->password);
+        $admin->save();
+
+        return redirect(route('admin-dashboard'))->with('success', 'New Admin user has been saved successfully');
     }
 
     //ADMIN LOGIN

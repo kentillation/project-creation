@@ -81,6 +81,16 @@
                 <div class="modal-body p-4">
                     <form action="{{ route('save-clinician') }}" method="post" class="row g-3 needs-validation" novalidate>
                         @csrf
+                        <div class="col-12" style="display: none;">
+                            <label for="admin_email" class="form-label mt-2">System Email</label>
+                            <div class="input-group has-validation">
+                                <span class="input-group-text">
+                                <i class="bi bi-lock"></i>
+                                </span>
+                                <input type="email" name="admin_email" id="admin_email" class="form-control" value="christianschool.main@gmail.com" required>
+                                <div class="invalid-feedback">Enter your admin email.</div>
+                            </div>
+                        </div>
                         <div class="col-12">
                             <label for="yourEmail" class="form-label mt-2">Email</label>
                             <div class="input-group has-validation">

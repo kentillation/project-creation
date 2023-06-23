@@ -14,7 +14,7 @@ console_command = "php /var/www/html/artisan tinker"
 
 [env]
   APP_ENV = "production"
-
+  APP_NAME="EHR_System"
   DB_CONNECTION="pgsql"
   DB_HOST="db.qydxuubtfyyqbeutpnfw.supabase.co"
   DB_PORT="5432"

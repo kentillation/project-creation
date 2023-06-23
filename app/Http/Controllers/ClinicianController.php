@@ -5,11 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 use App\Models\ClinicianModel;
+use App\Models\ClinicianAppointmentModel;
 use App\Models\StudentModel;
 use App\Models\StudentRecordModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Clinician_Acc_Creation_Email;
+use App\Mail\Clinician_Acc_Creation_Receipt_Email;
 
 class ClinicianController extends Controller
 {
@@ -43,6 +47,9 @@ class ClinicianController extends Controller
             session()->put('id', $result_info[0]['id']);
             session()->put('email', $result_info[0]['email']);
             session()->put('username', $result_info[0]['username']);
+            session()->put('first_name', $result_info[0]['first_name']);
+            session()->put('middle_name', $result_info[0]['middle_name']);
+            session()->put('last_name', $result_info[0]['last_name']);
 
             $clinician =  ClinicianModel::where('username', '=', $request->username)->first();
 
@@ -63,13 +70,21 @@ class ClinicianController extends Controller
     public function save_clinician(Request $request)
     {
         $clinician = new ClinicianModel;
-        $request->password = md5($request->password);
+        $clinician->first_name = "no-firstname";
+        $clinician->middle_name = "no-middlename";
+        $clinician->last_name = "no-lastname";
         $clinician->email = $request->email;
         $clinician->admin_email = $request->admin_email;
         $clinician->username = $request->username;
         $clinician->password = $request->password;
+
+        //For Email
+        Mail::to($clinician->email)->send(new Clinician_Acc_Creation_Email($clinician));
+        Mail::to($clinician->admin_email)->send(new Clinician_Acc_Creation_Receipt_Email($clinician));
+
+        $clinician->password = md5($request->password);
         $clinician->save();
-        return back()->with('success', 'New account has been saved successfully');
+        return redirect(route('admin-dashboard'))->with('success', 'New School Nurse user has been saved successfully');
     }
     
     //EDITING NURSE CLINICIAN'S RECORD
@@ -215,6 +230,20 @@ class ClinicianController extends Controller
 
         $update_pending_record = StudentRecordModel::where('id', $id)->update($data);
         return redirect(route('clinician-dashboard'));
+    }
+
+    public function save_clinician_appointment(Request $request)
+    {
+        $apppointment = new ClinicianAppointmentModel;
+        $apppointment->from = $request->from;
+        $apppointment->to = $request->to;
+        $apppointment->date = $request->date;
+        $apppointment->time = $request->time;
+        $apppointment->room = $request->room;
+        $apppointment->lab_test = $request->lab_test;
+        $apppointment->status_appointment = $request->status_appointment;
+        $apppointment->save();
+        return back()->with('success', 'Appointment has been sent successfully');
     }
 
 

@@ -169,8 +169,8 @@
           </a><!-- End Profile Iamge Icon -->
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Name of Clinician</h6>
-              <span>Clinician</span>
+              <h6>{{ Session::get('first_name') }} {{ Session::get('middle_name') }} {{ Session::get('last_name') }}</h6>
+              <span>School Nurse</span>
             </li>
             <li>
               <hr class="dropdown-divider">

@@ -7,6 +7,8 @@ use Session;
 use App\Models\StudentModel;
 use App\Models\StudentRecordModel;
 use App\Models\MedicalHistoryModel;
+use App\Models\ClinicianAppointmentModel;
+use App\Models\ClinicianModel;
 use App\Models\AdminModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -88,9 +90,6 @@ class StudentController extends Controller
             // $student->created_at = date('F j, Y | h : m : s a');
 
             //For Email
-            // $studentaccount = StudentModel::create($request->all());
-            // $studentaccount_receipt = StudentModel::create($request->all());
-
             Mail::to($student->email)->send(new Student_Acc_Creation_Email($student));
             Mail::to($student->admin_email)->send(new Student_Acc_Creation_Receipt_Email($student));
 
@@ -239,6 +238,7 @@ class StudentController extends Controller
         return view('pages/student/view-medical-histories',['tbl_student_record'=>$student_record]);
     }
 
+
     // public function view_history () {
 
     //     $medical_history = MedicalHistoryModel::all();
@@ -295,86 +295,14 @@ class StudentController extends Controller
         $medical_history->other_condition_option = $request->other_condition_option;
         $medical_history->other_symptoms_option = $request->other_symptoms_option;
         $medical_history->created_at = $request->created_at;
-
-        // if($request->has('conditions')) 
-        // {
-        //     $conditions = $request->input('conditions');
-        //     $new_conditions = array_diff($conditions, ['other']);
-        //     if ($request->filled('other_condition_option')) 
-        //     {
-        //         $conditionOther = $request->input('other_condition_option');
-        //         $new_conditions[] = $conditionOther;
-        //     }
-        //     $medical_history->condition_option=$new_conditions;
-        // }
-
         $medical_history->save();
-
         return redirect()->back()->with('success', 'Medical history saved successfully.');
     }
 
-    // public function save_medical_history(Request $request)
-    // {
-    //     // Validate the form data
-    //     $validatedData = $request->validate([
-    //         'conditions' => 'nullable|array',
-    //         'symptoms' => 'nullable|array',
-    //         'consume_alcohol' => 'nullable|array',
-    //         'other_condition_option' => 'nullable|required_if:conditions.*,other',
-    //         'other_symptoms_option' => 'nullable|required_if:symptoms.*,other',
-    //         'medication' => 'required|in:yes,no',
-    //         'allergies' => 'required|in:yes,no,unsure',
-    //         'using_tobacco' => 'required|in:yes,no',
-    //         'using_illegal_drug' => 'required|in:yes,no'
-    //     ]);
+    public function pending_appointments() {
+        $id = Session::get('id');
+        $pending_student = ClinicianAppointmentModel::where('to', $id)->get();
+        return view('pages/student/pending-appointments',['pending_student'=>$pending_student]);
+    }
 
-    //     // Create a new MedicalHistory instance
-    //     $medicalHistory = new MedicalHistoryModel();
-        
-    //     // Save the conditions
-    //     if ($request->has('conditions')) {
-    //         $medicalHistory->conditions = $request->input('conditions');
-            
-    //         // Remove "other" from conditions array
-    //         $conditions = array_diff(['other']);
-            
-    //         // Check if "other" input is provided and add it to conditions
-    //         if ($request->filled('other_condition_option')) {
-    //             $conditionOther = $request->input('other_condition_option');
-    //             $conditions[] = $conditionOther;
-    //         }
-            
-    //         $medicalHistory->conditions = $conditions;
-    //     }
-
-    //     // Save the symptoms
-    //     if ($request->has('symptoms')) {
-    //         $medicalHistory->symptoms = $request->input('symptoms');
-    //         $symptoms = array_diff(['other']);
-
-    //         if ($request->filled('other_symptoms_option')) {
-    //             $symptomsOther = $request->input('other_symptoms_option');
-    //             $symptoms[] = $symptomsOther;
-    //         }
-    //         $medicalHistory->symptoms = $symptoms;
-    //     }
-
-    //     // Save the consume_alcohol
-    //     if ($request->has('consume_alcohol')) {
-    //         $medicalHistory->symptoms = $request->input('consume_alcohol');
-    //     }
-        
-    //     // Save the medication status
-    //     $medicalHistory->medication = $request->input('medication');
-    //     $medicalHistory->allergies = $request->input('allergies');
-    //     $medicalHistory->using_tobacco = $request->input('using_tobacco');
-    //     $medicalHistory->using_illegal_drug = $request->input('using_illegal_drug');
-        
-    //     // Save the medical history record
-    //     $medicalHistory->save();
-        
-    //     // Redirect to a success page or perform any other desired actions
-        
-    //     return redirect()->back()->with('success', 'Medical history saved successfully.');
-    // }
 }
