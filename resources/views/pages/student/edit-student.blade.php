@@ -60,15 +60,11 @@
                                 <input type='text' name='last_name' value="{{ $tbl_student['last_name'] }}" id="last_name" class="form-control mb-3" required />
                             </div>
                             <div class="col-12">
-                                <label for="phone">Phone</label>
-                                <input type='number' name='phone' value="{{ $tbl_student['phone'] }}" id="phone" class="form-control mb-3" required />
-                            </div>
-                            <div class="col-12">
                                 <label for="email">Email</label>
                                 <input type='email' name='email' value="{{ $tbl_student['email'] }}" id="email" class="form-control mb-3" required />
                             </div>
                         </div>
-                        <button class="btn btn-success mt-3" type="submit">
+                        <button class="btn btn-outline-success mt-3" type="submit">
                             <i class="bi bi-arrow-clockwise"></i>
                             &nbsp;Update
                         </button>

@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Session;
 use App\Models\ClinicianModel;
 use App\Models\ClinicianAppointmentModel;
 use App\Models\StudentModel;
 use App\Models\StudentRecordModel;
+use App\Models\ActivityLogsModel;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
@@ -20,9 +21,8 @@ class ClinicianController extends Controller
     public function dashboard()
     {
         $pending = StudentRecordModel::where('status_record_id', '1')->count();
-        $declined = StudentRecordModel::where('status_record_id', '2')->count();
-        $approved = StudentRecordModel::where('status_record_id', '3')->count();
-        return view('pages/clinician/dashboard', compact('pending', 'declined', 'approved'));
+        $approved = StudentRecordModel::where('status_record_id', '2')->count();
+        return view('pages/clinician/dashboard', compact('pending', 'approved'));
         
     }
 
@@ -58,13 +58,6 @@ class ClinicianController extends Controller
         }
         return back()->with('error', 'Invalid username or password.');
     }
-
-    // LOGOUT CLINICIAN
-    public function logout()
-    {
-        Auth::logout();
-        return redirect('/');
-    }
     
     //CREATING RECORD OF CLINICIAN
     public function save_clinician(Request $request)
@@ -81,6 +74,12 @@ class ClinicianController extends Controller
         //For Email
         Mail::to($clinician->email)->send(new Clinician_Acc_Creation_Email($clinician));
         Mail::to($clinician->admin_email)->send(new Clinician_Acc_Creation_Receipt_Email($clinician));
+
+        //For Activity Logs
+        $activity_logs = new ActivityLogsModel;
+        date_default_timezone_set('Asia/Manila');
+        $activity_logs->description = "Admin " . Session::get('username') . " created an account for School Nurse with $request->username username on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+        $activity_logs->save();
 
         $clinician->password = md5($request->password);
         $clinician->save();
@@ -100,14 +99,20 @@ class ClinicianController extends Controller
     public function saveUpdate_clinician(Request $request, $id) {
         $data = [
             'email' => $request->input()['email'],
-            'admin_email' => $request->input()['admin_email'],
             'first_name' => $request->input()['first_name'],
             'middle_name' => $request->input()['middle_name'],
             'last_name' => $request->input()['last_name'],
             'username' => $request->input()['username']
         ];
         $update_clinician = ClinicianModel::where('id', $id)->update($data);
-        return redirect(route('clinician-list'));
+
+        //For Activity Logs
+        $activity_logs = new ActivityLogsModel;
+        date_default_timezone_set('Asia/Manila');
+        $activity_logs->description = "Admin " . Session::get('username') . " updated the information of School Nurse with $request->username username on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+        $activity_logs->save();
+
+        return redirect(route('clinician-list'))->with('success', 'The information of School Nurse ' . $request->input()['first_name'] . ' ' . $request->input()['middle_name'] . ' ' . $request->input()['last_name'] . ' has been updated successfully. ');
     }
 
     //DELETE CLINICIAN
@@ -186,7 +191,7 @@ class ClinicianController extends Controller
 
     public function approved_medical_records () {
 
-        $c_approved_records = StudentRecordModel::where('status_record_id', '3')->get();
+        $c_approved_records = StudentRecordModel::where('status_record_id', '2')->get();
         return view('pages/clinician/c-approved-medical-records', compact('c_approved_records'));
 
     }
@@ -194,7 +199,7 @@ class ClinicianController extends Controller
     //EDITING STUDENT PENDING RECORD
     public function update_pending_record(Request $request, $id) {
         $pending_record = StudentRecordModel::find($id);
-        return view('pages/clinician/edit-pending-record', ['c_update_pending'=> $pending_record]);
+        return view('pages/clinician/c-view-pending-record', ['c_update_pending'=> $pending_record]);
     }
 
     //UPDATING STUDENT PENDING RECORD
@@ -219,17 +224,18 @@ class ClinicianController extends Controller
             'year_level_id' => $request->input()['year_level'],
             'section_id' => $request->input()['section'],
             'blood_type_id' => $request->input()['blood_type'],
-            'status_record_id' =>$request->input()['status_record'],
+            'status_record_id' =>$request->input()['status_record_id'],
             'cbc_file' => $request->input()['cbc_file'],
             'urinalysis_file' => $request->input()['urinalysis_file'],
             'fecalysis_file' => $request->input()['fecalysis_file'],
             'x_ray_file' => $request->input()['x_ray_file'],
             'hba_file' => $request->input()['hba_file'],
             'hbv_file' => $request->input()['hbv_file'],
+            'status_record_id'=> $request->input()['status_record_id'],
         ];
 
         $update_pending_record = StudentRecordModel::where('id', $id)->update($data);
-        return redirect(route('clinician-dashboard'));
+        return redirect(route('clinician-dashboard'))->with('success', 'You approved the medical record of Student Nurse named '. $request->input()['first_name'] .' '. $request->input()['middle_name'] .' '. $request->input()['last_name']. ' ');
     }
 
     public function save_clinician_appointment(Request $request)
@@ -243,7 +249,38 @@ class ClinicianController extends Controller
         $apppointment->lab_test = $request->lab_test;
         $apppointment->status_appointment = $request->status_appointment;
         $apppointment->save();
-        return back()->with('success', 'Appointment has been sent successfully');
+
+        if ($request->lab_test == 1) {
+            $lab_test = "CBC";
+        }
+        if ($request->lab_test == 2) {
+            $lab_test = "Urinalysis";
+        }
+        if ($request->lab_test == 3) {
+            $lab_test = "Fecalysis";
+        }
+        if ($request->lab_test == 4) {
+            $lab_test = "Chest X-ray (PA)";
+        }
+        if ($request->lab_test == 5) {
+            $lab_test = "Hepa B Antigen";
+        }
+        if ($request->lab_test == 6) {
+            $lab_test = "Hepa B Vaccine";
+        }
+        
+        return back()->with('success', 'Appointment for '. $lab_test  .' - Laboratory Test has been sent successfully');
+    }
+
+    // LOGOUT CLINICIAN
+    public function logout()
+    {
+        $activity_logs = new ActivityLogsModel;
+        date_default_timezone_set('Asia/Manila');
+        $activity_logs->description = "Admin " . Session::get('username') . " logged out on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+        $activity_logs->save();
+        Auth::logout();
+        return redirect('/');
     }
 
 

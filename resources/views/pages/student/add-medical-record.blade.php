@@ -154,7 +154,7 @@
                         <span class="input-group-text">
                           <i class="bi bi-person"></i>
                         </span>
-                        <input type="number" value="{{ $student[0]['phone'] }}" name="phone" class="form-control" id="phone" readonly>
+                        <input type="number" name="phone" class="form-control" id="phone" required>
                         <div class="invalid-feedback">Empty phone.</div>
                       </div>
                     </div>

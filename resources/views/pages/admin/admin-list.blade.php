@@ -47,13 +47,8 @@
                                         <td>{{ $admin->username }}</td>
                                         <td>
                                             <a href="{{ route('update-admin', ['id' => $admin->id] ) }}">
-                                                <button class="btn btn-outline-primary btn-sm" title="View">
-                                                    <i class="bi bi-eye"></i>
-                                                </button>
-                                            </a>
-                                            <a href="{{ route('delete-admin', ['id' => $admin->id] ) }}">
-                                                <button class="btn btn-outline-danger btn-sm" title="Delete">
-                                                    <i class="bi bi-trash"></i>
+                                                <button class="btn btn-outline-primary btn-sm" title="View Info">
+                                                    <i class="bi bi-eye"></i>&nbsp; View Info
                                                 </button>
                                             </a>
                                         </td>
@@ -74,7 +69,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">New Student User</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">New System Admin User</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">

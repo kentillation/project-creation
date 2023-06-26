@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Session;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Models\AdminModel;
 use App\Models\StaffModel;
@@ -14,6 +14,7 @@ use App\Models\BloodTypeModel;
 use App\Models\GenderModel;
 use App\Models\SectionModel;
 use App\Models\YearLevelModel;
+use App\Models\ActivityLogsModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
@@ -46,14 +47,26 @@ class AuthController extends Controller
         $admin->username = $request->username;
         $admin->password = $request->password;
 
+        // For Activity Logs
+        $activity_logs = new ActivityLogsModel;
+        date_default_timezone_set('Asia/Manila');
+        $activity_logs->description = "Admin " . Session::get('username') . " added " . $request->username . " as new System Admin on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+        $activity_logs->save();
+
         //For Email
         Mail::to($admin->email)->send(new Admin_Acc_Creation_Email($admin));
         Mail::to($admin->admin_email)->send(new Admin_Acc_Creation_Receipt_Email($admin));
+
+        //For Activity Logs
+        $activity_logs = new ActivityLogsModel;
+        date_default_timezone_set('Asia/Manila');
+        $activity_logs->description = "Admin " . Session::get('username') . " created an account for System Admin with $request->username username on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+        $activity_logs->save();
         
         $admin->password = md5($request->password);
         $admin->save();
 
-        return redirect(route('admin-dashboard'))->with('success', 'New Admin user has been saved successfully');
+        return redirect(route('admin-dashboard'))->with('success', 'New System Admin user has been created successfully');
     }
 
     //ADMIN LOGIN
@@ -91,19 +104,17 @@ class AuthController extends Controller
             session()->put('barangay', $result_info[0]['barangay']);
             session()->put('muni_city', $result_info[0]['muni_city']);
             session()->put('phone', $result_info[0]['phone']);
-
             $admin =  AdminModel::where('username', '=', $request->username)->first();
+            
+            // For Activity Logs
+            $activity_logs = new ActivityLogsModel;
+            date_default_timezone_set('Asia/Manila');
+            $activity_logs->description = "Admin " . Session::get('username') . " logged in on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+            $activity_logs->save();
+            
             return redirect()->route('admin-dashboard');
         }
         return back()->with('error', 'Invalid username or password.');
-    }
-
-    //ADMIN LOGOUT
-    public function logout()
-    {
-        Auth::logout();
-        
-        return redirect('/');
     }
 
     //ADMIN DASHBOARD
@@ -139,16 +150,6 @@ class AuthController extends Controller
     }
 
     //UPDATING ADMIN'S RECORD
-    public function saveUpdate(Request $request, $id) {
-        $data = [
-            'email' => $request->input()['email'],
-            'username' => $request->input()['username']
-        ];
-        $update_admin = AdminModel::where('id', $id)->update($data);
-        return redirect(route('admin-list'))->with('success', 'Account has been updated successfully');
-    }
-
-    //UPDATING ADMIN'S RECORD
     public function saveUpdate_profile(Request $request) {
         $id = Session::get('id');
         $data = [
@@ -163,14 +164,20 @@ class AuthController extends Controller
             'email' => $request->input()['email']
         ];
         $update_admin_account = AdminModel::where('id', $id)->update($data);
+        
+        $activity_logs = new ActivityLogsModel;
+        date_default_timezone_set('Asia/Manila');
+        $activity_logs->description = "Admin " . $request->input()['first_name'] . " " . $request->input()['middle_name'] . " " . $request->input()['last_name'] . " updated his/her profile on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+        $activity_logs->save();
+        
         return redirect(route('admin-profile'))->with('success', 'Account has been updated successfully');
     }
 
-    public function delete($id) {
-        $admin = AdminModel::find($id);
-        $admin->delete();
-        return redirect(route('admin-list'))->with('removal', 'Account has been remove successfully');
-    }
+    // public function delete($id) {
+    //     $admin = AdminModel::find($id);
+    //     $admin->delete();
+    //     return redirect(route('admin-list'))->with('removal', 'Account has been remove successfully');
+    // }
 
     public function admin_profile() {
 
@@ -271,6 +278,12 @@ class AuthController extends Controller
         ];
 
         $update_pending_record = StudentRecordModel::where('id', $id)->update($data);
+        
+        $activity_logs = new ActivityLogsModel;
+        date_default_timezone_set('Asia/Manila');
+        $activity_logs->description = "Admin " . Session::get('username') . " approved the pending medical record of " . $request->input()['first_name'] . " " . $request->input()['middle_name'] . " " . $request->input()['last_name'] . " on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+        $activity_logs->save();
+        
         return redirect(route('admin-dashboard'))->with('success', 'Medical record request has been approved successfully.');
     }
 
@@ -318,9 +331,17 @@ class AuthController extends Controller
         return view('pages/admin/year-level-list',['tbl_year_level'=>$year_level]);
     }
 
+    //ADMIN LOGOUT
+    public function logout()
+    {
+        $activity_logs = new ActivityLogsModel;
+        date_default_timezone_set('Asia/Manila');
+        $activity_logs->description = "Admin " . Session::get('username') . " logged out on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+        $activity_logs->save();
+        Auth::logout();
+    
+        return redirect('/');
+    }
 
-    // public function info_list () {
-    //     $gender = InfoModel::all();
-    //     return view('pages/admin/info-list',['tbl_gender'=>$gender]);
-    // }
+
 }

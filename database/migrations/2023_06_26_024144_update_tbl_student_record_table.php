@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('tbl_student', function (Blueprint $table) {
-            $table->string('name')->nullable()->change();
-            $table->string('student_id')->nullable()->change();
-            $table->string('email')->nullable()->change();
-            $table->string('username')->nullable()->change();
-            $table->string('password')->nullable()->change();
+
+        Schema::table('tbl_student_record', function (Blueprint $table) {
+            $table->foreign('status_appointment_id')->references('id')->on('tbl_appointment_status');
         });
     }
 

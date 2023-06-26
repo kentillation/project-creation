@@ -327,6 +327,10 @@ h3 {
   padding: 0 20px 20px 20px;
 }
 
+.card-body .message:hover {
+  background: var(--light-gray-color);
+}
+
 .card-img-overlay {
   background-color: rgba(255, 255, 255, 0.6);
 }

@@ -5,6 +5,13 @@
   <div class="pagetitle">
     <h1>Dashboard</h1>
   </div>
+  @if(Session::has('success'))
+  <div class="alert alert-success text-center alert-dismissible fade show mt-4 mb-4" role="alert" id="alertbox">
+    <i class="bi bi-check-circle"></i>&nbsp;
+    {{ Session::get('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  @endif
   <section class="section dashboard">
     <div class="row">
       <div class="col-lg-8">
@@ -35,32 +42,6 @@
               </div>
             </div>
           </div>
-
-          <!-- <div class="col-xxl-4 col-md-6">
-              <div class="card info-card declined-card">
-                <div class="card-body">
-                  <h5 class="card-title text-danger">Declined <span>| Medical Record Requests</span></h5>
-                  <div class="d-flex align-items-center justify-content-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-exclamation-circle"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>{{ $declined }}</h6>
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center justify-content-end">
-                    <a href="{{ route('c-declined-medical-records') }}">
-                      <button class="btn btn-outline-danger btn-sm mt-4">
-                        <span>
-                          <i class="bi bi-eye"></i>&nbsp;
-                          View Requests
-                        </span>
-                      </button>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div> -->
 
           <div class="col-xxl-4 col-xl-12">
             <div class="card info-card approved-card">

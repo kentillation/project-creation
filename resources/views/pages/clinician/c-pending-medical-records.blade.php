@@ -37,9 +37,7 @@
                       <table class="table table-hover text-center" id="table">
                         <thead class="text-bg-secondary">
                           <tr>
-                            <th>Name</th>
-                            <th>Phone</th>
-                            <th>Municipality / City</th>
+                            <th>Student Name</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -47,8 +45,6 @@
                           @foreach ($c_pending_records as $student_record)
                             <tr>
                               <td>{{ $student_record->first_name }} {{ $student_record->middle_name }} {{ $student_record->last_name }}</td>
-                              <td>{{ $student_record->phone }}</td>
-                              <td>{{ $student_record->muni_city }}</td>
                               <td>
                                 <a href="{{ route('c-update-pending-record', ['id' => $student_record->id] ) }}">
                                   <button class="btn btn-outline-primary btn-sm" title="View record">

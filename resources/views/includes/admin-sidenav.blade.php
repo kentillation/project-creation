@@ -162,7 +162,7 @@
         </li><!-- End Messages Nav -->
         <li class="nav-item dropdown pe-3">
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="<?php echo asset('assets/img/account-bg.png') ?>" alt="Profile" class="rounded-circle">
+            <img src="<?php echo asset('assets/img/profile.jpg') ?>" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">My account</span>
           </a><!-- End Profile Iamge Icon -->
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -395,7 +395,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">New Student User</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">New Student Nurse User</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body p-4">

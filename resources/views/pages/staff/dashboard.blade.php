@@ -5,6 +5,13 @@
     <div class="pagetitle">
       <h1>Dashboard</h1>
     </div>
+    @if(Session::has('success'))
+    <div class="alert alert-success text-center alert-dismissible fade show mt-4 mb-4" role="alert" id="alertbox">
+      <i class="bi bi-check-circle"></i>&nbsp;
+      {{ Session::get('success') }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
     <section class="section dashboard">
       <div class="row">
         <div class="col-lg-8">

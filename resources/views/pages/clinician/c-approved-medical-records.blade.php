@@ -25,9 +25,7 @@
                       <table class="table table-hover text-center" id="table">
                         <thead class="text-bg-secondary">
                           <tr>
-                            <th>Name</th>
-                            <th>Phone</th>
-                            <th>Municipality / City</th>
+                            <th>Student Name</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -35,8 +33,6 @@
                           @foreach ($c_approved_records as $student_record)
                             <tr>
                               <td>{{ $student_record->first_name }} {{ $student_record->middle_name }} {{ $student_record->last_name }}</td>
-                              <td>{{ $student_record->phone }}</td>
-                              <td>{{ $student_record->muni_city }}</td>
                               <td>
                                 <a href="#">
                                   <button class="btn-view" title="View record">

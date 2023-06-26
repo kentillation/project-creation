@@ -44,8 +44,16 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-12">
-                                        <label for="name">Name</label>
-                                        <input type='text' name='name' value="{{ $tbl_clinician['name'] }}" id="name" class="form-control mb-3" required />
+                                        <label for="first_name">First Name</label>
+                                        <input type='text' name='first_name' value="{{ $tbl_clinician['first_name'] }}" id="first_name" class="form-control mb-3" required />
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="middle_name">Middle Name</label>
+                                        <input type='text' name='middle_name' value="{{ $tbl_clinician['middle_name'] }}" id="middle_name" class="form-control mb-3" required />
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="last_name">Last Name</label>
+                                        <input type='text' name='last_name' value="{{ $tbl_clinician['last_name'] }}" id="last_name" class="form-control mb-3" required />
                                     </div>
                                     <div class="col-12">
                                         <label for="email">Email</label>
@@ -56,7 +64,7 @@
                                         <input type='text' name='username' value="{{ $tbl_clinician['username'] }}" id="username" class="form-control mb-3" required />
                                     </div>
                                 </div>
-                                <button class="btn btn-success mt-3" type="submit">
+                                <button class="btn btn-outline-success mt-3" type="submit">
                                     <i class="bi bi-arrow-clockwise"></i>
                                     &nbsp;Update
                                 </button>
