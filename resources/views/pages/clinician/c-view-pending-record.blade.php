@@ -175,15 +175,15 @@
                                         </div>
 
                                         <div class="col-lg-4 col-md-6 col-sm-6" style="display:none;">
-                                            <label for="status_record">Status Record</label>
-                                            <input type='text' name='status_record' id="status_record" value="3" class="form-control mb-3" required />
+                                            <label for="status_record_id">Status Record</label>
+                                            <input type='text' name='status_record_id' id="status_record_id" value="2" class="form-control mb-3" required />
                                         </div>
 
                                     </div>
 
                                     <div class="d-flex justify-content-end mt-5">
                                         <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#appointmentModal">
-                                            <i class="bi bi-plus-lg"></i>&nbsp; Set appointment
+                                            <i class="bi bi-send"></i>&nbsp; Send appointment
                                         </button>
 
                                         <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#doyouModal">
@@ -247,7 +247,7 @@
                                         <span class="input-group-text">
                                             <i class="bi bi-file-person"></i>
                                         </span>
-                                        <input type="text" name="to" class="form-control" value="{{ $c_update_pending->id }}" id="to" required>
+                                        <input type="text" name="to" class="form-control" value="{{ $c_update_pending->student_id }}" id="to" required>
                                         <div class="invalid-feedback">Empty nursing student.</div>
                                     </div>
                                 </div>
@@ -299,7 +299,7 @@
                                         <div class="invalid-feedback">Empty laboratory test category.</div>
                                     </div>
                                 </div>
-                                <div class="col-12" style="display:none;">
+                                <div class="col-12" style="display: none;">
                                     <label for="status_appointment" class="form-label mt-2">Appointment Status</label>
                                     <div class="input-group has-validation">
                                         <span class="input-group-text">

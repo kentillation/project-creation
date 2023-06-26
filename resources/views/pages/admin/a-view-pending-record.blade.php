@@ -233,7 +233,7 @@
 
                                         <div class="col-lg-4 col-md-6 col-sm-6" style="display:none;">
                                             <label for="status_record">Status Record</label>
-                                            <input type='text' name='status_record' id="status_record" value="3"
+                                            <input type='text' name='status_record' id="status_record" value="2"
                                                 class="form-control mb-3" required />
                                         </div>
 
@@ -242,7 +242,7 @@
                                     <div class="d-flex justify-content-end mt-5">
                                         <button type="button" class="btn btn-outline-primary me-2"
                                             data-bs-toggle="modal" data-bs-target="#appointmentModal">
-                                            <i class="bi bi-plus-lg"></i>&nbsp; Add appointment
+                                            <i class="bi bi-plus-lg"></i>&nbsp; Send appointment
                                         </button>
 
                                         <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"

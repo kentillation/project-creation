@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\StaffModel;
 use App\Models\StudentRecordModel;
+use App\Models\ActivityLogsModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Staff_Acc_Creation_Email;
 use App\Mail\Staff_Acc_Creation_Receipt_Email;
@@ -78,10 +80,16 @@ class StaffController extends Controller
         Mail::to($staff->email)->send(new Staff_Acc_Creation_Email($staff));
         Mail::to($staff->admin_email)->send(new Staff_Acc_Creation_Receipt_Email($staff));
 
+        //For Activity Logs
+        $activity_logs = new ActivityLogsModel;
+        date_default_timezone_set('Asia/Manila');
+        $activity_logs->description = "Admin " . Session::get('username') . " created an account for Department Staff with $request->username username on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+        $activity_logs->save();
+
         $staff->password = md5($request->password);
         $staff->save();
 
-        return redirect(route('admin-dashboard'))->with('success', 'New Department Staff user has been saved successfully');
+        return redirect(route('admin-dashboard'))->with('success', 'New Department Staff user has been created successfully');
     }
     
     //EDITING NURSE STAFF'S RECORD
@@ -103,7 +111,14 @@ class StaffController extends Controller
             'username' => $request->input()['username']
         ];
         $update_staff = StaffModel::where('id', $id)->update($data);
-        return redirect(route('staff-list'));
+
+        //For Activity Logs
+        $activity_logs = new ActivityLogsModel;
+        date_default_timezone_set('Asia/Manila');
+        $activity_logs->description = "Admin " . Session::get('username') . " updated the information of Department Staff with $request->username username on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+        $activity_logs->save();
+
+        return redirect(route('staff-list'))->with('success', 'The information of Department Staff ' . $request->input()['first_name'] . ' ' . $request->input()['middle_name'] . ' ' . $request->input()['last_name'] . ' has been updated successfully. ');
     }
 
     public function delete_staff($id) {

@@ -1,0 +1,6 @@
+- System Admin are the ones who will create an account for Student Nurse, School Nurse, Department Staff and System Admin with Email Notification.
+- System Admin can update Information of Student Nurse, School Nurse, Department Staff.
+- Every account that has been created and updated, Activity Logs will be fill from System Admin's action.
+- Student Nurse can create Medical Record and appears to School Nurse (and Admin) account.
+- School Nurse can view and Approved the pending Medical Record of a Student and can Send Appointment.
+- Appointment message will appear to a specific Student Nurse.

@@ -61,6 +61,8 @@ Route::post('/student/save-update-profile/{id}', 'StudentController@saveUpdate_p
 Route::get('/student/account-settings', 'StudentController@student_account_settings')->name('student-account-settings');
 
 Route::get('/student/pending-appointments', 'StudentController@pending_appointments')->name('pending-appointments');
+Route::post('/student/pending-appointment', 'StudentController@update_pending_appointment_come')->name('update-pending-appointment-come');
+Route::post('/student/pending-appointment', 'StudentController@update_pending_appointment_not')->name('update-pending-appointment-not');
 
 //DEPARTMENT STAFF CONTROLLER
 Route::get('/staff-login', 'StaffController@staff_login')->name('staff-login');

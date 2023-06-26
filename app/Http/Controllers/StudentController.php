@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Session;
+use Illuminate\Support\Facades\Session;
 use App\Models\StudentModel;
 use App\Models\StudentRecordModel;
 use App\Models\MedicalHistoryModel;
 use App\Models\ClinicianAppointmentModel;
 use App\Models\ClinicianModel;
-use App\Models\AdminModel;
+use App\Models\ActivityLogsModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
@@ -26,7 +26,10 @@ class StudentController extends Controller
 
     public function dashboard()
     {
-        return view('/pages/student/dashboard');
+        $id = Session::get('id');
+        $pending_appointment = ClinicianAppointmentModel::where('to', $id)->get();
+        $cilinician_record = ClinicianModel::all();
+        return view('pages/student/dashboard', ['pending_appointment' => $pending_appointment], compact('cilinician_record'));
     }
 
     public function student_login()
@@ -58,6 +61,7 @@ class StudentController extends Controller
             session()->put('barangay', $result_info[0]['barangay']);
             session()->put('muni_city', $result_info[0]['muni_city']);
             session()->put('phone', $result_info[0]['phone']);
+            session()->put('appointment_response_id', $result_info[0]['appointment_response_id']);
 
             $student =  StudentModel::where('student_id', '=', $request->student_id)->first();
             return redirect()->route('student-dashboard');
@@ -80,23 +84,27 @@ class StudentController extends Controller
         // $admin = new AdminModel;
        
             $student->student_id = $request->student_id;
-            // $student->first_name = $request->first_name;
-            // $student->middle_name = $request->middle_name;
-            // $student->last_name = $request->last_name;
-            // $student->phone = $request->phone;
+            $student->first_name = "no-firstname";
+            $student->middle_name = "no-middlename";
+            $student->last_name = "no-lastname";
             $student->email = $request->email;
             $student->password = $request->password;
             $student->admin_email = $request->admin_email;
-            // $student->created_at = date('F j, Y | h : m : s a');
 
             //For Email
             Mail::to($student->email)->send(new Student_Acc_Creation_Email($student));
             Mail::to($student->admin_email)->send(new Student_Acc_Creation_Receipt_Email($student));
 
+            //For Activity Logs
+            $activity_logs = new ActivityLogsModel;
+            date_default_timezone_set('Asia/Manila');
+            $activity_logs->description = "Admin " . Session::get('username') . " created an account for Nursing Student with $request->student_id ID on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+            $activity_logs->save();
+
             $student->password = md5($request->password);
             $student->save();
         
-            return back()->with('success', 'New account has been saved successfully.');
+            return back()->with('success', 'New Student Nurse account has been created successfully.');
 
             // $admin_name = $request->name;
             // $phone_number = $student->phone;
@@ -156,25 +164,17 @@ class StudentController extends Controller
             'first_name' => $request->input()['first_name'],
             'middle_name' => $request->input()['middle_name'],
             'last_name' => $request->input()['last_name'],
-            'phone' => $request->input()['phone'],
             'email' => $request->input()['email']
         ];
         $update_student = StudentModel::where('id', $id)->update($data);
-        return redirect(route('student-list'));
-    }
 
-    //UPDATING ADMIN'S RECORD
-    public function saveUpdate_profile(Request $request) {
-        $id = Session::get('id');
-        $data = [
-            'first_name' => $request->input()['first_name'],
-            'middle_name' => $request->input()['middle_name'],
-            'last_name' => $request->input()['last_name'],
-            'phone' => $request->input()['phone'],
-            'email' => $request->input()['email']
-        ];
-        $update_student_account = StudentModel::where('id', $id)->update($data);
-        return redirect(route('student-login'))->with('success', 'Account has been updated successfully');
+        //For Activity Logs
+        $activity_logs = new ActivityLogsModel;
+        date_default_timezone_set('Asia/Manila');
+        $activity_logs->description = "Admin " . Session::get('username') . " updated the information of Nursing Student with $request->student_id ID on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+        $activity_logs->save();
+
+        return redirect(route('student-list'))->with('success', 'The information of Student Nurse with '. $request->input()['student_id'] .' ID has been updated successfully.');
     }
 
     //DELETE STUDENT
@@ -184,12 +184,35 @@ class StudentController extends Controller
         return redirect(route('student-list'));
     }
 
+    //UPDATE PENDING APPOINTMENT - COME
+    public function update_pending_appointment_come() {
+        $id = Session::get('appointment_response_id');
+        $data = [
+            'appointment_response_id' => 1,
+        ];
+        $update_student_account = StudentRecordModel::where('id', $id)->update($data);
+        return redirect(route('pages/student/pending-appointments'))->with('success', 'Great!');
+    }
+
     public function student_profile() {
 
         $id = Session::get('id');
         $student = StudentModel::find($id);
 
         return view('pages/student/student-profile', ['student_profile'=>$student]);
+    }
+
+    //UPDATING ADMIN'S RECORD
+    public function saveUpdate_profile(Request $request) {
+        $id = Session::get('id');
+        $data = [
+            'first_name' => $request->input()['first_name'],
+            'middle_name' => $request->input()['middle_name'],
+            'last_name' => $request->input()['last_name'],
+            'email' => $request->input()['email'],
+        ];
+        $update_student_account = StudentModel::where('id', $id)->update($data);
+        return redirect(route('student-login'))->with('success', 'Account has been updated successfully');
     }
 
     public function student_account_settings() {
@@ -270,6 +293,7 @@ class StudentController extends Controller
         $studentrecord->section_id = $request->section;
         $studentrecord->blood_type_id = $request->blood_type;
         $studentrecord->status_record_id = 1;
+        $studentrecord->status_appointment_id = 1;
         $studentrecord->save();
         return back()->with('success', 'New request for medical record has been sent successfully');
     }
@@ -300,9 +324,11 @@ class StudentController extends Controller
     }
 
     public function pending_appointments() {
+        
         $id = Session::get('id');
-        $pending_student = ClinicianAppointmentModel::where('to', $id)->get();
-        return view('pages/student/pending-appointments',['pending_student'=>$pending_student]);
+        $pending_appointment = ClinicianAppointmentModel::where('to', $id)->get();
+        $cilinician_record = ClinicianModel::all();
+        return view('pages/student/pending-appointments',['pending_appointment'=>$pending_appointment], compact('cilinician_record'));
     }
 
 }

@@ -3,7 +3,7 @@
 @section('page-content')
 <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Clinician Information</h1>
+      <h1>System Admin Information</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item">Users</li>
