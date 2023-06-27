@@ -39,7 +39,7 @@ Route::get('/admin/account-settings', 'AuthController@admin_account_settings')->
 //STUDENT CONTROLLER
 Route::get('/student-login', 'StudentController@student_login')->name('student-login');
 Route::post('/student-login', 'StudentController@student_loginPost');
-Route::get('/student-dashboard', 'StudentController@dashboard')->name('student-dashboard');
+Route::get('/student/dashboard', 'StudentController@dashboard')->name('student-dashboard');
 Route::delete('/student/logout', 'StudentController@logout')->name('student-logout');
 Route::post('/save-student', 'StudentController@save_student')->name('save-student');
 Route::get('/student/update/{id}', 'StudentController@update_student')->name('update-student');
@@ -61,8 +61,9 @@ Route::post('/student/save-update-profile/{id}', 'StudentController@saveUpdate_p
 Route::get('/student/account-settings', 'StudentController@student_account_settings')->name('student-account-settings');
 
 Route::get('/student/pending-appointments', 'StudentController@pending_appointments')->name('pending-appointments');
-Route::post('/student/pending-appointment', 'StudentController@update_pending_appointment_come')->name('update-pending-appointment-come');
-Route::post('/student/pending-appointment', 'StudentController@update_pending_appointment_not')->name('update-pending-appointment-not');
+Route::post('/student/pending-appointment/{id}', 'StudentController@update_pending_appointment_response')->name('update-pending-appointment-response');
+
+Route::get('/student/approved-appointments', 'StudentController@approved_appointments')->name('approved-appointments');
 
 //DEPARTMENT STAFF CONTROLLER
 Route::get('/staff-login', 'StaffController@staff_login')->name('staff-login');
@@ -79,22 +80,22 @@ Route::get('/staff/view-pending-record/{id}', 'StaffController@view_pending_reco
 Route::get('/staff/approved-medical-records', 'StaffController@approved_medical_records')->name('s-approved-medical-records');
 
 //CLINICIAN CONTROLLER
-Route::get('/clinician-login', 'ClinicianController@clinician_login')->name('clinician-login');
-Route::post('/clinician-login', 'ClinicianController@clinician_loginPost')->name('login-clinician');
-Route::post('/save-clinician', 'ClinicianController@save_clinician')->name('save-clinician');
-Route::delete('/clinician/logout', 'ClinicianController@logout')->name('clinician-logout');
-Route::get('/clinician/dashboard', 'ClinicianController@dashboard')->name('clinician-dashboard');
-Route::get('/clinician/update/{id}', 'ClinicianController@update_clinician')->name('update-clinician');
-Route::post('/clinician/save-update/{id}', 'ClinicianController@saveUpdate_clinician')->name('update-save-clinician');
-Route::get('/clinician/list/{id}', 'ClinicianController@delete_clinician')->name('delete-clinician');
-Route::get('/clinician/add-student-medical-record', 'ClinicianController@add_student_med_record')->name('add-student-med-record');
-Route::post('/clinician/save-student-medical-record', 'ClinicianController@save_student_med_record')->name('save-student-med-record');
+Route::get('/schoolnurse-login', 'ClinicianController@clinician_login')->name('clinician-login');
+Route::post('/schoolnurse-login', 'ClinicianController@clinician_loginPost')->name('login-clinician');
+Route::post('/save-schoolnurse', 'ClinicianController@save_clinician')->name('save-clinician');
+Route::delete('/schoolnurse/logout', 'ClinicianController@logout')->name('clinician-logout');
+Route::get('/schoolnurse/dashboard', 'ClinicianController@dashboard')->name('clinician-dashboard');
+Route::get('/schoolnurse/update/{id}', 'ClinicianController@update_clinician')->name('update-clinician');
+Route::post('/schoolnurse/save-update/{id}', 'ClinicianController@saveUpdate_clinician')->name('update-save-clinician');
+Route::get('/schoolnurse/list/{id}', 'ClinicianController@delete_clinician')->name('delete-clinician');
+Route::get('/schoolnurse/add-student-medical-record', 'ClinicianController@add_student_med_record')->name('add-student-med-record');
+Route::post('/schoolnurse/save-student-medical-record', 'ClinicianController@save_student_med_record')->name('save-student-med-record');
 
-Route::get('/clinician/pending-medical-records', 'ClinicianController@pending_medical_records')->name('c-pending-medical-records');
-Route::get('/clinician/update-pending-record/{id}', 'ClinicianController@update_pending_record')->name('c-update-pending-record');
-Route::post('/clinician/save-update-pending-record/{id}', 'ClinicianController@saveUpdate_pending_record')->name('c-save-update-pending-record');
+Route::get('/schoolnurse/pending-medical-records', 'ClinicianController@pending_medical_records')->name('c-pending-medical-records');
+Route::get('/schoolnurse/update-pending-record/{id}', 'ClinicianController@update_pending_record')->name('c-update-pending-record');
+Route::post('/schoolnurse/save-update-pending-record/{id}', 'ClinicianController@saveUpdate_pending_record')->name('c-save-update-pending-record');
 
-Route::get('/clinician/declined-medical-records', 'ClinicianController@declined_medical_records')->name('c-declined-medical-records');
-Route::get('/clinician/approved-medical-records', 'ClinicianController@approved_medical_records')->name('c-approved-medical-records');
+Route::get('/schoolnurse/declined-medical-records', 'ClinicianController@declined_medical_records')->name('c-declined-medical-records');
+Route::get('/schoolnurse/approved-medical-records', 'ClinicianController@approved_medical_records')->name('c-approved-medical-records');
 
-Route::post('/save-clinician-appointment', 'ClinicianController@save_clinician_appointment')->name('save-clinician-appointment');
+Route::post('/save-schoolnurse-appointment', 'ClinicianController@save_clinician_appointment')->name('save-clinician-appointment');

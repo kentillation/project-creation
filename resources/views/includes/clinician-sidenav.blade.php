@@ -259,17 +259,12 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#appointment" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-calendar-event"></i><span>Appointment</span><i class="bi bi-chevron-down ms-auto"></i>
+            <i class="bi bi-calendar-event"></i><span>Appointments</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="appointment" class="nav-content collapse " data-bs-parent="#sidebar-nav">
             <li>
                 <a href="#">
                     <i class="bi bi-calendar-minus fs-6"></i><span>Pending Appointment</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="bi bi-calendar-x fs-6"></i><span>Postponed Appointment</span>
                 </a>
             </li>
             <li>

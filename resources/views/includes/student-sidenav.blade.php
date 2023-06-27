@@ -232,13 +232,6 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#">
-            <i class="bi bi-calendar-plus"></i>
-            <span>Book Appointment</span>
-            </a>
-        </li>
-
-        <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#medical-record" data-bs-toggle="collapse" href="#">
             <i class="bi bi-filter-square"></i><span>Medical Record</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
@@ -267,12 +260,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
-                    <i class="bi bi-calendar-x fs-6"></i><span>Postponed Appointment</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
+                <a href="{{ route('approved-appointments') }}">
                     <i class="bi bi-calendar2-check fs-6"></i><span>Approved Appointment</span>
                 </a>
             </li>

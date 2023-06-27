@@ -299,7 +299,7 @@
                                         <div class="invalid-feedback">Empty laboratory test category.</div>
                                     </div>
                                 </div>
-                                <div class="col-12" style="display: none;">
+                                <!-- <div class="col-12" style="display: none;">
                                     <label for="status_appointment" class="form-label mt-2">Appointment Status</label>
                                     <div class="input-group has-validation">
                                         <span class="input-group-text">
@@ -308,7 +308,7 @@
                                         <input type="number" name="status_appointment" value="1" class="form-control" id="status_appointment" required>
                                         <div class="invalid-feedback">Empty appointment status.</div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-outline-success btn-md w-100 mt-3">
                                         Send &nbsp; <i class="bi bi-send"></i>

@@ -4,3 +4,4 @@
 - Student Nurse can create Medical Record and appears to School Nurse (and Admin) account.
 - School Nurse can view and Approved the pending Medical Record of a Student and can Send Appointment.
 - Appointment message will appear to a specific Student Nurse.
+- Student Nurse can Approved the appointment.

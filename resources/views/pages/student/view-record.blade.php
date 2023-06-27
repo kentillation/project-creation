@@ -202,6 +202,10 @@
                         <div class="news">
                             @foreach ($medical_history as $med_history)
                             <div class="post-item clearfix">
+                                <h6><strong>History Date:</strong></h6>
+                                <h6>{{ $med_history->date }}</h6>
+                            </div>
+                            <div class="post-item clearfix">
                                 <h6><strong>Checked conditions that apply to you or any of your close family members:</strong></h6>
                                 <h6>
                                     <?php foreach(json_decode($med_history->condition_option) as $value) {

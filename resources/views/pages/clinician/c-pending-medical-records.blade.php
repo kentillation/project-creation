@@ -38,6 +38,8 @@
                         <thead class="text-bg-secondary">
                           <tr>
                             <th>Student Name</th>
+                            <th>Year Level</th>
+                            <th>Section</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -45,6 +47,35 @@
                           @foreach ($c_pending_records as $student_record)
                             <tr>
                               <td>{{ $student_record->first_name }} {{ $student_record->middle_name }} {{ $student_record->last_name }}</td>
+                              <td>
+                                <?php
+                                  if ($student_record->year_level_id == 1) {
+                                    echo '1st year';
+                                  }
+                                  if ($student_record->year_level_id == 2) {
+                                    echo '2nd year';
+                                  }
+                                  if ($student_record->year_level_id == 3) {
+                                    echo '3rd year';
+                                  }
+                                  if ($student_record->year_level_id == 4) {
+                                    echo '4th year';
+                                  }
+                                ?>
+                              </td>
+                              <td>
+                                <?php
+                                  if ($student_record->section_id == 1) {
+                                    echo 'A';
+                                  }
+                                  if ($student_record->section_id == 2) {
+                                    echo 'B';
+                                  }
+                                  if ($student_record->section_id == 3) {
+                                    echo 'C';
+                                  }
+                                ?>
+                              </td>
                               <td>
                                 <a href="{{ route('c-update-pending-record', ['id' => $student_record->id] ) }}">
                                   <button class="btn btn-outline-primary btn-sm" title="View record">

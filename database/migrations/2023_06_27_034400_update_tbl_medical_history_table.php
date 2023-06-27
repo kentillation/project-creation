@@ -12,11 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('tbl_medical_history', function (Blueprint $table) {
-            $table->string('first_name')->nullable();
-            $table->string('last_name')->nullable();
-            $table->string('middle_name')->nullable();
-            $table->integer('phone')->nullable();
-            $table->integer('age')->nullable();
+            $table->string('date');
         });
     }
 
