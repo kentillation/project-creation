@@ -38,14 +38,17 @@
                 <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#change-password">Change Password</button>
               </li>
               <li class="nav-item">
-                <button class="nav-link " data-bs-toggle="tab" data-bs-target="#activity-logs">Activity Logs</button>
+                <button class="nav-link " data-bs-toggle="tab" data-bs-target="#delete-account">Delete Account</button>
               </li>
             </ul>
 
             <div class="tab-content pt-2">
-              <div class="tab-pane fade pt-3" id="activity-logs">
+              <div class="tab-pane fade pt-3" id="delete-account">
                   <div class="row mb-3">
-                    <!-- INSERT CONTENT -->
+                    <p>Once you delete your account, there is no going back. Please be certain.</p>
+                    <a href="#">
+                      <button class="btn btn-outline-danger">Delete Account</button>
+                    </a>
                   </div>
               </div>
 

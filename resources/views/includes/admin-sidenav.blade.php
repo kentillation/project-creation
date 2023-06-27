@@ -33,10 +33,10 @@
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="d-flex align-items-center justify-content-between">
-      <i class="bi bi-list toggle-sidebar-btn" title="Menu"></i>&nbsp;
+      <i class="bi bi-list toggle-sidebar-btn" title="Menu"></i>&nbsp; &nbsp;
       <a href="#" class="logo d-flex align-items-center">
-        <img src="#" alt="">
-        <span class="d-none d-lg-block">Christian School EHR</span>
+        <img src="<?php echo asset('assets/img/ehr_logo_v2.png') ?>" alt="Christian School Logo">
+        <span class="d-none d-lg-block">Christian School</span>
       </a>
     </div><!-- End Logo -->
     <nav class="header-nav ms-auto">
@@ -163,11 +163,11 @@
         <li class="nav-item dropdown pe-3">
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="<?php echo asset('assets/img/profile.jpg') ?>" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">My account</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">Account</span>
           </a><!-- End Profile Iamge Icon -->
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Name of Admin</h6>
+              <h6>{{ Session::get('first_name') }} {{ Session::get('middle_name') }} {{ Session::get('last_name') }}</h6>
               <span>Administrator</span>
             </li>
             <li>
@@ -176,7 +176,7 @@
             <li>
               <a class="dropdown-item d-flex align-items-center" href="{{ route('admin-profile') }}">
                 <i class="bi bi-person"></i>
-                <span>My Profile</span>
+                <span>Profile</span>
               </a>
             </li>
             <li>
@@ -257,27 +257,17 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#appointment" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-"></i><span>Appointments</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-"></i><span>Lab Test Appointments</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="appointment" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="#">
+            <a href="{{ route('admin-pending-appointments') }}">
               <i class="bi bi-calendar-minus fs-6"></i><span>Pending Appointment</span>
             </a>
           </li>
           <li>
-            <a href="#">
-              <i class="bi bi-calendar-x fs-6"></i><span>Postponed Appointment</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
+            <a href="{{ route('admin-approved-appointments') }}">
               <i class="bi bi-calendar2-check fs-6"></i><span>Approved Appointment</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="bi bi-calendar-plus fs-6"></i><span>Book an Appointment</span>
             </a>
           </li>
         </ul>

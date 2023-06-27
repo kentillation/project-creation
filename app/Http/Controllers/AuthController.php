@@ -15,6 +15,7 @@ use App\Models\GenderModel;
 use App\Models\SectionModel;
 use App\Models\YearLevelModel;
 use App\Models\ActivityLogsModel;
+use App\Models\AppointmentModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
@@ -287,24 +288,11 @@ class AuthController extends Controller
         return redirect(route('admin-dashboard'))->with('success', 'Medical record request has been approved successfully.');
     }
 
-    // public function declined_medical_records () {
-
-    //     $a_declined_records = StudentRecordModel::where('status_record_id', '2')->get();
-    //     return view('pages/admin/a-declined-medical-records', compact('a_declined_records'));
-
-    // }
-
     public function approved_medical_records () {
 
         $a_approved_records = StudentRecordModel::where('status_record_id', '3')->get();
         return view('pages/admin/a-approved-medical-records', compact('a_approved_records'));
 
-    }
-
-    //READING ALL RECORDS OF COURSE
-    public function course_list () {
-        $course = CourseModel::all();
-        return view('pages/admin/course-list',['tbl_course'=>$course]);
     }
 
     //READING ALL RECORDS OF BLOOD TYPE
@@ -329,6 +317,56 @@ class AuthController extends Controller
     public function year_level_list () {
         $year_level = YearLevelModel::all();
         return view('pages/admin/year-level-list',['tbl_year_level'=>$year_level]);
+    }
+
+    public function save_admin_appointment(Request $request)
+    {
+        // date_default_timezone_set('Asia/Manila');
+        // $request->date = date_format("F j, Y | l");
+        // $request->time = date_format("h : i : s a");
+
+        $apppointment = new AppointmentModel;
+        $apppointment->from = $request->from;
+        $apppointment->to = $request->to;
+        $apppointment->date = $request->date;
+        $apppointment->time = $request->time;
+        $apppointment->room = $request->room;
+        $apppointment->lab_test = $request->lab_test;
+        $apppointment->status_appointment = 1;
+        $apppointment->save();
+
+        if ($request->lab_test == 1) {
+            $lab_test = "CBC";
+        }
+        if ($request->lab_test == 2) {
+            $lab_test = "Urinalysis";
+        }
+        if ($request->lab_test == 3) {
+            $lab_test = "Fecalysis";
+        }
+        if ($request->lab_test == 4) {
+            $lab_test = "Chest X-ray (PA)";
+        }
+        if ($request->lab_test == 5) {
+            $lab_test = "Hepa B Antigen";
+        }
+        if ($request->lab_test == 6) {
+            $lab_test = "Hepa B Vaccine";
+        }
+        
+        return back()->with('success', 'Appointment for '. $lab_test  .' - Laboratory Test has been sent successfully');
+    }
+
+    public function pending_appointments() {
+
+        $student = AppointmentModel::where('status_appointment','1')->get();
+        return view('pages/admin/pending-appointments',['pending_appointment'=>$student]);
+    }
+
+    public function approved_appointments() {
+
+        $student = AppointmentModel::where('status_appointment','2')->get();
+        return view('pages/admin/approved-appointments',['approved_appointment'=>$student]);
     }
 
     //ADMIN LOGOUT

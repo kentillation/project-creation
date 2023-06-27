@@ -54,43 +54,6 @@
             </div>
           </div>
 
-          <!-- <div class="col-xxl-4 col-md-6">
-              <div class="card info-card declined-card">
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title text-danger">Declined <span>| Medical Record Requests</span></h5>
-                  <div class="d-flex align-items-center justify-content-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-exclamation-circle"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6></h6>
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center justify-content-end">
-                    <a href="{{ route('a-declined-medical-records') }}">
-                      <button class="btn btn-outline-danger btn-sm mt-4">
-                        <span>
-                          <i class="bi bi-eye"></i>&nbsp;
-                          View Requests
-                        </span>
-                      </button>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-
           <div class="col-xxl-4 col-xl-12">
             <div class="card info-card approved-card">
               <!-- <div class="filter">

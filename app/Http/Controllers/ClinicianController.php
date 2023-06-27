@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ClinicianModel;
-use App\Models\ClinicianAppointmentModel;
 use App\Models\StudentModel;
 use App\Models\StudentRecordModel;
 use App\Models\ActivityLogsModel;
+use App\Models\MedicalHistoryModel;
+use App\Models\AppointmentModel;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -197,9 +198,13 @@ class ClinicianController extends Controller
     }
 
     //EDITING STUDENT PENDING RECORD
-    public function update_pending_record(Request $request, $id) {
+    public function update_pending_record($id) {
         $pending_record = StudentRecordModel::find($id);
-        return view('pages/clinician/c-view-pending-record', ['c_update_pending'=> $pending_record]);
+
+        $student = StudentModel::all();
+        $medical_history = MedicalHistoryModel::where('id', $student[0])->get();
+
+        return view('pages/clinician/c-view-pending-record', ['c_update_pending'=> $pending_record], compact('medical_history'));
     }
 
     //UPDATING STUDENT PENDING RECORD
@@ -244,7 +249,7 @@ class ClinicianController extends Controller
         // $request->date = date_format("F j, Y | l");
         // $request->time = date_format("h : i : s a");
 
-        $apppointment = new ClinicianAppointmentModel;
+        $apppointment = new AppointmentModel;
         $apppointment->from = $request->from;
         $apppointment->to = $request->to;
         $apppointment->date = $request->date;
@@ -274,6 +279,20 @@ class ClinicianController extends Controller
         }
         
         return back()->with('success', 'Appointment for '. $lab_test  .' - Laboratory Test has been sent successfully');
+    }
+
+    public function pending_appointments() {
+
+        $cilinician_record = ClinicianModel::all();
+        $student = AppointmentModel::where('status_appointment','1')->get();
+        return view('pages/admin/pending-appointments',['pending_appointment'=>$student], compact('cilinician_record'));
+    }
+
+    public function approved_appointments() {
+
+        $cilinician_record = ClinicianModel::all();
+        $student = AppointmentModel::where('status_appointment','2')->get();
+        return view('pages/admin/approved-appointments',['approved_appointment'=>$student], compact('cilinician_record'));
     }
 
     // LOGOUT CLINICIAN

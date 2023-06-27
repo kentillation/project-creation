@@ -208,23 +208,23 @@
                             <div class="post-item clearfix">
                                 <h6><strong>Checked conditions that apply to you or any of your close family members:</strong></h6>
                                 <h6>
-                                    <?php foreach(json_decode($med_history->condition_option) as $value) {
-                                        if($value != 'other') {
+                                    <?php foreach (json_decode($med_history->condition_option) as $value) {
+                                        if ($value != 'other') {
                                             echo "$value, ";
                                         }
-                                    }?>{{ $med_history->other_condition_option }}
-                                 </h6>
+                                    } ?>{{ $med_history->other_condition_option }}
+                                </h6>
                             </div>
 
                             <div class="post-item clearfix">
                                 <h6><strong>Checked symptoms that you're currently experiencing:</strong></h6>
                                 <h6>
-                                    <?php foreach(json_decode($med_history->symptoms_option) as $value) {
-                                        if($value != 'other') {
+                                    <?php foreach (json_decode($med_history->symptoms_option) as $value) {
+                                        if ($value != 'other') {
                                             echo "$value, ";
                                         }
-                                    }?>{{ $med_history->other_symptoms_option }}
-                                 </h6>
+                                    } ?>{{ $med_history->other_symptoms_option }}
+                                </h6>
                             </div>
 
                             <div class="post-item clearfix">
@@ -260,11 +260,10 @@
     </section>
 
     <!-- for Data Tables -->
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
-        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('table').DataTable();
         });
     </script>
