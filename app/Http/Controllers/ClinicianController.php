@@ -240,6 +240,10 @@ class ClinicianController extends Controller
 
     public function save_clinician_appointment(Request $request)
     {
+        // date_default_timezone_set('Asia/Manila');
+        // $request->date = date_format("F j, Y | l");
+        // $request->time = date_format("h : i : s a");
+
         $apppointment = new ClinicianAppointmentModel;
         $apppointment->from = $request->from;
         $apppointment->to = $request->to;
@@ -247,7 +251,7 @@ class ClinicianController extends Controller
         $apppointment->time = $request->time;
         $apppointment->room = $request->room;
         $apppointment->lab_test = $request->lab_test;
-        $apppointment->status_appointment = $request->status_appointment;
+        $apppointment->status_appointment = 1;
         $apppointment->save();
 
         if ($request->lab_test == 1) {

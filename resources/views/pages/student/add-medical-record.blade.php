@@ -3,11 +3,11 @@
 @section('page-content')
 <main id="main" class="main">
   <div class="pagetitle">
-    <h1>Add Record</h1>
+    <h1>Add Medical Record</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item">Medical Record</li>
-        <li class="breadcrumb-item active">Add Record</li>
+        <li class="breadcrumb-item active">Add Medical Record</li>
       </ol>
     </nav>
   </div>
@@ -302,50 +302,8 @@
                       <input type='text' name='student_id' id="student_id" value="{{ $student[0]['id'] }}" class="form-control mb-3" readonly />
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
-                      <label for="created_at">Date:</label>
-                      <input type='date' name='created_at' id="created_at" value="" class="form-control mb-3" required />
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <label for="first_name">First Name</label>
-                      <input type='text' name='first_name' id="first_name" value="{{ $student[0]['first_name'] }}" class="form-control mb-3 readonly" readonly />
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <label for="last_name">Last Name</label>
-                      <input type='text' name='last_name' id="last_name" value="{{ $student[0]['last_name'] }}" class="form-control mb-3 readonly" readonly />
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <label for="middle_name">Middle Name</label>
-                      <input type='text' name='middle_name' id="middle_name" value="{{ $student[0]['middle_name'] }}" class="form-control mb-3 readonly" readonly />
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <label for="course">Course</label>
-                      <input type='text' name='course' id="course" value="Bachelor of Science in Nursing" class="form-control mb-3 readonly" readonly />
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <label for="year_level">Year Level</label>
-                      <select id="year_level" name="year_level" class="form-control mb-3">
-                        <option selected>-select-</option>
-                        <option value="1">1st year</option>
-                        <option value="2">2nd year</option>
-                        <option value="3">3rd year</option>
-                        <option value="4">4th year</option>
-                      </select>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <label for="phone">Phone</label>
-                      <input type='number' name='phone' id="phone" value="{{ $student[0]['phone'] }}" class="form-control mb-3 readonly" readonly />
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <label for="age">Age</label>
-                      <input type='number' name='age' id="age" value="" class="form-control mb-3" required />
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <label for="gender">Gender</label>
-                      <select id="gender" name="gender" class="form-control mb-3">
-                        <option selected>-select-</option>
-                        <option value="1">Male</option>
-                        <option value="2">Female</option>
-                      </select>
+                      <label for="date">History Date:</label>
+                      <input type='date' name='date' id="date" value="" class="form-control mb-3" required />
                     </div>
 
                     <!--Select conditions checkbox start-->

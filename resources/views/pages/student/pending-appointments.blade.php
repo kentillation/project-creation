@@ -3,7 +3,7 @@
 @section('page-content')
 <main id="main" class="main">
   <div class="pagetitle">
-    <h1>Pending Appointments</h1>
+    <h1>Pending Appointments | Laboratory Test</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item">Appointment</li>
@@ -11,15 +11,9 @@
       </ol>
     </nav>
   </div>
-  @if(Session::has('success'))
-  <div class="alert alert-success text-center alert-dismissible fade show" role="alert" id="alertbox">
-    {{ Session::get('success') }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-  @endif
-  @if(Session::has('removal'))
-  <div class="alert alert-danger text-center alert-dismissible fade show" role="alert" id="alertbox">
-    {{ Session::get('removal') }}
+  @if(Session::has('response'))
+  <div class="alert alert-primary text-center alert-dismissible fade show" role="alert" id="alertbox">
+    {{ Session::get('response') }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
   @endif
@@ -68,21 +62,36 @@
                           }
                           ?>. Please come to our {{ $student_pending_appointment->room }} on {{ $student_pending_appointment->date }} at {{ $student_pending_appointment->time }}. Thank you!
                         </td>
-                          <td>
-                            <form action="{{ route('update-pending-appointment-come') }}">
-                              <button class="btn btn-outline-primary btn-sm" title="I will!" type="submit">
-                                <i class="bi bi-check-circle"></i>
-                                &nbsp;I will!
-                              </button>
-                            </form>
-                            <form action="{{ route('update-pending-appointment-not') }}">
-                                <button class="btn btn-outline-danger btn-sm" title="Not now!" type="submit">
-                                  <i class="bi bi-x-circle"></i>
-                                  &nbsp;Not now!
-                                </button>
-                              </form>
-                          </td>
-                        
+                        <td>
+
+                          <form action="{{ route('update-pending-appointment-response', $student_pending_appointment->id ) }}" method="POST">
+                            @csrf
+                            <button class="btn btn-outline-primary btn-sm" title="Yes, I will!" type="button" data-bs-toggle="modal" data-bs-target="#ensuringModal">
+                              <i class="bi bi-check-circle"></i>
+                              &nbsp;Yes, I will!
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="ensuringModal" tabindex="-1" aria-labelledby="ensuringModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="ensuringModalLabel">Confirmation</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>Are you sure you want to come?</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="submit" class="btn btn-outline-primary">
+                                      <i class="bi bi-check-circle"></i>&nbsp; Yes, I am!
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                        </td>
+
                       </tr>
                       @endforeach
                     </tbody>

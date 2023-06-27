@@ -46,6 +46,9 @@
               <li class="nav-item">
                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
               </li>
+              <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#change-password">Chnage Password</button>
+              </li>
             </ul>
             <div class="tab-content pt-2">
               <div class="tab-pane fade show active profile-overview" id="profile-overview">
@@ -63,6 +66,7 @@
                   <div class="col-lg-9 col-md-8">{{ Session::get('email') }}</div>
                 </div>
               </div>
+              
               <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
                 <!-- Profile Edit Form -->
                 <form action="{{ route('update-save-student-profile', ['id' => $student_profile['id']]) }}" method="post">
@@ -115,7 +119,24 @@
                     </div>
                 </form><!-- End Profile Edit Form -->
               </div>
-            </div><!-- End Bordered Tabs -->
+
+              <div class="tab-pane fade change-password" id="change-password">
+                <h5 class="card-title">Profile Details</h5>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label ">Student ID</div>
+                  <div class="col-lg-9 col-md-8">{{ Session::get('student_id') }}</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label ">Name</div>
+                  <div class="col-lg-9 col-md-8">{{ Session::get('first_name') }} {{ Session::get('middle_name') }} {{ Session::get('last_name') }}</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Email</div>
+                  <div class="col-lg-9 col-md-8">{{ Session::get('email') }}</div>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>

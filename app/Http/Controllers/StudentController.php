@@ -26,10 +26,11 @@ class StudentController extends Controller
 
     public function dashboard()
     {
-        $id = Session::get('id');
-        $pending_appointment = ClinicianAppointmentModel::where('to', $id)->get();
         $cilinician_record = ClinicianModel::all();
-        return view('pages/student/dashboard', ['pending_appointment' => $pending_appointment], compact('cilinician_record'));
+        $appointment_status = ClinicianAppointmentModel::where('status_appointment', '1')->get();
+        $id = Session::get('id');
+        $student = ClinicianAppointmentModel::where('to', $id)->where('status_appointment','1')->get();
+        return view('pages/student/dashboard',['pending_appointment'=>$student], compact('appointment_status', 'cilinician_record'));
     }
 
     public function student_login()
@@ -61,6 +62,7 @@ class StudentController extends Controller
             session()->put('barangay', $result_info[0]['barangay']);
             session()->put('muni_city', $result_info[0]['muni_city']);
             session()->put('phone', $result_info[0]['phone']);
+            session()->put('status_appointment', $result_info[0]['status_appointment']);
             session()->put('appointment_response_id', $result_info[0]['appointment_response_id']);
 
             $student =  StudentModel::where('student_id', '=', $request->student_id)->first();
@@ -184,16 +186,6 @@ class StudentController extends Controller
         return redirect(route('student-list'));
     }
 
-    //UPDATE PENDING APPOINTMENT - COME
-    public function update_pending_appointment_come() {
-        $id = Session::get('appointment_response_id');
-        $data = [
-            'appointment_response_id' => 1,
-        ];
-        $update_student_account = StudentRecordModel::where('id', $id)->update($data);
-        return redirect(route('pages/student/pending-appointments'))->with('success', 'Great!');
-    }
-
     public function student_profile() {
 
         $id = Session::get('id');
@@ -219,6 +211,17 @@ class StudentController extends Controller
         $id = Session::get('id');
         $student = StudentModel::find($id);
         return view('pages/student/student-account-settings', ['student_acount'=>$student]);
+    }
+
+    //UPDATING STUDENT'S RECORD
+    public function saveUpdate_student_password(Request $request, $id) {
+        $data = [
+            'currentpassword' => $request->input()['currentpassword'],
+            'newpassword' => $request->input()['newpassword'],
+            'renewpassword' => $request->input()['renewpassword']
+        ];
+        $update_student_password = StudentModel::where('id', $id)->update($data);
+        return back()->with('success', 'Account settings has been updated successfully.');
     }
 
     //ADD STUDENT MEDICAL RECORD
@@ -302,13 +305,6 @@ class StudentController extends Controller
     {
         $medical_history = new MedicalHistoryModel;
         $medical_history->student_id = $request->student_id;
-        $medical_history->first_name = $request->first_name;
-        $medical_history->last_name = $request->last_name;
-        $medical_history->middle_name = $request->middle_name;
-        $medical_history->year_level_id = $request->year_level;
-        $medical_history->phone = $request->phone;
-        $medical_history->age = $request->age;
-        $medical_history->gender_id = $request->gender;
         $medical_history->condition_option = json_encode($request->conditions);
         $medical_history->symptoms_option = json_encode($request->symptoms);
         $medical_history->consume_alcohol = json_encode($request->consume_alcohol);
@@ -318,17 +314,41 @@ class StudentController extends Controller
         $medical_history->using_illegal_drug = $request->using_illegal_drug;
         $medical_history->other_condition_option = $request->other_condition_option;
         $medical_history->other_symptoms_option = $request->other_symptoms_option;
-        $medical_history->created_at = $request->created_at;
+        $medical_history->date = $request->date;
         $medical_history->save();
         return redirect()->back()->with('success', 'Medical history saved successfully.');
     }
 
     public function pending_appointments() {
-        
-        $id = Session::get('id');
-        $pending_appointment = ClinicianAppointmentModel::where('to', $id)->get();
+
         $cilinician_record = ClinicianModel::all();
-        return view('pages/student/pending-appointments',['pending_appointment'=>$pending_appointment], compact('cilinician_record'));
+        $appointment_status = ClinicianAppointmentModel::where('status_appointment', '1')->get();
+        $id = Session::get('id');
+        $student = ClinicianAppointmentModel::where('to', $id)->where('status_appointment','1')->get();
+        return view('pages/student/pending-appointments',['pending_appointment'=>$student], compact('appointment_status', 'cilinician_record'));
+        
+    }
+
+    public function approved_appointments() {
+
+        $cilinician_record = ClinicianModel::all();
+        $appointment_status = ClinicianAppointmentModel::where('status_appointment', '2')->get();
+        $id = Session::get('id');
+        $student = ClinicianAppointmentModel::where('to', $id)->where('status_appointment','2')->get();
+        return view('pages/student/approved-appointments',['approved_appointment'=>$student], compact('appointment_status', 'cilinician_record'));
+        
+    }
+
+    //UPDATE PENDING APPOINTMENT
+    public function update_pending_appointment_response($id) {
+        date_default_timezone_set('Asia/Manila');
+        $data = [
+            'date' => date("F j, Y | l"),
+            'time' => date("h : i : s a"),
+            'status_appointment' => 2
+        ];
+        $update_pending_appointment_response = ClinicianAppointmentModel::where('id', $id)->update($data);
+        return back()->with('response', 'Your respond has been sent successfully');
     }
 
 }

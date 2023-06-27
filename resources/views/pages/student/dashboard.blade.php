@@ -14,7 +14,7 @@
   @endif
   <section class="section dashboard">
     <div class="row">
-      <div class="col-lg-8">
+      <div class="col-lg-12">
         <div class="row">
           <div class="col-xxl-4 col-md-6">
             <div class="card info-card add-medical-card">
@@ -26,7 +26,7 @@
                   </div>
                   <div class="ps-3">
                     <a href="{{ route('add-medical-record') }}">
-                      <h5>Add Record</h5>
+                      <h5>Add Medical Record</h5>
                     </a>
                   </div>
                 </div>
@@ -102,11 +102,12 @@
               <div class="card-body">
                 <h5 class="card-title">Pending Laboratory Test Appointments</h5>
                 <div class="table-responsive">
-                  <table class="table table-hover">
+                  <table class="table table-hover" id="table">
                     <thead>
                       <tr>
                         <th>School Nurse</th>
                         <th>Statement</th>
+                        <th>Will you come?</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -114,7 +115,7 @@
                       <tr>
                         <td>Nurse @foreach ($cilinician_record as $cilinician) {{ $cilinician->first_name }} {{ $cilinician->middle_name }} {{ $cilinician->last_name }} @endforeach</td>
                         <td>
-                          Good day! You have an appointment for your Laboratory Test in
+                          You have an appointment for Laboratory Test in
                           <?php
                           if ($student_pending_appointment->lab_test == 1) {
                             echo 'CBC';
@@ -136,6 +137,36 @@
                           }
                           ?>. Please come to our {{ $student_pending_appointment->room }} on {{ $student_pending_appointment->date }} at {{ $student_pending_appointment->time }}. Thank you!
                         </td>
+                        <td>
+
+                          <form action="{{ route('update-pending-appointment-response', $student_pending_appointment->id ) }}" method="POST">
+                            @csrf
+                            <button class="btn btn-outline-primary btn-sm" title="Yes, I will!" type="button" data-bs-toggle="modal" data-bs-target="#ensuringModal">
+                              <i class="bi bi-check-circle"></i>
+                              &nbsp;Yes, I will!
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="ensuringModal" tabindex="-1" aria-labelledby="ensuringModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="ensuringModalLabel">Confirmation</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>Are you sure you want to come?</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="submit" class="btn btn-outline-primary">
+                                      <i class="bi bi-check-circle"></i>&nbsp; Yes, I am!
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                        </td>
+
                       </tr>
                       @endforeach
                     </tbody>
@@ -147,78 +178,6 @@
 
         </div>
       </div><!-- End Left side columns -->
-
-
-      <!-- Right side columns -->
-      <div class="col-lg-4">
-        <!-- News & Updates -->
-        <div class="card">
-          <div class="card-body pb-0">
-            <h5 class="card-title">Activity Logs</h5>
-            <div class="news">
-              <div class="post-item clearfix">
-                <img src="assets/img/news-5.jpg" alt="">
-                <h4><a href="#">Title</a></h4>
-                <p>This is just a sample paragraph</p>
-              </div>
-
-              <div class="post-item clearfix">
-                <img src="assets/img/news-5.jpg" alt="">
-                <h4><a href="#">Title</a></h4>
-                <p>This is just a sample paragraph</p>
-              </div>
-
-              <div class="post-item clearfix">
-                <img src="assets/img/news-5.jpg" alt="">
-                <h4><a href="#">Title</a></h4>
-                <p>This is just a sample paragraph</p>
-              </div>
-
-              <div class="post-item clearfix">
-                <img src="assets/img/news-5.jpg" alt="">
-                <h4><a href="#">Title</a></h4>
-                <p>This is just a sample paragraph</p>
-              </div>
-
-              <div class="post-item clearfix">
-                <img src="assets/img/news-5.jpg" alt="">
-                <h4><a href="#">Title</a></h4>
-                <p>This is just a sample paragraph</p>
-              </div>
-
-              <div class="post-item clearfix">
-                <img src="assets/img/news-5.jpg" alt="">
-                <h4><a href="#">Title</a></h4>
-                <p>This is just a sample paragraph</p>
-              </div>
-
-              <div class="post-item clearfix">
-                <img src="assets/img/news-5.jpg" alt="">
-                <h4><a href="#">Title</a></h4>
-                <p>This is just a sample paragraph</p>
-              </div>
-
-              <div class="post-item clearfix">
-                <img src="assets/img/news-5.jpg" alt="">
-                <h4><a href="#">Title</a></h4>
-                <p>This is just a sample paragraph</p>
-              </div>
-
-              <div class="post-item clearfix">
-                <img src="assets/img/news-5.jpg" alt="">
-                <h4><a href="#">Title</a></h4>
-                <p>This is just a sample paragraph</p>
-              </div>
-
-              <div class="post-item clearfix">
-                <img src="assets/img/news-5.jpg" alt="">
-                <h4><a href="#">Title</a></h4>
-                <p>This is just a sample paragraph</p>
-              </div>
-            </div><!-- End sidebar recent posts-->
-          </div>
-        </div><!-- End News & Updates -->
-      </div><!-- End Right side columns -->
 
     </div>
   </section>
