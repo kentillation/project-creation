@@ -3,13 +3,13 @@
 @section('page-content')
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Student Medical Record Request</h1>
+        <h1>Pending Student Medical Record Request</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">Students Area</li>
                 <li class="breadcrumb-item">Medical Record Requests</li>
                 <li class="breadcrumb-item">Pending Medical Records Request</li>
-                <li class="breadcrumb-item Active">Student Medical Record Request</li>
+                <li class="breadcrumb-item Active">Pending Student Medical Record Request</li>
 
             </ol>
         </nav>
@@ -183,7 +183,7 @@
 
                                     <div class="d-flex justify-content-end mt-5">
                                         <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#appointmentModal">
-                                            <i class="bi bi-send"></i>&nbsp; Send appointment
+                                            <i class="bi bi-plus-lg"></i>&nbsp; Add appointment
                                         </button>
 
                                         <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#doyouModal">
@@ -299,19 +299,10 @@
                                         <div class="invalid-feedback">Empty laboratory test category.</div>
                                     </div>
                                 </div>
-                                <!-- <div class="col-12" style="display: none;">
-                                    <label for="status_appointment" class="form-label mt-2">Appointment Status</label>
-                                    <div class="input-group has-validation">
-                                        <span class="input-group-text">
-                                            <i class="bi bi-calendar"></i>
-                                        </span>
-                                        <input type="number" name="status_appointment" value="1" class="form-control" id="status_appointment" required>
-                                        <div class="invalid-feedback">Empty appointment status.</div>
-                                    </div>
-                                </div> -->
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-outline-success btn-md w-100 mt-3">
-                                        Send &nbsp; <i class="bi bi-send"></i>
+                                        <i class="bi bi-plus-lg"></i>&nbsp;
+                                        Add
                                     </button>
                                 </div>
                             </form>
@@ -322,55 +313,61 @@
 
             <div class="col-lg-4">
                 <div class="card">
-                    <div class="filter">
-                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                            <li class="dropdown-header text-start">
-                                <h6>Filter</h6>
-                            </li>
-                            <li><a class="dropdown-item" href="#">Today</a></li>
-                            <li><a class="dropdown-item" href="#">This Month</a></li>
-                            <li><a class="dropdown-item" href="#">This Year</a></li>
-                        </ul>
-                    </div>
                     <div class="card-body pb-4">
-                        <h5 class="card-title">Activity Logs</h5>
+                        <h5 class="card-title">Medical History</h5>
                         <div class="news">
+                            @foreach ($medical_history as $med_history)
                             <div class="post-item clearfix">
-                                <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
-                                <h4><a href="#">Title</a></h4>
-                                <p>This is just a sample paragraph</p>
+                                <h6><strong>History Date:</strong></h6>
+                                <h6>{{ $med_history->date }}</h6>
+                            </div>
+                            <div class="post-item clearfix">
+                                <h6><strong>Checked conditions that apply to you or any of your close family members:</strong></h6>
+                                <h6>
+                                    <?php foreach (json_decode($med_history->condition_option) as $value) {
+                                        if ($value != 'other') {
+                                            echo "$value, ";
+                                        }
+                                    } ?>{{ $med_history->other_condition_option }}
+                                </h6>
                             </div>
 
                             <div class="post-item clearfix">
-                                <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
-                                <h4><a href="#">Title</a></h4>
-                                <p>This is just a sample paragraph</p>
+                                <h6><strong>Checked symptoms that you're currently experiencing:</strong></h6>
+                                <h6>
+                                    <?php foreach (json_decode($med_history->symptoms_option) as $value) {
+                                        if ($value != 'other') {
+                                            echo "$value, ";
+                                        }
+                                    } ?>{{ $med_history->other_symptoms_option }}
+                                </h6>
                             </div>
 
                             <div class="post-item clearfix">
-                                <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
-                                <h4><a href="#">Title</a></h4>
-                                <p>This is just a sample paragraph</p>
+                                <h6><strong>Currently taking any medication?</strong></h6>
+                                <h6>{{ $med_history->medication }}</h6>
                             </div>
 
                             <div class="post-item clearfix">
-                                <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
-                                <h4><a href="#">Title</a></h4>
-                                <p>This is just a sample paragraph</p>
+                                <h6><strong>Do you have any medication allergies?</strong></h6>
+                                <h6>{{ $med_history->allergies }}</h6>
                             </div>
 
                             <div class="post-item clearfix">
-                                <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
-                                <h4><a href="#">Title</a></h4>
-                                <p>This is just a sample paragraph</p>
+                                <h6><strong>Do you use or do you have history of using tobacco?</strong></h6>
+                                <h6>{{ $med_history->using_tobacco }}</h6>
                             </div>
 
                             <div class="post-item clearfix">
-                                <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
-                                <h4><a href="#">Title</a></h4>
-                                <p>This is just a sample paragraph</p>
+                                <h6><strong>Do you use or do you have history of using illegal drugs?</strong></h6>
+                                <h6>{{ $med_history->using_illegal_drug }}</h6>
                             </div>
+
+                            <div class="post-item clearfix">
+                                <h6><strong>How often do you consume alcohol?</strong></h6>
+                                <h6>{{ $med_history->consume_alcohol }}</h6>
+                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

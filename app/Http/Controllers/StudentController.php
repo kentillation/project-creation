@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\StudentModel;
 use App\Models\StudentRecordModel;
 use App\Models\MedicalHistoryModel;
-use App\Models\ClinicianAppointmentModel;
+use App\Models\AppointmentModel;
 use App\Models\ClinicianModel;
 use App\Models\ActivityLogsModel;
 use Illuminate\Support\Facades\Auth;
@@ -26,11 +26,11 @@ class StudentController extends Controller
 
     public function dashboard()
     {
-        $cilinician_record = ClinicianModel::all();
-        $appointment_status = ClinicianAppointmentModel::where('status_appointment', '1')->get();
+        $appointment_status = AppointmentModel::where('status_appointment', '1')->get();
         $id = Session::get('id');
-        $student = ClinicianAppointmentModel::where('to', $id)->where('status_appointment','1')->get();
-        return view('pages/student/dashboard',['pending_appointment'=>$student], compact('appointment_status', 'cilinician_record'));
+        $student = AppointmentModel::where('to', $id)->where('status_appointment','1')->get();
+        return view('pages/student/dashboard',['pending_appointment'=>$student], compact('appointment_status'));
+        
     }
 
     public function student_login()
@@ -251,10 +251,10 @@ class StudentController extends Controller
         $id = Session::get('id');
 
         $student_record = StudentRecordModel::where('student_id', $id)->get();
-        $medical_history = MedicalHistoryModel::all();
+        $medical_history = MedicalHistoryModel::where('student_id', $id)->get();
 
         return view('pages/student/view-record',['student_record'=>$student_record], compact('medical_history'));
-        // return view('pages/student/view-record',['student_record'=>$student_record]);
+
     }
 
     public function view_medical_histories () {
@@ -321,34 +321,30 @@ class StudentController extends Controller
 
     public function pending_appointments() {
 
-        $cilinician_record = ClinicianModel::all();
-        $appointment_status = ClinicianAppointmentModel::where('status_appointment', '1')->get();
+        $appointment_status = AppointmentModel::where('status_appointment', '1')->get();
         $id = Session::get('id');
-        $student = ClinicianAppointmentModel::where('to', $id)->where('status_appointment','1')->get();
-        return view('pages/student/pending-appointments',['pending_appointment'=>$student], compact('appointment_status', 'cilinician_record'));
+        $student = AppointmentModel::where('to', $id)->where('status_appointment','1')->get();
+        return view('pages/student/pending-appointments',['pending_appointment'=>$student], compact('appointment_status'));
         
     }
 
     public function approved_appointments() {
 
-        $cilinician_record = ClinicianModel::all();
-        $appointment_status = ClinicianAppointmentModel::where('status_appointment', '2')->get();
+        $appointment_status = AppointmentModel::where('status_appointment', '2')->get();
         $id = Session::get('id');
-        $student = ClinicianAppointmentModel::where('to', $id)->where('status_appointment','2')->get();
-        return view('pages/student/approved-appointments',['approved_appointment'=>$student], compact('appointment_status', 'cilinician_record'));
+        $student = AppointmentModel::where('to', $id)->where('status_appointment','2')->get();
+        return view('pages/student/approved-appointments',['approved_appointment'=>$student], compact('appointment_status'));
         
     }
 
     //UPDATE PENDING APPOINTMENT
     public function update_pending_appointment_response($id) {
-        date_default_timezone_set('Asia/Manila');
+        // date_default_timezone_set('Asia/Manila');
         $data = [
-            'date' => date("F j, Y | l"),
-            'time' => date("h : i : s a"),
             'status_appointment' => 2
         ];
-        $update_pending_appointment_response = ClinicianAppointmentModel::where('id', $id)->update($data);
-        return back()->with('response', 'Your respond has been sent successfully');
+        $update_pending_appointment_response = AppointmentModel::where('id', $id)->update($data);
+        return back()->with('success', 'Your respond for appointment has been sent successfully');
     }
 
 }

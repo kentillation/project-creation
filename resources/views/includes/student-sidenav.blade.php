@@ -164,7 +164,7 @@
         </li><!-- End Messages Nav -->
         <li class="nav-item dropdown pe-3">
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="<?php echo asset('assets/img/account-bg.png') ?>" alt="Profile" class="rounded-circle">
+            <img src="<?php echo asset('assets/img/profile.jpg') ?>" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">Account</span>
           </a><!-- End Profile Iamge Icon -->
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -178,7 +178,7 @@
             <li>
               <a class="dropdown-item d-flex align-items-center" href="{{ route('student-profile') }}">
                 <i class="bi bi-person"></i>
-                <span>My Profile</span>
+                <span>Profile</span>
               </a>
             </li>
             <li>
@@ -233,7 +233,7 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#medical-record" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-filter-square"></i><span>Medical Record</span><i class="bi bi-chevron-down ms-auto"></i>
+            <i class="bi bi-filter-square"></i><span>Medical Records</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="medical-record" class="nav-content collapse " data-bs-parent="#sidebar-nav">
             <li>
@@ -251,17 +251,17 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#appointment" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-calendar-event"></i><span>Lab Test Appointment</span><i class="bi bi-chevron-down ms-auto"></i>
+            <i class="bi bi-calendar-event"></i><span>Lab Test Appointments</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="appointment" class="nav-content collapse " data-bs-parent="#sidebar-nav">
             <li> 
                 <a href="{{ route('pending-appointments') }}">
-                    <i class="bi bi-calendar-minus fs-6"></i><span>Pending Appointment</span>
+                    <i class="bi bi-calendar-minus fs-6"></i><span>Pending Appointments</span>
                 </a>
             </li>
             <li>
                 <a href="{{ route('approved-appointments') }}">
-                    <i class="bi bi-calendar2-check fs-6"></i><span>Approved Appointment</span>
+                    <i class="bi bi-calendar2-check fs-6"></i><span>Approved Appointments</span>
                 </a>
             </li>
             </ul>

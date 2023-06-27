@@ -113,7 +113,7 @@
                     <tbody>
                       @foreach ($pending_appointment as $student_pending_appointment)
                       <tr>
-                        <td>Nurse @foreach ($cilinician_record as $cilinician) {{ $cilinician->first_name }} {{ $cilinician->middle_name }} {{ $cilinician->last_name }} @endforeach</td>
+                        <td>Nurse {{ $student_pending_appointment->clinician->first_name }} {{ $student_pending_appointment->clinician->middle_name }} {{ $student_pending_appointment->clinician->last_name }}</td>
                         <td>
                           You have an appointment for Laboratory Test in
                           <?php

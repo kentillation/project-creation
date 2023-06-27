@@ -12,13 +12,6 @@ class MedicalHistoryModel extends Model
     protected $table = "tbl_medical_history";
     
     protected $fillable = ['student_id',
-                            'first_name',
-                            'middle_name',
-                            'last_name',
-                            'phone',
-                            'age',
-                            'gender_id',
-                            'year_level_id ',
                             'condition_option',
                             'other_condition_option',
                             'symptoms_option',

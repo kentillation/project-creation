@@ -1,4 +1,4 @@
-@extends('includes/student-sidenav')
+@extends('includes/admin-sidenav')
 
 @section('page-content')
 <main id="main" class="main">
@@ -6,6 +6,7 @@
     <h1>Pending Appointments | Laboratory Test</h1>
     <nav>
       <ol class="breadcrumb">
+        <li class="breadcrumb-item">Students Area</li>
         <li class="breadcrumb-item">Lab Test Appointments</li>
         <li class="breadcrumb-item active">Pending Appointments</li>
       </ol>
@@ -32,7 +33,6 @@
                       <tr>
                         <th>School Nurse</th>
                         <th>Statement</th>
-                        <th>Will you come?</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -40,7 +40,7 @@
                       <tr>
                         <td>Nurse {{ $student_pending_appointment->clinician->first_name }} {{ $student_pending_appointment->clinician->middle_name }} {{ $student_pending_appointment->clinician->last_name }}</td>
                         <td>
-                          You have an appointment for Laboratory Test in
+                          Set an appointment for Laboratory Test in
                           <?php
                           if ($student_pending_appointment->lab_test == 1) {
                             echo 'CBC';
@@ -60,36 +60,7 @@
                           if ($student_pending_appointment->lab_test == 6) {
                             echo 'Hepa B Vaccine';
                           }
-                          ?>. Please come to our {{ $student_pending_appointment->room }} on {{ $student_pending_appointment->date }} at {{ $student_pending_appointment->time }}. Thank you!
-                        </td>
-                        <td>
-
-                          <form action="{{ route('update-pending-appointment-response', $student_pending_appointment->id ) }}" method="POST">
-                            @csrf
-                            <button class="btn btn-outline-primary btn-sm" title="Yes, I will!" type="button" data-bs-toggle="modal" data-bs-target="#ensuringModal">
-                              <i class="bi bi-check-circle"></i>
-                              &nbsp;Yes, I will!
-                            </button>
-                            <!-- Modal -->
-                            <div class="modal fade" id="ensuringModal" tabindex="-1" aria-labelledby="ensuringModalLabel" aria-hidden="true">
-                              <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="ensuringModalLabel">Confirmation</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                  </div>
-                                  <div class="modal-body">
-                                    <p>Are you sure you want to come?</p>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="submit" class="btn btn-outline-primary">
-                                      <i class="bi bi-check-circle"></i>&nbsp; Yes, I am!
-                                    </button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </form>
+                          ?> to Student Nurse {{ $student_pending_appointment->student->first_name }} {{ $student_pending_appointment->student->middle_name }} {{ $student_pending_appointment->student->last_name }}.
                         </td>
 
                       </tr>
