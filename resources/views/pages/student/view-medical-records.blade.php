@@ -33,7 +33,7 @@
                 <div class="card-body m-2">
                   <h5 class="card-title"></h5>
                     <div class="table-responsive">
-                      <table class="table table-hover text-center" id="table">
+                      <table class="table table-hover table-borderless" id="table">
                         <thead>
                           <tr>
                             <th>Student Name</th>

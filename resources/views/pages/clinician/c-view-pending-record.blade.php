@@ -14,6 +14,12 @@
             </ol>
         </nav>
     </div>
+    <div class="mb-3">
+        <a href="{{ url()->previous() }}" title="Back">
+            <i class="bi bi-arrow-left"></i>
+            &nbsp;Back
+        </a>
+    </div>
     @if(Session::has('success'))
     <div class="alert alert-success text-center alert-dismissible fade show" role="alert" id="alertbox">
         {{ Session::get('success') }}
@@ -34,7 +40,7 @@
                     <div class="col-12">
                         <div class="card recent-sales overflow-auto">
                             <div class="card-body m-2">
-                                <h5 class="card-title">Head Title</h5>
+                                <h5 class="card-title">Medical Record</h5>
 
                                 <form method="POST" action="{{ route('c-save-update-pending-record', ['id' => $c_update_pending['id']]) }}">
                                     @csrf
@@ -143,34 +149,67 @@
                                                 <option {{ $c_update_pending->blood_type_id == 8 ? 'selected' : '' }} value="8">O-</option>
                                             </select>
                                         </div>
-
+                                    </div>
+                                    <hr />
+                                    <div class="row">
+                                        <p class="fs-5 mt-2 mb-4">Laboratory Test</p>
                                         <div class="col-lg-4 col-md-6 col-sm-6">
                                             <label for="cbc_file">CBC</label>
+                                            <div class="container rounded border img-container">
+                                                <div style="padding: 100px;">
+                                                    <!-- IMAGE HERE -->
+                                                </div>
+                                            </div>
                                             <input type='file' name='cbc_file' id="cbc_file" class="form-control mb-3" />
                                         </div>
 
                                         <div class="col-lg-4 col-md-6 col-sm-6">
                                             <label for="urinalysis_file">Urinalysis</label>
+                                            <div class="container rounded border">
+                                                <div style="padding: 100px;">
+                                                    <!-- IMAGE HERE -->
+                                                </div>
+                                            </div>
                                             <input type='file' name='urinalysis_file' id="urinalysis_file" class="form-control mb-3" />
                                         </div>
 
                                         <div class="col-lg-4 col-md-6 col-sm-6">
                                             <label for="fecalysis_file">Fecalysis</label>
+                                            <div class="container rounded border">
+                                                <div style="padding: 100px;">
+                                                    <!-- IMAGE HERE -->
+                                                </div>
+                                            </div>
                                             <input type='file' name='fecalysis_file' id="fecalysis_file" class="form-control mb-3" />
                                         </div>
 
                                         <div class="col-lg-4 col-md-6 col-sm-6">
                                             <label for="x_ray_file">Chest X-ray (PA)</label>
+                                            <div class="container rounded border">
+                                                <div style="padding: 100px;">
+                                                    <!-- IMAGE HERE -->
+                                                </div>
+                                            </div>
                                             <input type='file' name='x_ray_file' id="x_ray_file" class="form-control mb-3" />
                                         </div>
 
                                         <div class="col-lg-4 col-md-6 col-sm-6">
                                             <label for="hba_file">Heppa B Antigen</label>
+                                            <div class="container rounded border">
+                                                <div style="padding: 100px;">
+                                                    <!-- IMAGE HERE -->
+                                                </div>
+                                            </div>
                                             <input type='file' name='hba_file' id="hba_file" class="form-control mb-3" />
                                         </div>
 
                                         <div class="col-lg-4 col-md-6 col-sm-6">
                                             <label for="hbv_file">Heppa B Vaccine</label>
+                                            <div class="container rounded border">
+                                                <div style="padding: 100px;">
+                                                    <!-- IMAGE HERE -->
+                                                </div>
+                                            </div>
                                             <input type='file' name='hbv_file' id="hbv_file" class="form-control mb-3" />
                                         </div>
 

@@ -9,7 +9,7 @@ use App\Models\StaffModel;
 use App\Models\ClinicianModel;
 use App\Models\StudentModel;
 use App\Models\StudentRecordModel;
-use App\Models\CourseModel;
+use App\Models\MedicalHistoryModel;
 use App\Models\BloodTypeModel;
 use App\Models\GenderModel;
 use App\Models\SectionModel;
@@ -120,13 +120,22 @@ class AuthController extends Controller
 
     //ADMIN DASHBOARD
     public function dashboard () {
-        // $count_pending = $this->countPendingWithFilter();
-        // return view('pages/admin/dashboard', ['pending' => $count_pending]);
 
-        $pending = StudentRecordModel::where('status_record_id', '1')->count();
-        $declined = StudentRecordModel::where('status_record_id', '2')->count();
-        $approved = StudentRecordModel::where('status_record_id', '3')->count();
-        return view('pages/admin/dashboard', compact('pending', 'declined', 'approved'));
+        $all_medical_records_request = StudentRecordModel::all();
+        $pending_medical_record_request = StudentRecordModel::where('status_record_id', '1')->count();
+        $approved_medical_record_request = StudentRecordModel::where('status_record_id', '2')->count();
+        $all_lab_test_appointments = AppointmentModel::all();
+        $pending_lab_test_appointments = AppointmentModel::where('status_appointment', '1')->count();
+        $approved_lab_test_appointments = AppointmentModel::where('status_appointment', '2')->count();
+        $activity_logs = ActivityLogsModel::all();
+        return view('pages/admin/dashboard', compact(
+            'all_medical_records_request',
+            'pending_medical_record_request', 
+            'approved_medical_record_request', 
+            'pending_lab_test_appointments', 
+            'approved_lab_test_appointments', 
+            'all_lab_test_appointments',
+            'activity_logs'));
     }
 
     //READING ALL RECORDS OF ADMINS
@@ -150,18 +159,21 @@ class AuthController extends Controller
         return view('pages/admin/edit-admin', $response);
     }
 
-    //UPDATING ADMIN'S RECORD
+    public function admin_profile() {
+
+        $id = Session::get('id');
+        $admin = AdminModel::find($id);
+
+        return view('pages/admin/admin-profile', ['admin_profile'=>$admin]);
+    }
+
+    //UPDATING ADMIN'S PROFILE
     public function saveUpdate_profile(Request $request) {
         $id = Session::get('id');
         $data = [
             'first_name' => $request->input()['first_name'],
             'middle_name' => $request->input()['middle_name'],
             'last_name' => $request->input()['last_name'],
-            'street_number' => $request->input()['street_number'],
-            'street_address' => $request->input()['street_address'],
-            'barangay' => $request->input()['barangay'],
-            'muni_city' => $request->input()['muni_city'],
-            'phone' => $request->input()['phone'],
             'email' => $request->input()['email']
         ];
         $update_admin_account = AdminModel::where('id', $id)->update($data);
@@ -171,22 +183,9 @@ class AuthController extends Controller
         $activity_logs->description = "Admin " . $request->input()['first_name'] . " " . $request->input()['middle_name'] . " " . $request->input()['last_name'] . " updated his/her profile on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
         $activity_logs->save();
         
-        return redirect(route('admin-profile'))->with('success', 'Account has been updated successfully');
+        return redirect(route('admin-login'))->with('success', 'Profile has been updated successfully');
     }
 
-    // public function delete($id) {
-    //     $admin = AdminModel::find($id);
-    //     $admin->delete();
-    //     return redirect(route('admin-list'))->with('removal', 'Account has been remove successfully');
-    // }
-
-    public function admin_profile() {
-
-        $id = Session::get('id');
-        $admin = AdminModel::find($id);
-
-        return view('pages/admin/admin-profile', ['admin_profile'=>$admin]);
-    }
 
     public function admin_account_settings() {
         $id = Session::get('id');
@@ -243,9 +242,11 @@ class AuthController extends Controller
 
     }
 
-    public function view_pending_record(Request $request, $id) {
+    public function view_pending_record($id) {
+
         $pending_record = StudentRecordModel::find($id);
-        return view('pages/admin/a-view-pending-record', ['a_update_pending'=> $pending_record]);
+        $medical_history = MedicalHistoryModel::where('student_id', $pending_record->student_id)->get();
+        return view('pages/admin/a-view-pending-record-request', ['a_update_pending'=> $pending_record], compact('medical_history'));
     }
 
     public function saveUpdate_pending_record(Request $request, $id) {
@@ -290,8 +291,15 @@ class AuthController extends Controller
 
     public function approved_medical_records () {
 
-        $a_approved_records = StudentRecordModel::where('status_record_id', '3')->get();
+        $a_approved_records = StudentRecordModel::where('status_record_id', '2')->get();
         return view('pages/admin/a-approved-medical-records', compact('a_approved_records'));
+
+    }
+
+    public function all_medical_records_request () {
+
+        $all_medical_records_request = StudentRecordModel::all();
+        return view('pages/admin/all-medical-records-request', compact('all_medical_records_request'));
 
     }
 
@@ -319,54 +327,23 @@ class AuthController extends Controller
         return view('pages/admin/year-level-list',['tbl_year_level'=>$year_level]);
     }
 
-    public function save_admin_appointment(Request $request)
-    {
-        // date_default_timezone_set('Asia/Manila');
-        // $request->date = date_format("F j, Y | l");
-        // $request->time = date_format("h : i : s a");
-
-        $apppointment = new AppointmentModel;
-        $apppointment->from = $request->from;
-        $apppointment->to = $request->to;
-        $apppointment->date = $request->date;
-        $apppointment->time = $request->time;
-        $apppointment->room = $request->room;
-        $apppointment->lab_test = $request->lab_test;
-        $apppointment->status_appointment = 1;
-        $apppointment->save();
-
-        if ($request->lab_test == 1) {
-            $lab_test = "CBC";
-        }
-        if ($request->lab_test == 2) {
-            $lab_test = "Urinalysis";
-        }
-        if ($request->lab_test == 3) {
-            $lab_test = "Fecalysis";
-        }
-        if ($request->lab_test == 4) {
-            $lab_test = "Chest X-ray (PA)";
-        }
-        if ($request->lab_test == 5) {
-            $lab_test = "Hepa B Antigen";
-        }
-        if ($request->lab_test == 6) {
-            $lab_test = "Hepa B Vaccine";
-        }
-        
-        return back()->with('success', 'Appointment for '. $lab_test  .' - Laboratory Test has been sent successfully');
-    }
-
     public function pending_appointments() {
 
         $student = AppointmentModel::where('status_appointment','1')->get();
-        return view('pages/admin/pending-appointments',['pending_appointment'=>$student]);
+        return view('pages/admin/a-pending-appointments',['pending_appointment'=>$student]);
     }
 
     public function approved_appointments() {
 
         $student = AppointmentModel::where('status_appointment','2')->get();
-        return view('pages/admin/approved-appointments',['approved_appointment'=>$student]);
+        return view('pages/admin/a-approved-appointments',['approved_appointment'=>$student]);
+    }
+
+    public function all_lab_test_appointments() {
+
+        $id = Session::get('id');
+        $clinician = AppointmentModel::where('from', $id)->get();
+        return view('pages/admin/all-lab-test-appointments',['all_lab_test_appointments'=>$clinician]);
     }
 
     //ADMIN LOGOUT
@@ -380,6 +357,39 @@ class AuthController extends Controller
     
         return redirect('/');
     }
+
+
+    // public function save_admin_appointment(Request $request)
+    // {
+    //     $apppointment = new AppointmentModel;
+    //     $apppointment->from = $request->from;
+    //     $apppointment->to = $request->to;
+    //     $apppointment->date = $request->date;
+    //     $apppointment->time = $request->time;
+    //     $apppointment->room = $request->room;
+    //     $apppointment->lab_test = $request->lab_test;
+    //     $apppointment->status_appointment = 1;
+    //     $apppointment->save();
+    //     if ($request->lab_test == 1) {
+    //         $lab_test = "CBC";
+    //     }
+    //     if ($request->lab_test == 2) {
+    //         $lab_test = "Urinalysis";
+    //     }
+    //     if ($request->lab_test == 3) {
+    //         $lab_test = "Fecalysis";
+    //     }
+    //     if ($request->lab_test == 4) {
+    //         $lab_test = "Chest X-ray (PA)";
+    //     }
+    //     if ($request->lab_test == 5) {
+    //         $lab_test = "Hepa B Antigen";
+    //     }
+    //     if ($request->lab_test == 6) {
+    //         $lab_test = "Hepa B Vaccine";
+    //     }
+    //     return back()->with('success', 'Appointment for '. $lab_test  .' - Laboratory Test has been sent successfully');
+    // }
 
 
 }

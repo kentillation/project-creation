@@ -148,34 +148,67 @@
                                                 <option {{ $a_update_pending->blood_type_id == 8 ? 'selected' : '' }} value="8">O-</option>
                                             </select>
                                         </div>
-
+                                    </div>
+                                    <hr />
+                                    <div class="row">
+                                        <p class="fs-5 mt-2 mb-4">Laboratory Test</p>
                                         <div class="col-lg-4 col-md-6 col-sm-6">
                                             <label for="cbc_file">CBC</label>
+                                            <div class="container rounded border img-container">
+                                                <div style="padding: 100px;">
+                                                    <!-- IMAGE HERE -->
+                                                </div>
+                                            </div>
                                             <input type='file' name='cbc_file' id="cbc_file" class="form-control mb-3" />
                                         </div>
 
                                         <div class="col-lg-4 col-md-6 col-sm-6">
                                             <label for="urinalysis_file">Urinalysis</label>
+                                            <div class="container rounded border img-container">
+                                                <div style="padding: 100px;">
+                                                    <!-- IMAGE HERE -->
+                                                </div>
+                                            </div>
                                             <input type='file' name='urinalysis_file' id="urinalysis_file" class="form-control mb-3" />
                                         </div>
 
                                         <div class="col-lg-4 col-md-6 col-sm-6">
                                             <label for="fecalysis_file">Fecalysis</label>
+                                            <div class="container rounded border img-container">
+                                                <div style="padding: 100px;">
+                                                    <!-- IMAGE HERE -->
+                                                </div>
+                                            </div>
                                             <input type='file' name='fecalysis_file' id="fecalysis_file" class="form-control mb-3" />
                                         </div>
 
                                         <div class="col-lg-4 col-md-6 col-sm-6">
                                             <label for="x_ray_file">Chest X-ray (PA)</label>
+                                            <div class="container rounded border img-container">
+                                                <div style="padding: 100px;">
+                                                    <!-- IMAGE HERE -->
+                                                </div>
+                                            </div>
                                             <input type='file' name='x_ray_file' id="x_ray_file" class="form-control mb-3" />
                                         </div>
 
                                         <div class="col-lg-4 col-md-6 col-sm-6">
                                             <label for="hba_file">Heppa B Antigen</label>
+                                            <div class="container rounded border img-container">
+                                                <div style="padding: 100px;">
+                                                    <!-- IMAGE HERE -->
+                                                </div>
+                                            </div>
                                             <input type='file' name='hba_file' id="hba_file" class="form-control mb-3" />
                                         </div>
 
                                         <div class="col-lg-4 col-md-6 col-sm-6">
                                             <label for="hbv_file">Heppa B Vaccine</label>
+                                            <div class="container rounded border img-container">
+                                                <div style="padding: 100px;">
+                                                    <!-- IMAGE HERE -->
+                                                </div>
+                                            </div>
                                             <input type='file' name='hbv_file' id="hbv_file" class="form-control mb-3" />
                                         </div>
 
@@ -187,106 +220,35 @@
                                     </div>
 
                                     <div class="d-flex justify-content-end mt-5">
-                                        <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#appointmentModal">
-                                            <i class="bi bi-plus-lg"></i>&nbsp; Add appointment
-                                        </button>
-
                                         <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#doyouModal">
                                             Next &nbsp;<i class="bi bi-arrow-right"></i>
                                         </button>
                                     </div>
 
-                                    <div class="modal fade" id="appointmentModal">
-                                        <div class="modal-dialog modal-dialog-centered modal-md">
+                                    <div class="modal fade" id="doyouModal">
+                                        <div class="modal-dialog modal-md">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title">Add Appointment</h5>
+                                                    <h5 class="modal-title">Confirmation</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                 </div>
-                                                <div class="modal-body p-4">
-                                                    <form action="{{ route('save-admin-appointment') }}" method="post" class="row g-3 needs-validation" novalidate>
-                                                        @csrf
-                                                        <div class="col-12" style="display: none;">
-                                                            <label for="from" class="form-label mt-2">From</label>
-                                                            <div class="input-group has-validation">
-                                                                <span class="input-group-text">
-                                                                    <i class="bi bi-file-person"></i>
-                                                                </span>
-                                                                <input type="text" name="from" class="form-control" value="{{ Session::get('id') }}" id="from" required>
-                                                                <div class="invalid-feedback">Empty school nurse.</div>
-                                                            </div>
+                                                <div class="modal-body">
+                                                    <div class="container mt-3 mb-3">
+                                                        <div class="text-center">
+                                                            <h5 class="mb-3">Do you want to approved request?</h5>
                                                         </div>
-                                                        <div class="col-12" style="display: none;">
-                                                            <label for="to" class="form-label mt-2">To</label>
-                                                            <div class="input-group has-validation">
-                                                                <span class="input-group-text">
-                                                                    <i class="bi bi-file-person"></i>
-                                                                </span>
-                                                                <input type="text" name="to" class="form-control" value="{{ $a_update_pending->student_id }}" id="to" required>
-                                                                <div class="invalid-feedback">Empty nursing student.</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <label for="date" class="form-label mt-2">Schedule Date</label>
-                                                            <div class="input-group has-validation">
-                                                                <span class="input-group-text">
-                                                                    <i class="bi bi-calendar"></i>
-                                                                </span>
-                                                                <input type="date" name="date" class="form-control" id="date" required>
-                                                                <div class="invalid-feedback">Empty schedule date.</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <label for="time" class="form-label mt-2">Schedule Time</label>
-                                                            <div class="input-group has-validation">
-                                                                <span class="input-group-text">
-                                                                    <i class="bi bi-clock"></i>
-                                                                </span>
-                                                                <input type="time" name="time" class="form-control" id="time" required>
-                                                                <div class="invalid-feedback">Empty schedule time.</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <label for="room" class="form-label mt-2">Room</label>
-                                                            <div class="input-group has-validation">
-                                                                <span class="input-group-text">
-                                                                    <i class="bi bi-house-door"></i>
-                                                                </span>
-                                                                <input type="text" name="room" class="form-control" id="room" required>
-                                                                <div class="invalid-feedback">Empty room for lab test.</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <label for="lab_test" class="form-label">Laboratory Test Category</label>
-                                                            <div class="input-group has-validation">
-                                                                <span class="input-group-text">
-                                                                    <i class="bi bi-eyedropper"></i>
-                                                                </span>
-                                                                <select id="lab_test" name="lab_test" class="form-control" required>
-                                                                    <option>-select-</option>
-                                                                    <option value="1">CBC</option>
-                                                                    <option value="2">Urinalysis</option>
-                                                                    <option value="3">Fecalysis</option>
-                                                                    <option value="4">Chest X-ray (PA)</option>
-                                                                    <option value="5">Heppa B Antigen</option>
-                                                                    <option value="6">Heppa B Vaccine</option>
-                                                                </select>
-                                                                <div class="invalid-feedback">Empty laboratory test category.</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <button type="submit" class="btn btn-outline-success btn-md w-100 mt-3">
-                                                                <i class="bi bi-plus-lg"></i>&nbsp;
-                                                                Add
-                                                            </button>
-                                                        </div>
-                                                    </form>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+                                                    <button type="submit" class="btn btn-outline-primary">
+                                                        Proceed&nbsp;<i class="bi bi-arrow-right"></i>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </form>
-
                             </div>
                         </div>
                     </div>
@@ -298,7 +260,58 @@
                     <div class="card-body pb-4">
                         <h5 class="card-title">Medical History</h5>
                         <div class="news">
-                            <!-- CONTENT HERE -->
+                            @foreach ($medical_history as $med_history)
+                            <div class="post-item clearfix">
+                                <h6><strong>History Date:</strong></h6>
+                                <h6>{{ $med_history->date }}</h6>
+                            </div>
+                            <div class="post-item clearfix">
+                                <h6><strong>Checked conditions that apply to you or any of your close family members:</strong></h6>
+                                <h6>
+                                    <?php foreach (json_decode($med_history->condition_option) as $value) {
+                                        if ($value != 'other') {
+                                            echo "$value, ";
+                                        }
+                                    } ?>{{ $med_history->other_condition_option }}
+                                </h6>
+                            </div>
+
+                            <div class="post-item clearfix">
+                                <h6><strong>Checked symptoms that you're currently experiencing:</strong></h6>
+                                <h6>
+                                    <?php foreach (json_decode($med_history->symptoms_option) as $value) {
+                                        if ($value != 'other') {
+                                            echo "$value, ";
+                                        }
+                                    } ?>{{ $med_history->other_symptoms_option }}
+                                </h6>
+                            </div>
+
+                            <div class="post-item clearfix">
+                                <h6><strong>Currently taking any medication?</strong></h6>
+                                <h6>{{ $med_history->medication }}</h6>
+                            </div>
+
+                            <div class="post-item clearfix">
+                                <h6><strong>Do you have any medication allergies?</strong></h6>
+                                <h6>{{ $med_history->allergies }}</h6>
+                            </div>
+
+                            <div class="post-item clearfix">
+                                <h6><strong>Do you use or do you have history of using tobacco?</strong></h6>
+                                <h6>{{ $med_history->using_tobacco }}</h6>
+                            </div>
+
+                            <div class="post-item clearfix">
+                                <h6><strong>Do you use or do you have history of using illegal drugs?</strong></h6>
+                                <h6>{{ $med_history->using_illegal_drug }}</h6>
+                            </div>
+
+                            <div class="post-item clearfix">
+                                <h6><strong>How often do you consume alcohol?</strong></h6>
+                                <h6>{{ $med_history->consume_alcohol }}</h6>
+                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

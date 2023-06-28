@@ -19,7 +19,6 @@ class StudentModel extends Model
                             'first_name',
                             'middle_name',
                             'last_name',
-                            'phone',
                             'created_at',
                             'updated_at'
                         ];

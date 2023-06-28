@@ -3,13 +3,13 @@
 @section('page-content')
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Student Medical Record Request</h1>
+        <h1>Pending Medical Record Request</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">Students Area</li>
                 <li class="breadcrumb-item">Medical Record Requests</li>
                 <li class="breadcrumb-item">Pending Medical Records Request</li>
-                <li class="breadcrumb-item Active">Student Medical Record Request</li>
+                <li class="breadcrumb-item Active">Pending Medical Record Request</li>
 
             </ol>
         </nav>

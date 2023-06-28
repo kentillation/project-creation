@@ -21,10 +21,20 @@ class ClinicianController extends Controller
 {
     public function dashboard()
     {
-        $pending = StudentRecordModel::where('status_record_id', '1')->count();
-        $approved = StudentRecordModel::where('status_record_id', '2')->count();
-        return view('pages/clinician/dashboard', compact('pending', 'approved'));
-        
+        $all_medical_records_request = StudentRecordModel::all();
+        $pending_medical_record_request = StudentRecordModel::where('status_record_id', '1')->count();
+        $approved_medical_record_request = StudentRecordModel::where('status_record_id', '2')->count();
+        $id = Session::get('id');
+        $all_lab_test_appointments = AppointmentModel::where('from', $id)->get();
+        $pending_lab_test_appointments = AppointmentModel::where('from', $id)->where('status_appointment', '1')->count();
+        $approved_lab_test_appointments = AppointmentModel::where('from', $id)->where('status_appointment', '2')->count();
+        return view('pages/clinician/dashboard', compact(
+            'pending_medical_record_request', 
+            'approved_medical_record_request', 
+            'all_medical_records_request', 
+            'pending_lab_test_appointments', 
+            'approved_lab_test_appointments', 
+            'all_lab_test_appointments'));
     }
 
     public function clinician_login()
@@ -132,6 +142,19 @@ class ClinicianController extends Controller
         return view('pages/clinician/clinician-profile', ['clinician_profile'=>$clinician]);
     }
 
+    //UPDATING CLINICIAN'S PROFILE
+    public function saveUpdate_profile(Request $request) {
+        $id = Session::get('id');
+        $data = [
+            'first_name' => $request->input()['first_name'],
+            'middle_name' => $request->input()['middle_name'],
+            'last_name' => $request->input()['last_name'],
+            'email' => $request->input()['email'],
+        ];
+        $update_student_account = ClinicianModel::where('id', $id)->update($data);
+        return redirect(route('clinician-login'))->with('success', 'Profile has been updated successfully');
+    }
+
     //CLINICIAN ACCOUNT SETTINGS
     public function clinician_account_settings() {
         $id = Session::get('id');
@@ -183,13 +206,6 @@ class ClinicianController extends Controller
 
     }
 
-    public function declined_medical_records () {
-
-        $c_declined_records = StudentRecordModel::where('status_record_id', '2')->get();
-        return view('pages/clinician/c-declined-medical-records', compact('c_declined_records'));
-
-    }
-
     public function approved_medical_records () {
 
         $c_approved_records = StudentRecordModel::where('status_record_id', '2')->get();
@@ -197,13 +213,17 @@ class ClinicianController extends Controller
 
     }
 
+    public function all_medical_records_request () {
+
+        $all_medical_records_request = StudentRecordModel::all();
+        return view('pages/clinician/all-medical-records-request', compact('all_medical_records_request'));
+
+    }
+
     //EDITING STUDENT PENDING RECORD
     public function update_pending_record($id) {
         $pending_record = StudentRecordModel::find($id);
-
-        $student = StudentModel::all();
-        $medical_history = MedicalHistoryModel::where('id', $student[0])->get();
-
+        $medical_history = MedicalHistoryModel::where('student_id', $pending_record->student_id)->get();
         return view('pages/clinician/c-view-pending-record', ['c_update_pending'=> $pending_record], compact('medical_history'));
     }
 
@@ -241,6 +261,14 @@ class ClinicianController extends Controller
 
         $update_pending_record = StudentRecordModel::where('id', $id)->update($data);
         return redirect(route('clinician-dashboard'))->with('success', 'You approved the medical record of Student Nurse named '. $request->input()['first_name'] .' '. $request->input()['middle_name'] .' '. $request->input()['last_name']. ' ');
+    }
+
+    //EDITING STUDENT PENDING RECORD
+    public function view_approved_medical_record($id) {
+        $approved_record = StudentRecordModel::find($id);
+        $medical_history = MedicalHistoryModel::where('student_id', $approved_record->student_id)->get();
+        return view('pages/clinician/c-view-approved-medical-record', ['c_view_approved_medical_record'=> $approved_record], compact('medical_history'));
+
     }
 
     public function save_clinician_appointment(Request $request)
@@ -281,18 +309,25 @@ class ClinicianController extends Controller
         return back()->with('success', 'Appointment for '. $lab_test  .' - Laboratory Test has been sent successfully');
     }
 
-    public function pending_appointments() {
+    public function pending_lab_test_appointments() {
 
-        $cilinician_record = ClinicianModel::all();
-        $student = AppointmentModel::where('status_appointment','1')->get();
-        return view('pages/admin/pending-appointments',['pending_appointment'=>$student], compact('cilinician_record'));
+        $id = Session::get('id');
+        $clinician = AppointmentModel::where('from', $id)->where('status_appointment', '1')->get();
+        return view('pages/clinician/c-pending-appointments',['pending_lab_test_appointments'=>$clinician]);
     }
 
-    public function approved_appointments() {
+    public function approved_lab_test_appointments() {
 
-        $cilinician_record = ClinicianModel::all();
-        $student = AppointmentModel::where('status_appointment','2')->get();
-        return view('pages/admin/approved-appointments',['approved_appointment'=>$student], compact('cilinician_record'));
+        $id = Session::get('id');
+        $clinician = AppointmentModel::where('from', $id)->where('status_appointment', '2')->get();
+        return view('pages/clinician/c-approved-appointments',['approved_lab_test_appointments'=>$clinician]);
+    }
+
+    public function all_lab_test_appointments() {
+
+        $id = Session::get('id');
+        $all_lab_test_appointments = AppointmentModel::where('from', $id)->get();
+        return view('pages/clinician/c-all-labtest-appointments',['all_lab_test_appointments'=>$all_lab_test_appointments]);
     }
 
     // LOGOUT CLINICIAN
@@ -300,7 +335,7 @@ class ClinicianController extends Controller
     {
         $activity_logs = new ActivityLogsModel;
         date_default_timezone_set('Asia/Manila');
-        $activity_logs->description = "Admin " . Session::get('username') . " logged out on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+        $activity_logs->description = " " . Session::get('username') . " logged out on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
         $activity_logs->save();
         Auth::logout();
         return redirect('/');

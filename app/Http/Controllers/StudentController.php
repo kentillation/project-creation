@@ -75,6 +75,11 @@ class StudentController extends Controller
     // LOGOUT STUDENT
     public function logout()
     {
+        $activity_logs = new ActivityLogsModel;
+        date_default_timezone_set('Asia/Manila');
+        $activity_logs->description = " " . Session::get('username') . " logged out on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+        $activity_logs->save();
+
         Auth::logout();
         return redirect('/');
     }
@@ -194,7 +199,7 @@ class StudentController extends Controller
         return view('pages/student/student-profile', ['student_profile'=>$student]);
     }
 
-    //UPDATING ADMIN'S RECORD
+    //UPDATING STUDENT'S PROFILE
     public function saveUpdate_profile(Request $request) {
         $id = Session::get('id');
         $data = [
@@ -249,7 +254,6 @@ class StudentController extends Controller
     public function view_record () {
         //Filtering Records with Session
         $id = Session::get('id');
-
         $student_record = StudentRecordModel::where('student_id', $id)->get();
         $medical_history = MedicalHistoryModel::where('student_id', $id)->get();
 

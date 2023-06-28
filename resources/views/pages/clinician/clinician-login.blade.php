@@ -51,10 +51,16 @@
                       <h4>School Nurse</h4>
                     </div>
                     @if(Session::has('error'))
-                        <!-- <div class="alert alert-danger text-center" role="alert" id="alertbox"> -->
-                        <div class="alert alert-danger text-center alert-dismissible fade show m-4" role="alert">
+                        <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
                             <i class="bi bi-exclamation-triangle"></i>&nbsp;
                             {{ Session::get('error') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" title="Close"></button>
+                        </div>
+                    @endif
+                    @if(Session::has('success'))
+                        <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+                            <i class="bi bi-check-circle"></i>&nbsp;
+                            {{ Session::get('success') }}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" title="Close"></button>
                         </div>
                     @endif

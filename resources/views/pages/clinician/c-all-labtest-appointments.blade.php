@@ -1,4 +1,4 @@
-@extends('includes/admin-sidenav')
+@extends('includes/clinician-sidenav')
 
 @section('page-content')
 <main id="main" class="main">
@@ -6,11 +6,16 @@
     <h1>Pending Appointments | Laboratory Test</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item">Students Area</li>
         <li class="breadcrumb-item">Lab Test Appointments</li>
         <li class="breadcrumb-item active">Pending Appointments</li>
       </ol>
     </nav>
+  </div>
+  <div class="mb-3">
+    <a href="{{ url()->previous() }}" title="Back">
+      <i class="bi bi-arrow-left"></i>
+      &nbsp;Back
+    </a>
   </div>
   @if(Session::has('success'))
   <div class="alert alert-primary text-center alert-dismissible fade show" role="alert" id="alertbox">
@@ -26,43 +31,56 @@
           <div class="col-12">
             <div class="card recent-sales overflow-auto">
               <div class="card-body m-2">
-                <h5 class="card-title"></h5>
+                <h5 class="card-title">Lab Test Appointments Masterlist (you set)</h5>
                 <div class="table-responsive">
                   <table class="table table-hover" id="table">
                     <thead>
                       <tr>
-                        <th>School Nurse</th>
-                        <th>Statement</th>
+                        <th>Student Name</th>
+                        <th>Laboratory Test</th>
+                        <th>Room</th>
+                        <th>Date and Time</th>
+                        <th>Lab Test Appointment Status</th>
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach ($pending_appointment as $student_pending_appointment)
+                      @foreach ($all_lab_test_appointments as $lab_test_appointment)
                       <tr>
-                        <td>Nurse {{ $student_pending_appointment->clinician->first_name }} {{ $student_pending_appointment->clinician->middle_name }} {{ $student_pending_appointment->clinician->last_name }}</td>
+                        <td>{{ $lab_test_appointment->student->first_name }} {{ $lab_test_appointment->student->middle_name }} {{ $lab_test_appointment->student->last_name }}</td>
                         <td>
-                          Set an appointment for Laboratory Test in
                           <?php
-                          if ($student_pending_appointment->lab_test == 1) {
+                          if ($lab_test_appointment->lab_test == 1) {
                             echo 'CBC';
                           }
-                          if ($student_pending_appointment->lab_test == 2) {
+                          if ($lab_test_appointment->lab_test == 2) {
                             echo 'Urinalysis';
                           }
-                          if ($student_pending_appointment->lab_test == 3) {
+                          if ($lab_test_appointment->lab_test == 3) {
                             echo 'Fecalysis';
                           }
-                          if ($student_pending_appointment->lab_test == 4) {
-                            echo 'Chest X-ray (PA)';
+                          if ($lab_test_appointment->lab_test == 4) {
+                            echo 'Chest X-ray  (PA)';
                           }
-                          if ($student_pending_appointment->lab_test == 5) {
+                          if ($lab_test_appointment->lab_test == 5) {
                             echo 'Hepa B Antigen';
                           }
-                          if ($student_pending_appointment->lab_test == 6) {
+                          if ($lab_test_appointment->lab_test == 6) {
                             echo 'Hepa B Vaccine';
                           }
-                          ?> to Student Nurse {{ $student_pending_appointment->student->first_name }} {{ $student_pending_appointment->student->middle_name }} {{ $student_pending_appointment->student->last_name }}.
+                          ?>
                         </td>
-
+                        <td>{{ $lab_test_appointment->room }}</td>
+                        <td>{{ $lab_test_appointment->date }} {{ $lab_test_appointment->time }}</td>
+                        <td>
+                          <?php
+                          if ($lab_test_appointment->status_appointment == 1) {
+                            echo 'Pending';
+                          }
+                          if ($lab_test_appointment->status_appointment == 2) {
+                            echo 'Approved';
+                          }
+                          ?>
+                        </td>
                       </tr>
                       @endforeach
                     </tbody>

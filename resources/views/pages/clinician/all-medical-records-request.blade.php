@@ -3,12 +3,12 @@
 @section('page-content')
 <main id="main" class="main">
   <div class="pagetitle">
-    <h1>Pending Medical Records Request</h1>
+    <h1>All Medical Records Request</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item">Students Area</li>
         <li class="breadcrumb-item">Medical Record Requests</li>
-        <li class="breadcrumb-item active">Pending Medical Records Request</li>
+        <li class="breadcrumb-item active">All Medical Records Request</li>
       </ol>
     </nav>
   </div>
@@ -26,20 +26,20 @@
           <div class="col-12">
             <div class="card recent-sales overflow-auto">
               <div class="card-body m-2">
-                <h5 class="card-title"></h5>
+                <h5 class="card-title">All Medical Record Request</h5>
                 <div class="table-responsive">
-                  <table class="table table-hover table-borderless" id="table">
+                  <table class="table table-hover" id="table">
                     <thead>
                       <tr>
                         <th>Student Name</th>
                         <th>Year and Section</th>
                         <th>Address</th>
                         <th>Gender</th>
-                        <th>Action</th>
+                        <th>Request Status</th>
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach ($c_pending_records as $student_record)
+                      @foreach ($all_medical_records_request as $student_record)
                       <tr>
                         <td>{{ $student_record->first_name }} {{ $student_record->middle_name }} {{ $student_record->last_name }}</td>
                         <td>
@@ -80,12 +80,14 @@
                           ?>
                         </td>
                         <td>
-                          <a href="{{ route('c-update-pending-record', ['id' => $student_record->id] ) }}">
-                            <button class="btn-view" title="View record">
-                              <i class="bi bi-eye"></i>
-                              &nbsp; View record
-                            </button>
-                          </a>
+                          <?php
+                          if ($student_record->status_record_id == 1) {
+                            echo 'Pending';
+                          }
+                          if ($student_record->status_record_id == 2) {
+                            echo 'Approved';
+                          }
+                          ?>
                         </td>
                       </tr>
                       @endforeach

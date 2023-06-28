@@ -174,7 +174,7 @@
               <hr class="dropdown-divider">
             </li>
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="{{ route('clinician-profile') }}">
                 <i class="bi bi-person"></i>
                 <span>Profile</span>
               </a>
@@ -183,7 +183,7 @@
               <hr class="dropdown-divider">
             </li>
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="{{ route('clinician-account-settings') }}">
                 <i class="bi bi-gear"></i>
                 <span>Account Settings</span>
               </a>
@@ -248,7 +248,7 @@
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="{{ route('c-all-medical-records') }}">
               <i class="bi bi-card-list fs-6"></i><span>All Medical Requests</span>
             </a>
           </li>
@@ -261,13 +261,18 @@
         </a>
         <ul id="appointment" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="#">
-              <i class="bi bi-calendar-minus fs-6"></i><span>Pending Appointment</span>
+            <a href="{{ route('c-pending-lab-test-appointments') }}">
+              <i class="bi bi-calendar-minus fs-6"></i><span>Pending Appointments</span>
             </a>
           </li>
           <li>
-            <a href="#">
-              <i class="bi bi-calendar2-check fs-6"></i><span>Approved Appointment</span>
+            <a href="{{ route('c-approved-lab-test-appointments') }}">
+              <i class="bi bi-calendar2-check fs-6"></i><span>Approved Appointments</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ route('c-all-lab-test-appointments') }}">
+              <i class="bi bi-calendar3 fs-6"></i><span>All Lab Test Appointments</span>
             </a>
           </li>
         </ul>
@@ -276,14 +281,14 @@
       <li class="nav-heading">Settings</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="{{ route('clinician-profile') }}">
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="{{ route('clinician-account-settings') }}">
           <i class="bi bi-gear"></i>
           <span>Account</span>
         </a>
