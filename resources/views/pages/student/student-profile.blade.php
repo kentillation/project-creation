@@ -26,12 +26,12 @@
             <img src="<?php echo asset('assets/img/profile.jpg') ?>" alt="Profile" class="rounded-circle">
             <h2 class="m-3">{{ Session::get('first_name') }} {{ Session::get('middle_name') }} {{ Session::get('last_name') }}</h2>
             <h3 class="m-2">Nursing Student</h3>
-            <div class="social-links mt-3">
+            <!-- <div class="social-links mt-3">
               <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
               <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
               <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
               <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -56,14 +56,22 @@
                 </div>
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label ">Name</div>
-                  <div class="col-lg-9 col-md-8">{{ Session::get('first_name') }} {{ Session::get('middle_name') }} {{ Session::get('last_name') }}</div>
+                  <div class="col-lg-9 col-md-8">{{ Session::get('first_name') }}</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label ">Middle Name</div>
+                  <div class="col-lg-9 col-md-8">{{ Session::get('middle_name') }}</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label ">Last Name</div>
+                  <div class="col-lg-9 col-md-8">{{ Session::get('last_name') }}</div>
                 </div>
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Email</div>
                   <div class="col-lg-9 col-md-8">{{ Session::get('email') }}</div>
                 </div>
               </div>
-              
+
               <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
                 <!-- Profile Edit Form -->
                 <form action="{{ route('update-save-student-profile', ['id' => $student_profile['id']]) }}" method="post">
@@ -114,9 +122,9 @@
                         </div>
                       </div>
                     </div>
+                  </div>
                 </form><!-- End Profile Edit Form -->
               </div>
-
             </div>
           </div>
         </div>

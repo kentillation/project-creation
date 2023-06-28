@@ -18,10 +18,10 @@ class StaffController extends Controller
 {
     public function dashboard()
     {
+        $all_medical_records_request = StudentRecordModel::all();
         $pending = StudentRecordModel::where('status_record_id', '1')->count();
-        $declined = StudentRecordModel::where('status_record_id', '2')->count();
-        $approved = StudentRecordModel::where('status_record_id', '3')->count();
-        return view('pages/staff/dashboard', compact('pending', 'declined', 'approved'));
+        $approved = StudentRecordModel::where('status_record_id', '2')->count();
+        return view('pages/staff/dashboard', compact('pending', 'approved', 'all_medical_records_request'));
     }
 
     public function staff_login()
@@ -55,13 +55,6 @@ class StaffController extends Controller
 
         }
         return back()->with('error', 'Invalid username or password.');
-    }
-
-    public function logout()
-    {
-        Auth::logout();
-        
-        return redirect('/');
     }
     
     //CREATING RECORD OF STAFF
@@ -142,9 +135,28 @@ class StaffController extends Controller
 
     public function approved_medical_records () {
 
-        $s_approved_records = StudentRecordModel::where('status_record_id', '3')->get();
+        $s_approved_records = StudentRecordModel::where('status_record_id', '2')->get();
         return view('pages/staff/s-approved-medical-records', compact('s_approved_records'));
 
+    }
+
+    public function all_medical_records_request () {
+
+        $all_medical_records_request = StudentRecordModel::all();
+        return view('pages/staff/all-medical-records-request', compact('all_medical_records_request'));
+
+    }
+
+    public function logout()
+    {
+        $activity_logs = new ActivityLogsModel;
+        date_default_timezone_set('Asia/Manila');
+        $activity_logs->description = " " . Session::get('username') . " logged out on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+        $activity_logs->save();
+        
+        Auth::logout();
+        
+        return redirect('/');
     }
 
 }

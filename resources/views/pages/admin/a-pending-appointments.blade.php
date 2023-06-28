@@ -3,18 +3,24 @@
 @section('page-content')
 <main id="main" class="main">
   <div class="pagetitle">
-    <h1>Approved Appointments | Laboratory Test</h1>
+    <h1>Pending Appointments | Laboratory Test</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item">Students Area</li>
         <li class="breadcrumb-item">Lab Test Appointments</li>
-        <li class="breadcrumb-item active">Approved Appointments</li>
+        <li class="breadcrumb-item active">Pending Appointments</li>
       </ol>
     </nav>
   </div>
-  @if(Session::has('response'))
+  <div class="mb-3">
+    <a href="{{ url()->previous() }}" title="Back">
+      <i class="bi bi-arrow-left"></i>
+      &nbsp;Back
+    </a>
+  </div>
+  @if(Session::has('success'))
   <div class="alert alert-primary text-center alert-dismissible fade show" role="alert" id="alertbox">
-    {{ Session::get('response') }}
+    {{ Session::get('success') }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
   @endif
@@ -36,33 +42,33 @@
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach ($approved_appointment as $student_approved_appointment)
+                      @foreach ($pending_appointment as $student_pending_appointment)
                       <tr>
-                        <td>Nurse {{ $student_approved_appointment->clinician->first_name }} {{ $student_approved_appointment->clinician->middle_name }} {{ $student_approved_appointment->clinician->last_name }}</td>
+                        <td>Nurse {{ $student_pending_appointment->clinician->first_name }} {{ $student_pending_appointment->clinician->middle_name }} {{ $student_pending_appointment->clinician->last_name }}</td>
                         <td>
-                          Student Nurse {{ $student_approved_appointment->student->first_name }} {{ $student_approved_appointment->student->middle_name }} {{ $student_approved_appointment->student->last_name }} approve the appointment for Laboratory Test in
+                          Set an appointment for Laboratory Test in
                           <?php
-                            if ($student_approved_appointment->lab_test == 1) {
-                                echo 'CBC';
-                            }
-                            if ($student_approved_appointment->lab_test == 2) {
-                                echo 'Urinalysis';
-                            }
-                            if ($student_approved_appointment->lab_test == 3) {
-                                echo 'Fecalysis';
-                            }
-                            if ($student_approved_appointment->lab_test == 4) {
-                                echo 'Chest X-ray (PA)';
-                            }
-                            if ($student_approved_appointment->lab_test == 5) {
-                                echo 'Hepa B Antigen';
-                            }
-                            if ($student_approved_appointment->lab_test == 6) {
-                                echo 'Hepa B Vaccine';
-                            }
-                            echo " on ".$student_approved_appointment->date." at ".$student_approved_appointment->time.". ";
-                          ?>
+                          if ($student_pending_appointment->lab_test == 1) {
+                            echo 'CBC';
+                          }
+                          if ($student_pending_appointment->lab_test == 2) {
+                            echo 'Urinalysis';
+                          }
+                          if ($student_pending_appointment->lab_test == 3) {
+                            echo 'Fecalysis';
+                          }
+                          if ($student_pending_appointment->lab_test == 4) {
+                            echo 'Chest X-ray (PA)';
+                          }
+                          if ($student_pending_appointment->lab_test == 5) {
+                            echo 'Hepa B Antigen';
+                          }
+                          if ($student_pending_appointment->lab_test == 6) {
+                            echo 'Hepa B Vaccine';
+                          }
+                          ?> to Student Nurse {{ $student_pending_appointment->student->first_name }} {{ $student_pending_appointment->student->middle_name }} {{ $student_pending_appointment->student->last_name }}.
                         </td>
+
                       </tr>
                       @endforeach
                     </tbody>

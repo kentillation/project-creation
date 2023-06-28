@@ -45,4 +45,12 @@ class StudentRecordModel extends Model
     {
         return $this->belongsTo(StudentModel::class);
     }
+
+    public function student_gender() {
+        return $this->belongsTo(GenderModel::class, 'gender_id');
+    }
+
+    public function student_blood_type() {
+        return $this->belongsTo(BloodTypeModel::class, 'blood_type_id');
+    }
 }

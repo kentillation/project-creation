@@ -1,4 +1,4 @@
-@extends('includes/admin-sidenav')
+@extends('includes/clinician-sidenav')
 
 @section('page-content')
 
@@ -28,7 +28,7 @@
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
               <img src="<?php echo asset('assets/img/profile.jpg') ?>" alt="Profile" class="rounded-circle">
               <h2 class="m-3">{{ Session::get('first_name') }} {{ Session::get('middle_name') }} {{ Session::get('last_name') }}</h2>
-              <h3 class="m-2">System Administrator</h3>
+              <h3 class="m-2">School Nurse</h3>
             </div>
           </div>
         </div>

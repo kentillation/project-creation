@@ -15,8 +15,7 @@
     --success-color: #005414;
     --title-page-color: #d0edfd;
 
-    --pending-color: #ffa500;
-    --declined-color: #770000;
+    --pending-color: #770000;
     --approved-color: #005f8b;
     
     scroll-behavior: smooth;
@@ -964,17 +963,12 @@ h3 {
 
 .dashboard .assignments-card .card-icon {
   color: var(--pending-color);
-  background: #fff4d4;
+  background: #ffd4d4;
 }
 
 .dashboard .pending-card .card-icon {
   color: var(--pending-color);
-  background: #fff1d7;
-}
-
-.dashboard .declined-card .card-icon {
-  color: var(--declined-color);
-  background: #ffd6d6;
+  background: #ffd7d7;
 }
 
 .dashboard .approved-card .card-icon {
@@ -1402,9 +1396,6 @@ h3 {
   transition: 0.5s;
 }
 
-#table th {
-  text-align: center !important;
-}
 
 .dataTables_filter, .dataTables_wrapper .dataTables_paginate, table.dataTable.no-footer {
   margin-bottom: 20px !important;

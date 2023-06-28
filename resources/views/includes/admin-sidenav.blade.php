@@ -248,7 +248,7 @@
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="{{ route('a-all-medical-records') }}">
               <i class="bi bi-card-list fs-6"></i><span>All Medical Requests</span>
             </a>
           </li>
@@ -268,6 +268,11 @@
           <li>
             <a href="{{ route('admin-approved-appointments') }}">
               <i class="bi bi-calendar2-check fs-6"></i><span>Approved Appointment</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-calendar2-check fs-6"></i><span>All Lab Test Appointments</span>
             </a>
           </li>
         </ul>

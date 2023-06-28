@@ -22,8 +22,8 @@
                 <div class="card-body m-2">
                   <h5 class="card-title"></h5>
                     <div class="table-responsive">
-                      <table class="table table-hover text-center" id="table">
-                        <thead class="text-bg-secondary">
+                      <table class="table table-hover" id="table">
+                        <thead>
                           <tr>
                             <th>Name</th>
                             <th>Phone</th>
@@ -39,7 +39,7 @@
                               <td>{{ $student_record->muni_city }}</td>
                               <td>
                                 <a href="{{ route('s-view-pending-record', ['id' => $student_record->id] ) }}">
-                                  <button class="btn btn-outline-primary btn-sm" title="View record">
+                                  <button class="btn-view" title="View record">
                                     <i class="bi bi-eye"></i>
                                     &nbsp; View record
                                   </button>

@@ -11,8 +11,4 @@ class BloodTypeModel extends Model
 
     protected $table = "tbl_blood_type";
     protected $fillable = ['blood_type'];
-
-    public function students() {
-        return $this->hasMany(StudentModel::class, 'blood_type_id');
-    }
 }

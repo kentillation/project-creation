@@ -3,12 +3,12 @@
 @section('page-content')
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Approved Medical Record Requests</h1>
+        <h1>All Medical Record Requests</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">Students Area</li>
                 <li class="breadcrumb-item">Medical Record Requests</li>
-                <li class="breadcrumb-item active">Approved Requests</li>
+                <li class="breadcrumb-item active">All Medical Record Requests</li>
             </ol>
         </nav>
     </div>
@@ -21,32 +21,35 @@
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
+
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title"></h5>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table tabl-hover table-borderless">
                                 <thead>
                                     <tr>
                                         <th scope="col">Name</th>
                                         <th scope="col">Phone</th>
                                         <th scope="col">Municipality / City</th>
-                                        <th scope="col">Action</th>
+                                        <th scope="col">Request Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($a_approved_records as $student_record)
+                                    @foreach ($all_medical_records_request as $student_record)
                                     <tr>
                                         <td>{{ $student_record->first_name }} {{ $student_record->middle_name }} {{ $student_record->last_name }}</td>
                                         <td>{{ $student_record->phone }}</td>
                                         <td>{{ $student_record->muni_city }}</td>
                                         <td>
-                                            <a href="#">
-                                                <button class="btn btn-outline-primary btn-sm" title="View record">
-                                                    <i class="bi bi-eye"></i>
-                                                    View record
-                                                </button>
-                                            </a>
+                                            <?php
+                                                if ($student_record->status_record_id == 1) {
+                                                    echo 'Pending';
+                                                }
+                                                if ($student_record->status_record_id == 2) {
+                                                    echo 'Approved';
+                                                }
+                                            ?>
                                         </td>
                                     </tr>
                                     @endforeach
