@@ -50,13 +50,10 @@
                                             <a href="{{ route('update-staff', ['id' => $staff ->id] ) }}">
                                                 <button class="btn btn-outline-success btn-sm" title="Modify">
                                                     <i class="bi bi-pencil-square"></i>
+                                                    &nbsp; Modify
                                                 </button>
                                             </a>
-                                            <a href="{{ route('delete-staff', ['id' => $staff ->id] ) }}">
-                                                <button class="btn btn-outline-danger btn-sm" title="Move to trash">
-                                                    <i class="bi bi-trash"></i>
-                                                </button>
-                                            </a>
+                                            
                                         </td>
                                     </tr>
                                     @endforeach

@@ -90,7 +90,7 @@ Route::post('/schoolnurse/save-update-username/{id}', 'ClinicianController@saveU
 Route::post('/schoolnurse/save-update-password/{id}', 'ClinicianController@saveUpdate_password')->name('update-save-clinician-password');
 //MEDICAL RECORD REQUEST
 Route::get('/schoolnurse/pending-medical-records', 'ClinicianController@pending_medical_records')->name('c-pending-medical-records');
-Route::get('/schoolnurse/update-pending-record/{id}', 'ClinicianController@update_pending_record')->name('c-update-pending-record');
+Route::get('/schoolnurse/view-pending-medical-record/{id}', 'ClinicianController@update_pending_record')->name('c-update-pending-record');
 Route::post('/schoolnurse/save-update-pending-record/{id}', 'ClinicianController@saveUpdate_pending_record')->name('c-save-update-pending-record');
 Route::post('/schoolnurse/save-update-lab-test/{id}', 'ClinicianController@saveUpdate_lab_test')->name('c-save-update-lab-test');
 Route::get('/schoolnurse/approved-medical-records', 'ClinicianController@approved_medical_records')->name('c-approved-medical-records');
@@ -118,13 +118,11 @@ Route::get('/staff/view-pending-record/{id}', 'StaffController@view_pending_reco
 Route::get('/staff/approved-medical-records', 'StaffController@approved_medical_records')->name('s-approved-medical-records');
 Route::get('/staff/view-approved-record/{id}', 'StaffController@view_approved_record')->name('s-view-approved-record');
 Route::get('/staff/all-medical-records-request', 'StaffController@all_medical_records_request')->name('s-all-medical-records');
-
+//PROFILE
 Route::get('/staff/profile', 'StaffController@staff_profile')->name('staff-profile');
 Route::get('/staff/update-profile/{id}', 'StaffController@profile')->name('update-staff-profile');
 Route::post('/staff/save-update-profile/{id}', 'StaffController@saveUpdate_profile')->name('update-save-staff-profile');
 Route::post('/staff/save-update-image-profile/{id}', 'StaffController@saveUpdate_image_profile')->name('update-save-staff-image-profile');
-
-
 //ACCOUNT SETTINGS
 Route::get('/staff/account-settings', 'StaffController@staff_account_settings')->name('staff-account-settings');
 Route::post('/staff/save-update-username/{id}', 'StaffController@saveUpdate_username')->name('update-save-staff-username');

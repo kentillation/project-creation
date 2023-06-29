@@ -283,17 +283,17 @@
       <!-- Students Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#students-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-"></i><span>Nursing Students</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-"></i><span>Student Nurses</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="students-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="{{ route('student-list') }}">
-              <i class="bi bi-people fs-6"></i><span>List of nursing students</span>
+              <i class="bi bi-people fs-6"></i><span>List of student nurses</span>
             </a>
           </li>
           <li>
             <a href="add-student-user" data-bs-toggle="modal" data-bs-target="#addStudentUserModal">
-              <i class="bi bi-plus-lg fs-6"></i><span>Add student user</span>
+              <i class="bi bi-plus-lg fs-6"></i><span>Add student nurse user</span>
             </a>
           </li>
         </ul>
@@ -326,7 +326,7 @@
         <ul id="staff-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="{{ route('staff-list') }}">
-              <i class="bi bi-people fs-6"></i><span>List of department staff</span>
+              <i class="bi bi-people fs-6"></i><span>List of dept. staff</span>
             </a>
           </li>
           <li>

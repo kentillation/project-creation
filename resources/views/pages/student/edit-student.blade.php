@@ -3,13 +3,13 @@
 @section('page-content')
 <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Nursing Student Information</h1>
+      <h1>Student Nurse Information</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item">Users</li>
-          <li class="breadcrumb-item">Nursing Students</li>
-          <li class="breadcrumb-item">List of Nursing Students</li>
-          <li class="breadcrumb-item">Nursing Student Information</li>
+          <li class="breadcrumb-item">Student Nurses</li>
+          <li class="breadcrumb-item">List of Student Nurses</li>
+          <li class="breadcrumb-item">Student Nurses Information</li>
         </ol>
       </nav>
     </div>
@@ -75,51 +75,6 @@
           </div>
         </div>
 
-          <div class="col-lg-4">
-
-            <div class="card">
-              <div class="card-body pb-4">
-                <h5 class="card-title">Activity Logs</h5>
-                <div class="news">
-                  <div class="post-item clearfix">
-                    <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
-                    <h4><a href="#">Title</a></h4>
-                    <p>This is just a sample paragraph</p>
-                  </div>
-
-                  <div class="post-item clearfix">
-                    <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
-                    <h4><a href="#">Title</a></h4>
-                    <p>This is just a sample paragraph</p>
-                  </div>
-
-                  <div class="post-item clearfix">
-                    <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
-                    <h4><a href="#">Title</a></h4>
-                    <p>This is just a sample paragraph</p>
-                  </div>
-
-                  <div class="post-item clearfix">
-                    <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
-                    <h4><a href="#">Title</a></h4>
-                    <p>This is just a sample paragraph</p>
-                  </div>
-
-                  <div class="post-item clearfix">
-                    <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
-                    <h4><a href="#">Title</a></h4>
-                    <p>This is just a sample paragraph</p>
-                  </div>
-
-                  <div class="post-item clearfix">
-                    <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
-                    <h4><a href="#">Title</a></h4>
-                    <p>This is just a sample paragraph</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
       </div>
     </section>
 
