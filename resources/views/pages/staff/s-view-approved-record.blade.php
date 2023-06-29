@@ -44,9 +44,9 @@
                                                         </div>
                                                         <div class="col-6">
                                                             <h6>
-                                                                {{ $s_view_approved_medical_record->first_name }}
-                                                                {{ $s_view_approved_medical_record->middle_name }}
-                                                                {{ $s_view_approved_medical_record->last_name }}
+                                                                {{ $s_view_approved->first_name }}
+                                                                {{ $s_view_approved->middle_name }}
+                                                                {{ $s_view_approved->last_name }}
                                                             </h6>
                                                         </div>
                                                     </div>
@@ -58,7 +58,7 @@
                                                             <h6>Age:</h6>
                                                         </div>
                                                         <div class="col-6">
-                                                            <h6>{{ $s_view_approved_medical_record->age }}</h6>
+                                                            <h6>{{ $s_view_approved->age }}</h6>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -69,7 +69,7 @@
                                                             <h6>Date of birth:</h6>
                                                         </div>
                                                         <div class="col-6">
-                                                            <h6>{{ $s_view_approved_medical_record->date_of_birth }}</h6>
+                                                            <h6>{{ $s_view_approved->date_of_birth }}</h6>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -80,7 +80,7 @@
                                                             <h6>Phone:</h6>
                                                         </div>
                                                         <div class="col-6">
-                                                            <h6>{{ $s_view_approved_medical_record->phone }}</h6>
+                                                            <h6>{{ $s_view_approved->phone }}</h6>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -92,10 +92,10 @@
                                                         </div>
                                                         <div class="col-6">
                                                             <h6>
-                                                                {{ $s_view_approved_medical_record->street_number }},
-                                                                {{ $s_view_approved_medical_record->street_address }},
-                                                                {{ $s_view_approved_medical_record->barangay }},
-                                                                {{ $s_view_approved_medical_record->muni_city }}
+                                                                {{ $s_view_approved->street_number }},
+                                                                {{ $s_view_approved->street_address }},
+                                                                {{ $s_view_approved->barangay }},
+                                                                {{ $s_view_approved->muni_city }}
                                                             </h6>
                                                         </div>
                                                     </div>
@@ -107,7 +107,7 @@
                                                             <h6>Civil Status:</h6>
                                                         </div>
                                                         <div class="col-6">
-                                                            <h6>{{ $s_view_approved_medical_record->civil_status }}</h6>
+                                                            <h6>{{ $s_view_approved->civil_status }}</h6>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -118,7 +118,7 @@
                                                             <h6>Citizenship:</h6>
                                                         </div>
                                                         <div class="col-6">
-                                                            <h6>{{ $s_view_approved_medical_record->citizenship }}</h6>
+                                                            <h6>{{ $s_view_approved->citizenship }}</h6>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -129,7 +129,7 @@
                                                             <h6>Height:</h6>
                                                         </div>
                                                         <div class="col-6">
-                                                            <h6>{{ $s_view_approved_medical_record->height }}</h6>
+                                                            <h6>{{ $s_view_approved->height }}</h6>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -140,7 +140,7 @@
                                                             <h6>Weight:</h6>
                                                         </div>
                                                         <div class="col-6">
-                                                            <h6>{{ $s_view_approved_medical_record->weight }}</h6>
+                                                            <h6>{{ $s_view_approved->weight }}</h6>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -151,7 +151,7 @@
                                                             <h6>BMI:</h6>
                                                         </div>
                                                         <div class="col-6">
-                                                            <h6>{{ $s_view_approved_medical_record->bmi }}</h6>
+                                                            <h6>{{ $s_view_approved->bmi }}</h6>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -162,7 +162,7 @@
                                                             <h6>Gender:</h6>
                                                         </div>
                                                         <div class="col-6">
-                                                            <h6>{{ $s_view_approved_medical_record->student_gender->gender }}</h6>
+                                                            <h6>{{ $s_view_approved->student_gender->gender }}</h6>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -173,7 +173,7 @@
                                                             <h6>Blood type:</h6>
                                                         </div>
                                                         <div class="col-6">
-                                                            <h6>{{ $s_view_approved_medical_record->student_blood_type->blood_type }}</h6>
+                                                            <h6>{{ $s_view_approved->student_blood_type->blood_type }}</h6>
                                                         </div>
                                                     </div>
                                                 </li>
