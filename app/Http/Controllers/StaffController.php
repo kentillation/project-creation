@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\StaffModel;
 use App\Models\StudentRecordModel;
+use App\Models\MedicalHistoryModel;
 use App\Models\ActivityLogsModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -132,9 +133,12 @@ class StaffController extends Controller
         $pending_record = StudentRecordModel::find($id);
         return view('pages/staff/s-view-pending-record', ['s_view_pending'=> $pending_record]);
     }
-
+    public function view_approved_record($id) {
+        $pending_record = StudentRecordModel::find($id);
+        return view('pages/staff/s-view-approved-record', ['s_view_approved'=> $pending_record]);
+    }
+    
     public function approved_medical_records () {
-
         $s_approved_records = StudentRecordModel::where('status_record_id', '2')->get();
         return view('pages/staff/s-approved-medical-records', compact('s_approved_records'));
 
@@ -146,6 +150,13 @@ class StaffController extends Controller
         return view('pages/staff/all-medical-records-request', compact('all_medical_records_request'));
 
     }
+    public function view_approved_medical_record($id) {
+        $approved_record = StudentRecordModel::find($id);
+        $medical_history = MedicalHistoryModel::where('student_id', $approved_record->student_id)->get();
+        return view('pages/staff/s-view-approved-record', ['s_view_approved_medical_record'=> $approved_record], compact('medical_history'));
+
+    }
+    
 
     public function logout()
     {
