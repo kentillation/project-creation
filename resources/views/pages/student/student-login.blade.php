@@ -58,6 +58,13 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" title="Close"></button>
                         </div>
                     @endif
+                    @if(Session::has('success'))
+                        <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+                            <i class="bi bi-check-circle"></i>&nbsp;
+                            {{ Session::get('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" title="Close"></button>
+                        </div>
+                    @endif
                     <form action="{{ route('student-login') }}" method="post" class="row g-3 needs-validation" novalidate>
                         @csrf
                         <div class="col-12">

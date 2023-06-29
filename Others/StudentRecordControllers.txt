@@ -1,0 +1,52 @@
+
+        $cbcName = '';
+        $urinalysisName = '';
+        $fecalysisName = '';
+        $xrayName = '';
+        $hbaName = '';
+        $hbvName = '';
+
+        
+        if ($request->hasFile('cbc_file')) {
+                $cbc = $request->file('cbc_file');
+                $cbcName = time().'_'.$cbc->getClientOriginalName();
+                $cbc->move(\public_path('cbc-folder/'), $cbcName);
+        }
+
+        if($request->hasFile('urinalysis_file')) {
+                $urinalysis = $request->file('urinalysis_file');
+                $urinalysisName = time().'_'.$urinalysis->getClientOriginalName();
+                $urinalysis->move(\public_path('urinalysis-folder/'), $urinalysisName);
+        }
+
+        if($request->hasFile('fecalysis_file')) {
+                $fecalysis = $request->file('fecalysis_file');
+                $fecalysisName = time().'_'.$fecalysis->getClientOriginalName();
+                $fecalysis->move(\public_path('fecalysis-folder/'), $fecalysisName);
+        }
+
+        if($request->hasFile('x_ray_file')) {
+                $xray = $request->file('x_ray_file');
+                $xrayName = time().'_'.$xray->getClientOriginalName();
+                $xray->move(\public_path('xray-folder/'), $xrayName); 
+        }
+
+        if($request->hasFile('hba_file')) {
+                $hba = $request->file('hba_file');
+                $hbaName = time().'_'.$hba->getClientOriginalName();
+                $hba->move(\public_path('hba-folder/'), $hbaName);
+        }
+
+        if($request->hasFile('hbv_file')) {
+                $hbv = $request->file('hbv_file');
+                $hbvName = time().'_'.$hbv->getClientOriginalName();
+                $hbv->move(\public_path('hbv-folder/'), $hbvName);
+        }
+
+		
+            	$students->cbc_file = $cbcName;
+            	$students->urinalysis_file = $urinalysisName;
+            	$students->fecalysis_file = $fecalysisName;
+            	$students->x_ray_file = $xrayName;
+            	$students->hba_file = $hbaName;
+            	$students->hbv_file = $hbvName;

@@ -26,12 +26,13 @@ use App\Mail\Admin_Acc_Creation_Receipt_Email;
 class AuthController extends Controller
 {
 
-    public function index () {
+    public function index()
+    {
         return view('pages/index');
     }
 
     //CREATING RECORD OF ADMIN
-    public function signup () 
+    public function signup()
     {
         return view('pages/signup');
     }
@@ -63,7 +64,7 @@ class AuthController extends Controller
         date_default_timezone_set('Asia/Manila');
         $activity_logs->description = "Admin " . Session::get('username') . " created an account for System Admin with $request->username username on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
         $activity_logs->save();
-        
+
         $admin->password = md5($request->password);
         $admin->save();
 
@@ -84,7 +85,7 @@ class AuthController extends Controller
             'password' => md5($request->password)
         ];
         $result_count = AdminModel::where($credentials)->get()->count();
-    
+
         if ($result_count > 0) {
 
             // Schema::drop('tbl_educator');
@@ -106,20 +107,21 @@ class AuthController extends Controller
             session()->put('muni_city', $result_info[0]['muni_city']);
             session()->put('phone', $result_info[0]['phone']);
             $admin =  AdminModel::where('username', '=', $request->username)->first();
-            
+
             // For Activity Logs
             $activity_logs = new ActivityLogsModel;
             date_default_timezone_set('Asia/Manila');
             $activity_logs->description = "Admin " . Session::get('username') . " logged in on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
             $activity_logs->save();
-            
+
             return redirect()->route('admin-dashboard');
         }
         return back()->with('error', 'Invalid username or password.');
     }
 
     //ADMIN DASHBOARD
-    public function dashboard () {
+    public function dashboard()
+    {
 
         $all_medical_records_request = StudentRecordModel::all();
         $pending_medical_record_request = StudentRecordModel::where('status_record_id', '1')->count();
@@ -130,28 +132,32 @@ class AuthController extends Controller
         $activity_logs = ActivityLogsModel::all();
         return view('pages/admin/dashboard', compact(
             'all_medical_records_request',
-            'pending_medical_record_request', 
-            'approved_medical_record_request', 
-            'pending_lab_test_appointments', 
-            'approved_lab_test_appointments', 
+            'pending_medical_record_request',
+            'approved_medical_record_request',
+            'pending_lab_test_appointments',
+            'approved_lab_test_appointments',
             'all_lab_test_appointments',
-            'activity_logs'));
+            'activity_logs'
+        ));
     }
 
     //READING ALL RECORDS OF ADMINS
-    public function admin_list () {
+    public function admin_list()
+    {
         $users = AdminModel::all();
-        return view('pages/admin/admin-list',['tbl_admin'=>$users]);
+        return view('pages/admin/admin-list', ['tbl_admin' => $users]);
     }
 
-    public function print_admin_list () {
+    public function print_admin_list()
+    {
         $users = AdminModel::all();
-        return view('pages/print/print-admin_list',['tbl_admin'=>$users]);
+        return view('pages/print/print-admin_list', ['tbl_admin' => $users]);
     }
-    
-    
+
+
     //EDITING ADMIN'S RECORD
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         $admin = AdminModel::find($id);
         $response = [
             'tbl_admin' => $admin
@@ -159,16 +165,18 @@ class AuthController extends Controller
         return view('pages/admin/edit-admin', $response);
     }
 
-    public function admin_profile() {
+    public function admin_profile()
+    {
 
         $id = Session::get('id');
         $admin = AdminModel::find($id);
 
-        return view('pages/admin/admin-profile', ['admin_profile'=>$admin]);
+        return view('pages/admin/admin-profile', ['admin_profile' => $admin]);
     }
 
     //UPDATING ADMIN'S PROFILE
-    public function saveUpdate_profile(Request $request) {
+    public function saveUpdate_profile(Request $request)
+    {
         $id = Session::get('id');
         $data = [
             'first_name' => $request->input()['first_name'],
@@ -177,79 +185,139 @@ class AuthController extends Controller
             'email' => $request->input()['email']
         ];
         $update_admin_account = AdminModel::where('id', $id)->update($data);
-        
+
         $activity_logs = new ActivityLogsModel;
         date_default_timezone_set('Asia/Manila');
         $activity_logs->description = "Admin " . $request->input()['first_name'] . " " . $request->input()['middle_name'] . " " . $request->input()['last_name'] . " updated his/her profile on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
         $activity_logs->save();
-        
+
         return redirect(route('admin-login'))->with('success', 'Profile has been updated successfully');
     }
 
-
-    public function admin_account_settings() {
+    public function admin_account_settings()
+    {
         $id = Session::get('id');
         $admin = AdminModel::find($id);
-        return view('pages/admin/admin-account-settings', ['admin_acount'=>$admin]);
+        return view('pages/admin/admin-account-settings', ['admin_acount' => $admin]);
     }
 
+    //UPDATING USERNAME
+    public function saveUpdate_username(Request $request)
+    {
+        $credentials = [
+            'username' => $request->newusername
+        ];
+        $result_count = AdminModel::where($credentials)->get()->count();
+
+        if ($result_count > 0) {
+            return back()->with('error', 'Username already exist.');
+        } else if ($request->input()['currentusername'] !== Session::get('username')) {
+            return back()->with('error', 'Invalid current username.');
+        } else {
+            $id = Session::get('id');
+            $data = [
+                'username' => $request->input()['newusername']
+            ];
+            $update_admin_userame = AdminModel::where('id', $id)->update($data);
+            $activity_logs = new ActivityLogsModel;
+            date_default_timezone_set('Asia/Manila');
+            $activity_logs->description = "Admin " . Session::get('first_name') . " " . Session::get('middle_name') . " " . Session::get('last_name') . " change his/her username on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+            $activity_logs->save();
+            return back()->with('success', 'Username has been change successfully.');
+        }
+    }
+
+    public function saveUpdate_password(Request $request)
+    {
+        $credentials = [
+            'password' => md5($request->currentpassword)
+        ];
+        $result_count = AdminModel::where($credentials)->get()->count();
+
+        if ($result_count > 0) {
+            if ($request->input()['renewpassword'] !== $request->input()['newpassword']) {
+                return back()->with('error', 'Re-entered new password does not match.');
+            } else {
+                $id = Session::get('id');
+                $data = [
+                    'password' => md5($request->input()['newpassword'])
+                ];
+                $update_admin_password = AdminModel::where('id', $id)->update($data);
+                $activity_logs = new ActivityLogsModel;
+                date_default_timezone_set('Asia/Manila');
+                $activity_logs->description = "Admin " . Session::get('first_name') . " " . Session::get('middle_name') . " " . Session::get('last_name') . " change his/her password on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+                $activity_logs->save();
+                return redirect(route('admin-login'))->with('success', 'Password has been changed successfully.');
+            }
+        }
+        else {
+            return back()->with('error', 'Current password not found.');
+        }
+    }
 
     //READING ALL RECORDS OF DEPARTMENT STAFF
-    public function staff_list () {
+    public function staff_list()
+    {
         $staff = StaffModel::all();
-        return view('pages/admin/staff-list',['tbl_staff'=>$staff]);
+        return view('pages/admin/staff-list', ['tbl_staff' => $staff]);
     }
 
     //READING ALL RECORDS OF CLINICIAN
-    public function clinician_list () {
+    public function clinician_list()
+    {
         $clinician = ClinicianModel::all();
-        return view('pages/admin/clinician-list',['tbl_clinician'=>$clinician]);
+        return view('pages/admin/clinician-list', ['tbl_clinician' => $clinician]);
     }
 
     //READING THE LIST OF STUDENT
-    public function student_list () {
+    public function student_list()
+    {
 
         $id = Session::get('id');
         $admin = AdminModel::find($id);
         // return view('pages/admin/admin-profile', ['admin_profile'=>$admin]);
 
         $student = StudentModel::all();
-        return view('pages/admin/student-list',['tbl_student'=>$student], ['admin_profile'=>$admin]);
+        return view('pages/admin/student-list', ['tbl_student' => $student], ['admin_profile' => $admin]);
     }
 
     //ADD STUDENT USER
-    public function add_student_user () {
+    public function add_student_user()
+    {
 
         $id = Session::get('id');
         $admin = AdminModel::find($id);
 
         $student = StudentModel::all();
-        return view('pages/admin/add-student-user', ['admin_profile'=>$admin]);
+        return view('pages/admin/add-student-user', ['admin_profile' => $admin]);
     }
 
     //READING THE MEDICAL RECORDS OF STUDENT
-    public function view_student_med_record (Request $request ) {
+    public function view_student_med_record(Request $request)
+    {
 
         //Filtering Records
         $student_record = StudentRecordModel::where('student_id', $request->id)->get();
-        return view('pages/admin/view-student-med-record',['a_student_record'=>$student_record]);
+        return view('pages/admin/view-student-med-record', ['a_student_record' => $student_record]);
     }
 
-    public function pending_medical_records () {
+    public function pending_medical_records()
+    {
 
         $a_pending_records = StudentRecordModel::where('status_record_id', '1')->get();
         return view('pages/admin/a-pending-medical-records', compact('a_pending_records'));
-
     }
 
-    public function view_pending_record($id) {
+    public function view_pending_record($id)
+    {
 
         $pending_record = StudentRecordModel::find($id);
         $medical_history = MedicalHistoryModel::where('student_id', $pending_record->student_id)->get();
-        return view('pages/admin/a-view-pending-record-request', ['a_update_pending'=> $pending_record], compact('medical_history'));
+        return view('pages/admin/a-view-pending-record-request', ['a_update_pending' => $pending_record], compact('medical_history'));
     }
 
-    public function saveUpdate_pending_record(Request $request, $id) {
+    public function saveUpdate_pending_record(Request $request, $id)
+    {
         $data = [
             'first_name' => $request->input()['first_name'],
             'middle_name' => $request->input()['middle_name'],
@@ -270,7 +338,7 @@ class AuthController extends Controller
             'year_level_id' => $request->input()['year_level'],
             'section_id' => $request->input()['section'],
             'blood_type_id' => $request->input()['blood_type'],
-            'status_record_id' =>$request->input()['status_record'],
+            'status_record_id' => $request->input()['status_record'],
             'cbc_file' => $request->input()['cbc_file'],
             'urinalysis_file' => $request->input()['urinalysis_file'],
             'fecalysis_file' => $request->input()['fecalysis_file'],
@@ -280,70 +348,77 @@ class AuthController extends Controller
         ];
 
         $update_pending_record = StudentRecordModel::where('id', $id)->update($data);
-        
+
         $activity_logs = new ActivityLogsModel;
         date_default_timezone_set('Asia/Manila');
         $activity_logs->description = "Admin " . Session::get('username') . " approved the pending medical record of " . $request->input()['first_name'] . " " . $request->input()['middle_name'] . " " . $request->input()['last_name'] . " on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
         $activity_logs->save();
-        
+
         return redirect(route('admin-dashboard'))->with('success', 'Medical record request has been approved successfully.');
     }
 
-    public function approved_medical_records () {
+    public function approved_medical_records()
+    {
 
         $a_approved_records = StudentRecordModel::where('status_record_id', '2')->get();
         return view('pages/admin/a-approved-medical-records', compact('a_approved_records'));
-
     }
 
-    public function all_medical_records_request () {
+    public function all_medical_records_request()
+    {
 
         $all_medical_records_request = StudentRecordModel::all();
         return view('pages/admin/all-medical-records-request', compact('all_medical_records_request'));
-
     }
 
     //READING ALL RECORDS OF BLOOD TYPE
-    public function blood_type_list () {
+    public function blood_type_list()
+    {
         $blood_type = BloodTypeModel::all();
-        return view('pages/admin/blood-type-list',['tbl_blood_type'=>$blood_type]);
+        return view('pages/admin/blood-type-list', ['tbl_blood_type' => $blood_type]);
     }
 
     //READING ALL RECORDS OF GENDER
-    public function gender_list () {
+    public function gender_list()
+    {
         $gender = GenderModel::all();
-        return view('pages/admin/gender-list',['tbl_gender'=>$gender]);
+        return view('pages/admin/gender-list', ['tbl_gender' => $gender]);
     }
 
     //READING ALL RECORDS OF SECTION
-    public function section_list () {
+    public function section_list()
+    {
         $section = SectionModel::all();
-        return view('pages/admin/section-list',['tbl_section'=>$section]);
+        return view('pages/admin/section-list', ['tbl_section' => $section]);
     }
 
     //READING ALL RECORDS OF YEAR LEVEL
-    public function year_level_list () {
+    public function year_level_list()
+    {
         $year_level = YearLevelModel::all();
-        return view('pages/admin/year-level-list',['tbl_year_level'=>$year_level]);
+        return view('pages/admin/year-level-list', ['tbl_year_level' => $year_level]);
     }
 
-    public function pending_appointments() {
+    public function pending_appointments()
+    {
 
-        $student = AppointmentModel::where('status_appointment','1')->get();
-        return view('pages/admin/a-pending-appointments',['pending_appointment'=>$student]);
+        $student = AppointmentModel::where('status_appointment', '1')->get();
+        return view('pages/admin/a-pending-appointments', ['pending_appointment' => $student]);
     }
 
-    public function approved_appointments() {
+    public function approved_appointments()
+    {
 
-        $student = AppointmentModel::where('status_appointment','2')->get();
-        return view('pages/admin/a-approved-appointments',['approved_appointment'=>$student]);
+        $student = AppointmentModel::where('status_appointment', '2')->get();
+        return view('pages/admin/a-approved-appointments', ['approved_appointment' => $student]);
     }
 
-    public function all_lab_test_appointments() {
+    public function all_lab_test_appointments()
+    {
 
         $id = Session::get('id');
         $clinician = AppointmentModel::where('from', $id)->get();
-        return view('pages/admin/all-lab-test-appointments',['all_lab_test_appointments'=>$clinician]);
+        return view('pages/admin/all-lab-test-appointments', ['all_lab_test_appointments' => $clinician]);
     }
 
     //ADMIN LOGOUT
@@ -354,7 +429,7 @@ class AuthController extends Controller
         $activity_logs->description = "Admin " . Session::get('username') . " logged out on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
         $activity_logs->save();
         Auth::logout();
-    
+
         return redirect('/');
     }
 
