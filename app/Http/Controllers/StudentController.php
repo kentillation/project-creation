@@ -28,9 +28,8 @@ class StudentController extends Controller
     {
         $appointment_status = AppointmentModel::where('status_appointment', '1')->get();
         $id = Session::get('id');
-        $student = AppointmentModel::where('to', $id)->where('status_appointment','1')->get();
-        return view('pages/student/dashboard',['pending_appointment'=>$student], compact('appointment_status'));
-        
+        $student = AppointmentModel::where('to', $id)->where('status_appointment', '1')->get();
+        return view('pages/student/dashboard', ['pending_appointment' => $student], compact('appointment_status'));
     }
 
     public function student_login()
@@ -46,7 +45,7 @@ class StudentController extends Controller
             'password' => md5($request->password)
         ];
         $result_count = StudentModel::where($credentials)->get()->count();
-    
+
         if ($result_count > 0) {
 
             $result_info = StudentModel::where($credentials)->get();
@@ -57,17 +56,17 @@ class StudentController extends Controller
             session()->put('first_name', $result_info[0]['first_name']);
             session()->put('middle_name', $result_info[0]['middle_name']);
             session()->put('last_name', $result_info[0]['last_name']);
-            session()->put('street_number', $result_info[0]['street_number']);
-            session()->put('street_address', $result_info[0]['street_address']);
-            session()->put('barangay', $result_info[0]['barangay']);
-            session()->put('muni_city', $result_info[0]['muni_city']);
-            session()->put('phone', $result_info[0]['phone']);
+            session()->put('image', $result_info[0]['image']);
+            // session()->put('street_number', $result_info[0]['street_number']);
+            // session()->put('street_address', $result_info[0]['street_address']);
+            // session()->put('barangay', $result_info[0]['barangay']);
+            // session()->put('muni_city', $result_info[0]['muni_city']);
+            // session()->put('phone', $result_info[0]['phone']);
             session()->put('status_appointment', $result_info[0]['status_appointment']);
             session()->put('appointment_response_id', $result_info[0]['appointment_response_id']);
 
             $student =  StudentModel::where('student_id', '=', $request->student_id)->first();
             return redirect()->route('student-dashboard');
-
         }
         return back()->with('error', 'Invalid student id or password.');
     }
@@ -83,80 +82,81 @@ class StudentController extends Controller
         Auth::logout();
         return redirect('/');
     }
-    
+
     //CREATING RECORD OF STUDENT
     public function save_student(Request $request)
     {
         $student = new StudentModel;
         // $admin = new AdminModel;
-       
-            $student->student_id = $request->student_id;
-            $student->first_name = "no-firstname";
-            $student->middle_name = "no-middlename";
-            $student->last_name = "no-lastname";
-            $student->email = $request->email;
-            $student->password = $request->password;
-            $student->admin_email = $request->admin_email;
 
-            //For Email
-            Mail::to($student->email)->send(new Student_Acc_Creation_Email($student));
-            Mail::to($student->admin_email)->send(new Student_Acc_Creation_Receipt_Email($student));
+        $student->student_id = $request->student_id;
+        $student->first_name = "no-firstname";
+        $student->middle_name = "no-middlename";
+        $student->last_name = "no-lastname";
+        $student->email = $request->email;
+        $student->password = $request->password;
+        $student->admin_email = $request->admin_email;
 
-            //For Activity Logs
-            $activity_logs = new ActivityLogsModel;
-            date_default_timezone_set('Asia/Manila');
-            $activity_logs->description = "Admin " . Session::get('username') . " created an account for Nursing Student with $request->student_id ID on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
-            $activity_logs->save();
+        //For Email
+        Mail::to($student->email)->send(new Student_Acc_Creation_Email($student));
+        Mail::to($student->admin_email)->send(new Student_Acc_Creation_Receipt_Email($student));
 
-            $student->password = md5($request->password);
-            $student->save();
-        
-            return back()->with('success', 'New Student Nurse account has been created successfully.');
+        //For Activity Logs
+        $activity_logs = new ActivityLogsModel;
+        date_default_timezone_set('Asia/Manila');
+        $activity_logs->description = "Admin " . Session::get('username') . " created an account for Nursing Student with $request->student_id ID on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+        $activity_logs->save();
 
-            // $admin_name = $request->name;
-            // $phone_number = $student->phone;
-            // $first_name = $student->first_name;
-            // $middle_name = $student->middle_name;
-            // $last_name = $student->last_name;
-            // $student_id = $student->student_id;
-            // $password = $student->password;
-            // $receiverNumber = "+63 945 314 5499";
-            // $message = "Date: ";
-            // $message .= date("F j, Y | l");
-            // $message .= "\n";
-            // $message .= "Time: ";
-            // $message .= date("h : i : s");
-            // $message .= "\n \n";
-            // $message .= "Admin ";
-            // $message .= " just created an account for nursing student named ";
-            // $message .= $first_name;
-            // $message .= " ";
-            // $message .= $middle_name;
-            // $message .= " ";
-            // $message .= $last_name;
-            // $message .= "\n \n";
-            // $message .= "Phone number: ";
-            // $message .= $phone_number;
-            // $message .= "\n";
-            // $message .= "Student ID: ";
-            // $message .= $student_id;
-            // $message .= "\n";
-            // $message .= "Password: ";
-            // $message .= $password;
-            // $message .= "\n \n";
-            // $message .= "Note: Make sure to get a copy for this preferences. Thank you!";
-            // $account_sid = getenv("TWILIO_SID");
-            // $auth_token = getenv("TWILIO_TOKEN");
-            // $twilio_number = getenv("TWILIO_FROM");
-            // $client = new Client($account_sid, $auth_token);
-            // $client->messages->create($receiverNumber, [
-            //     'from' => $twilio_number, 
-            //     'body' => $message]);
+        $student->password = md5($request->password);
+        $student->save();
+
+        return back()->with('success', 'New Student Nurse account has been created successfully.');
+
+        // $admin_name = $request->name;
+        // $phone_number = $student->phone;
+        // $first_name = $student->first_name;
+        // $middle_name = $student->middle_name;
+        // $last_name = $student->last_name;
+        // $student_id = $student->student_id;
+        // $password = $student->password;
+        // $receiverNumber = "+63 945 314 5499";
+        // $message = "Date: ";
+        // $message .= date("F j, Y | l");
+        // $message .= "\n";
+        // $message .= "Time: ";
+        // $message .= date("h : i : s");
+        // $message .= "\n \n";
+        // $message .= "Admin ";
+        // $message .= " just created an account for nursing student named ";
+        // $message .= $first_name;
+        // $message .= " ";
+        // $message .= $middle_name;
+        // $message .= " ";
+        // $message .= $last_name;
+        // $message .= "\n \n";
+        // $message .= "Phone number: ";
+        // $message .= $phone_number;
+        // $message .= "\n";
+        // $message .= "Student ID: ";
+        // $message .= $student_id;
+        // $message .= "\n";
+        // $message .= "Password: ";
+        // $message .= $password;
+        // $message .= "\n \n";
+        // $message .= "Note: Make sure to get a copy for this preferences. Thank you!";
+        // $account_sid = getenv("TWILIO_SID");
+        // $auth_token = getenv("TWILIO_TOKEN");
+        // $twilio_number = getenv("TWILIO_FROM");
+        // $client = new Client($account_sid, $auth_token);
+        // $client->messages->create($receiverNumber, [
+        //     'from' => $twilio_number, 
+        //     'body' => $message]);
 
     }
-    
+
     //EDITING STUDENT'S RECORD
-    public function update_student(Request $request, $id) {
+    public function update_student(Request $request, $id)
+    {
         $student = StudentModel::find($id);
         $response = [
             'tbl_student' => $student
@@ -165,7 +165,8 @@ class StudentController extends Controller
     }
 
     //UPDATING STUDENT'S RECORD
-    public function saveUpdate_student(Request $request, $id) {
+    public function saveUpdate_student(Request $request, $id)
+    {
         $data = [
             'student_id' => $request->input()['student_id'],
             'first_name' => $request->input()['first_name'],
@@ -181,45 +182,66 @@ class StudentController extends Controller
         $activity_logs->description = "Admin " . Session::get('username') . " updated the information of Nursing Student with $request->student_id ID on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
         $activity_logs->save();
 
-        return redirect(route('student-list'))->with('success', 'The information of Student Nurse with '. $request->input()['student_id'] .' ID has been updated successfully.');
+        return redirect(route('student-list'))->with('success', 'The information of Student Nurse with ' . $request->input()['student_id'] . ' ID has been updated successfully.');
     }
 
     //DELETE STUDENT
-    public function delete_student($id) {
+    public function delete_student($id)
+    {
         $student = StudentModel::find($id);
         $student->delete();
         return redirect(route('student-list'));
     }
 
-    public function student_profile() {
+    public function student_profile()
+    {
 
         $id = Session::get('id');
         $student = StudentModel::find($id);
-
-        return view('pages/student/student-profile', ['student_profile'=>$student]);
+        return view('pages/student/student-profile', ['student_profile' => $student]);
     }
 
     //UPDATING STUDENT'S PROFILE
-    public function saveUpdate_profile(Request $request) {
+    public function saveUpdate_profile(Request $request)
+    {
         $id = Session::get('id');
+
+        // $students = StudentRecordModel::find($s_id);
+        // $other = StudentRecordModel::find($s_id);
+        // $imageName = '';
+        // if ($request->hasFile('image')) {
+        //     $image = $request->file('image');
+        //     $imageName = time() . '_' . $image->getClientOriginalName();
+        //     $image->move(\public_path('profile-folder/'), $imageName);
+        // }
+        // if ($students->image !== "") {
+        //     $students->image = $other->image;
+        // }
+        // else {
+        //     $students->image = $imageName;
+        // }
+
         $data = [
             'first_name' => $request->input()['first_name'],
             'middle_name' => $request->input()['middle_name'],
             'last_name' => $request->input()['last_name'],
             'email' => $request->input()['email'],
+            // 'image' => $imageName,
         ];
         $update_student_account = StudentModel::where('id', $id)->update($data);
         return redirect(route('student-login'))->with('success', 'Account has been updated successfully');
     }
 
-    public function student_account_settings() {
+    public function student_account_settings()
+    {
         $id = Session::get('id');
         $student = StudentModel::find($id);
-        return view('pages/student/student-account-settings', ['student_acount'=>$student]);
+        return view('pages/student/student-account-settings', ['student_acount' => $student]);
     }
 
     //UPDATING STUDENT'S RECORD
-    public function saveUpdate_student_password(Request $request, $id) {
+    public function saveUpdate_student_password(Request $request, $id)
+    {
         $data = [
             'currentpassword' => $request->input()['currentpassword'],
             'newpassword' => $request->input()['newpassword'],
@@ -230,42 +252,44 @@ class StudentController extends Controller
     }
 
     //ADD STUDENT MEDICAL RECORD
-    public function add_medical_record () 
+    public function add_medical_record()
     {
         $student_id = Session::get('student_id');
-        $result_info = StudentModel::where('student_id',$student_id)->get();
-        return view('pages/student/add-medical-record', ['student'=>$result_info]);
+        $result_info = StudentModel::where('student_id', $student_id)->get();
+        return view('pages/student/add-medical-record', ['student' => $result_info]);
     }
 
-    public function add_medical_history () 
+    public function add_medical_history()
     {
         $id = Session::get('id');
-        $result_info = StudentModel::where('id',$id)->get();
-        return view('pages/student/add-medical-history', ['student'=>$result_info]);
+        $result_info = StudentModel::where('id', $id)->get();
+        return view('pages/student/add-medical-history', ['student' => $result_info]);
     }
 
-    public function view_medical_records () {
+    public function view_medical_records()
+    {
         //Filtering Records with Session
         $id = Session::get('id');
         $student_records = StudentRecordModel::where('student_id', $id)->get();
-        return view('pages/student/view-medical-records',['student_records'=>$student_records]);
+        return view('pages/student/view-medical-records', ['student_records' => $student_records]);
     }
 
-    public function view_record () {
+    public function view_record()
+    {
         //Filtering Records with Session
         $id = Session::get('id');
         $student_record = StudentRecordModel::where('student_id', $id)->get();
         $medical_history = MedicalHistoryModel::where('student_id', $id)->get();
 
-        return view('pages/student/view-record',['student_record'=>$student_record], compact('medical_history'));
-
+        return view('pages/student/view-record', ['student_record' => $student_record], compact('medical_history'));
     }
 
-    public function view_medical_histories () {
+    public function view_medical_histories()
+    {
         //Filtering Records with Session
         $id = Session::get('id');
         $student_record = StudentRecordModel::where('student_id', $id)->get();
-        return view('pages/student/view-medical-histories',['tbl_student_record'=>$student_record]);
+        return view('pages/student/view-medical-histories', ['tbl_student_record' => $student_record]);
     }
 
 
@@ -323,26 +347,27 @@ class StudentController extends Controller
         return redirect()->back()->with('success', 'Medical history saved successfully.');
     }
 
-    public function pending_appointments() {
+    public function pending_appointments()
+    {
 
         $appointment_status = AppointmentModel::where('status_appointment', '1')->get();
         $id = Session::get('id');
-        $student = AppointmentModel::where('to', $id)->where('status_appointment','1')->get();
-        return view('pages/student/pending-appointments',['pending_appointment'=>$student], compact('appointment_status'));
-        
+        $student = AppointmentModel::where('to', $id)->where('status_appointment', '1')->get();
+        return view('pages/student/pending-appointments', ['pending_appointment' => $student], compact('appointment_status'));
     }
 
-    public function approved_appointments() {
+    public function approved_appointments()
+    {
 
         $appointment_status = AppointmentModel::where('status_appointment', '2')->get();
         $id = Session::get('id');
-        $student = AppointmentModel::where('to', $id)->where('status_appointment','2')->get();
-        return view('pages/student/approved-appointments',['approved_appointment'=>$student], compact('appointment_status'));
-        
+        $student = AppointmentModel::where('to', $id)->where('status_appointment', '2')->get();
+        return view('pages/student/approved-appointments', ['approved_appointment' => $student], compact('appointment_status'));
     }
 
     //UPDATE PENDING APPOINTMENT
-    public function update_pending_appointment_response($id) {
+    public function update_pending_appointment_response($id)
+    {
         // date_default_timezone_set('Asia/Manila');
         $data = [
             'status_appointment' => 2
@@ -350,5 +375,4 @@ class StudentController extends Controller
         $update_pending_appointment_response = AppointmentModel::where('id', $id)->update($data);
         return back()->with('success', 'Your respond for appointment has been sent successfully');
     }
-
 }
