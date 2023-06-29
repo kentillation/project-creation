@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\StaffModel;
 use App\Models\StudentRecordModel;
+use App\Models\MedicalHistoryModel;
 use App\Models\ActivityLogsModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -120,32 +121,39 @@ class StaffController extends Controller
         return redirect(route('staff-list'));
     }
 
-    public function pending_medical_records () {
-
-        $s_pending_records = StudentRecordModel::where('status_record_id', '1')->get();
-        return view('pages/staff/s-pending-medical-records', compact('s_pending_records'));
-
-    }
+    
 
      //EDITING STUDENT PENDING RECORD
-    public function view_pending_record($id) {
-        $pending_record = StudentRecordModel::find($id);
-        return view('pages/staff/s-view-pending-record', ['s_view_pending'=> $pending_record]);
+
+     public function pending_medical_records () {
+        $s_pending_records = StudentRecordModel::where('status_record_id', '1')->get();
+        return view('pages/staff/s-pending-medical-records', compact('s_pending_records'));
     }
-
+    
     public function approved_medical_records () {
-
         $s_approved_records = StudentRecordModel::where('status_record_id', '2')->get();
         return view('pages/staff/s-approved-medical-records', compact('s_approved_records'));
 
     }
 
     public function all_medical_records_request () {
-
         $all_medical_records_request = StudentRecordModel::all();
         return view('pages/staff/all-medical-records-request', compact('all_medical_records_request'));
 
     }
+
+    public function view_pending_record($id) {
+        $pending_record = StudentRecordModel::find($id);
+        $medical_history = MedicalHistoryModel::where('student_id', $pending_record->student_id)->get();
+        return view('pages/staff/s-view-pending-record', ['s_view_pending'=> $pending_record], compact('medical_history'));
+    }
+    public function view_approved_record($id) {
+        $approved_record = StudentRecordModel::find($id);
+        $medical_history = MedicalHistoryModel::where('student_id', $approved_record->student_id)->get();
+        return view('pages/staff/s-view-approved-record', ['s_view_approved'=> $approved_record], compact('medical_history'));
+    }
+
+
 
     public function logout()
     {

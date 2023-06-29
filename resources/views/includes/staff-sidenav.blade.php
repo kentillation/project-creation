@@ -248,7 +248,7 @@
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="{{ route('s-all-medical-records') }}">
               <i class="bi bi-card-list fs-6"></i><span>All Medical Requests</span>
             </a>
           </li>

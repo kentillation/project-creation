@@ -38,7 +38,7 @@
                               <td>{{ $student_record->phone }}</td>
                               <td>{{ $student_record->muni_city }}</td>
                               <td>
-                                <a href="#">
+                                <a href="{{ route('s-view-approved-record', ['id' => $student_record->id] ) }}">
                                   <button class="btn-view" title="View record">
                                     <i class="bi bi-eye"></i>
                                     &nbsp; View record
@@ -58,6 +58,17 @@
 
           <!-- <div class="col-lg-4">
             <div class="card">
+              <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                  <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                  </li>
+                  <li><a class="dropdown-item" href="#">Today</a></li>
+                  <li><a class="dropdown-item" href="#">This Month</a></li>
+                  <li><a class="dropdown-item" href="#">This Year</a></li>
+                </ul>
+              </div>
               <div class="card-body pb-4">
                 <h5 class="card-title">Activity Logs</h5>
                 <div class="news">
@@ -95,6 +106,7 @@
               </div>
             </div>
           </div> -->
+
       </div>
     </section>
 
