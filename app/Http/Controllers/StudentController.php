@@ -87,7 +87,6 @@ class StudentController extends Controller
     public function save_student(Request $request)
     {
         $student = new StudentModel;
-        // $admin = new AdminModel;
 
         $student->student_id = $request->student_id;
         $student->first_name = "no-firstname";
@@ -195,38 +194,35 @@ class StudentController extends Controller
 
     public function student_profile()
     {
-
         $id = Session::get('id');
         $student = StudentModel::find($id);
         return view('pages/student/student-profile', ['student_profile' => $student]);
+    }
+    //UPDATING STUDENT'S PROFILE PICTURE
+    public function saveUpdate_profile_picture(Request $request)
+    {
+        $id = Session::get('id');
+        $students = StudentRecordModel::find($id);
+        $imageName = '';
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->move(\public_path('profile-folder/'), $imageName);
+        }
+        $students->image = $imageName;
+        $students->save();
+        return redirect(route('student-profile'))->with('success', 'Profile picture has been saved successfully');
     }
 
     //UPDATING STUDENT'S PROFILE
     public function saveUpdate_profile(Request $request)
     {
         $id = Session::get('id');
-
-        // $students = StudentRecordModel::find($s_id);
-        // $other = StudentRecordModel::find($s_id);
-        // $imageName = '';
-        // if ($request->hasFile('image')) {
-        //     $image = $request->file('image');
-        //     $imageName = time() . '_' . $image->getClientOriginalName();
-        //     $image->move(\public_path('profile-folder/'), $imageName);
-        // }
-        // if ($students->image !== "") {
-        //     $students->image = $other->image;
-        // }
-        // else {
-        //     $students->image = $imageName;
-        // }
-
         $data = [
             'first_name' => $request->input()['first_name'],
             'middle_name' => $request->input()['middle_name'],
             'last_name' => $request->input()['last_name'],
             'email' => $request->input()['email'],
-            // 'image' => $imageName,
         ];
         $update_student_account = StudentModel::where('id', $id)->update($data);
         return redirect(route('student-login'))->with('success', 'Account has been updated successfully');
@@ -240,15 +236,32 @@ class StudentController extends Controller
     }
 
     //UPDATING STUDENT'S RECORD
-    public function saveUpdate_student_password(Request $request, $id)
+    public function saveUpdate_password(Request $request, $id)
     {
-        $data = [
-            'currentpassword' => $request->input()['currentpassword'],
-            'newpassword' => $request->input()['newpassword'],
-            'renewpassword' => $request->input()['renewpassword']
+        $credentials = [
+            'password' => md5($request->currentpassword)
         ];
-        $update_student_password = StudentModel::where('id', $id)->update($data);
-        return back()->with('success', 'Account settings has been updated successfully.');
+        $result_count = StudentModel::where($credentials)->get()->count();
+
+        if ($result_count > 0) {
+            if ($request->input()['renewpassword'] !== $request->input()['newpassword']) {
+                return back()->with('error', 'Re-entered new password does not match.');
+            } else {
+                $id = Session::get('id');
+                $data = [
+                    'password' => md5($request->input()['newpassword'])
+                ];
+                $update_admin_password = StudentModel::where('id', $id)->update($data);
+                $activity_logs = new ActivityLogsModel;
+                date_default_timezone_set('Asia/Manila');
+                $activity_logs->description = "Student Nurse " . Session::get('first_name') . " " . Session::get('middle_name') . " " . Session::get('last_name') . " change his/her password on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+                $activity_logs->save();
+                return redirect(route('student-login'))->with('success', 'Password has been changed successfully.');
+            }
+        }
+        else {
+            return back()->with('error', 'Current password not found.');
+        }
     }
 
     //ADD STUDENT MEDICAL RECORD

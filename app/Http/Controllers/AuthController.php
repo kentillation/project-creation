@@ -223,7 +223,7 @@ class AuthController extends Controller
             date_default_timezone_set('Asia/Manila');
             $activity_logs->description = "Admin " . Session::get('first_name') . " " . Session::get('middle_name') . " " . Session::get('last_name') . " change his/her username on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
             $activity_logs->save();
-            return back()->with('success', 'Username has been change successfully.');
+            return redirect(route('admin-login'))->with('success', 'Username has been change successfully.');
         }
     }
 
