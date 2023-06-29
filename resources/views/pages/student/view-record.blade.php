@@ -27,175 +27,278 @@
     <section class="section dashboard">
         <div class="row">
 
-            <div class="col-lg-6">
+            <div class="col-lg-8">
                 <div class="row">
+
                     <div class="col-12">
-                        <div class="card recent-sales overflow-auto">
-                            <div class="card-body m-2">
-                                <h5 class="card-title">Medical Record</h5>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="view-medical-record">
-                                            <ul>
-                                                <li>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <h6>Full name</h6>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <h6>{{ $student_record[0]['first_name'] }} {{
-                                                                $student_record[0]['middle_name'] }} {{
-                                                                $student_record[0]['last_name'] }}</h6>
+                        <div class="card">
+                            <div class="card-body pt-3">
+
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item">
+                                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#medical-record">Medical
+                                            Record</button>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#lab-test">Laboratory Test</button>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content pt-2">
+                                    <div class="tab-pane fade show active" id="medical-record">
+                                        <div class="col-lg-6">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="card recent-sales overflow-auto">
+                                                        <div class="card-body m-2">
+                                                            <h5 class="card-title">Medical Record</h5>
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <div class="view-medical-record">
+                                                                        <ul>
+                                                                            <li>
+                                                                                <div class="row">
+                                                                                    <div class="col-6">
+                                                                                        <h6>Full name</h6>
+                                                                                    </div>
+                                                                                    <div class="col-6">
+                                                                                        <h6>
+                                                                                            {{ $student_record[0]['first_name'] }}
+                                                                                            {{ $student_record[0]['middle_name'] }}
+                                                                                            {{ $student_record[0]['last_name'] }}
+                                                                                        </h6>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <hr />
+                                                                            <li>
+                                                                                <div class="row">
+                                                                                    <div class="col-6">
+                                                                                        <h6>Age:</h6>
+                                                                                    </div>
+                                                                                    <div class="col-6">
+                                                                                        <h6>{{ $student_record[0]['age'] }}</h6>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <hr />
+                                                                            <li>
+                                                                                <div class="row">
+                                                                                    <div class="col-6">
+                                                                                        <h6>Date of birth:</h6>
+                                                                                    </div>
+                                                                                    <div class="col-6">
+                                                                                        <h6>{{ $student_record[0]['date_of_birth'] }}</h6>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <hr />
+                                                                            <li>
+                                                                                <div class="row">
+                                                                                    <div class="col-6">
+                                                                                        <h6>Phone:</h6>
+                                                                                    </div>
+                                                                                    <div class="col-6">
+                                                                                        <h6>{{ $student_record[0]['phone'] }}</h6>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <hr />
+                                                                            <li>
+                                                                                <div class="row">
+                                                                                    <div class="col-6">
+                                                                                        <h6>Address:</h6>
+                                                                                    </div>
+                                                                                    <div class="col-6">
+                                                                                        <h6>
+                                                                                            {{ $student_record[0]['street_address'] }}
+                                                                                            {{$student_record[0]['barangay'] }},
+                                                                                            {{$student_record[0]['muni_city'] }}
+                                                                                        </h6>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <hr />
+                                                                            <li>
+                                                                                <div class="row">
+                                                                                    <div class="col-6">
+                                                                                        <h6>Civil Status:</h6>
+                                                                                    </div>
+                                                                                    <div class="col-6">
+                                                                                        <h6>{{ $student_record[0]['civil_status'] }}</h6>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <hr />
+                                                                            <li>
+                                                                                <div class="row">
+                                                                                    <div class="col-6">
+                                                                                        <h6>Citizenship:</h6>
+                                                                                    </div>
+                                                                                    <div class="col-6">
+                                                                                        <h6>{{ $student_record[0]['citizenship'] }}</h6>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <hr />
+                                                                            <li>
+                                                                                <div class="row">
+                                                                                    <div class="col-6">
+                                                                                        <h6>Height:</h6>
+                                                                                    </div>
+                                                                                    <div class="col-6">
+                                                                                        <h6>{{ $student_record[0]['height'] }}</h6>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <hr />
+                                                                            <li>
+                                                                                <div class="row">
+                                                                                    <div class="col-6">
+                                                                                        <h6>Weight:</h6>
+                                                                                    </div>
+                                                                                    <div class="col-6">
+                                                                                        <h6>{{ $student_record[0]['weight'] }}</h6>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <hr />
+                                                                            <li>
+                                                                                <div class="row">
+                                                                                    <div class="col-6">
+                                                                                        <h6>BMI:</h6>
+                                                                                    </div>
+                                                                                    <div class="col-6">
+                                                                                        <h6>{{ $student_record[0]['bmi'] }}</h6>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <hr />
+                                                                            <li>
+                                                                                <div class="row">
+                                                                                    <div class="col-6">
+                                                                                        <h6>Gender:</h6>
+                                                                                    </div>
+                                                                                    <div class="col-6">
+                                                                                        <p>
+                                                                                            {{ $student_record[0]['gender_id'] == 1 ? 'Male' : '' }}
+                                                                                            {{ $student_record[0]['gender_id'] == 2 ? 'Female' : '' }}
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <hr />
+                                                                            <li>
+                                                                                <div class="row">
+                                                                                    <div class="col-6">
+                                                                                        <h6>Blood type:</h6>
+                                                                                    </div>
+                                                                                    <div class="col-6">
+                                                                                        <p>
+                                                                                            {{ $student_record[0]['blood_type_id'] == 1 ? 'A+' : '' }}
+                                                                                            {{ $student_record[0]['blood_type_id'] == 2 ? 'A-' : '' }}
+                                                                                            {{ $student_record[0]['blood_type_id'] == 3 ? 'B+' : '' }}
+                                                                                            {{ $student_record[0]['blood_type_id'] == 4 ? 'B-' : '' }}
+                                                                                            {{ $student_record[0]['blood_type_id'] == 5 ? 'AB+' : '' }}
+                                                                                            {{ $student_record[0]['blood_type_id'] == 6 ? 'AB-' : '' }}
+                                                                                            {{ $student_record[0]['blood_type_id'] == 7 ? 'O+' : '' }}
+                                                                                            {{ $student_record[0]['blood_type_id'] == 8 ? 'O-' : '' }}
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <hr />
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <hr />
-                                                <li>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <h6>Age:</h6>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <h6>{{ $student_record[0]['age'] }}</h6>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <hr />
-                                                <li>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <h6>Date of birth:</h6>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <h6>{{ $student_record[0]['date_of_birth'] }}</h6>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <hr />
-                                                <li>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <h6>Phone:</h6>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <h6>{{ $student_record[0]['phone'] }}</h6>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <hr />
-                                                <li>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <h6>Address:</h6>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <h6>{{ $student_record[0]['street_address'] }} {{
-                                                                $student_record[0]['barangay'] }}, {{
-                                                                $student_record[0]['muni_city'] }}</h6>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <hr />
-                                                <li>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <h6>Civil Status:</h6>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <h6>{{ $student_record[0]['civil_status'] }}</h6>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <hr />
-                                                <li>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <h6>Citizenship:</h6>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <h6>{{ $student_record[0]['citizenship'] }}</h6>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <hr />
-                                                <li>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <h6>Height:</h6>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <h6>{{ $student_record[0]['height'] }}</h6>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <hr />
-                                                <li>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <h6>Weight:</h6>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <h6>{{ $student_record[0]['weight'] }}</h6>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <hr />
-                                                <li>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <h6>BMI:</h6>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <h6>{{ $student_record[0]['bmi'] }}</h6>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <hr />
-                                                <li>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <h6>Gender:</h6>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <p>
-                                                                {{ $student_record[0]['gender_id'] == 1 ? 'Male' : '' }}
-                                                                {{ $student_record[0]['gender_id'] == 2 ? 'Female' : '' }}
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <hr />
-                                                <li>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <h6>Blood type:</h6>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <p>
-                                                                {{ $student_record[0]['blood_type_id'] == 1 ? 'A+' : '' }}
-                                                                {{ $student_record[0]['blood_type_id'] == 2 ? 'A-' : '' }}
-                                                                {{ $student_record[0]['blood_type_id'] == 3 ? 'B+' : '' }}
-                                                                {{ $student_record[0]['blood_type_id'] == 4 ? 'B-' : '' }}
-                                                                {{ $student_record[0]['blood_type_id'] == 5 ? 'AB+' : '' }}
-                                                                {{ $student_record[0]['blood_type_id'] == 6 ? 'AB-' : '' }}
-                                                                {{ $student_record[0]['blood_type_id'] == 7 ? 'O+' : '' }}
-                                                                {{ $student_record[0]['blood_type_id'] == 8 ? 'O-' : '' }}
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <hr />
-                                            </ul>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+
                                 </div>
+                                <div class="tab-pane fade profile-edit" id="lab-test">
+                                        <div class="row mt-3">
+                                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                                <label for="cbc_file">CBC</label>
+
+                                                <a href="/cbc-folder/{{ $student_record[0]['cbc_file'] }}">
+                                                    <div class="container rounded border img-container">
+                                                        <div class="img-lab-test-container">
+                                                            <img src="/cbc-folder/{{ $student_record[0]['cbc_file'] }}" width="150" height="150" />
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                                <label for="urinalysis_file">Urinalysis</label>
+                                                <a href="/urinalysis-folder/{{ $student_record[0]['urinalysis_file'] }}">
+                                                    <div class="container rounded border img-container">
+                                                        <div class="img-lab-test-container">
+                                                            <img src="/urinalysis-folder/{{ $student_record[0]['urinalysis_file'] }}" width="150" height="150" />
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                                <label for="fecalysis_file">Fecalysis</label>
+                                                <a href="/fecalysis-folder/{{ $student_record[0]['fecalysis_file'] }}">
+                                                    <div class="container rounded border img-container">
+                                                        <div class="img-lab-test-container">
+                                                            <img src="/fecalysis-folder/{{ $student_record[0]['fecalysis_file'] }}" width="150" height="150" />
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <div class="col-lg-4 col-md-6 col-sm-6 mt-3">
+                                                <label for="x_ray_file">Chest X-ray (PA)</label>
+                                                <a href="/xray-folder/{{ $student_record[0]['x_ray_file'] }}">
+                                                    <div class="container rounded border img-container">
+                                                        <div class="img-lab-test-container">
+                                                            <img src="/xray-folder/{{ $student_record[0]['x_ray_file'] }}" width="150" height="150" />
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <div class="col-lg-4 col-md-6 col-sm-6 mt-3">
+                                                <label for="hba_file">Heppa B Antigen</label>
+                                                <a href="/hba-folder/{{ $student_record[0]['hba_file'] }}">
+                                                    <div class="container rounded border img-container">
+                                                        <div class="img-lab-test-container">
+                                                            <img src="/hba-folder/{{ $student_record[0]['hba_file'] }}" width="150" height="150" />
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <div class="col-lg-4 col-md-6 col-sm-6 mt-3">
+                                                <label for="hbv_file">Heppa B Vaccine</label>
+                                                <a href="/hbv-folder/{{ $student_record[0]['hbv_file'] }}">
+                                                    <div class="container rounded border img-container">
+                                                        <div class="img-lab-test-container">
+                                                            <img src="/hbv-folder/{{ $student_record[0]['hbv_file'] }}" width="150" height="150" />
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-6">
+            <div class="col-lg-4">
                 <div class="card">
                     <div class="card-body m-2">
                         <h5 class="card-title">Medical History</h5>
