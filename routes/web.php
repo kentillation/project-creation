@@ -108,9 +108,9 @@ Route::get('/staff/list/{id}', 'StaffController@delete_staff')->name('delete-sta
 //MEDICAL RECORD REQUEST
 Route::get('/staff/pending-medical-records', 'StaffController@pending_medical_records')->name('s-pending-medical-records');
 Route::get('/staff/view-pending-record/{id}', 'StaffController@view_pending_record')->name('s-view-pending-record');
-
 Route::get('/staff/approved-medical-records', 'StaffController@approved_medical_records')->name('s-approved-medical-records');
 Route::get('/staff/view-approved-record/{id}', 'StaffController@view_approved_record')->name('s-view-approved-record');
+Route::get('/staff/all-medical-records-request', 'StaffController@all_medical_records_request')->name('s-all-medical-records');
 
-Route::get('/staff/view-approved-medical-record/{id}', 'StaffController@view_approved_medical_record')->name('s-view-approved-medical-record');
+
 
