@@ -6,3 +6,4 @@
 - Appointment message will appear to a specific Student Nurse.
 - Student Nurse can Approved the appointment.
 - Pending and Approved Appointments will appear to Admin and School Nurse.
+- All users, except for Dept. Staff, they can now update their profile.

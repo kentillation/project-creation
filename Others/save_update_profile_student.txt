@@ -1,0 +1,9 @@
+	$imageName = '';
+
+if($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time().'_'.$image->getClientOriginalName();
+            $image->move(\public_path('profile-folder/'), $imageName);
+        }
+
+	$students->image = $imageName;
