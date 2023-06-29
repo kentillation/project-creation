@@ -1,13 +1,14 @@
 Department staff:
 - empty 1 card on Dashboard
-- wala pa View All Medical Record Requests
 - wala pa Medical History sa Pending Medical Record Request
-- indi pa ma view ang Approved Medical Record Request sa specific nga student
 - Wala pa Profile and Account Settings
 
 Admin:
 - Indi pa ma view an specific Approved Medical Record request sang student
-- 
+
+
+Student:
+- Mabutang restriction sa view Approved Medical Record Request
 
 OVERALL:
-- di pa maka change username kag password
+- di pa maka change username kag password (Okay na sa Admin, School Nurse, Student)

@@ -26,12 +26,6 @@
             <img src="/profile-folder/{{ $student_profile->image }}" alt="Profile" class="rounded-circle">
             <h2 class="m-3">{{ Session::get('first_name') }} {{ Session::get('middle_name') }} {{ Session::get('last_name') }}</h2>
             <h3 class="m-2">Nursing Student</h3>
-            <!-- <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-            </div> -->
           </div>
         </div>
       </div>
@@ -74,22 +68,27 @@
 
               <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
                 <!-- Profile Edit Form -->
-                <form action="{{ route('update-save-student-profile', ['id' => $student_profile['id']]) }}" method="post" enctype="multipart/form-data" id="upload-form">
-                  @csrf
-                  <div class="row mb-3">
-                    <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
-                    <div class="col-md-8 col-lg-9">
-                      <img src="/profile-folder/{{ $student_profile->image }}" style="height: 100px; width: 100px; border-radius: 50%;" alt="" id="default_pp">
-                      <div id="image-preview"></div>
-                      <div class="pt-2">
+
+                <div class="row mb-3">
+                  <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                  <div class="col-md-8 col-lg-9">
+                    <img src="/profile-folder/{{ $student_profile->image }}" style="height: 100px; width: 100px; border-radius: 50%;" alt="" id="default_pp">
+                    <div id="image-preview"></div>
+                    <div class="pt-2">
+                    <form action="{{ route('student-profile-picture', ['id' => $student_profile['id']]) }}" method="post" enctype="multipart/form-data" id="upload-form">
+                      @csrf
                         <!-- <label for="image-upload" class="btn btn-primary btn-sm" onclick="upload_pp()" id="upload-pp">
-                          <i class="bi bi-arrow-left-right"></i>
-                          &nbsp; Change Image
-                        </label> -->
-                        <input type="file" id="image-upload" name="image" accept="image/*">
-                      </div>
+                            <i class="bi bi-arrow-left-right"></i>
+                            &nbsp; Change Image
+                          </label> -->
+                        <input type="file" name="image" id="image-upload" accept="image/*">
+                        <button type="submit">Upload</button>
+                      </form>
                     </div>
                   </div>
+                </div>
+                <form action="{{ route('update-save-student-profile', ['id' => $student_profile['id']]) }}" method="post" enctype="multipart/form-data" id="upload-form">
+                  @csrf
                   <div class="row mb-3">
                     <label for="first_name" class="col-md-4 col-lg-3 col-form-label">First Name</label>
                     <div class="col-md-8 col-lg-9">

@@ -168,6 +168,59 @@ class ClinicianController extends Controller
         return view('pages/clinician/clinician-account-settings', ['clinician_acount' => $clinician]);
     }
 
+    public function saveUpdate_username(Request $request)
+    {
+        $credentials = [
+            'username' => $request->newusername
+        ];
+        $result_count = ClinicianModel::where($credentials)->get()->count();
+
+        if ($result_count > 0) {
+            return back()->with('error', 'Username already exist.');
+        } else if ($request->input()['currentusername'] !== Session::get('username')) {
+            return back()->with('error', 'Invalid current username.');
+        } else {
+            $id = Session::get('id');
+            $data = [
+                'username' => $request->input()['newusername']
+            ];
+            $update_admin_userame = ClinicianModel::where('id', $id)->update($data);
+            $activity_logs = new ActivityLogsModel;
+            date_default_timezone_set('Asia/Manila');
+            $activity_logs->description = "School Nurse " . Session::get('first_name') . " " . Session::get('middle_name') . " " . Session::get('last_name') . " change his/her username on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+            $activity_logs->save();
+            return redirect(route('clinician-login'))->with('success', 'Username has been change successfully.');
+        }
+    }
+
+    public function saveUpdate_password(Request $request)
+    {
+        $credentials = [
+            'password' => md5($request->currentpassword)
+        ];
+        $result_count = ClinicianModel::where($credentials)->get()->count();
+
+        if ($result_count > 0) {
+            if ($request->input()['renewpassword'] !== $request->input()['newpassword']) {
+                return back()->with('error', 'Re-entered new password does not match.');
+            } else {
+                $id = Session::get('id');
+                $data = [
+                    'password' => md5($request->input()['newpassword'])
+                ];
+                $update_admin_password = ClinicianModel::where('id', $id)->update($data);
+                $activity_logs = new ActivityLogsModel;
+                date_default_timezone_set('Asia/Manila');
+                $activity_logs->description = "School Nurse " . Session::get('first_name') . " " . Session::get('middle_name') . " " . Session::get('last_name') . " change his/her password on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+                $activity_logs->save();
+                return redirect(route('clinician-login'))->with('success', 'Password has been changed successfully.');
+            }
+        }
+        else {
+            return back()->with('error', 'Current password not found.');
+        }
+    }
+
     //ADD STUDENT MEDICAL RECORD
     public function add_student_med_record()
     {
@@ -236,53 +289,43 @@ class ClinicianController extends Controller
     //UPDATING MEDICAL FILES
     public function saveUpdate_lab_test(Request $request, $id)
     {
-
         $students = StudentRecordModel::find($id);
-        $other = StudentRecordModel::find($id);
-
         $cbcName = '';
         $urinalysisName = '';
         $fecalysisName = '';
         $xrayName = '';
         $hbaName = '';
         $hbvName = '';
-
         if ($request->hasFile('cbc_file')) {
             $cbc = $request->file('cbc_file');
             $cbcName = time() . '_' . $cbc->getClientOriginalName();
             $cbc->move(\public_path('cbc-folder/'), $cbcName);
         }
-
         if ($request->hasFile('urinalysis_file')) {
             $urinalysis = $request->file('urinalysis_file');
             $urinalysisName = time() . '_' . $urinalysis->getClientOriginalName();
             $urinalysis->move(\public_path('urinalysis-folder/'), $urinalysisName);
         }
-
         if ($request->hasFile('fecalysis_file')) {
             $fecalysis = $request->file('fecalysis_file');
             $fecalysisName = time() . '_' . $fecalysis->getClientOriginalName();
             $fecalysis->move(\public_path('fecalysis-folder/'), $fecalysisName);
         }
-
         if ($request->hasFile('x_ray_file')) {
             $xray = $request->file('x_ray_file');
             $xrayName = time() . '_' . $xray->getClientOriginalName();
             $xray->move(\public_path('xray-folder/'), $xrayName);
         }
-
         if ($request->hasFile('hba_file')) {
             $hba = $request->file('hba_file');
             $hbaName = time() . '_' . $hba->getClientOriginalName();
             $hba->move(\public_path('hba-folder/'), $hbaName);
         }
-
         if ($request->hasFile('hbv_file')) {
             $hbv = $request->file('hbv_file');
             $hbvName = time() . '_' . $hbv->getClientOriginalName();
             $hbv->move(\public_path('hbv-folder/'), $hbvName);
         }
-
         if ($students->cbc_file == ""){
             $students->cbc_file = $cbcName;
         }
@@ -309,7 +352,6 @@ class ClinicianController extends Controller
     //UPDATING STUDENT PENDING RECORD
     public function saveUpdate_pending_record(Request $request, $id)
     {
-
         $data = [
             'first_name' => $request->input()['first_name'],
             'middle_name' => $request->input()['middle_name'],
