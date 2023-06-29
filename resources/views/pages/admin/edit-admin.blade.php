@@ -63,51 +63,6 @@
           </div>
         </div>
 
-          <div class="col-lg-4">
-
-            <div class="card">
-                <div class="card-body pb-4">
-                    <h5 class="card-title">Activity Logs</h5>
-                <div class="news">
-                  <div class="post-item clearfix">
-                    <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
-                    <h4><a href="#">Title</a></h4>
-                    <p>This is just a sample paragraph</p>
-                  </div>
-
-                  <div class="post-item clearfix">
-                    <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
-                    <h4><a href="#">Title</a></h4>
-                    <p>This is just a sample paragraph</p>
-                  </div>
-
-                  <div class="post-item clearfix">
-                    <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
-                    <h4><a href="#">Title</a></h4>
-                    <p>This is just a sample paragraph</p>
-                  </div>
-
-                  <div class="post-item clearfix">
-                    <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
-                    <h4><a href="#">Title</a></h4>
-                    <p>This is just a sample paragraph</p>
-                  </div>
-
-                  <div class="post-item clearfix">
-                    <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
-                    <h4><a href="#">Title</a></h4>
-                    <p>This is just a sample paragraph</p>
-                  </div>
-
-                  <div class="post-item clearfix">
-                    <img src="<?php echo asset('assets/img/news-5.jpg') ?>" alt="">
-                    <h4><a href="#">Title</a></h4>
-                    <p>This is just a sample paragraph</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
       </div>
     </section>
 

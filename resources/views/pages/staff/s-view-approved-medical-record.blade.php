@@ -1,4 +1,4 @@
-@extends('includes/clinician-sidenav')
+@extends('includes/staff-sidenav')
 
 @section('page-content')
 <main id="main" class="main">
@@ -65,9 +65,9 @@
                                                                 </div>
                                                                 <div class="col-6">
                                                                     <h6>
-                                                                        {{ $c_view_approved_medical_record->first_name }}
-                                                                        {{ $c_view_approved_medical_record->middle_name }}
-                                                                        {{ $c_view_approved_medical_record->last_name }}
+                                                                        {{ $s_view_approved->first_name }}
+                                                                        {{ $s_view_approved->middle_name }}
+                                                                        {{ $s_view_approved->last_name }}
                                                                     </h6>
                                                                 </div>
                                                             </div>
@@ -79,7 +79,7 @@
                                                                     <h6>Age:</h6>
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <h6>{{ $c_view_approved_medical_record->age }}</h6>
+                                                                    <h6>{{ $s_view_approved->age }}</h6>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -90,7 +90,7 @@
                                                                     <h6>Date of birth:</h6>
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <h6>{{ $c_view_approved_medical_record->date_of_birth }}</h6>
+                                                                    <h6>{{ $s_view_approved->date_of_birth }}</h6>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -101,7 +101,7 @@
                                                                     <h6>Phone:</h6>
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <h6>{{ $c_view_approved_medical_record->phone }}</h6>
+                                                                    <h6>{{ $s_view_approved->phone }}</h6>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -113,10 +113,10 @@
                                                                 </div>
                                                                 <div class="col-6">
                                                                     <h6>
-                                                                        {{ $c_view_approved_medical_record->street_number }},
-                                                                        {{ $c_view_approved_medical_record->street_address }},
-                                                                        {{ $c_view_approved_medical_record->barangay }},
-                                                                        {{ $c_view_approved_medical_record->muni_city }}
+                                                                        {{ $s_view_approved->street_number }},
+                                                                        {{ $s_view_approved->street_address }},
+                                                                        {{ $s_view_approved->barangay }},
+                                                                        {{ $s_view_approved->muni_city }}
                                                                     </h6>
                                                                 </div>
                                                             </div>
@@ -128,7 +128,7 @@
                                                                     <h6>Civil Status:</h6>
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <h6>{{ $c_view_approved_medical_record->civil_status }}</h6>
+                                                                    <h6>{{ $s_view_approved->civil_status }}</h6>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -139,7 +139,7 @@
                                                                     <h6>Citizenship:</h6>
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <h6>{{ $c_view_approved_medical_record->citizenship }}</h6>
+                                                                    <h6>{{ $s_view_approved->citizenship }}</h6>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -150,7 +150,7 @@
                                                                     <h6>Height:</h6>
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <h6>{{ $c_view_approved_medical_record->height }}</h6>
+                                                                    <h6>{{ $s_view_approved->height }}</h6>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -161,7 +161,7 @@
                                                                     <h6>Weight:</h6>
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <h6>{{ $c_view_approved_medical_record->weight }}</h6>
+                                                                    <h6>{{ $s_view_approved->weight }}</h6>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -172,7 +172,7 @@
                                                                     <h6>BMI:</h6>
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <h6>{{ $c_view_approved_medical_record->bmi }}</h6>
+                                                                    <h6>{{ $s_view_approved->bmi }}</h6>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -183,7 +183,7 @@
                                                                     <h6>Gender:</h6>
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <h6>{{ $c_view_approved_medical_record->student_gender->gender }}
+                                                                    <h6>{{ $s_view_approved->student_gender->gender }}
                                                                     </h6>
                                                                 </div>
                                                             </div>
@@ -196,7 +196,7 @@
                                                                 </div>
                                                                 <div class="col-6">
                                                                     <h6>{{
-                                                                        $c_view_approved_medical_record->student_blood_type->blood_type
+                                                                        $s_view_approved->student_blood_type->blood_type
                                                                         }}</h6>
                                                                 </div>
                                                             </div>
@@ -212,10 +212,10 @@
                                         <div class="row mt-3">
                                             <div class="col-lg-4 col-md-6 col-sm-6">
                                                 <label for="cbc_file">CBC</label>
-                                                <a href="/cbc-folder/{{ $c_view_approved_medical_record->cbc_file }}">
+                                                <a href="/cbc-folder/{{ $s_view_approved->cbc_file }}">
                                                     <div class="container rounded border img-container">
                                                         <div class="img-lab-test-container">
-                                                            <img src="/cbc-folder/{{ $c_view_approved_medical_record->cbc_file }}" width="150" height="150" />
+                                                            <img src="/cbc-folder/{{ $s_view_approved->cbc_file }}" width="150" height="150" />
                                                         </div>
                                                     </div>
                                                 </a>
@@ -223,10 +223,10 @@
 
                                             <div class="col-lg-4 col-md-6 col-sm-6">
                                                 <label for="urinalysis_file">Urinalysis</label>
-                                                <a href="/urinalysis-folder/{{ $c_view_approved_medical_record->urinalysis_file }}">
+                                                <a href="/urinalysis-folder/{{ $s_view_approved->urinalysis_file }}">
                                                     <div class="container rounded border img-container">
                                                         <div class="img-lab-test-container">
-                                                            <img src="/urinalysis-folder/{{ $c_view_approved_medical_record->urinalysis_file }}" width="150" height="150" />
+                                                            <img src="/urinalysis-folder/{{ $s_view_approved->urinalysis_file }}" width="150" height="150" />
                                                         </div>
                                                     </div>
                                                 </a>
@@ -234,10 +234,10 @@
 
                                             <div class="col-lg-4 col-md-6 col-sm-6">
                                                 <label for="fecalysis_file">Fecalysis</label>
-                                                <a href="/fecalysis-folder/{{ $c_view_approved_medical_record->fecalysis_file }}">
+                                                <a href="/fecalysis-folder/{{ $s_view_approved->fecalysis_file }}">
                                                     <div class="container rounded border img-container">
                                                         <div class="img-lab-test-container">
-                                                            <img src="/fecalysis-folder/{{ $c_view_approved_medical_record->fecalysis_file }}" width="150" height="150" />
+                                                            <img src="/fecalysis-folder/{{ $s_view_approved->fecalysis_file }}" width="150" height="150" />
                                                         </div>
                                                     </div>
                                                 </a>
@@ -245,10 +245,10 @@
 
                                             <div class="col-lg-4 col-md-6 col-sm-6 mt-3">
                                                 <label for="x_ray_file">Chest X-ray (PA)</label>
-                                                <a href="/xray-folder/{{ $c_view_approved_medical_record->x_ray_file }}">
+                                                <a href="/xray-folder/{{ $s_view_approved->x_ray_file }}">
                                                     <div class="container rounded border img-container">
                                                         <div class="img-lab-test-container">
-                                                            <img src="/xray-folder/{{ $c_view_approved_medical_record->x_ray_file }}" width="150" height="150" />
+                                                            <img src="/xray-folder/{{ $s_view_approved->x_ray_file }}" width="150" height="150" />
                                                         </div>
                                                     </div>
                                                 </a>
@@ -256,10 +256,10 @@
 
                                             <div class="col-lg-4 col-md-6 col-sm-6 mt-3">
                                                 <label for="hba_file">Heppa B Antigen</label>
-                                                <a href="/hba-folder/{{ $c_view_approved_medical_record->hba_file }}">
+                                                <a href="/hba-folder/{{ $s_view_approved->hba_file }}">
                                                     <div class="container rounded border img-container">
                                                         <div class="img-lab-test-container">
-                                                            <img src="/hba-folder/{{ $c_view_approved_medical_record->hba_file }}" width="150" height="150" />
+                                                            <img src="/hba-folder/{{ $s_view_approved->hba_file }}" width="150" height="150" />
                                                         </div>
                                                     </div>
                                                 </a>
@@ -267,10 +267,10 @@
 
                                             <div class="col-lg-4 col-md-6 col-sm-6 mt-3">
                                                 <label for="hbv_file">Heppa B Vaccine</label>
-                                                <a href="/hbv-folder/{{ $c_view_approved_medical_record->hbv_file }}">
+                                                <a href="/hbv-folder/{{ $s_view_approved->hbv_file }}">
                                                     <div class="container rounded border img-container">
                                                         <div class="img-lab-test-container">
-                                                            <img src="/hbv-folder/{{ $c_view_approved_medical_record->hbv_file }}" width="150" height="150" />
+                                                            <img src="/hbv-folder/{{ $s_view_approved->hbv_file }}" width="150" height="150" />
                                                         </div>
                                                     </div>
                                                 </a>

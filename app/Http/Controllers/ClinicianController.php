@@ -283,7 +283,7 @@ class ClinicianController extends Controller
     {
         $pending_record = StudentRecordModel::find($id);
         $medical_history = MedicalHistoryModel::where('student_id', $pending_record->student_id)->get();
-        return view('pages/clinician/c-view-pending-record', ['c_update_pending' => $pending_record], compact('medical_history'));
+        return view('pages/clinician/c-view-pending-medical-record', ['c_update_pending' => $pending_record], compact('medical_history'));
     }
 
     //UPDATING MEDICAL FILES

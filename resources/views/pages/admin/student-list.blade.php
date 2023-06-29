@@ -3,7 +3,7 @@
 @section('page-content')
 <main id="main" class="main">
   <div class="pagetitle">
-    <h1>List of nursing students</h1>
+    <h1>List of Student Nurse</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item">Users</li>
@@ -50,16 +50,7 @@
                       <a href="{{ route('update-student', ['id' => $student->id] ) }}">
                         <button class="btn btn-outline-success btn-sm" title="Modify">
                           <i class="bi bi-pencil-square"></i>
-                        </button>
-                      </a>
-                      <a href="{{ route('delete-student', ['id' => $student->id] ) }}">
-                        <button class="btn btn-outline-danger btn-sm" title="Move to trash">
-                          <i class="bi bi-trash"></i>
-                        </button>
-                      </a>
-                      <a href="{{ route('view-stud-med-record', ['id' => $student->id] ) }}">
-                        <button class="btn btn-outline-primary btn-sm" title="View medical records">
-                          <i class="bi bi-droplet-half"></i>
+                          &nbsp; Modify
                         </button>
                       </a>
                     </td>
