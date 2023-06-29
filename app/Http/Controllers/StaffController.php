@@ -121,6 +121,88 @@ class StaffController extends Controller
         return redirect(route('staff-list'));
     }
 
+        //Staff PROFILE
+        public function staff_profile()
+        {
+            $id = Session::get('id');
+            $clinician = StaffModel::find($id);
+    
+            return view('pages/staff/staff-profile', ['staff_profile' => $clinician]);
+        }
+    
+        //UPDATING Staff'S PROFILE
+        public function saveUpdate_profile(Request $request)
+        {
+            $id = Session::get('id');
+            $data = [
+                'first_name' => $request->input()['first_name'],
+                'middle_name' => $request->input()['middle_name'],
+                'last_name' => $request->input()['last_name'],
+                'email' => $request->input()['email'],
+                
+            ];
+            $update_student_account = StaffModel::where('id', $id)->update($data);
+            return redirect(route('staff-login'))->with('success', 'Profile has been updated successfully');
+        }
+
+        public function save_image_profile(Request $request)
+        {
+
+            $id = Session::get('id');
+
+                $students = StudentRecordModel::find($id);
+                $other = StudentRecordModel::find($id);
+                $imageName = '';
+
+
+                if ($request->hasFile('image')) {
+                    $image = $request->file('image');
+                    $imageName = time() . '_' . $image->getClientOriginalName();
+                    $image->move(\public_path('profile-folder/'), $imageName);
+                }
+
+                    if ($students->image == "") {
+                        $students->image = $imageName;
+                    }
+                    $students->save();
+
+            $students->save();
+            // $update_student_account = StaffModel::where('id', $id)->update($data);
+            return redirect(route('staff-login'))->with('success', 'Profile has been updated successfully');
+        }
+
+        public function saveUpdate_image_profile(Request $request)
+        {
+            $id = Session::get('id');
+
+                $students = StudentRecordModel::find($id);
+                $other = StudentRecordModel::find($id);
+                $imageName = '';
+
+                if ($request->hasFile('image')) {
+                    $image = $request->file('image');
+                    $imageName = time() . '_' . $image->getClientOriginalName();
+                    $image->move(\public_path('profile-folder/'), $imageName);
+                }
+                    if ($students->image !== "") {
+                    $students->image = $other->image;
+                    }
+                    else {
+                    $students->image = $imageName;
+                    }
+
+            $students->save();
+            // $update_student_account = StaffModel::where('id', $id)->update($data);
+            return redirect(route('staff-login'))->with('success', 'Profile has been updated successfully');
+        }
+
+        //STAFF ACCOUNT SETTING
+        public function staff_account_settings()
+    {
+        $id = Session::get('id');
+        $staff = StaffModel::find($id);
+        return view('pages/staff/staff-account-settings', ['staff_acount' => $staff]);
+    }
     
 
      //EDITING STUDENT PENDING RECORD
@@ -151,6 +233,20 @@ class StaffController extends Controller
         $approved_record = StudentRecordModel::find($id);
         $medical_history = MedicalHistoryModel::where('student_id', $approved_record->student_id)->get();
         return view('pages/staff/s-view-approved-record', ['s_view_approved'=> $approved_record], compact('medical_history'));
+    }
+
+    public function update_pending_record($id)
+    {
+        $pending_record = StudentRecordModel::find($id);
+        $medical_history = MedicalHistoryModel::where('student_id', $pending_record->student_id)->get();
+        return view('pages/staff/s-view-pending-record', ['s_update_pending' => $pending_record], compact('medical_history'));
+    }
+
+    public function update_approved_record($id)
+    {
+        $approved_record = StudentRecordModel::find($id);
+        $medical_history = MedicalHistoryModel::where('student_id', $approved_record->student_id)->get();
+        return view('pages/staff/s-view-aprroved-record', ['s_update_approved' => $approved_record], compact('medical_history'));
     }
 
 
