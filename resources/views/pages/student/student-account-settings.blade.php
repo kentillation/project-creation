@@ -19,6 +19,13 @@
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" title="Close"></button>
     </div>
     @endif
+    @if(Session::has('error'))
+    <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+      <i class="bi bi-excalamtion-triangle"></i>&nbsp;
+      {{ Session::get('error') }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" title="Close"></button>
+    </div>
+    @endif
     <div class="row">
       <div class="col-xl-4">
         <div class="card">
@@ -41,7 +48,8 @@
 
               <div class="tab-pane active show fade pt-3" id="change-password">
                 <!-- Change Password Form -->
-                <form action="#" method="POST">
+                <form method="POST" action="{{ route('update-save-student-password', ['id' => $student_acount['id']]) }}">
+                  @csrf
                   <div class="row mb-3">
                     <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
                     <div class="col-md-8 col-lg-9">
@@ -61,7 +69,27 @@
                     </div>
                   </div>
                   <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Change Password</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#passwordModal">Change Password</button>
+                  </div>
+                  <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="passwordModalLabel">Confirmation</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body p-4">
+                          <p>You are required to signout to update your password.</p>
+                        </div>
+                        <div class="modal-footer">
+                          <a href="#">
+                            <button class="btn btn-outline-success w-100 mt-2" type="submit">
+                              Signout &nbsp; <i class="bi bi-box-arrow-in-right"></i>
+                            </button>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </form><!-- End Change Password Form -->
               </div>

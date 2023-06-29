@@ -60,10 +60,10 @@ Route::get('/student/view-medical-histories', 'StudentController@view_medical_hi
 //PROFILE
 Route::get('/student/profile', 'StudentController@student_profile')->name('student-profile');
 Route::post('/student/save-update-profile/{id}', 'StudentController@saveUpdate_profile')->name('update-save-student-profile');
+Route::post('/student/save-update-profile-picture/{id}', 'StudentController@saveUpdate_profile_picture')->name('student-profile-picture');
 //ACCOUNT SETTINGS
 Route::get('/student/account-settings', 'StudentController@student_account_settings')->name('student-account-settings');
 Route::post('/student/save-update-password/{id}', 'StudentController@saveUpdate_password')->name('update-save-student-password');
-
 //APPOINTMENT
 Route::get('/student/pending-appointments', 'StudentController@pending_appointments')->name('pending-appointments');
 Route::post('/student/pending-appointment/{id}', 'StudentController@update_pending_appointment_response')->name('update-pending-appointment-response');
@@ -86,8 +86,8 @@ Route::get('/schoolnurse/profile', 'ClinicianController@clinician_profile')->nam
 Route::post('/schoolnurse/save-update-profile/{id}', 'ClinicianController@saveUpdate_profile')->name('update-save-clinician-profile');
 //ACCOUNT SETTINGS
 Route::get('/schoolnurse/account-settings', 'ClinicianController@clinician_account_settings')->name('clinician-account-settings');
-Route::post('/schoolnurse/save-update-username/{id}', 'ClinicianController@saveUpdate_username')->name('update-save-schoolnurse-username');
-Route::post('/schoolnurse/save-update-password/{id}', 'ClinicianController@saveUpdate_password')->name('update-save-schoolnurse-password');
+Route::post('/schoolnurse/save-update-username/{id}', 'ClinicianController@saveUpdate_username')->name('update-save-clinician-username');
+Route::post('/schoolnurse/save-update-password/{id}', 'ClinicianController@saveUpdate_password')->name('update-save-clinician-password');
 //MEDICAL RECORD REQUEST
 Route::get('/schoolnurse/pending-medical-records', 'ClinicianController@pending_medical_records')->name('c-pending-medical-records');
 Route::get('/schoolnurse/update-pending-record/{id}', 'ClinicianController@update_pending_record')->name('c-update-pending-record');
@@ -116,10 +116,9 @@ Route::get('/staff/list/{id}', 'StaffController@delete_staff')->name('delete-sta
 Route::get('/staff/pending-medical-records', 'StaffController@pending_medical_records')->name('s-pending-medical-records');
 Route::get('/staff/view-pending-record/{id}', 'StaffController@view_pending_record')->name('s-view-pending-record');
 Route::get('/staff/approved-medical-records', 'StaffController@approved_medical_records')->name('s-approved-medical-records');
-
 Route::get('/staff/view-approved-record/{id}', 'StaffController@view_approved_record')->name('s-view-approved-record');
 Route::get('/staff/all-medical-records-request', 'StaffController@all_medical_records_request')->name('s-all-medical-records');
-
+//CHANGE USERNAME AND PASSWORD
 Route::post('/staff/save-update-username/{id}', 'StaffController@saveUpdate_username')->name('update-save-staff-username');
 Route::post('/staff/save-update-password/{id}', 'StaffController@saveUpdate_password')->name('update-save-staff-password');
 
