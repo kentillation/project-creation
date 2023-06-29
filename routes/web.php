@@ -116,10 +116,17 @@ Route::get('/staff/list/{id}', 'StaffController@delete_staff')->name('delete-sta
 Route::get('/staff/pending-medical-records', 'StaffController@pending_medical_records')->name('s-pending-medical-records');
 Route::get('/staff/view-pending-record/{id}', 'StaffController@view_pending_record')->name('s-view-pending-record');
 Route::get('/staff/approved-medical-records', 'StaffController@approved_medical_records')->name('s-approved-medical-records');
-
 Route::get('/staff/view-approved-record/{id}', 'StaffController@view_approved_record')->name('s-view-approved-record');
 Route::get('/staff/all-medical-records-request', 'StaffController@all_medical_records_request')->name('s-all-medical-records');
+//PROFILE
+Route::get('/staff/profile', 'StaffController@staff_profile')->name('staff-profile');
+Route::get('/staff/update-profile/{id}', 'StaffController@profile')->name('update-staff-profile');
+Route::post('/staff/save-update-profile/{id}', 'StaffController@saveUpdate_profile')->name('update-save-staff-profile');
+Route::post('/staff/save-update-image-profile/{id}', 'StaffController@saveUpdate_image_profile')->name('update-save-staff-image-profile');
 
+
+//ACCOUNT SETTINGS
+Route::get('/staff/account-settings', 'StaffController@staff_account_settings')->name('staff-account-settings');
 Route::post('/staff/save-update-username/{id}', 'StaffController@saveUpdate_username')->name('update-save-staff-username');
 Route::post('/staff/save-update-password/{id}', 'StaffController@saveUpdate_password')->name('update-save-staff-password');
 

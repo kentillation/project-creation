@@ -258,14 +258,14 @@
       <li class="nav-heading">Settings</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="{{ route('staff-profile') }}">
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="{{ route('staff-account-settings') }}">
           <i class="bi bi-gear"></i>
           <span>Account</span>
         </a>

@@ -11,5 +11,5 @@ class StaffModel extends Model
 
     protected $table = "tbl_staff";
     
-    protected $fillable = ['name', 'email', 'username', 'password', 'created_at', 'updated_at'];
+    protected $fillable = ['name', 'email', 'username', 'password', 'image', 'created_at', 'updated_at'];
 }
