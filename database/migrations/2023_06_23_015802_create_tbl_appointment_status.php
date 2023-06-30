@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('tbl_appointment_status', function (Blueprint $table) {
             $table->id();
+            $table->string('status_appointment');
             $table->timestamps();
         });
 

@@ -94,7 +94,6 @@ class AuthController extends Controller
             });*/
 
             $result_info = AdminModel::where($credentials)->get();
-
             session()->put('id', $result_info[0]['id']);
             session()->put('email', $result_info[0]['email']);
             session()->put('username', $result_info[0]['username']);

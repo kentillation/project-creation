@@ -1,9 +1,1 @@
-Department staff:
-- empty 1 card on Dashboard
-
-Admin:
-- Wala pa na plastar ang specific nga Pending Medical Record Request
-
-
-All:
-- Indi ka update profile picture (Except kay Staff)
+- mabutang sa logs mag update profile

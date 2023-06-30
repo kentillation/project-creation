@@ -52,7 +52,7 @@
             </div>
           </div>
 
-          <div class="col-xxl-4 col-md-6">
+          <!-- <div class="col-xxl-4 col-md-6">
             <div class="card info-card assignments-card">
               <div class="card-body">
                 <h5 class="card-title text-warning"></h5>
@@ -68,7 +68,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <!-- <div class="col-xxl-4 col-md-6">
               <div class="card info-card declined-card">
