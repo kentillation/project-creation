@@ -49,6 +49,7 @@ class StaffController extends Controller
             session()->put('last_name', $result_info[0]['last_name']);
             session()->put('username', $result_info[0]['username']);
             session()->put('email', $result_info[0]['email']);
+            session()->put('image', $result_info[0]['image']);
 
             $clinician =  StaffModel::where('username', '=', $request->username)->first();
 
@@ -133,68 +134,70 @@ class StaffController extends Controller
     }
 
     //UPDATING Staff'S PROFILE
+
     public function saveUpdate_profile(Request $request)
     {
         $id = Session::get('id');
+        $staff = StaffModel::find($id);
+
+        if($request->hasFile('image')) {
+            $image = $request->file('image');
+            $staff->image = time().'_'.$image->getClientOriginalName();
+            $image->move(\public_path('profile-folder/'), $staff->image);
+            $request['image'] = $staff->image;
+        }
+
         $data = [
             'first_name' => $request->input()['first_name'],
             'middle_name' => $request->input()['middle_name'],
             'last_name' => $request->input()['last_name'],
             'email' => $request->input()['email'],
+            'image' => $staff->image,
 
         ];
+        
         $update_student_account = StaffModel::where('id', $id)->update($data);
         return redirect(route('staff-login'))->with('success', 'Profile has been updated successfully');
     }
 
-    public function save_image_profile(Request $request)
+
+    // public function save_image_profile(Request $request, $id)
+    // {
+    //     $staff = StaffModel::find($id);
+    //     $imageName = '';
+    //     if ($request->hasFile('image')) {
+    //         $image = $request->file('image');
+    //         $imageName = time() . '_' . $image->getClientOriginalName();
+    //         $image->move(\public_path('profile-folder/'), $imageName);
+    //     }
+    //     if ($staff->image == "") {
+    //         $staff->image = $imageName;
+    //     }
+    //     $staff->save();
+    //     return redirect(route('staff-profile'))->with('success', 'Profile has been updated successfully');
+    // }
+
+    // public function saveUpdate_image_profile(Request $request, $id)
+    // {
+    //     $staff = StaffModel::find($id);
+    //     if($request->hasFile('image')) {
+    //         $image = $request->file('image');
+    //         $staff->image = time().'_'.$image->getClientOriginalName();
+    //         $image->move(\public_path('profile-folder/'), $staff->image);
+    //         $request['profile'] = $staff->image;
+    //     }
+    //     $staff->update([
+    //         'image' => $staff->image
+    //     ]);
+    //     return redirect(route('staff-profile'))->with('success', 'Profile has been updated successfully');
+    // }
+
+    public function view_profile()
     {
-
+        //Filtering Records with Session
         $id = Session::get('id');
-
-        $students = StudentRecordModel::find($id);
-        $other = StudentRecordModel::find($id);
-        $imageName = '';
-
-
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '_' . $image->getClientOriginalName();
-            $image->move(\public_path('profile-folder/'), $imageName);
-        }
-
-        if ($students->image == "") {
-            $students->image = $imageName;
-        }
-        $students->save();
-
-        $students->save();
-        // $update_student_account = StaffModel::where('id', $id)->update($data);
-        return redirect(route('staff-login'))->with('success', 'Profile has been updated successfully');
-    }
-
-    public function saveUpdate_image_profile(Request $request)
-    {
-        $id = Session::get('id');
-
-        $students = StudentRecordModel::find($id);
-        $other = StudentRecordModel::find($id);
-        $imageName = '';
-
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '_' . $image->getClientOriginalName();
-            $image->move(\public_path('profile-folder/'), $imageName);
-        }
-        if ($students->image !== "") {
-            $students->image = $other->image;
-        } else {
-            $students->image = $imageName;
-        }
-
-        $students->save();
-        // $update_student_account = StaffModel::where('id', $id)->update($data);
-        return redirect(route('staff-login'))->with('success', 'Profile has been updated successfully');
+        $staff_records = StaffModel::where('id', $id)->get();
+        return view('pages/staff/staff-profile', ['staff_records' => $staff_records]);
     }
 
     //STAFF ACCOUNT SETTING

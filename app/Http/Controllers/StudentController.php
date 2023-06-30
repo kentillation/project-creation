@@ -198,35 +198,33 @@ class StudentController extends Controller
         $student = StudentModel::find($id);
         return view('pages/student/student-profile', ['student_profile' => $student]);
     }
-    //UPDATING STUDENT'S PROFILE PICTURE
-    public function saveUpdate_profile_picture(Request $request)
-    {
-        $id = Session::get('id');
-        $students = StudentRecordModel::find($id);
-        $imageName = '';
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '_' . $image->getClientOriginalName();
-            $image->move(\public_path('profile-folder/'), $imageName);
-        }
-        $students->image = $imageName;
-        $students->save();
-        return redirect(route('student-profile'))->with('success', 'Profile picture has been saved successfully');
-    }
 
     //UPDATING STUDENT'S PROFILE
     public function saveUpdate_profile(Request $request)
     {
         $id = Session::get('id');
+        $student = StudentModel::find($id);
+
+        if($request->hasFile('image')) {
+            $image = $request->file('image');
+            $student->image = time().'_'.$image->getClientOriginalName();
+            $image->move(\public_path('profile-folder/'), $student->image);
+            $request['image'] = $student->image;
+        }
+
         $data = [
             'first_name' => $request->input()['first_name'],
             'middle_name' => $request->input()['middle_name'],
             'last_name' => $request->input()['last_name'],
             'email' => $request->input()['email'],
+            'image' => $student->image,
         ];
         $update_student_account = StudentModel::where('id', $id)->update($data);
         return redirect(route('student-login'))->with('success', 'Account has been updated successfully');
     }
+
+
+
 
     public function student_account_settings()
     {

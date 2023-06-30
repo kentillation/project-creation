@@ -31,9 +31,15 @@ Route::get('/admin/approved-medical-record-requests', 'AuthController@approved_m
 Route::get('/admin/view-approved-medical-record/{id}', 'AuthController@view_approved_medical_record')->name('a-view-approved-medical-record');
 Route::get('/admin/all-medical-records-request', 'AuthController@all_medical_records_request')->name('a-all-medical-records');
 //PROFILE
+// Route::get('/admin/profile', 'AuthController@admin_profile')->name('admin-profile');
+// Route::get('/admin/update-profile/{id}', 'AuthController@profile')->name('update-admin-profile');
+// Route::post('/admin/save-update-profile/{id}', 'AuthController@saveUpdate_profile')->name('update-save-admin-profile');
+
 Route::get('/admin/profile', 'AuthController@admin_profile')->name('admin-profile');
-Route::get('/admin/update-profile/{id}', 'AuthController@profile')->name('update-admin-profile');
+Route::get('/admin/update-profile/{id}', 'AuthController@admin_profile')->name('update-admin-profile');
 Route::post('/admin/save-update-profile/{id}', 'AuthController@saveUpdate_profile')->name('update-save-admin-profile');
+Route::get('/admin/view-admin-profile', 'AuthController@view_profile')->name('view-admin-profile');
+
 //ACCOUNT SETTINGS
 Route::get('/admin/account-settings', 'AuthController@admin_account_settings')->name('admin-account-settings');
 Route::post('/admin/save-update-username/{id}', 'AuthController@saveUpdate_username')->name('update-save-admin-username');
@@ -62,10 +68,13 @@ Route::post('/student/send-access-code', 'StudentController@send_access_code')->
 Route::get('/student/add-medical-history', 'StudentController@add_medical_history')->name('add-medical-history');
 Route::post('/student/save-medical-history', 'StudentController@save_medical_history')->name('save-medical-history');
 Route::get('/student/view-medical-histories', 'StudentController@view_medical_histories')->name('view-medical-histories');
+
 //PROFILE
 Route::get('/student/profile', 'StudentController@student_profile')->name('student-profile');
+Route::get('/student/update-profile/{id}', 'StudentController@student_profile')->name('update-student-profile');
 Route::post('/student/save-update-profile/{id}', 'StudentController@saveUpdate_profile')->name('update-save-student-profile');
-Route::post('/student/save-update-profile-picture/{id}', 'StudentController@saveUpdate_profile_picture')->name('student-profile-picture');
+Route::get('/student/view-student-profile', 'StudentController@view_profile')->name('view-student-profile');
+
 //ACCOUNT SETTINGS
 Route::get('/student/account-settings', 'StudentController@student_account_settings')->name('student-account-settings');
 Route::post('/student/save-update-password/{id}', 'StudentController@saveUpdate_password')->name('update-save-student-password');
@@ -88,7 +97,9 @@ Route::get('/schoolnurse/add-student-medical-record', 'ClinicianController@add_s
 Route::post('/schoolnurse/save-student-medical-record', 'ClinicianController@save_student_med_record')->name('save-student-med-record');
 //PROFILE
 Route::get('/schoolnurse/profile', 'ClinicianController@clinician_profile')->name('clinician-profile');
+Route::get('/schoolnurse/update-profile/{id}', 'ClinicianController@clinician_profile')->name('update-clinician-profile');
 Route::post('/schoolnurse/save-update-profile/{id}', 'ClinicianController@saveUpdate_profile')->name('update-save-clinician-profile');
+Route::get('/schoolnurse/view-clinician-profile', 'ClinicianController@view_profile')->name('view-clinician-profile');
 //ACCOUNT SETTINGS
 Route::get('/schoolnurse/account-settings', 'ClinicianController@clinician_account_settings')->name('clinician-account-settings');
 Route::post('/schoolnurse/save-update-username/{id}', 'ClinicianController@saveUpdate_username')->name('update-save-clinician-username');
@@ -126,9 +137,9 @@ Route::get('/staff/view-approved-record/{id}', 'StaffController@view_approved_re
 Route::get('/staff/all-medical-records-request', 'StaffController@all_medical_records_request')->name('s-all-medical-records');
 //PROFILE
 Route::get('/staff/profile', 'StaffController@staff_profile')->name('staff-profile');
-Route::get('/staff/update-profile/{id}', 'StaffController@profile')->name('update-staff-profile');
+Route::get('/staff/update-profile/{id}', 'StaffController@staff_profile')->name('update-staff-profile');
 Route::post('/staff/save-update-profile/{id}', 'StaffController@saveUpdate_profile')->name('update-save-staff-profile');
-Route::post('/staff/save-update-image-profile/{id}', 'StaffController@saveUpdate_image_profile')->name('update-save-staff-image-profile');
+Route::get('/staff/view-profile', 'StaffController@view_profile')->name('view-profile');
 //ACCOUNT SETTINGS
 Route::get('/staff/account-settings', 'StaffController@staff_account_settings')->name('staff-account-settings');
 Route::post('/staff/save-update-username/{id}', 'StaffController@saveUpdate_username')->name('update-save-staff-username');

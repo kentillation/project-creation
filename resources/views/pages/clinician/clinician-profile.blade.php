@@ -23,7 +23,7 @@
       <div class="col-xl-4">
         <div class="card">
           <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-            <img src="<?php echo asset('assets/img/profile.jpg') ?>" alt="Profile" class="rounded-circle">
+            <img src="/profile-folder/{{ $clinician_profile->image }}" alt="Profile" class="rounded-circle">
             <h2 class="m-3">{{ Session::get('first_name') }} {{ Session::get('middle_name') }} {{ Session::get('last_name') }}</h2>
             <h3 class="m-2">School Nurse</h3>
           </div>
@@ -63,8 +63,21 @@
               </div>
               <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
                 <!-- Profile Edit Form -->
-                <form action="{{ route('update-save-clinician-profile', ['id' => $clinician_profile['id']]) }}" method="post">
+                <form action="{{ route('update-save-clinician-profile', ['id' => $clinician_profile['id']]) }}" method="post" enctype="multipart/form-data">
                   @csrf
+
+                  <div class="row mb-3">
+                    <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                    <div class="col-md-8 col-lg-9">
+                      <img src="/profile-folder/{{ $clinician_profile->image }}" style="height: 100px; width: 100px; border-radius: 50%;" alt="" id="default_pp">
+                      <div id="image-preview"></div>
+                      <div class="pt-2">
+                        <input type="file" id="image-upload" name="image" accept="image/*">
+                      </div>
+                    </div>
+                  </div>
+
+
                   <div class="row mb-3">
                     <label for="first_name" class="col-md-4 col-lg-3 col-form-label">First Name</label>
                     <div class="col-md-8 col-lg-9">

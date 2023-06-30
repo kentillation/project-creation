@@ -33,7 +33,7 @@
       <div class="col-xl-4">
         <div class="card">
           <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-            <img src="<?php echo asset('assets/img/profile.jpg') ?>" alt="Profile" class="rounded-circle">
+            <img src="/profile-folder/{{ Session::get('image') }}" alt="Profile" class="rounded-circle">
             <h2 class="m-3">{{ Session::get('first_name') }} {{ Session::get('middle_name') }} {{ Session::get('last_name') }}</h2>
             <h3 class="m-2">School Nurse</h3>
           </div>
