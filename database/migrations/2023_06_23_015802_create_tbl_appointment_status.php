@@ -11,19 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Schema::create('tbl_appointment_status', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->string('status_appointment');
-        //     $table->timestamps();
-        // });
+        Schema::create('tbl_appointment_status', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+        });
 
     }
 
     /**
      * Reverse the migrations.
      */
-    // public function down(): void
-    // {
-    //     Schema::dropIfExists('tbl_appointment_status');
-    // }
+    public function down(): void
+    {
+        Schema::dropIfExists('tbl_appointment_status');
+    }
 };

@@ -1,4 +1,4 @@
-@extends('includes/student-sidenav')
+@extends('includes/admin-sidenav')
 
 @section('page-content')
 <main id="main" class="main">
@@ -31,6 +31,29 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
+    <div class="mt-3 mb-3">
+        <div class="row">
+            <div class="col-lg-3">
+                <form action="{{ route('update-access-code', ['id' => $a_view_approved_medical_record['id']]) }}" method="POST" class="row g-3 needs-validation" novalidate>
+                    @csrf
+                    <div class="input-group has-validation mt-5">
+                        <span class="input-group-text">
+                            <i class="bi bi-at"></i>
+                        </span>
+                        <input type="text" name="access_code" class="form-control" value="{{ $a_view_approved_medical_record['access_code_from_admin'] }}" id="access_code" placeholder="Access Code" required>
+                        <div class="invalid-feedback">Enter access code.</div>
+                    </div>
+                    <div class="col-4">
+                        <button class="btn btn-outline-success btn-sm w-100" type="submit">
+                            <i class="bi bi-arrow-clockwise"></i>
+                            &nbsp; Update
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
     <section class="section dashboard">
         <div class="row">
             <div class="col-lg-8">
@@ -62,9 +85,9 @@
                                                                 </div>
                                                                 <div class="col-6">
                                                                     <h6>
-                                                                        {{ $student_record[0]['first_name'] }}
-                                                                {{ $student_record[0]['middle_name'] }}
-                                                                {{ $student_record[0]['last_name'] }}
+                                                                        {{ $a_view_approved_medical_record->first_name }}
+                                                                        {{ $a_view_approved_medical_record->middle_name }}
+                                                                        {{ $a_view_approved_medical_record->last_name }}
                                                                     </h6>
                                                                 </div>
                                                             </div>
@@ -76,7 +99,7 @@
                                                                     <h6>Age:</h6>
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <h6>{{ $student_record[0]['age'] }}</h6>
+                                                                    <h6>{{ $a_view_approved_medical_record->age }}</h6>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -87,8 +110,7 @@
                                                                     <h6>Date of birth:</h6>
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <h6>{{ $student_record[0]['date_of_birth'] }}</h6>
-
+                                                                    <h6>{{ $a_view_approved_medical_record->date_of_birth }}</h6>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -99,8 +121,7 @@
                                                                     <h6>Phone:</h6>
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <h6>{{ $student_record[0]['phone'] }}</h6>
-
+                                                                    <h6>{{ $a_view_approved_medical_record->phone }}</h6>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -112,9 +133,10 @@
                                                                 </div>
                                                                 <div class="col-6">
                                                                     <h6>
-                                                                        {{ $student_record[0]['street_address'] }}
-                                                                {{$student_record[0]['barangay'] }},
-                                                                {{$student_record[0]['muni_city'] }}
+                                                                        {{ $a_view_approved_medical_record->street_number }},
+                                                                        {{ $a_view_approved_medical_record->street_address }},
+                                                                        {{ $a_view_approved_medical_record->barangay }},
+                                                                        {{ $a_view_approved_medical_record->muni_city }}
                                                                     </h6>
                                                                 </div>
                                                             </div>
@@ -126,8 +148,7 @@
                                                                     <h6>Civil Status:</h6>
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <h6>{{ $student_record[0]['civil_status'] }}</h6>
-
+                                                                    <h6>{{ $a_view_approved_medical_record->civil_status }}</h6>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -138,8 +159,7 @@
                                                                     <h6>Citizenship:</h6>
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <h6>{{ $student_record[0]['citizenship'] }}</h6>
-
+                                                                    <h6>{{ $a_view_approved_medical_record->citizenship }}</h6>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -150,8 +170,7 @@
                                                                     <h6>Height:</h6>
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <h6>{{ $student_record[0]['height'] }}</h6>
-
+                                                                    <h6>{{ $a_view_approved_medical_record->height }}</h6>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -162,8 +181,7 @@
                                                                     <h6>Weight:</h6>
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <h6>{{ $student_record[0]['weight'] }}</h6>
-
+                                                                    <h6>{{ $a_view_approved_medical_record->weight }}</h6>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -174,8 +192,7 @@
                                                                     <h6>BMI:</h6>
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <h6>{{ $student_record[0]['bmi'] }}</h6>
-
+                                                                    <h6>{{ $a_view_approved_medical_record->bmi }}</h6>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -186,9 +203,7 @@
                                                                     <h6>Gender:</h6>
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <h6>
-                                                                        {{ $student_record[0]['gender_id'] == 1 ? 'Male' : '' }}
-                                                                        {{ $student_record[0]['gender_id'] == 2 ? 'Female' : '' }}
+                                                                    <h6>{{ $a_view_approved_medical_record->student_gender->gender }}
                                                                     </h6>
                                                                 </div>
                                                             </div>
@@ -200,16 +215,7 @@
                                                                     <h6>Blood type:</h6>
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <h6>
-                                                                        {{ $student_record[0]['blood_type_id'] == 1 ? 'A+' : '' }}
-                                                                {{ $student_record[0]['blood_type_id'] == 2 ? 'A-' : '' }}
-                                                                {{ $student_record[0]['blood_type_id'] == 3 ? 'B+' : '' }}
-                                                                {{ $student_record[0]['blood_type_id'] == 4 ? 'B-' : '' }}
-                                                                {{ $student_record[0]['blood_type_id'] == 5 ? 'AB+' : '' }}
-                                                                {{ $student_record[0]['blood_type_id'] == 6 ? 'AB-' : '' }}
-                                                                {{ $student_record[0]['blood_type_id'] == 7 ? 'O+' : '' }}
-                                                                {{ $student_record[0]['blood_type_id'] == 8 ? 'O-' : '' }}
-                                                                    </h6>
+                                                                    <h6>{{ $a_view_approved_medical_record->student_blood_type->blood_type }}</h6>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -224,10 +230,10 @@
                                         <div class="row mt-3">
                                             <div class="col-lg-4 col-md-6 col-sm-6">
                                                 <label for="cbc_file">CBC</label>
-                                                <a href="/cbc-folder/{{ $student_record[0]->cbc_file }}">
+                                                <a href="/cbc-folder/{{ $a_view_approved_medical_record->cbc_file }}">
                                                     <div class="container rounded border img-container">
                                                         <div class="img-lab-test-container">
-                                                            <img src="/cbc-folder/{{ $student_record[0]->cbc_file }}" width="150" height="150" />
+                                                            <img src="/cbc-folder/{{ $a_view_approved_medical_record->cbc_file }}" width="150" height="150" />
                                                         </div>
                                                     </div>
                                                 </a>
@@ -235,10 +241,10 @@
 
                                             <div class="col-lg-4 col-md-6 col-sm-6">
                                                 <label for="urinalysis_file">Urinalysis</label>
-                                                <a href="/urinalysis-folder/{{ $student_record[0]->urinalysis_file }}">
+                                                <a href="/urinalysis-folder/{{ $a_view_approved_medical_record->urinalysis_file }}">
                                                     <div class="container rounded border img-container">
                                                         <div class="img-lab-test-container">
-                                                            <img src="/urinalysis-folder/{{ $student_record[0]->urinalysis_file }}" width="150" height="150" />
+                                                            <img src="/urinalysis-folder/{{ $a_view_approved_medical_record->urinalysis_file }}" width="150" height="150" />
                                                         </div>
                                                     </div>
                                                 </a>
@@ -246,10 +252,10 @@
 
                                             <div class="col-lg-4 col-md-6 col-sm-6">
                                                 <label for="fecalysis_file">Fecalysis</label>
-                                                <a href="/fecalysis-folder/{{ $student_record[0]->fecalysis_file }}">
+                                                <a href="/fecalysis-folder/{{ $a_view_approved_medical_record->fecalysis_file }}">
                                                     <div class="container rounded border img-container">
                                                         <div class="img-lab-test-container">
-                                                            <img src="/fecalysis-folder/{{ $student_record[0]->fecalysis_file }}" width="150" height="150" />
+                                                            <img src="/fecalysis-folder/{{ $a_view_approved_medical_record->fecalysis_file }}" width="150" height="150" />
                                                         </div>
                                                     </div>
                                                 </a>
@@ -257,10 +263,10 @@
 
                                             <div class="col-lg-4 col-md-6 col-sm-6 mt-3">
                                                 <label for="x_ray_file">Chest X-ray (PA)</label>
-                                                <a href="/xray-folder/{{ $student_record[0]->x_ray_file }}">
+                                                <a href="/xray-folder/{{ $a_view_approved_medical_record->x_ray_file }}">
                                                     <div class="container rounded border img-container">
                                                         <div class="img-lab-test-container">
-                                                            <img src="/xray-folder/{{ $student_record[0]->x_ray_file }}" width="150" height="150" />
+                                                            <img src="/xray-folder/{{ $a_view_approved_medical_record->x_ray_file }}" width="150" height="150" />
                                                         </div>
                                                     </div>
                                                 </a>
@@ -268,10 +274,10 @@
 
                                             <div class="col-lg-4 col-md-6 col-sm-6 mt-3">
                                                 <label for="hba_file">Heppa B Antigen</label>
-                                                <a href="/hba-folder/{{ $student_record[0]->hba_file }}">
+                                                <a href="/hba-folder/{{ $a_view_approved_medical_record->hba_file }}">
                                                     <div class="container rounded border img-container">
                                                         <div class="img-lab-test-container">
-                                                            <img src="/hba-folder/{{ $student_record[0]->hba_file }}" width="150" height="150" />
+                                                            <img src="/hba-folder/{{ $a_view_approved_medical_record->hba_file }}" width="150" height="150" />
                                                         </div>
                                                     </div>
                                                 </a>
@@ -279,10 +285,10 @@
 
                                             <div class="col-lg-4 col-md-6 col-sm-6 mt-3">
                                                 <label for="hbv_file">Heppa B Vaccine</label>
-                                                <a href="/hbv-folder/{{ $student_record[0]->hbv_file }}">
+                                                <a href="/hbv-folder/{{ $a_view_approved_medical_record->hbv_file }}">
                                                     <div class="container rounded border img-container">
                                                         <div class="img-lab-test-container">
-                                                            <img src="/hbv-folder/{{ $student_record[0]->hbv_file }}" width="150" height="150" />
+                                                            <img src="/hbv-folder/{{ $a_view_approved_medical_record->hbv_file }}" width="150" height="150" />
                                                         </div>
                                                     </div>
                                                 </a>

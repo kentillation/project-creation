@@ -10,7 +10,6 @@
                 <li class="breadcrumb-item">Medical Record Requests</li>
                 <li class="breadcrumb-item">Pending Medical Records Request</li>
                 <li class="breadcrumb-item Active">Pending Student Medical Record Request</li>
-
             </ol>
         </nav>
     </div>
@@ -52,6 +51,7 @@
                                         <button class="nav-link" data-bs-toggle="tab" data-bs-target="#lab-test">Laboratory Test</button>
                                     </li>
                                 </ul>
+
                                 <div class="tab-content pt-2">
 
                                     <div class="tab-pane fade show active" id="medical-record">
@@ -164,7 +164,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="d-flex justify-content-start mt-3 mb-2">
+                                            <div class="d-flex justify-content-end mt-3 mb-2">
                                                 <button type="submit" class="btn btn-outline-success me-2">
                                                     <i class="bi bi-check-circle"></i>&nbsp; Update Medical Record
                                                 </button>
@@ -263,34 +263,6 @@
                                                     Approve &nbsp;<i class="bi bi-arrow-right"></i>
                                                 </button>
                                             </div>
-                                            <div class="modal fade" id="doyouModal">
-                                                <div class="modal-dialog modal-md">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Confirmation</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="container mt-3 mb-3">
-                                                                <div class="text-center">
-                                                                    <h5 class="mb-3">Do you want to approved request?</h5>
-                                                                    <!-- INSERT ANOTHER FORM -->
-                                                                    <div class="col-lg-4 col-md-6 col-sm-6" style="display:none;">
-                                                                        <label for="status_record_id">Status Record</label>
-                                                                        <input type='text' name='status_record_id' id="status_record_id" value="2" class="form-control mb-3" required />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
-                                                            <button type="submit" class="btn btn-outline-primary">
-                                                                Proceed&nbsp;<i class="bi bi-arrow-right"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </form>
                                     </div>
                                 </div>
@@ -299,6 +271,31 @@
                     </div>
                 </div>
             </div>
+
+            <div class="modal fade" id="doyouModal">
+                <div class="modal-dialog modal-dialog-centered modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Confirmation</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container mt-3 mb-3">
+                                <div class="text-center">
+                                    <h5 class="mb-3">Do you want to approved request?</h5>
+                                    <form action="{{ route('c-approve-request', ['id' => $c_update_pending['id']]) }}" method="POST" class="row g-3 needs-validation" novalidate>
+                                    @csrf
+                                    <button class="btn btn-outline-success w-100 mt-4" type="submit">
+                                        Proceed &nbsp; <i class="bi bi-box-arrow-in-right"></i>
+                                    </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="modal fade" id="appointmentModal">
                 <div class="modal-dialog modal-dialog-centered modal-md">
                     <div class="modal-content">

@@ -81,7 +81,7 @@
                         </td>
                         <td>
                           <a href="{{ route('c-update-pending-record', ['id' => $student_record->id] ) }}">
-                            <button class="btn-view" title="View record">
+                            <button class="btn btn-outline-primary btn-sm" title="View record">
                               <i class="bi bi-eye"></i>
                               &nbsp; View record
                             </button>

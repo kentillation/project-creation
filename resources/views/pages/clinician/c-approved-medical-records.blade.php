@@ -30,11 +30,11 @@
                   <table class="table table-hover table-borderless" id="table">
                     <thead>
                       <tr>
-                        <th>Student Name</th>
-                        <th>Year and Section</th>
-                        <th>Address</th>
-                        <th>Gender</th>
-                        <th>Action</th>
+                        <th scope="col">Student Name</th>
+                        <th scope="col">Year and Section</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -80,7 +80,7 @@
                         </td>
                         <td>
                           <a href="{{ route('c-view-approved-medical-record', ['id' => $student_record->id] ) }}">
-                            <button class="btn-view" title="View record">
+                            <button class="btn btn-outline-primary btn-sm" title="View record">
                               <i class="bi bi-eye"></i>
                               &nbsp; View record
                             </button>

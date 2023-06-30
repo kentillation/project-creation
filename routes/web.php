@@ -24,7 +24,11 @@ Route::get('/admin/view-student-medical-record', 'AuthController@view_student_me
 Route::get('/admin/pending-medical-record-requests', 'AuthController@pending_medical_records')->name('a-pending-medical-records');
 Route::get('/admin/view-pending-record-request/{id}', 'AuthController@view_pending_record')->name('a-view-pending-record');
 Route::post('/admin/save-update-pending-record-request/{id}', 'AuthController@saveUpdate_pending_record')->name('a-save-update-pending-record');
+Route::post('/admin/save-update-lab-test/{id}', 'AuthController@saveUpdate_lab_test')->name('a-save-update-lab-test');
+Route::post('/admin/update-access-code/{id}', 'AuthController@saveUpdate_access_code')->name('update-access-code');
+Route::post('/admin/approve-request/{id}', 'AuthController@approve_request')->name('a-approve-request');
 Route::get('/admin/approved-medical-record-requests', 'AuthController@approved_medical_records')->name('a-approved-medical-records');
+Route::get('/admin/view-approved-medical-record/{id}', 'AuthController@view_approved_medical_record')->name('a-view-approved-medical-record');
 Route::get('/admin/all-medical-records-request', 'AuthController@all_medical_records_request')->name('a-all-medical-records');
 //PROFILE
 Route::get('/admin/profile', 'AuthController@admin_profile')->name('admin-profile');
@@ -53,6 +57,7 @@ Route::get('/student/add-medical-record', 'StudentController@add_medical_record'
 Route::post('/student/save-medical-record', 'StudentController@save_medical_record')->name('save-medical-record');
 Route::get('/student/view-medical-records', 'StudentController@view_medical_records')->name('view-medical-records');
 Route::get('/student/view-record', 'StudentController@view_record')->name('view-record');
+Route::post('/student/send-access-code', 'StudentController@send_access_code')->name('send-access-code');
 //MEDICAL HISTORY
 Route::get('/student/add-medical-history', 'StudentController@add_medical_history')->name('add-medical-history');
 Route::post('/student/save-medical-history', 'StudentController@save_medical_history')->name('save-medical-history');
@@ -96,6 +101,7 @@ Route::post('/schoolnurse/save-update-lab-test/{id}', 'ClinicianController@saveU
 Route::get('/schoolnurse/approved-medical-records', 'ClinicianController@approved_medical_records')->name('c-approved-medical-records');
 Route::get('/schoolnurse/view-approved-medical-record/{id}', 'ClinicianController@view_approved_medical_record')->name('c-view-approved-medical-record');
 Route::get('/schoolnurse/all-medical-records-request', 'ClinicianController@all_medical_records_request')->name('c-all-medical-records');
+Route::post('/schoolnurse/approve-request/{id}', 'ClinicianController@approve_request')->name('c-approve-request');
 //APPOINTMENT
 Route::post('/save-schoolnurse-appointment', 'ClinicianController@save_clinician_appointment')->name('save-clinician-appointment');
 Route::get('/schoolnurse/pending-lab-test-appointments', 'ClinicianController@pending_lab_test_appointments')->name('c-pending-lab-test-appointments');
