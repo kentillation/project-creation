@@ -387,6 +387,22 @@ class ClinicianController extends Controller
         return view('pages/clinician/c-view-approved-medical-record', ['c_view_approved_medical_record' => $approved_record], compact('medical_history'));
     }
 
+    public function approve_request($id)
+    {
+        $data = [
+            'status_record_id' => 2
+        ];
+        StudentRecordModel::where('id', $id)->update($data);
+        
+        $student = StudentRecordModel::find($id);
+        $activity_logs = new ActivityLogsModel;
+        date_default_timezone_set('Asia/Manila');
+        $activity_logs->description = "School Nurse " . Session::get('username') . " approved the medical request of " . $student->first_name . " " . $student->middle_name . " " . $student->last_name . " on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+        $activity_logs->save();
+
+        return redirect(route('clinician-dashboard'))->with('success', 'Medical record has been approved successfully.');
+    }
+
     public function save_clinician_appointment(Request $request)
     {
         // date_default_timezone_set('Asia/Manila');

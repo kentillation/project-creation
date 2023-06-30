@@ -287,6 +287,24 @@ class StudentController extends Controller
         return view('pages/student/view-medical-records', ['student_records' => $student_records]);
     }
 
+    public function send_access_code(Request $request)
+    {
+        $credentials = [
+            'access_code_from_admin' => $request->send_access_code
+        ];
+        $result_count = StudentRecordModel::where($credentials)->get()->count();
+        if ($result_count > 0) {
+            $result_info = StudentRecordModel::where($credentials)->get();
+            $student =  StudentRecordModel::where('access_code_from_admin', '=', $request->send_access_code)->first();
+
+            $id = Session::get('id');
+            $student_record = StudentRecordModel::where('student_id', $id)->get();
+            $medical_history = MedicalHistoryModel::where('student_id', $id)->get();
+            return view('pages/student/view-record', ['student_record' => $student_record], compact('medical_history'));
+        }
+        return back()->with('error', 'Invalid access code.');
+    }
+
     public function view_record()
     {
         //Filtering Records with Session

@@ -2,12 +2,8 @@ Department staff:
 - empty 1 card on Dashboard
 
 Admin:
-- Indi pa ma view ang specific Approved Medical Record request sang student
-- Wala pa na plastar ang specific nga Pending kag Approved Medical Record Request
+- Wala pa na plastar ang specific nga Pending Medical Record Request
 
 
-Student:
-- Mabutang restriction sa view Approved Medical Record Request
-
-School Nurse:
-- Indi ka update picture
+All:
+- Indi ka update profile picture (Except kay Staff)

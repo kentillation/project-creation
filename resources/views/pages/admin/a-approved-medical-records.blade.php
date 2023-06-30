@@ -28,23 +28,59 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Phone</th>
-                                        <th scope="col">Municipality / City</th>
-                                        <th scope="col">Action</th>
+                                    <th scope="col">Student Name</th>
+                                    <th scope="col">Year and Section</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Gender</th>
+                                    <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($a_approved_records as $student_record)
                                     <tr>
                                         <td>{{ $student_record->first_name }} {{ $student_record->middle_name }} {{ $student_record->last_name }}</td>
-                                        <td>{{ $student_record->phone }}</td>
-                                        <td>{{ $student_record->muni_city }}</td>
                                         <td>
-                                            <a href="#">
+                                            <?php
+                                            if ($student_record->year_level_id == 1) {
+                                                echo '1st year ';
+                                            }
+                                            if ($student_record->year_level_id == 2) {
+                                                echo '2nd year ';
+                                            }
+                                            if ($student_record->year_level_id == 3) {
+                                                echo '3rd year ';
+                                            }
+                                            if ($student_record->year_level_id == 4) {
+                                                echo '4th year ';
+                                            }
+
+                                            if ($student_record->section_id == 1) {
+                                                echo '- A';
+                                            }
+                                            if ($student_record->section_id == 2) {
+                                                echo '- B';
+                                            }
+                                            if ($student_record->section_id == 3) {
+                                                echo '- C';
+                                            }
+                                            ?>
+                                        </td>
+                                        <td>{{ $student_record->street_number }}, {{ $student_record->street_address }}, Brgy. {{ $student_record->barangay }}, {{ $student_record->muni_city }} City</td>
+                                        <td>
+                                            <?php
+                                            if ($student_record->gender_id == 1) {
+                                                echo 'Male';
+                                            }
+                                            if ($student_record->gender_id == 2) {
+                                                echo 'Female';
+                                            }
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('a-view-approved-medical-record', ['id' => $student_record->id] ) }}">
                                                 <button class="btn btn-outline-primary btn-sm" title="View record">
-                                                    <i class="bi bi-eye"></i>
-                                                    View record
+                                                <i class="bi bi-eye"></i>
+                                                &nbsp; View record
                                                 </button>
                                             </a>
                                         </td>

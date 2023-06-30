@@ -270,11 +270,6 @@
               <i class="bi bi-calendar2-check fs-6"></i><span>Approved Appointment</span>
             </a>
           </li>
-          <li>
-            <a href="#">
-              <i class="bi bi-calendar2-check fs-6"></i><span>All Lab Test Appointments</span>
-            </a>
-          </li>
         </ul>
       </li>
 

@@ -310,10 +310,72 @@ class AuthController extends Controller
 
     public function view_pending_record($id)
     {
-
         $pending_record = StudentRecordModel::find($id);
         $medical_history = MedicalHistoryModel::where('student_id', $pending_record->student_id)->get();
         return view('pages/admin/a-view-pending-record-request', ['a_update_pending' => $pending_record], compact('medical_history'));
+    }
+
+    //UPDATING MEDICAL FILES
+    public function saveUpdate_lab_test(Request $request, $id)
+    {
+        $students = StudentRecordModel::find($id);
+        $cbcName = '';
+        $urinalysisName = '';
+        $fecalysisName = '';
+        $xrayName = '';
+        $hbaName = '';
+        $hbvName = '';
+        if ($request->hasFile('cbc_file')) {
+            $cbc = $request->file('cbc_file');
+            $cbcName = time() . '_' . $cbc->getClientOriginalName();
+            $cbc->move(\public_path('cbc-folder/'), $cbcName);
+        }
+        if ($request->hasFile('urinalysis_file')) {
+            $urinalysis = $request->file('urinalysis_file');
+            $urinalysisName = time() . '_' . $urinalysis->getClientOriginalName();
+            $urinalysis->move(\public_path('urinalysis-folder/'), $urinalysisName);
+        }
+        if ($request->hasFile('fecalysis_file')) {
+            $fecalysis = $request->file('fecalysis_file');
+            $fecalysisName = time() . '_' . $fecalysis->getClientOriginalName();
+            $fecalysis->move(\public_path('fecalysis-folder/'), $fecalysisName);
+        }
+        if ($request->hasFile('x_ray_file')) {
+            $xray = $request->file('x_ray_file');
+            $xrayName = time() . '_' . $xray->getClientOriginalName();
+            $xray->move(\public_path('xray-folder/'), $xrayName);
+        }
+        if ($request->hasFile('hba_file')) {
+            $hba = $request->file('hba_file');
+            $hbaName = time() . '_' . $hba->getClientOriginalName();
+            $hba->move(\public_path('hba-folder/'), $hbaName);
+        }
+        if ($request->hasFile('hbv_file')) {
+            $hbv = $request->file('hbv_file');
+            $hbvName = time() . '_' . $hbv->getClientOriginalName();
+            $hbv->move(\public_path('hbv-folder/'), $hbvName);
+        }
+        if ($students->cbc_file == ""){
+            $students->cbc_file = $cbcName;
+        }
+        if ($students->urinalysis_file == "") {
+            $students->urinalysis_file = $urinalysisName;
+        }
+        if ($students->fecalysis_file == "") {
+            $students->fecalysis_file = $fecalysisName;
+        }
+        if ($students->x_ray_file == "") {
+            $students->x_ray_file = $xrayName;
+        }
+        if ($students->hba_file == "") {
+            $students->hba_file = $hbaName;
+        }
+        if ($students->hbv_file == "") {
+            $students->hbv_file = $hbvName;
+        }
+        $students->save();
+        
+        return redirect()->back()->with('success', 'You update the laboratory test of Student Nurse named ' . $students->first_name . ' ' . $students->middle_name . ' ' . $students->last_name . ' ');
     }
 
     public function saveUpdate_pending_record(Request $request, $id)
@@ -338,13 +400,6 @@ class AuthController extends Controller
             'year_level_id' => $request->input()['year_level'],
             'section_id' => $request->input()['section'],
             'blood_type_id' => $request->input()['blood_type'],
-            'status_record_id' => $request->input()['status_record'],
-            'cbc_file' => $request->input()['cbc_file'],
-            'urinalysis_file' => $request->input()['urinalysis_file'],
-            'fecalysis_file' => $request->input()['fecalysis_file'],
-            'x_ray_file' => $request->input()['x_ray_file'],
-            'hba_file' => $request->input()['hba_file'],
-            'hbv_file' => $request->input()['hbv_file'],
         ];
 
         $update_pending_record = StudentRecordModel::where('id', $id)->update($data);
@@ -352,6 +407,46 @@ class AuthController extends Controller
         $activity_logs = new ActivityLogsModel;
         date_default_timezone_set('Asia/Manila');
         $activity_logs->description = "Admin " . Session::get('username') . " approved the pending medical record of " . $request->input()['first_name'] . " " . $request->input()['middle_name'] . " " . $request->input()['last_name'] . " on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+        $activity_logs->save();
+
+        return back()->with('success', 'You update the Medical Record of Student Nurse '. $request->input()['first_name']. ' ' . $request->input()['middle_name'] . ' '. $request->input()['last_name'] .' .');
+    }
+
+    //EDITING STUDENT PENDING RECORD
+    public function view_approved_medical_record($id)
+    {
+        $approved_record = StudentRecordModel::find($id);
+        $medical_history = MedicalHistoryModel::where('student_id', $approved_record->student_id)->get();
+        return view('pages/admin/a-view-approved-medical-record', ['a_view_approved_medical_record' => $approved_record], compact('medical_history'));
+    }
+
+    public function saveUpdate_access_code(Request $request, $id)
+    {
+        $data = [
+            'access_code_from_admin' => $request->input()['access_code'],
+        ];
+        $update_access_code = StudentRecordModel::where('id', $id)->update($data);
+        
+        $student = StudentRecordModel::find($id);
+        $activity_logs = new ActivityLogsModel;
+        date_default_timezone_set('Asia/Manila');
+        $activity_logs->description = "Admin " . Session::get('username') . " update the access code of " . $student->first_name . " " . $student->middle_name . " " . $student->last_name . " on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
+        $activity_logs->save();
+
+        return back()->with('success', 'Access code has been updated successfully.');
+    }
+
+    public function approve_request($id)
+    {
+        $data = [
+            'status_record_id' => 2
+        ];
+        StudentRecordModel::where('id', $id)->update($data);
+
+        $student = StudentRecordModel::find($id);
+        $activity_logs = new ActivityLogsModel;
+        date_default_timezone_set('Asia/Manila');
+        $activity_logs->description = "Admin " . Session::get('username') . " approved the medical request of " . $student->first_name . " " . $student->middle_name . " " . $student->last_name . " on " . date("F j, Y | l") . " at " . date("h : i : s a") . " ";
         $activity_logs->save();
 
         return redirect(route('admin-dashboard'))->with('success', 'Medical record request has been approved successfully.');
