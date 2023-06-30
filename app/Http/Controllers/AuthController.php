@@ -106,6 +106,7 @@ class AuthController extends Controller
             session()->put('barangay', $result_info[0]['barangay']);
             session()->put('muni_city', $result_info[0]['muni_city']);
             session()->put('phone', $result_info[0]['phone']);
+            session()->put('image', $result_info[0]['image']);
             $admin =  AdminModel::where('username', '=', $request->username)->first();
 
             // For Activity Logs
@@ -167,23 +168,34 @@ class AuthController extends Controller
 
     public function admin_profile()
     {
-
         $id = Session::get('id');
         $admin = AdminModel::find($id);
 
         return view('pages/admin/admin-profile', ['admin_profile' => $admin]);
     }
 
+    
     //UPDATING ADMIN'S PROFILE
     public function saveUpdate_profile(Request $request)
     {
         $id = Session::get('id');
+        $admin = AdminModel::find($id);
+
+        if($request->hasFile('image')) {
+            $image = $request->file('image');
+            $admin->image = time().'_'.$image->getClientOriginalName();
+            $image->move(\public_path('profile-folder/'), $admin->image);
+            $request['image'] = $admin->image;
+        }
+
         $data = [
             'first_name' => $request->input()['first_name'],
             'middle_name' => $request->input()['middle_name'],
             'last_name' => $request->input()['last_name'],
-            'email' => $request->input()['email']
+            'email' => $request->input()['email'],
+            'image' => $admin->image,
         ];
+        
         $update_admin_account = AdminModel::where('id', $id)->update($data);
 
         $activity_logs = new ActivityLogsModel;

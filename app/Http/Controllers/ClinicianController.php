@@ -62,6 +62,8 @@ class ClinicianController extends Controller
             session()->put('first_name', $result_info[0]['first_name']);
             session()->put('middle_name', $result_info[0]['middle_name']);
             session()->put('last_name', $result_info[0]['last_name']);
+            session()->put('image', $result_info[0]['image']);
+            
 
             $clinician =  ClinicianModel::where('username', '=', $request->username)->first();
 
@@ -145,16 +147,27 @@ class ClinicianController extends Controller
 
         return view('pages/clinician/clinician-profile', ['clinician_profile' => $clinician]);
     }
+    
 
     //UPDATING CLINICIAN'S PROFILE
     public function saveUpdate_profile(Request $request)
     {
         $id = Session::get('id');
+        $clinician = ClinicianModel::find($id);
+
+        if($request->hasFile('image')) {
+            $image = $request->file('image');
+            $clinician->image = time().'_'.$image->getClientOriginalName();
+            $image->move(\public_path('profile-folder/'), $clinician->image);
+            $request['image'] = $clinician->image;
+        }
+        
         $data = [
             'first_name' => $request->input()['first_name'],
             'middle_name' => $request->input()['middle_name'],
             'last_name' => $request->input()['last_name'],
             'email' => $request->input()['email'],
+            'image' => $clinician->image,
         ];
         $update_student_account = ClinicianModel::where('id', $id)->update($data);
         return redirect(route('clinician-login'))->with('success', 'Profile has been updated successfully');

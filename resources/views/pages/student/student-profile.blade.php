@@ -23,7 +23,7 @@
       <div class="col-xl-4">
         <div class="card">
           <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-            <img src="/profile-folder/{{ $student_profile->image }}" alt="Profile" class="rounded-circle">
+            <img src="/profile-folder/{{ Session::get('image') }}" alt="Profile" class="rounded-circle">
             <h2 class="m-3">{{ Session::get('first_name') }} {{ Session::get('middle_name') }} {{ Session::get('last_name') }}</h2>
             <h3 class="m-2">Nursing Student</h3>
           </div>
@@ -69,73 +69,71 @@
               <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
                 <!-- Profile Edit Form -->
 
-                <div class="row mb-3">
-                  <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
-                  <div class="col-md-8 col-lg-9">
-                    <img src="/profile-folder/{{ $student_profile->image }}" style="height: 100px; width: 100px; border-radius: 50%;" alt="" id="default_pp">
-                    <div id="image-preview"></div>
-                    <div class="pt-2">
-                    <form action="{{ route('student-profile-picture', ['id' => $student_profile['id']]) }}" method="post" enctype="multipart/form-data" id="upload-form">
-                      @csrf
-                        <!-- <label for="image-upload" class="btn btn-primary btn-sm" onclick="upload_pp()" id="upload-pp">
-                            <i class="bi bi-arrow-left-right"></i>
-                            &nbsp; Change Image
-                          </label> -->
-                        <input type="file" name="image" id="image-upload" accept="image/*">
-                        <button type="submit">Upload</button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+
                 <form action="{{ route('update-save-student-profile', ['id' => $student_profile['id']]) }}" method="post" enctype="multipart/form-data" id="upload-form">
                   @csrf
+                  <div class="row mb-3">
+                    <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                    <div class="col-md-8 col-lg-9">
+                      <img src="/profile-folder/{{ $student_profile->image }}" style="height: 100px; width: 100px; border-radius: 50%;" alt="" id="default_pp">
+                      <div id="image-preview"></div>
+                      <div class="pt-2">
+                        <!-- <label for="image-upload" class="btn btn-primary btn-sm" onclick="upload_pp()" id="upload-pp">
+                                                <i class="bi bi-arrow-left-right"></i>
+                                                &nbsp; Change Image
+                                                </label> -->
+                        <input type="file" id="image-upload" name="image" accept="image/*">
+                      </div>
+                    </div>
+                  </div>
+
                   <div class="row mb-3">
                     <label for="first_name" class="col-md-4 col-lg-3 col-form-label">First Name</label>
                     <div class="col-md-8 col-lg-9">
                       <input name="first_name" type="text" class="form-control" id="first_name" value="{{ $student_profile->first_name }}">
                     </div>
                   </div>
-                  <div class="row mb-3">
-                    <label for="middle_name" class="col-md-4 col-lg-3 col-form-label">Middle Name</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="middle_name" type="text" class="form-control" id="middle_name" value="{{ $student_profile->middle_name }}">
+                    <div class="row mb-3">
+                      <label for="middle_name" class="col-md-4 col-lg-3 col-form-label">Middle Name</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="middle_name" type="text" class="form-control" id="middle_name" value="{{ $student_profile->middle_name }}">
+                      </div>
                     </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="last_name" class="col-md-4 col-lg-3 col-form-label">Last Name</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="last_name" type="text" class="form-control" id="last_name" value="{{ $student_profile->last_name }}">
+                    <div class="row mb-3">
+                      <label for="last_name" class="col-md-4 col-lg-3 col-form-label">Last Name</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="last_name" type="text" class="form-control" id="last_name" value="{{ $student_profile->last_name }}">
+                      </div>
                     </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="email" type="email" class="form-control" id="email" value="{{ $student_profile->email }}">
+                    <div class="row mb-3">
+                      <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="email" type="email" class="form-control" id="email" value="{{ $student_profile->email }}">
+                      </div>
                     </div>
-                  </div>
-                  <div class="text-center">
-                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#signoutModal">Update profile</button>
-                  </div>
-                  <div class="modal fade" id="signoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation</h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body p-4">
-                          <p>You are required to signout to update your profile.</p>
-                        </div>
-                        <div class="modal-footer">
-                          <a href="#">
-                            <button class="btn btn-outline-success w-100 mt-2" type="submit">
-                              Signout &nbsp; <i class="bi bi-box-arrow-in-right"></i>
-                            </button>
-                          </a>
+                    <div class="text-center">
+                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#signoutModal">Update profile</button>
+                    </div>
+                    <div class="modal fade" id="signoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body p-4">
+                            <p>You are required to signout to update your profile.</p>
+                          </div>
+                          <div class="modal-footer">
+                            <a href="#">
+                              <button class="btn btn-outline-success w-100 mt-2" type="submit">
+                                Signout &nbsp; <i class="bi bi-box-arrow-in-right"></i>
+                              </button>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
                 </form><!-- End Profile Edit Form -->
               </div>
             </div>
