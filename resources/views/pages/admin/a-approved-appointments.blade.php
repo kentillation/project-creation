@@ -46,7 +46,7 @@
                       <tr>
                         <td>Nurse {{ $student_approved_appointment->clinician->first_name }} {{ $student_approved_appointment->clinician->middle_name }} {{ $student_approved_appointment->clinician->last_name }}</td>
                         <td>
-                          Student Nurse {{ $student_approved_appointment->student->first_name }} {{ $student_approved_appointment->student->middle_name }} {{ $student_approved_appointment->student->last_name }} approve the appointment for Laboratory Test in
+                          Student Nurse {{ $student_approved_appointment->student->first_name }} {{ $student_approved_appointment->student->middle_name }} {{ $student_approved_appointment->student->last_name }} approved the appointment for Laboratory Test in
                           <?php
                           if ($student_approved_appointment->lab_test == 1) {
                             echo 'CBC';

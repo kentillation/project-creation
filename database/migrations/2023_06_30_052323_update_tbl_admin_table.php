@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('tbl_admin', function (Blueprint $table) {
-            $table->text('image')->nullable();
-        });
+        // Schema::table('tbl_admin', function (Blueprint $table) {
+        //     $table->text('image')->nullable();
+        // });
     }
 
     /**

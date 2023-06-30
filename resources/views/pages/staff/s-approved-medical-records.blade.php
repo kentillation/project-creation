@@ -39,7 +39,7 @@
                               <td>{{ $student_record->muni_city }}</td>
                               <td>
                                 <a href="{{ route('s-view-approved-record', ['id' => $student_record->id] ) }}">
-                                  <button class="btn-view" title="View record">
+                                  <button class="btn btn-outline-primary btn-sm" title="View record">
                                     <i class="bi bi-eye"></i>
                                     &nbsp; View record
                                   </button>

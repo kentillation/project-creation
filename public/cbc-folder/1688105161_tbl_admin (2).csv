@@ -1,0 +1,6 @@
+"id","email","username","password","created_at","updated_at","first_name","middle_name","last_name","street_number","street_address","barangay","muni_city","phone","admin_email"
+"16","kentanthony2022@gmail.com","kent04","7488e331b8b64e5794da3fa4eb10ad5d","2023-06-20 02:12:01","2023-06-20 04:28:25","Kent Anthony","Causing","Engbino","041","Prk. Paghidaet","Paraiso","Sagay City","09453145499","christianschool.main@gmail.com"
+"17","example@gmail.com","sample","5e8ff9bf55ba3508199d22e984129be6","2023-06-20 02:13:30","2023-06-20 02:13:30","Sample","lang","Ni",NULL,NULL,NULL,NULL,NULL,"christianschool.main@gmail.com"
+"18","justtestonly@gmail.com","justtestonly","1243dba43f38f9f53130412fff5dc17e","2023-06-21 05:31:57","2023-06-21 05:31:57","Just","Test","Only",NULL,NULL,NULL,NULL,NULL,"christianschool.main@gmail.com"
+"19","christianschool.main@gmail.com","Administrator","7488e331b8b64e5794da3fa4eb10ad5d","2023-06-21 07:08:17","2023-06-21 07:08:17","Electronic","Health","Records",NULL,NULL,NULL,NULL,NULL,"christianschool.main@gmail.com"
+"20","administrator1@gmail.com","administrator1","d5cee333abe432891a0de57d0ee38713","2023-06-22 01:46:11","2023-06-22 01:46:11",NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL
